@@ -13,7 +13,7 @@ function About() {
         <main className='About'>
             <Navbar />
             <div className='grid-container'>
-                <img src={Cover} alt='UC Merced Admin Building' />
+                <img className='cover' src={Cover} alt='UC Merced Admin Building' />
                 <div className='info-container'>
                     <img className='headshot' src={Headshot} alt='Truman C.' />
                     <div className='column-grid'>
