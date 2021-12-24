@@ -1,0 +1,28 @@
+.Navbar {
+    border-bottom: 1px solid black;
+    background-image: linear-gradient(to bottom right, #6CAFCC, #7EADC2);
+}
+
+.Navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+.Navbar li {
+    display: inline-block;
+    font-size: 30px;
+    height: 100%;
+    margin: 1.5% 2%;
+}
+.Navbar li a {
+    text-decoration: none;
+}
+.Navbar li a:link {
+    color: #5D808F;
+}
+.Navbar li a:visited {
+    color: #173542;
+}
+.Navbar li a:active {
+    color: white;
+}
