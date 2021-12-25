@@ -79,6 +79,11 @@
     height: 40px;
 }
 
+.About .grid-container .info-container .column-grid .second .social-container .social:hover {
+    transform: rotate(1turn);
+    transition-duration: 2s;
+}
+
 @media only screen and (max-width: 1110px) {
     .About .grid-container {
         height: calc(100vh);
