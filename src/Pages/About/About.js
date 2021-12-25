@@ -15,12 +15,12 @@ function About() {
             <div className='grid-container'>
                 <img className='cover' src={Cover} alt='UC Merced Admin Building' />
                 <div className='info-container'>
-                    <img className='headshot' src={Headshot} alt='Truman C.' />
                     <div className='column-grid'>
                         <div className='first'>
+                            <img className='headshot' src={Headshot} alt='Truman C.' />
                             <h1>Truman Chan</h1>
                             <h2>Frontend Engineer</h2>
-                            <h3>San Francisco, California, United States</h3>
+                            <h3>San Francisco, CA, United States</h3>
                         </div>
                         <div className='second'>
                             <p>I am a University of California, Merced graduate with a Computer Science and Engineering degree. I am interested in frontend web development!</p>
