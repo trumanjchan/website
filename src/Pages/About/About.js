@@ -116,6 +116,32 @@ function About() {
                     </div>
                 </div>
             </div>
+
+            <div className='Experience'>
+                <div className='container'>
+                    <div className='title'>Experience</div>
+                    <div className='hackmerced'>
+                        <div className='total'>
+                            <div className='companyname'><a href='https://hackmerced.com/' target='_blank' rel='noreferrer'>HackMerced</a></div>
+                            <div className='date'>2 yrs 4 mos</div>
+                            <div>University of California, Merced</div>
+                        </div>
+                        <div className='lead'>
+                            <div>Frontend Lead</div>
+                            <div className='date'>Apr 2021 - Dec 2021 • 9 mos</div>
+                            <div className='text'>• Assigned tasks to frontend team members.</div>
+                            <div className='text'>• Taught team members how to work with our codebase by explaining how to use gitkraken for tasks and github for pull requests.</div>
+                        </div>
+                        <div className='member'>
+                            <div>Frontend Member</div>
+                            <div className='date'>Sep 2019 - Apr 2021 • 1 yr 8 mos</div>
+                            <div className='text'>• Learning and working with HTML, CSS, JavaScript, Node.js, JSX, React, Git, GitHub, and GitKraken.</div>
+                            <div className='text'>• Created responsive web page components and web pages for mini-hackathon Hack’m, HackMerced V, HackMerced VI, DesignMerced I, and the HackMerced website.</div>
+                            <div className='text'>• Organized MLH Local Build/Hack Day events, two 36-hour hackathons, and a designathon with teammates.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </main>
     );
 }
