@@ -126,7 +126,7 @@
 .About .Tabs {
     background-color: white;
     width: 80%;
-    height: 400px;
+    height: 450px;
     margin: 0% auto 2% auto;
     border-radius: 12px;
     border: 1px solid lightgrey;
@@ -223,7 +223,7 @@
     color: rgb(104, 104, 104);
 }
 .About .Experience .container .hackmerced .total .companyname {
-    font-size: 22px;
+    font-size: 25px;
 }
 .About .Experience .container .hackmerced .total .companyname a:link {
     text-decoration: none;
@@ -236,6 +236,9 @@
     margin-left: 5%;
     margin-bottom: 4%;
 }
+.About .Experience .container .hackmerced .lead .position {
+    font-weight: bold;
+}
 .About .Experience .container .hackmerced .lead .date {
     margin-bottom: 3%;
     color: rgb(104, 104, 104);
@@ -245,6 +248,9 @@
 }
 .About .Experience .container .hackmerced .member {
     margin-left: 5%;
+}
+.About .Experience .container .hackmerced .member .position {
+    font-weight: bold;
 }
 .About .Experience .container .hackmerced .member .date {
     margin-bottom: 3%;
@@ -287,14 +293,24 @@
     .About .Education {
         height: 700px;
     }
+    .About .Education .container {
+        grid-template-rows: 10% auto auto;
+    }
 }
 
 /* Experience */
 @media only screen and (max-width: 700px) {
     .About .Experience {
-        overflow: auto;
+        overflow: hidden;
+    }
+    .About .Experience .container {
+        grid-template-rows: 10% auto;
     }
     .About .Experience .container .hackmerced {
-        padding-bottom: 20%;
+        margin: auto auto 5% 10%;
+        overflow: auto;
+        height: 100%;
+        height: -moz-available;          /* WebKit-based browsers will ignore this. */
+        height: -webkit-fill-available;  /* Mozilla-based browsers will ignore this. */
     }
 }

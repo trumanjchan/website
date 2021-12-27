@@ -109,7 +109,7 @@ function About() {
                             <div className='title'>Frameworks</div>
                             <div className='text'>React, Flask</div>
                             <div className='title'>Tools</div>
-                            <div className='text'>Visual Studio Code, Github, Gitkraken, Sony Vegas Pro, Adobe CS5, Adobe XD, Google Workspace</div>
+                            <div className='text'>Visual Studio Code, Git, Github, Gitkraken, Sony Vegas Pro, Adobe CS5, Adobe XD, Google Workspace</div>
                             <div className='title'>Languages</div>
                             <div className='text'>English and conversational Cantonese</div>
                         </div>
@@ -127,13 +127,13 @@ function About() {
                             <div>University of California, Merced</div>
                         </div>
                         <div className='lead'>
-                            <div>Frontend Lead</div>
+                            <div className='position'>Frontend Lead</div>
                             <div className='date'>Apr 2021 - Dec 2021 • 9 mos</div>
                             <div className='text'>• Assigned tasks to frontend team members.</div>
                             <div className='text'>• Taught team members how to work with our codebase by explaining how to use gitkraken for tasks and github for pull requests.</div>
                         </div>
                         <div className='member'>
-                            <div>Frontend Member</div>
+                            <div className='position'>Frontend Member</div>
                             <div className='date'>Sep 2019 - Apr 2021 • 1 yr 8 mos</div>
                             <div className='text'>• Learning and working with HTML, CSS, JavaScript, Node.js, JSX, React, Git, GitHub, and GitKraken.</div>
                             <div className='text'>• Created responsive web page components and web pages for mini-hackathon Hack’m, HackMerced V, HackMerced VI, DesignMerced I, and the HackMerced website.</div>
