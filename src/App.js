@@ -6,10 +6,10 @@ import Home from '../src/Pages/Home/Home';
 
 function App() {
   return (
-    <Router>
+    <Router basename={process.env.PUBLIC_URL}>
       <Routes>
-        <Route path='/my-website' element={<About/>} />
-        <Route path='/my-website/home' element={<Home/>} />
+        <Route path='/' element={<About/>} />
+        <Route path='/home' element={<Home/>} />
       </Routes>
     </Router>
   );
