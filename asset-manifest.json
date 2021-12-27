@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/my-website/static/css/main.e47e3e81.css",
-    "main.js": "/my-website/static/js/main.5581fc4d.js",
-    "static/media/UCM_Admin_Building.jpg": "/my-website/static/media/UCM_Admin_Building.0137317ae2c523a7fc95.jpg",
-    "static/media/Truman.jpg": "/my-website/static/media/Truman.b5b4f991f29521f10b38.jpg",
-    "static/media/linkedin.png": "/my-website/static/media/linkedin.f249b38224ca41a0b909.png",
-    "index.html": "/my-website/index.html",
-    "main.e47e3e81.css.map": "/my-website/static/css/main.e47e3e81.css.map",
-    "main.5581fc4d.js.map": "/my-website/static/js/main.5581fc4d.js.map"
+    "main.css": "/static/css/main.e47e3e81.css",
+    "main.js": "/static/js/main.a8f42b20.js",
+    "static/media/UCM_Admin_Building.jpg": "/static/media/UCM_Admin_Building.0137317ae2c523a7fc95.jpg",
+    "static/media/Truman.jpg": "/static/media/Truman.b5b4f991f29521f10b38.jpg",
+    "static/media/linkedin.png": "/static/media/linkedin.f249b38224ca41a0b909.png",
+    "index.html": "/index.html",
+    "main.e47e3e81.css.map": "/static/css/main.e47e3e81.css.map",
+    "main.a8f42b20.js.map": "/static/js/main.a8f42b20.js.map"
   },
   "entrypoints": [
     "static/css/main.e47e3e81.css",
-    "static/js/main.5581fc4d.js"
+    "static/js/main.a8f42b20.js"
   ]
 }
