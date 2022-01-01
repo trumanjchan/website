@@ -2,33 +2,41 @@
     border-bottom: 1px solid black;
     background-image: linear-gradient(to bottom right, #6CAFCC, #7EADC2);
     padding: 0% 10%;
+    height: 60px;
 }
 
-.Navbar ul {
+.Navbar .grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
     list-style-type: none;
     margin: 0;
     padding: 0;
-}
-.Navbar li {
-    display: inline-block;
-    font-size: 30px;
     height: 100%;
-    margin: 1.5% 2%;
 }
-.Navbar li a {
+.Navbar .grid-container li {
+    font-size: 30px;
+    height: fit-content;
+    margin: auto auto;
+}
+.Navbar .grid-container li a {
     text-decoration: none;
 }
-.Navbar li a:link {
+.Navbar .grid-container li a:link {
     color: #5D808F;
 }
-.Navbar li a:visited {
+.Navbar .grid-container li a:visited {
     color: #173542;
 }
-.Navbar li a:active {
+.Navbar .grid-container a:active {
     color: white;
 }
+.Navbar .grid-container button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
-.Navbar li:hover {
+.Navbar .grid-container li:hover {
     transform: scale(1.3, 1.3);
     transition-duration: 0.3s;
 }
