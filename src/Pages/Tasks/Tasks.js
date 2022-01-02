@@ -1,10 +1,10 @@
 import React from 'react';
-import './Home.css';
+import './Tasks.css';
 import SubNavbar from '../../Components/SubNavbar/SubNavbar';
 
-function Home() {
+function Tasks() {
     return (
-        <main className='Home'>
+        <main className='Tasks'>
             <SubNavbar />
             <div className='container'>
                 
@@ -13,4 +13,4 @@ function Home() {
     );
 }
 
-export default Home;
+export default Tasks;

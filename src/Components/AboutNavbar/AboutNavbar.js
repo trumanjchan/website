@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './Navbar.css';
+import './AboutNavbar.css';
 
-function Navbar() {
+function AboutNavbar() {
     // Clicking on a navbar tab forces a refresh, which runs 'window.onload()'. Forces toggle button to be in activated position or not.
     function forceRefresh(e) {
         window.location.href(e.Link).reload();
@@ -48,7 +48,7 @@ function Navbar() {
     }
 
     return (
-        <div className='Navbar'>
+        <div className='AboutNavbar'>
             <ul className='grid-container'>
                 <li><Link to="/" onClick={forceRefresh}>About</Link></li>
                 <li><Link to="/home">Home</Link></li>
@@ -63,4 +63,4 @@ function Navbar() {
     );
 }
 
-export default Navbar;
+export default AboutNavbar;

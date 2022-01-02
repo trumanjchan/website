@@ -1,0 +1,42 @@
+.SubNavbar {
+    border-bottom: 1px solid black;
+    background-image: linear-gradient(to bottom right, #6CAFCC, #7EADC2);
+    padding: 0% 10%;
+    height: 60px;
+}
+
+.SubNavbar .grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+.SubNavbar .grid-container li {
+    font-size: 30px;
+    height: fit-content;
+    margin: auto auto;
+}
+.SubNavbar .grid-container li a {
+    text-decoration: none;
+}
+.SubNavbar .grid-container li a:link {
+    color: #5D808F;
+}
+.SubNavbar .grid-container li a:visited {
+    color: #173542;
+}
+.SubNavbar .grid-container li a:hover {
+    color: white;
+    transition-duration: 0.2s;
+}
+.SubNavbar .grid-container button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.SubNavbar .grid-container li:hover {
+    transform: scale(1.2, 1.2);
+    transition-duration: 0.3s;
+}
