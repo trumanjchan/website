@@ -51,7 +51,7 @@ function Navbar() {
         <div className='Navbar'>
             <ul className='grid-container'>
                 <li><Link to="/" onClick={forceRefresh}>About</Link></li>
-                <li><Link to="/home" onClick={forceRefresh}>Home</Link></li>
+                <li><Link to="/home">Home</Link></li>
                 <li>
                     <label className="switch">
                         <input id='input' type="checkbox" onClick={toggleMode} />
