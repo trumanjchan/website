@@ -4,8 +4,8 @@ import './Navbar.css';
 
 function Navbar() {
     // Clicking on a navbar tab forces a refresh, which runs 'window.onload()'. Forces toggle button to be in activated position or not.
-    function forceRefresh() {
-        window.location.reload();
+    function forceRefresh(e) {
+        window.location.href(e.Link).reload();
     }
     window.onload = function() {
         if (x === "light") {
