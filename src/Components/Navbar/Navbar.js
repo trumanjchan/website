@@ -30,14 +30,18 @@ function Navbar() {
         /* Switch to Light Mode */
         if (e.currentTarget.checked === false) {
             // Sets the custom HTML attribute
+            document.body.style.transition = "all 1s";
             document.documentElement.setAttribute("data-theme", "light");
+            document.getElementById("div").style.transition = "all 300ms";
             // Sets the user's preference in local storage
             localStorage.setItem("data-theme", "light");
         }
         else {
             /* Switch to Dark Mode */
             // Sets the custom HTML attribute
+            document.body.style.transition = "all 1s";
             document.documentElement.setAttribute("data-theme", "dark");
+            document.getElementById("div").style.transition = "all 300ms";
             // Sets the user's preference in local storage
             localStorage.setItem("data-theme", "dark");
         }
@@ -51,7 +55,7 @@ function Navbar() {
                 <li>
                     <label className="switch">
                         <input id='input' type="checkbox" onClick={toggleMode} />
-                        <div></div>
+                        <div id='div'></div>
                     </label>
                 </li>
             </ul>
