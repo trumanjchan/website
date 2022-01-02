@@ -3,6 +3,19 @@ import { Link } from 'react-router-dom';
 import './Navbar.css';
 
 function Navbar() {
+    // Clicking on a navbar tab forces a refresh, which runs 'window.onload()'. Forces toggle button to be in activated position or not.
+    function forceRefresh() {
+        window.location.reload();
+    }
+    window.onload = function() {
+        if (x === "light") {
+            document.getElementById('input').checked = false;
+        }
+        else {
+            document.getElementById('input').checked = true;
+        }
+    }
+
     // Finds whether pre-reload 'data-theme' was light or dark, then renders that theme.
     const x = localStorage.getItem("data-theme");
     console.log(x);
@@ -33,11 +46,11 @@ function Navbar() {
     return (
         <div className='Navbar'>
             <ul className='grid-container'>
-                <li><Link to="/">About</Link></li>
-                <li><Link to="/home">Home</Link></li>
+                <li><Link to="/" onClick={forceRefresh}>About</Link></li>
+                <li><Link to="/home" onClick={forceRefresh}>Home</Link></li>
                 <li>
                     <label className="switch">
-                        <input type="checkbox" onClick={toggleMode} />
+                        <input id='input' type="checkbox" onClick={toggleMode} />
                         <div></div>
                     </label>
                 </li>
