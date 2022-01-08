@@ -1,0 +1,65 @@
+.Tasks {
+    
+}
+
+.Tasks .outer-container {
+    background-color: var(--container-bg-color);
+    margin: 5% auto;
+    width: 350px;
+    height: 500px;
+    border-radius: 40px;
+    border: 2px solid black;
+}
+.Tasks .outer-container .grid-container {
+    display: grid;
+    grid-template-rows: 10% 80% 10%;
+    height: 100%;
+}
+.Tasks .outer-container .grid-container .date {
+    margin: auto auto;
+    font-size: 25px;
+}
+.Tasks .outer-container .grid-container .list {
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    margin: 0% 10%;
+    font-size: 35px;
+    overflow-y: auto;
+    font-family: "Lucida Console";
+}
+.Tasks .outer-container .grid-container .list ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow-wrap: anywhere;
+}
+.Tasks .outer-container .grid-container .list ul li {
+    padding: 1% 5%;
+}
+.Tasks .outer-container .grid-container .list ul li:nth-child(2n + 1) {
+    background-color: rgb(197, 197, 197);
+}
+.Tasks .outer-container .grid-container .form {
+    margin: auto auto;
+    width: 60%;
+}
+.Tasks .outer-container .grid-container .form form {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.Tasks .outer-container .grid-container .form input {
+    height: 25px;
+    width: 130px;
+    padding-left: 5%;
+}
+.Tasks .outer-container .grid-container .form button{
+    float: right;
+    height: 25px;
+}
+
+@media only screen and (max-width: 500px) {
+    .Tasks .outer-container {
+        width: 280px;
+    }
+}
