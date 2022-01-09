@@ -3,6 +3,9 @@ import './Tasks.css';
 import SubNavbar from '../../Components/SubNavbar/SubNavbar';
 
 function Tasks() {
+    const listcontents = [];
+    var stored = "Your tasks from last time:\n" + localStorage.getItem("list-contents");
+
     var today = new Date();
     var dd = String(today.getDate()).padStart(2, '0');
     var mm = String(today.getMonth() + 1).padStart(2, '0');  // January is 0!
@@ -20,10 +23,23 @@ function Tasks() {
         if (inputvalue === "") {
             return;
         }
+        else if (inputvalue === "/showless") {
+            document.getElementById("storedinfo").style.display = "none";
+            console.log("Used command '/showless' to hide previous tasks!");
+        }
+        else if (inputvalue === "/showall") {
+            document.getElementById("storedinfo").style.display = "block";
+            console.log("Used command '/showall' to show previous tasks!");
+        }
         else {
             var textnode = document.createTextNode(inputvalue);
             node.appendChild(textnode);
             document.getElementById("list").appendChild(node);
+
+            listcontents.push(node.innerText);
+            console.log("Pushed '" + node.innerText + "' to listcontents array.");
+            localStorage.setItem("list-contents", JSON.stringify(listcontents));
+            console.log(JSON.stringify(listcontents));
         }
         
         node.addEventListener("click", function() {
@@ -44,6 +60,7 @@ function Tasks() {
                     </div>
                     <div className='list'>
                         <ul id='list'></ul>
+                        <ul id='storedinfo'>{stored}</ul>
                     </div>
                     <div className='form'>
                         <form id='form' onSubmit={submitEntry}>
