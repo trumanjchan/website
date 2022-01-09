@@ -1,6 +1,3 @@
-.Tasks {
-    
-}
 
 .Tasks .outer-container {
     background-color: var(--container-bg-color);
@@ -42,6 +39,10 @@
 }
 .Tasks .outer-container .grid-container .list ul li:nth-child(2n + 1) {
     background-color: rgb(197, 197, 197);
+}
+.Tasks .outer-container .grid-container .list ul li:hover {
+    text-decoration: line-through;
+    color: crimson;
 }
 .Tasks .outer-container .grid-container .form {
     margin: auto auto;

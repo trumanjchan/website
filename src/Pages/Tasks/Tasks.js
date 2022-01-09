@@ -4,7 +4,7 @@ import SubNavbar from '../../Components/SubNavbar/SubNavbar';
 
 function Tasks() {
     const listcontents = [];
-    var stored = "Your tasks from last time:\n" + "[" + localStorage.getItem("list-contents") + "]";
+    var stored = "Your tasks from last time: [" + localStorage.getItem("list-contents") + "]";
 
     var today = new Date();
     var dd = String(today.getDate()).padStart(2, '0');
