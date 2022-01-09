@@ -4,7 +4,7 @@ import SubNavbar from '../../Components/SubNavbar/SubNavbar';
 
 function Tasks() {
     const listcontents = [];
-    var stored = "Your tasks from last time:\n" + localStorage.getItem("list-contents");
+    var stored = "Your tasks from last time:\n" + "[" + localStorage.getItem("list-contents") + "]";
 
     var today = new Date();
     var dd = String(today.getDate()).padStart(2, '0');
@@ -38,16 +38,21 @@ function Tasks() {
 
             listcontents.push(node.innerText);
             console.log("Pushed '" + node.innerText + "' to listcontents array.");
-            localStorage.setItem("list-contents", JSON.stringify(listcontents));
-            console.log(JSON.stringify(listcontents));
-        }
-        
-        node.addEventListener("click", function() {
-            node.style.display = "none";
-        });
+            localStorage.setItem("list-contents", listcontents.join(', '));
+            console.log(listcontents);
 
-        var form = document.getElementById("form");
-        form.reset();
+            node.addEventListener("click", function() {
+                node.style.display = "none";
+                const index = listcontents.indexOf(node.innerText);
+                if (index > -1) {
+                    listcontents.splice(index, 1);
+                    console.log("Popped '" + node.innerText + "' from listcontents array.");
+                    localStorage.setItem("list-contents", listcontents.join(', '));
+                    console.log(listcontents);
+                }
+            });
+        }
+        document.getElementById("form").reset();
     }
 
     return (
