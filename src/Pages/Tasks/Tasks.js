@@ -4,7 +4,7 @@ import SubNavbar from '../../Components/SubNavbar/SubNavbar';
 
 function Tasks() {
     const listcontents = [];
-    var stored = "Your tasks from last time: [" + localStorage.getItem("list-contents") + "]";
+    var stored = localStorage.getItem("list-contents");
 
     var today = new Date();
     var dd = String(today.getDate()).padStart(2, '0');
@@ -22,14 +22,6 @@ function Tasks() {
         var inputvalue = document.querySelector("input").value;
         if (inputvalue === "") {
             return;
-        }
-        else if (inputvalue === "/showless") {
-            document.getElementById("storedinfo").style.display = "none";
-            console.log("Used command '/showless' to hide previous tasks!");
-        }
-        else if (inputvalue === "/showall") {
-            document.getElementById("storedinfo").style.display = "block";
-            console.log("Used command '/showall' to show previous tasks!");
         }
         else {
             var textnode = document.createTextNode(inputvalue);
@@ -65,7 +57,6 @@ function Tasks() {
                     </div>
                     <div className='list'>
                         <ul id='list'></ul>
-                        <ul id='storedinfo'>{stored}</ul>
                     </div>
                     <div className='form'>
                         <form id='form' onSubmit={submitEntry}>
@@ -73,6 +64,17 @@ function Tasks() {
                             <button id='button' type='button' onClick={addToList}>Send</button>
                         </form>
                     </div>
+                </div>
+            </div>
+
+            <div className='desc-container'>
+                <div className='storedinfo-container'>
+                    <div className='title'>Your Saved Tasks</div>
+                    <div className='stored'>{stored}</div>
+                </div>
+                <div className='description-container'>
+                    <div className='title'>Description</div>
+                    <p className='description'>A user can <i>create tasks</i> and <i>delete specific tasks</i> by hovering over and clicking them.<br/>The localStorage object saves the tasks that weren't deleted, across browser sessions, and displays them under the section "Your Saved Tasks".<br/>So if you decide to keep this page open all day, you can use it as a note-taking app with no fear of your tasks being lost!</p>
                 </div>
             </div>
         </main>

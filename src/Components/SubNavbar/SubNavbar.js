@@ -23,6 +23,7 @@ function SubNavbar() {
             <ul className='grid-container'>
                 <li><Link to="/" onClick={forceRefresh}>About</Link></li>
                 <li><Link to="/home">Home</Link></li>
+                <li><Link to="/guides">Guides</Link></li>
                 <li><Link to="/tasks">Tasks</Link></li>
             </ul>
         </div>

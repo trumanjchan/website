@@ -24,10 +24,6 @@
     overflow-y: auto;
     font-family: "Lucida Console";
 }
-.Tasks .outer-container .grid-container .list #storedinfo {
-    font-size: 25px;
-    background-color: thistle;
-}
 .Tasks .outer-container .grid-container .list ul {
     list-style-type: none;
     margin: 0;
@@ -63,8 +59,51 @@
     height: 25px;
 }
 
+
+.Tasks .desc-container {
+    background-color: var(--container-bg-color);
+    margin: 5% auto;
+    width: calc(70vw);
+    height: 500px;
+    border-radius: 20px;
+    border: 2px solid black;
+    display: grid;
+    grid-template-rows: 50% 50%;
+    overflow: hidden;
+}
+.Tasks .desc-container .storedinfo-container {
+    overflow-y: auto;
+}
+.Tasks .desc-container .storedinfo-container .title {
+    font-size: 25px;
+    text-align: center;
+    margin: 1% 0%;
+}
+.Tasks .desc-container .storedinfo-container .stored {
+    font-size: 20px;
+    background-color: thistle;
+    padding: 0% 10%;
+}
+.Tasks .desc-container .description-container {
+    overflow-y: auto;
+    border-top: 1px solid black;
+}
+.Tasks .desc-container .description-container .title {
+    font-size: 25px;
+    text-align: center;
+    margin: 1% 0%;
+}
+.Tasks .desc-container .description-container .description {
+    font-size: 20px;
+    margin: 1% 10%;
+}
+
+
 @media only screen and (max-width: 500px) {
     .Tasks .outer-container {
         width: 280px;
+    }
+    .Tasks .desc-container {
+        min-width: 280px;
     }
 }
