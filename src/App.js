@@ -11,11 +11,11 @@ function App() {
   return (
     <Router basename={process.env.PUBLIC_URL}>
       <Routes>
+        <Route path='*' element={<PageNotFound/>} />
         <Route path='/' element={<About/>} />
         <Route path='/home' element={<Home/>} />
         <Route path='/guides' element={<Guides/>} />
         <Route path='/tasks' element={<Tasks/>} />
-        <Route path='*' element={<PageNotFound/>} />
       </Routes>
     </Router>
   );
