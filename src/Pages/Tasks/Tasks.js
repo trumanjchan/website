@@ -74,7 +74,7 @@ function Tasks() {
                 </div>
                 <div className='description-container'>
                     <div className='title'>Description</div>
-                    <p className='description'>A user can <i>create tasks</i> and <i>delete specific tasks</i> by hovering over and clicking them.<br/>The localStorage object saves the tasks that weren't deleted, across browser sessions, and displays them under the section "Your Saved Tasks".<br/>So if you decide to keep this page open all day, you can use it as a note-taking app with no fear of your tasks being lost!</p>
+                    <p className='description'>A user can <b>create tasks</b> and <b>delete specific tasks</b> by hovering over and clicking them.<br/>The localStorage object <b>saves tasks</b> that weren't deleted, across browser sessions, and displays them under the section "Your Saved Tasks".<br/><i>So if you decide to keep this page open all day, you can use it as a note-taking app with no fear of your tasks being lost!</i></p>
                 </div>
             </div>
         </main>

@@ -5,6 +5,7 @@ import About from '../src/Pages/About/About';
 import Home from '../src/Pages/Home/Home';
 import Guides from '../src/Pages/Guides/Guides';
 import Tasks from './Pages/Tasks/Tasks';
+import PageNotFound from './Pages/PageNotFound/PageNotFound';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path='/home' element={<Home/>} />
         <Route path='/guides' element={<Guides/>} />
         <Route path='/tasks' element={<Tasks/>} />
+        <Route path='*' element={<PageNotFound/>} />
       </Routes>
     </Router>
   );
