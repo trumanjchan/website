@@ -19,7 +19,7 @@ function Tasks() {
 
     function addToList() {
         var node = document.createElement("LI");
-        var inputvalue = document.querySelector("input").value;
+        var inputvalue = document.getElementById("inputfield").value;
         if (inputvalue === "") {
             return;
         }
@@ -60,7 +60,7 @@ function Tasks() {
                     </div>
                     <div className='form'>
                         <form id='form' onSubmit={submitEntry}>
-                            <input placeholder='Create New Task' />
+                            <input id='inputfield' placeholder='Create New Task' />
                             <button id='button' type='button' onClick={addToList}>Send</button>
                         </form>
                     </div>

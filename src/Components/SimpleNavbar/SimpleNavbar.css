@@ -1,0 +1,88 @@
+.SimpleNavbar {
+    border-bottom: 1px solid black;
+    background-image: linear-gradient(to bottom right, #6CAFCC, #7EADC2);
+    padding: 0% 10%;
+    height: 60px;
+}
+
+.SimpleNavbar .grid-container {
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+.SimpleNavbar .grid-container li {
+    font-size: 30px;
+    height: fit-content;
+    margin: auto auto;
+}
+.SimpleNavbar .grid-container li a {
+    text-decoration: none;
+}
+.SimpleNavbar .grid-container li a:link {
+    color: #5D808F;
+}
+.SimpleNavbar .grid-container li a:visited {
+    color: #173542;
+}
+.SimpleNavbar .grid-container li a:hover {
+    color: white;
+    transition-duration: 0.2s;
+}
+.SimpleNavbar .grid-container button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.SimpleNavbar .grid-container li:hover {
+    transform: scale(1.2, 1.2);
+    transition-duration: 0.3s;
+}
+  
+/* Switch - https://codepen.io/wilsonpage/pen/cxKEs */
+.switch {
+    display: inline-block;
+    font-size: 25px;
+    height: 1em;
+    width: 2em;
+    background: #c9c9c9;
+    border-radius: 1em;
+}
+.switch input {
+    position: absolute;
+    opacity: 0;
+}
+.switch div {
+    height: 1em;
+    width: 1em;
+    border-radius: 1em;
+    background: #FFF;
+    box-shadow: 0 0.1em 0.3em rgba(0,0,0,0.3);
+    -webkit-transition: all 0ms;
+       -moz-transition: all 0ms;
+            transition: all 0ms;
+}
+.switch input:checked + div {
+    -webkit-transform: translate3d(100%, 0, 0);
+       -moz-transform: translate3d(100%, 0, 0);
+            transform: translate3d(100%, 0, 0);
+}
+
+
+@media only screen and (max-width: 600px) {
+    .SimpleNavbar .grid-container li {
+        font-size: 25px;
+    }
+}
+@media only screen and (max-width: 500px) {
+    .SimpleNavbar {
+        padding: 0% 1%;
+    }
+}
+@media only screen and (max-width: 400px) {
+    .SimpleNavbar .grid-container li {
+        font-size: 20px;
+    }
+}
