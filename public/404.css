@@ -1,0 +1,30 @@
+.PageNotFound {
+    position: relative;
+    height: calc(100vh);
+}
+
+.PageNotFound .container {
+    background-color: var(--container-bg-color);
+    position: absolute;
+    left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	margin: auto;
+    width: calc(70vw);
+    height: fit-content;
+    border: 3px solid black;
+    border-radius: 20px;
+    box-shadow: 0px 0px 200px 1px var(--container-boxshadow);
+}
+.PageNotFound .container .title {
+    width: fit-content;
+    margin: 2% auto 1% auto;
+    font-size: 55px;
+    font-weight: bold;
+}
+.PageNotFound .container .description {
+    font-family: 'Optima';
+    margin: 0% 5% 3% 5%;
+    font-size: 25px;
+}
