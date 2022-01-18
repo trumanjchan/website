@@ -1,14 +1,18 @@
 import React from 'react';
 import './PageNotFound.css';
-import SubNavbar from '../../Components/SubNavbar/SubNavbar';
+import Navbar from '../../Components/Navbar/Navbar';
 
 function PageNotFound() {
+    window.onload = function() {
+        window.location.reload();
+    }
+    
     return (
         <main className='PageNotFound'>
-            <SubNavbar />
+            <Navbar />
             <div className='container'>
                 <div className='title'>404</div>
-                <div className='description'>Sorry! Either the page doesn't exist or because this web app is hosted on Github Pages as a Project Page, pages other than the About page that are refreshed will lead you to this 404 page.</div>
+                <div className='description'>Sorry! That page doesn't exist! The only endpoints that exist currently are <i>/</i>, <i>/home</i>, <i>/guides</i>, <i>/tasks</i>, and <i>/404</i>.</div>
             </div>
         </main>
     );

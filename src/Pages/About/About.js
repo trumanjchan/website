@@ -1,6 +1,6 @@
 import React from 'react';
 import './About.css';
-import AboutNavbar from '../../Components/AboutNavbar/AboutNavbar';
+import Navbar from '../../Components/Navbar/Navbar';
 import Cover from '../../Images/UCM_Admin_Building.jpg';
 import Headshot from '../../Images/Truman.jpg';
 import Linkedin from '../../Images/linkedin.png';
@@ -31,7 +31,7 @@ function About() {
 
     return (
         <main className='About'>
-            <AboutNavbar />
+            <Navbar />
 
             <div className='Profile'>
                 <img className='cover' src={Cover} alt='UC Merced Admin Building' />

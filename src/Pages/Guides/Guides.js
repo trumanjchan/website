@@ -1,11 +1,11 @@
 import React from 'react';
 import './Guides.css';
-import SubNavbar from '../../Components/SubNavbar/SubNavbar';
+import Navbar from '../../Components/Navbar/Navbar';
 
 function Guides() {
     return (
         <main className='Guides'>
-            <SubNavbar />
+            <Navbar />
             <div className='container'>
                 
             </div>

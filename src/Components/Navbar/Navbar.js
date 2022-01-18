@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './AboutNavbar.css';
+import './Navbar.css';
 
-function AboutNavbar() {
+function Navbar() {
     // Clicking on a navbar tab forces a refresh, which runs 'window.onload()'. Forces toggle button to be in activated position or not.
     function forceRefresh(e) {
         window.location.href(e.Link).reload();
@@ -48,10 +48,12 @@ function AboutNavbar() {
     }
 
     return (
-        <div className='AboutNavbar'>
+        <div className='Navbar'>
             <ul className='grid-container'>
                 <li><Link to="/" onClick={forceRefresh}>About</Link></li>
-                <li><Link to="/home">Home</Link></li>
+                <li><Link to="/home" onClick={forceRefresh}>Home</Link></li>
+                <li><Link to="/guides" onClick={forceRefresh}>Guides</Link></li>
+                <li><Link to="/tasks" onClick={forceRefresh}>Tasks</Link></li>
                 <li>
                     <label className="switch">
                         <input id='input' type="checkbox" onClick={toggleMode} />
@@ -63,4 +65,4 @@ function AboutNavbar() {
     );
 }
 
-export default AboutNavbar;
+export default Navbar;

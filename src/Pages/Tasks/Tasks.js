@@ -1,6 +1,6 @@
 import React from 'react';
 import './Tasks.css';
-import SubNavbar from '../../Components/SubNavbar/SubNavbar';
+import Navbar from '../../Components/Navbar/Navbar';
 
 function Tasks() {
     const listcontents = [];
@@ -49,7 +49,7 @@ function Tasks() {
 
     return (
         <main className='Tasks'>
-            <SubNavbar />
+            <Navbar />
             <div className='outer-container'>
                 <div className='grid-container'>
                     <div className='date'>

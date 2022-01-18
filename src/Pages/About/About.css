@@ -189,10 +189,10 @@ body {
     padding: 0% 5%;
 }
 .About .Tabs .container .tabcontent .info .title {
-    font-size: 24px;
+    font-size: 25px;
+    font-weight: bold;
 }
 .About .Tabs .container .tabcontent .info .text {
-    color: rgb(104, 104, 104);
     margin-bottom: 2%;
 }
 
@@ -217,7 +217,7 @@ body {
 .About .Experience .container .hackmerced {
     margin: auto auto 15% 10%;
     padding-right: 7%;
-    font-size: 18px;
+    font-size: 20px;
 }
 .About .Experience .container .hackmerced .total {
     margin-bottom: 5%;
@@ -240,6 +240,7 @@ body {
     margin-bottom: 4%;
 }
 .About .Experience .container .hackmerced .lead .position {
+    font-size: 25px;
     font-weight: bold;
 }
 .About .Experience .container .hackmerced .lead .date {
@@ -253,6 +254,7 @@ body {
     margin-left: 5%;
 }
 .About .Experience .container .hackmerced .member .position {
+    font-size: 25px;
     font-weight: bold;
 }
 .About .Experience .container .hackmerced .member .date {
