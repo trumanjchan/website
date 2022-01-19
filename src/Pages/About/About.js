@@ -135,9 +135,9 @@ function About() {
                         <div className='member'>
                             <div className='position'>Frontend Member</div>
                             <div className='date'>Sep 2019 - Apr 2021 • 1 yr 8 mos</div>
-                            <div className='text'>• Learning and working with HTML, CSS, JavaScript, Node.js, JSX, React, Git, GitHub, and GitKraken.</div>
-                            <div className='text'>• Created responsive web page components and web pages for mini-hackathon Hack’m, HackMerced V, HackMerced VI, DesignMerced I, and the HackMerced website.</div>
-                            <div className='text'>• Organized MLH Local Build/Hack Day events, two 36-hour hackathons, and a designathon with teammates.</div>
+                            <div className='text'>• Learned and worked with HTML, CSS, JavaScript, Node.js, JSX, React, Git, Github, and Gitkraken.</div>
+                            <div className='text'>• Created responsive web page components and web pages for in-person and virtual events, and for the HackMerced website.</div>
+                            <div className='text'>• Organized two MLH Local Build/Hack Day events, two 36-hour hackathons, and a designathon with teammates.</div>
                         </div>
                     </div>
                 </div>
