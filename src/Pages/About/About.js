@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './About.css';
 import Navbar from '../../Components/Navbar/Navbar';
 import Cover from '../../Images/UCM_Admin_Building.jpg';
@@ -9,9 +9,10 @@ import Youtube from '../../Images/youtube.png';
 import Gmail from '../../Images/gmail.png';
 
 function About() {
-    window.onpageshow = function defaultTab() {
+
+    useEffect(() => {
         document.getElementById("defaultOpen").click();
-    }
+    },[]);
 
     function openTab(evt, tabName) {
         document.getElementById("title").innerHTML = tabName;

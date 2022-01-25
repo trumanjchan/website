@@ -1,48 +1,41 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
 
 function Navbar() {
-    // Clicking on a navbar tab forces a refresh, which runs 'window.onload()'. Forces toggle button to be in activated position or not.
-    function forceRefresh(e) {
-        window.location.href(e.Link).reload();
-    }
-    window.onload = function() {
+
+    useEffect(() => {
+        // Retrieve the value of locally-stored key 'data-theme', and set the theme
+        const x = localStorage.getItem("data-theme");
+        console.log("Retrieved preference: " + x + " mode");
         if (x === "light") {
+            document.documentElement.setAttribute("data-theme", "light");
+            // Set checkbox to be unchecked (button in off state - left)
             document.getElementById('input').checked = false;
         }
         else {
+            document.documentElement.setAttribute("data-theme", "dark");
             document.getElementById('input').checked = true;
         }
-    }
-
-    // Finds whether pre-reload 'data-theme' was light or dark, then renders that theme.
-    const x = localStorage.getItem("data-theme");
-    console.log(x);
-    if (x === "light") {
-        document.documentElement.setAttribute("data-theme", "light");
-    }
-    else {
-        document.documentElement.setAttribute("data-theme", "dark");
-    }
+    },[]);
 
     const toggleMode = (e) => {
-        /* Switch to Light Mode */
+        // Switch to other mode if the user clicks toggle button
         if (e.currentTarget.checked === false) {
-            // Sets the custom HTML attribute
             document.body.style.transition = "all 1s";
+            // Create attribute and set value if doesn't exist, otherwise replace old value with new
             document.documentElement.setAttribute("data-theme", "light");
+            console.log("light mode");
+            // Set transition speed of button position change
             document.getElementById("div").style.transition = "all 300ms";
-            // Sets the user's preference in local storage
+            // Set the user's preference in local storage
             localStorage.setItem("data-theme", "light");
         }
         else {
-            /* Switch to Dark Mode */
-            // Sets the custom HTML attribute
             document.body.style.transition = "all 1s";
             document.documentElement.setAttribute("data-theme", "dark");
+            console.log("dark mode");
             document.getElementById("div").style.transition = "all 300ms";
-            // Sets the user's preference in local storage
             localStorage.setItem("data-theme", "dark");
         }
     }
@@ -50,10 +43,10 @@ function Navbar() {
     return (
         <div className='Navbar'>
             <ul className='grid-container'>
-                <li><Link to="/" onClick={forceRefresh}>About</Link></li>
-                <li><Link to="/home" onClick={forceRefresh}>Home</Link></li>
-                <li><Link to="/guides" onClick={forceRefresh}>Guides</Link></li>
-                <li><Link to="/tasks" onClick={forceRefresh}>Tasks</Link></li>
+                <li><Link to="/">About</Link></li>
+                <li><Link to="/home">Home</Link></li>
+                <li><Link to="/guides">Guides</Link></li>
+                <li><Link to="/tasks">Tasks</Link></li>
                 <li>
                     <label className="switch">
                         <input id='input' type="checkbox" onClick={toggleMode} />

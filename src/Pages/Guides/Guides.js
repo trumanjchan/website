@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './Guides.css';
 import Navbar from '../../Components/Navbar/Navbar';
 
 function Guides() {
-    window.onpageshow = function defaultTab() {
-        document.getElementById('defaultOpen').click();
-    }
+    
+    useEffect(() => {
+        document.getElementById("defaultOpen").click();
+    },[]);
 
     function openTab(evt, tabName) {
         var i, tabcontent, tablinks;
