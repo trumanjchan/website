@@ -84,8 +84,22 @@
 .Tasks .desc-container .storedinfo-container .stored {
     font-size: 20px;
     background-color: thistle;
-    padding: 0% 10%;
+    padding: 0% 15%;
+    margin: 0%;
     overflow-wrap: anywhere;
+}
+.Tasks .desc-container .storedinfo-container .stored li:nth-child(n) {
+    border-bottom: 1px solid black;
+}
+.Tasks .desc-container .storedinfo-container .stored li:first-child {
+    display: block;
+    width: fit-content;
+    margin: 0% auto;
+    padding: 0.5% 0%;
+    border-bottom: none;
+}
+.Tasks .desc-container .storedinfo-container .stored li:last-child {
+    border-bottom: none;
 }
 .Tasks .desc-container .description-container {
     overflow-y: auto;
@@ -108,5 +122,10 @@
     }
     .Tasks .desc-container {
         min-width: 280px;
+    }
+}
+@media only screen and (max-width: 450px) {
+    .Tasks .desc-container .storedinfo-container .stored li:first-child {
+        font-size: 18px;
     }
 }
