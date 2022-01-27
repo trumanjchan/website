@@ -155,8 +155,6 @@ body {
     transition: 0.3s;
     font-size: 30px;
     font-weight: 400;
-    width: fit-content;
-    height: fit-content;
     margin: auto 10% auto auto;
 }
 .About .Tabs .container .tab button:hover {

@@ -1,5 +1,5 @@
 .Navbar {
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid var(--invert-color);
     background-image: linear-gradient(to bottom right, #6CAFCC, #7EADC2);
     padding: 0% 10%;
     height: 60px;
@@ -47,7 +47,7 @@
     font-size: 25px;
     height: 1em;
     width: 2em;
-    background: #c9c9c9;
+    background-color: var(--main-bg-color);
     border-radius: 1em;
 }
 .switch input {
@@ -58,11 +58,8 @@
     height: 1em;
     width: 1em;
     border-radius: 1em;
-    background: #FFF;
+    background-color: var(--container-bg-color);
     box-shadow: 0 0.1em 0.3em rgba(0,0,0,0.3);
-    -webkit-transition: all 0ms;
-       -moz-transition: all 0ms;
-            transition: all 0ms;
 }
 .switch input:checked + div {
     -webkit-transform: translate3d(100%, 0, 0);
