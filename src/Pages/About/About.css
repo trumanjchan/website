@@ -63,10 +63,9 @@ body {
     margin: 0;
 }
 .About .Profile .info-container .column-grid .second {
-    margin: auto 4%;
+    margin: 10% 10% auto 0%;
     letter-spacing: 2px;
     font-size: 20px;
-    transform: translateY(-25%);
 }
 .About .Profile .info-container .column-grid .second p {
     margin: 0% 0% 5% 0%;
@@ -85,30 +84,31 @@ body {
     transition-duration: 2s;
 }
 
-
 .About .Education {
     background-color: var(--container-bg-color);
     width: 80%;
-    height: 500px;
+    height: fit-content;
     margin: 0% auto 2% auto;
     border-radius: 12px;
     border: 1px solid lightgrey;
 }
 .About .Education .container {
-    display: grid;
-    grid-template-rows: 15% auto auto;
+    display: flex;
+    flex-direction: column;
     height: 100%;
 }
 .About .Education .container .title {
     font-size: 30px;
     font-weight: 400;
-    margin: auto auto auto 4%;
+    margin-top: 2%;
+    margin-left: 4%;
     text-decoration: underline var(--section-underline);
 }
 .About .Education .container .school {
-    margin: auto auto auto 10%;
-    padding-right: 7%;
-    padding-bottom: 5%;
+    margin: 4% 10% 0% 10%;
+}
+.About .Education .container .school:last-child {
+    margin-bottom: 5%;
 }
 .About .Education .container .schoolname {
     font-size: 30px;
@@ -125,52 +125,47 @@ body {
     font-size: 20px;
 }
 
-
 .About .Tabs {
     background-color: var(--container-bg-color);
     width: 80%;
-    height: 450px;
+    height: fit-content;
     margin: 0% auto 2% auto;
     border-radius: 12px;
     border: 1px solid lightgrey;
 }
 .About .Tabs .container {
-    display: grid;
-    grid-template-rows: 15% auto;
+    display: flex;
+    flex-direction: column;
     height: 100%;
 }
 .About .Tabs .container .tab {
-    overflow: hidden;
-    display: grid;
-    grid-template-columns: 50% 50%;
-    grid-template-rows: 100%;
+    display: flex;
 }
 .About .Tabs .container .tab #title {
     font-size: 30px;
     font-weight: 400;
-    margin: auto auto auto 8%;
+    margin-top: 2%;
+    margin-left: 4%;
     text-decoration: underline var(--section-underline);
 }
 .About .Tabs .container .tab button {
     transition: 0.3s;
     font-size: 30px;
     font-weight: 400;
-    margin: auto 10% auto auto;
-}
-.About .Tabs .container .tab button:hover {
-    background-color: #ddd;
+    margin: 2% 4% auto auto;
 }
 .About .Tabs .container .tab button.active {
     display: none;
 }
 .About .Tabs .container .tabcontent {
-    display: none;
     margin: auto auto;
+}
+.About .Tabs .container #Projects {
+    margin-bottom: 2%;
 }
 .About .Tabs .container .tabcontent .orderedlist {
     list-style-type: circle;
-    font-size: 20px;
-    margin-bottom: 10%;
+    font-size: 22px;
     padding-right: 5%;
 }
 .About .Tabs .container .tabcontent .orderedlist li a:link {
@@ -180,10 +175,13 @@ body {
 .About .Tabs .container .tabcontent .orderedlist li a:hover {
     color: #6CAFCC;
 }
+.About .Tabs .container #Skills {
+    margin-top: 4%;
+}
 .About .Tabs .container .tabcontent .info {
     text-align: center;
     font-size: 20px;
-    margin-bottom: 6%;
+    margin-bottom: 5%;
     padding: 0% 5%;
 }
 .About .Tabs .container .tabcontent .info .title {
@@ -194,31 +192,32 @@ body {
     margin-bottom: 2%;
 }
 
-
 .About .Experience {
     background-color: var(--container-bg-color);
     width: 80%;
+    height: fit-content;
     margin: 0% auto 5% auto;
     border-radius: 12px;
     border: 1px solid lightgrey;
 }
 .About .Experience .container {
-    display: grid;
-    grid-template-rows: 15% auto;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 .About .Experience .container .title {
     font-size: 30px;
     font-weight: 400;
-    margin: auto auto auto 4%;
+    margin: 2% 0% auto 4%;
     text-decoration: underline var(--section-underline);
 }
 .About .Experience .container .hackmerced {
-    margin: auto auto 15% 10%;
+    margin: 4% auto auto 10%;
     padding-right: 7%;
     font-size: 20px;
 }
 .About .Experience .container .hackmerced .total {
-    margin-bottom: 5%;
+    margin-bottom: 4%;
 }
 .About .Experience .container .hackmerced .total .date {
     color: rgb(104, 104, 104);
@@ -250,6 +249,7 @@ body {
 }
 .About .Experience .container .hackmerced .member {
     margin-left: 5%;
+    margin-bottom: 5%;
 }
 .About .Experience .container .hackmerced .member .position {
     font-size: 25px;
@@ -267,14 +267,15 @@ body {
 /* Profile */
 @media only screen and (max-width: 1110px) {
     .About .Profile {
-        height: 800px;
+        height: 700px;
         grid-template-rows: 25% auto;
     }
     .About .Profile .cover {
         width: 80%;
     }
     .About .Profile .info-container .column-grid {
-        display: block;
+        display: flex;
+        flex-direction: column;
     }
     .About .Profile .info-container .column-grid .first {
         height: fit-content;
@@ -287,33 +288,7 @@ body {
     }
     .About .Profile .info-container .column-grid .second {
         margin: 0% 10%;
-        height: fit-content;
-    }
-}
-
-/* Education */
-@media only screen and (max-width: 600px) {
-    .About .Education {
-        height: 700px;
-    }
-    .About .Education .container {
-        grid-template-rows: 10% auto auto;
-    }
-}
-
-/* Experience */
-@media only screen and (max-width: 700px) {
-    .About .Experience {
-        overflow: hidden;
-    }
-    .About .Experience .container {
-        grid-template-rows: 10% auto;
-    }
-    .About .Experience .container .hackmerced {
-        margin: auto auto 5% 10%;
-        overflow: auto;
-        height: 100%;
-        height: -moz-available;          /* WebKit-based browsers will ignore this. */
-        height: -webkit-fill-available;  /* Mozilla-based browsers will ignore this. */
+        margin-bottom: 10%;
+        transform: translateY(-45%);
     }
 }

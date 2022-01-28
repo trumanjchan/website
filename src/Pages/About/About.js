@@ -106,9 +106,9 @@ function About() {
                     <div id="Skills" className="tabcontent">
                         <div className='info'>
                             <div className='title'>Programming</div>
-                            <div className='text'>Java, C++, Python, HTML, CSS, JavaScript</div>
+                            <div className='text'>Java, C++, Python, R, HTML, CSS, JavaScript, REST API, SQL</div>
                             <div className='title'>Frameworks</div>
-                            <div className='text'>React, Flask</div>
+                            <div className='text'>React, Flask, Express</div>
                             <div className='title'>Tools</div>
                             <div className='text'>Visual Studio Code, Git, Github, Gitkraken, Sony Vegas Pro, Adobe CS5, Adobe XD, Google Workspace</div>
                             <div className='title'>Languages</div>
