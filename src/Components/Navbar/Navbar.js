@@ -9,15 +9,28 @@ function Navbar() {
         // Retrieve the value of locally-stored key 'data-theme', and set the theme
         const x = localStorage.getItem("data-theme");
         console.log("Retrieved preference: " + x + " mode");
+        const menu = document.getElementById('dropdown');
         if (x === "light") {
             document.documentElement.setAttribute("data-theme", "light");
             // Set checkbox to be unchecked (button in off state - left)
             document.getElementById('input').checked = false;
+            menu.classList.remove('apply-filter');
         }
         else {
             document.documentElement.setAttribute("data-theme", "dark");
             document.getElementById('input').checked = true;
+            menu.classList.add('apply-filter');
         }
+
+        const input = document.getElementById('input');
+        input.addEventListener('change', function() {
+            if (localStorage.getItem("data-theme") === 'dark') {
+                menu.classList.add('apply-filter');
+            }
+            else {
+                menu.classList.remove('apply-filter');
+            }
+        });
     },[]);
 
     const toggleMode = (e) => {
@@ -56,14 +69,11 @@ function Navbar() {
           element1.classList.add('grid-container');
           element2.classList.remove('change-bg-color');
         }
-        else {
-            return;
-        }
-    }, true);
+    });
 
     return (
         <div id='nav' className='Navbar'>
-            <div className='mobileview' onClick={toggleMobileView}><img src={DropdownIcon} alt='https://www.flaticon.com/premium-icon/navigation_2811759?term=horizontal%20bars&related_id=2811759' /></div>
+            <div className='mobileview' onClick={toggleMobileView}><img id='dropdown' src={DropdownIcon} alt='https://www.flaticon.com/premium-icon/navigation_2811759?term=horizontal%20bars&related_id=2811759' /></div>
             <ul id='contents' className='grid-container'>
                 <li><Link to="/">About</Link></li>
                 <li><Link to="/home">Home</Link></li>

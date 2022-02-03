@@ -94,6 +94,9 @@
         width: fit-content;
         margin-left: auto;
     }
+    .apply-filter {
+        filter: invert(100%);
+    }
     .Navbar .grid-container {
         display: none;
     }
@@ -105,18 +108,16 @@
         margin: 0;
         padding: 0% 10%;
         width: fit-content;
-        margin-left: auto;
+        margin: 0 auto;
     }
     #contents li {
         font-size: 25px;
         padding: 10% 0;
+        width: fit-content;
+        margin: 0 auto;
     }
     #contents li:first-child {
         padding-top: 0;
-    }
-    #contents li:last-child {
-        width: fit-content;
-        margin: 0 auto;
     }
     #contents li a {
         text-decoration: none;
