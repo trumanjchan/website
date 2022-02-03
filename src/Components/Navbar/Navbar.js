@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
+import DropdownIcon from '../../Images/navigation.png';
 
 function Navbar() {
 
@@ -41,9 +42,29 @@ function Navbar() {
         }
     }
 
+    const toggleMobileView = () => {
+        var element1 = document.getElementById('contents');
+        var element2 = document.getElementById('nav');
+        element1.classList.toggle('grid-container');
+        element2.classList.toggle('change-bg-color');
+    }
+
+    window.addEventListener('resize', function() {
+        if (window.innerWidth > 600) {
+          var element1 = document.getElementById('contents');
+          var element2 = document.getElementById('nav');
+          element1.classList.add('grid-container');
+          element2.classList.remove('change-bg-color');
+        }
+        else {
+            return;
+        }
+    }, true);
+
     return (
-        <div className='Navbar'>
-            <ul className='grid-container'>
+        <div id='nav' className='Navbar'>
+            <div className='mobileview' onClick={toggleMobileView}><img src={DropdownIcon} alt='https://www.flaticon.com/premium-icon/navigation_2811759?term=horizontal%20bars&related_id=2811759' /></div>
+            <ul id='contents' className='grid-container'>
                 <li><Link to="/">About</Link></li>
                 <li><Link to="/home">Home</Link></li>
                 <li><Link to="/guides">Guides</Link></li>
