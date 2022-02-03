@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/my-website/static/css/main.448b8ffb.css",
-    "main.js": "/my-website/static/js/main.1d7312fe.js",
+    "main.css": "/my-website/static/css/main.8ccda31d.css",
+    "main.js": "/my-website/static/js/main.6cd3feae.js",
     "static/media/UCM_Admin_Building.jpg": "/my-website/static/media/UCM_Admin_Building.0137317ae2c523a7fc95.jpg",
     "static/media/Golden_Gate_Bridge.jpeg": "/my-website/static/media/Golden_Gate_Bridge.8154bf3c35d5994895e6.jpeg",
     "static/media/Truman.jpg": "/my-website/static/media/Truman.b5b4f991f29521f10b38.jpg",
     "static/media/linkedin.png": "/my-website/static/media/linkedin.f249b38224ca41a0b909.png",
     "index.html": "/my-website/index.html",
-    "main.448b8ffb.css.map": "/my-website/static/css/main.448b8ffb.css.map",
-    "main.1d7312fe.js.map": "/my-website/static/js/main.1d7312fe.js.map"
+    "main.8ccda31d.css.map": "/my-website/static/css/main.8ccda31d.css.map",
+    "main.6cd3feae.js.map": "/my-website/static/js/main.6cd3feae.js.map"
   },
   "entrypoints": [
-    "static/css/main.448b8ffb.css",
-    "static/js/main.1d7312fe.js"
+    "static/css/main.8ccda31d.css",
+    "static/js/main.6cd3feae.js"
   ]
 }
