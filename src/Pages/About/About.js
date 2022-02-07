@@ -45,7 +45,7 @@ function About() {
                             <h3>San Francisco, CA, United States</h3>
                         </div>
                         <div className='second'>
-                            <p>I am a University of California, Merced graduate with a Computer Science and Engineering degree. I am interested in frontend web development!</p>
+                            <p>I am a University of California, Merced graduate with a bachelor's degree in Computer Science and Engineering. I am interested in frontend web development!</p>
                             <div className='social-container'>
                                 <a href='https://www.linkedin.com/in/trumanjfchan/' target='_blank' rel='noreferrer'><img className='social' src={Linkedin} alt='Linkedin' /></a>
                                 <a href='https://github.com/trumanjchan' target='_blank' rel='noreferrer'><img className='social' src={Github} alt='Github' /></a>
@@ -108,7 +108,7 @@ function About() {
                             <div className='title'>Programming</div>
                             <div className='text'>Java, C++, Python, R, HTML, CSS, JavaScript, REST API, SQL</div>
                             <div className='title'>Frameworks</div>
-                            <div className='text'>React, Flask, Express</div>
+                            <div className='text'>Bootstrap, React, Flask, Express</div>
                             <div className='title'>Tools</div>
                             <div className='text'>Visual Studio Code, Git, Github, Gitkraken, Sony Vegas Pro, Adobe CS5, Adobe XD, Google Workspace</div>
                             <div className='title'>Languages</div>

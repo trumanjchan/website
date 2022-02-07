@@ -14,6 +14,7 @@ function Navbar() {
             document.documentElement.setAttribute("data-theme", "light");
             // Set checkbox to be unchecked (button in off state - left)
             document.getElementById('input').checked = false;
+            // Don't apply the filter on dropdown icon (default color is black)
             menu.classList.remove('apply-filter');
         }
         else {
@@ -22,6 +23,7 @@ function Navbar() {
             menu.classList.add('apply-filter');
         }
 
+        // On change, apply filter to image to contrast mode
         const input = document.getElementById('input');
         input.addEventListener('change', function() {
             if (localStorage.getItem("data-theme") === 'dark') {
@@ -45,6 +47,10 @@ function Navbar() {
             document.getElementById("div").style.transition = "all 300ms";
             // Set the user's preference in local storage
             localStorage.setItem("data-theme", "light");
+            // On mobile view, if user touches toggle button then exit out of navbar menu
+            if (window.innerWidth < 600) {
+                document.getElementById("dropdown").click();
+            }
         }
         else {
             document.body.style.transition = "all 300ms";
@@ -52,6 +58,9 @@ function Navbar() {
             console.log("dark mode");
             document.getElementById("div").style.transition = "all 300ms";
             localStorage.setItem("data-theme", "dark");
+            if (window.innerWidth < 600) {
+                document.getElementById("dropdown").click();
+            }
         }
     }
 

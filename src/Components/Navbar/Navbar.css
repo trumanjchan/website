@@ -24,19 +24,21 @@
     font-size: 30px;
     height: fit-content;
     margin: auto auto;
+    opacity: 0.8;
+    transition: 0.3s;
 }
 .Navbar .grid-container li a {
     text-decoration: none;
 }
 .Navbar .grid-container li a:link {
-    color: #5D808F;
+    color: #086086;
 }
 .Navbar .grid-container li a:visited {
     color: #173542;
 }
 .Navbar .grid-container li a:hover {
     color: white;
-    transition-duration: 0.2s;
+    transition: 0.3s;
 }
 .Navbar .grid-container button {
     display: flex;
@@ -44,8 +46,9 @@
     align-items: center;
 }
 .Navbar .grid-container li:hover {
-    transform: scale(1.2, 1.2);
-    transition-duration: 0.3s;
+    opacity: 1;
+    transform: scale(1.1, 1.1);
+    transition: 0.3s;
 }
   
 /* Switch - https://codepen.io/wilsonpage/pen/cxKEs */
@@ -81,18 +84,18 @@
     }
     .Navbar {
         height: fit-content;
+        width: 100%;
+        padding: 0;
         background-image: none;
         border-bottom: none;
-        position: -webkit-sticky;
-        position: sticky;
+        position: fixed;
         top: 0;
         z-index: 1;
-        padding: 0;
     }
     .Navbar .mobileview {
         display: block;
         width: fit-content;
-        margin-left: auto;
+        margin: 0 0 0 auto;
     }
     .apply-filter {
         filter: invert(100%);
@@ -106,20 +109,21 @@
     #contents {
         list-style-type: none;
         margin: 0;
-        padding: 0% 10%;
-        width: fit-content;
-        margin: 0 auto;
+        padding: 5% 0%;
     }
     #contents li {
-        font-size: 25px;
-        padding: 10% 0;
+        font-size: 30px;
+        padding: 2% 0%;
         width: fit-content;
         margin: 0 auto;
-    }
-    #contents li:first-child {
-        padding-top: 0;
     }
     #contents li a {
         text-decoration: none;
+    }
+    #contents li a:link {
+        color: #086086;
+    }
+    #contents li a:visited {
+        color: #173542;
     }
 }
