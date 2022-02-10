@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
-import DropdownIcon from '../../Images/navigation.png';
+import DropdownIcon from '../../Images/navigation.webp';
 
 function Navbar() {
 

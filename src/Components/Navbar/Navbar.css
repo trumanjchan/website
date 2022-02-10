@@ -91,20 +91,19 @@
         position: fixed;
         top: 0;
         z-index: 1;
+        pointer-events: none;
     }
     .Navbar .mobileview {
         display: block;
         width: fit-content;
         margin: 0 0 0 auto;
+        pointer-events: auto;
     }
     .apply-filter {
         filter: invert(100%);
     }
     .Navbar .grid-container {
         display: none;
-    }
-    .grid-container {
-        display: block;
     }
     #contents {
         list-style-type: none;
@@ -116,6 +115,7 @@
         padding: 2% 0%;
         width: fit-content;
         margin: 0 auto;
+        pointer-events: auto;
     }
     #contents li a {
         text-decoration: none;

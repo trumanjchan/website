@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react';
 import './About.css';
 import Navbar from '../../Components/Navbar/Navbar';
-import Cover from '../../Images/UCM_Admin_Building.jpg';
-import Headshot from '../../Images/Truman.jpg';
-import Linkedin from '../../Images/linkedin.png';
-import Github from '../../Images/github.png';
-import Youtube from '../../Images/youtube.png';
-import Gmail from '../../Images/gmail.png';
+import Cover from '../../Images/UCM_Admin_Building.webp';
+import Headshot from '../../Images/Truman.webp';
+import Linkedin from '../../Images/linkedin.webp';
+import Github from '../../Images/github.webp';
+import Youtube from '../../Images/youtube.webp';
+import Gmail from '../../Images/gmail.webp';
 
 function About() {
 
