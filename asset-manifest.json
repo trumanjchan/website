@@ -1,17 +1,21 @@
 {
   "files": {
-    "main.css": "/my-website/static/css/main.34d0158a.css",
-    "main.js": "/my-website/static/js/main.6cd3feae.js",
-    "static/media/UCM_Admin_Building.jpg": "/my-website/static/media/UCM_Admin_Building.0137317ae2c523a7fc95.jpg",
-    "static/media/Golden_Gate_Bridge.jpeg": "/my-website/static/media/Golden_Gate_Bridge.8154bf3c35d5994895e6.jpeg",
-    "static/media/Truman.jpg": "/my-website/static/media/Truman.b5b4f991f29521f10b38.jpg",
-    "static/media/linkedin.png": "/my-website/static/media/linkedin.f249b38224ca41a0b909.png",
+    "main.css": "/my-website/static/css/main.4a88e640.css",
+    "main.js": "/my-website/static/js/main.158a0669.js",
+    "static/media/UCM_Admin_Building.webp": "/my-website/static/media/UCM_Admin_Building.63ae9792f2adb9d06d6b.webp",
+    "static/media/Golden_Gate_Bridge.webp": "/my-website/static/media/Golden_Gate_Bridge.b9b79eb20111ad685f3b.webp",
+    "static/media/Truman.webp": "/my-website/static/media/Truman.e50b39a1c9d26f422839.webp",
+    "static/media/github.webp": "/my-website/static/media/github.9465d308befb3a672185.webp",
+    "static/media/youtube.webp": "/my-website/static/media/youtube.a5f4fbfbc180b6e7929f.webp",
+    "static/media/gmail.webp": "/my-website/static/media/gmail.782222c817dfd3042fe2.webp",
+    "static/media/linkedin.webp": "/my-website/static/media/linkedin.7d19a2d9ac4cea3c707f.webp",
+    "static/media/navigation.webp": "/my-website/static/media/navigation.c23ea2cdb01bbec1109d.webp",
     "index.html": "/my-website/index.html",
-    "main.34d0158a.css.map": "/my-website/static/css/main.34d0158a.css.map",
-    "main.6cd3feae.js.map": "/my-website/static/js/main.6cd3feae.js.map"
+    "main.4a88e640.css.map": "/my-website/static/css/main.4a88e640.css.map",
+    "main.158a0669.js.map": "/my-website/static/js/main.158a0669.js.map"
   },
   "entrypoints": [
-    "static/css/main.34d0158a.css",
-    "static/js/main.6cd3feae.js"
+    "static/css/main.4a88e640.css",
+    "static/js/main.158a0669.js"
   ]
 }
