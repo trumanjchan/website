@@ -76,14 +76,15 @@ body {
 }
 .About .Profile .info-container .column-grid .second .social-container .social {
     object-fit: cover;
-    width: 60px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
     transform: rotate(0turn);
     transition-duration: 0.8s;
 }
 .About .Profile .info-container .column-grid .second .social-container .social:hover {
     transform: rotate(1turn);
     transition-duration: 0.8s;
+    filter: drop-shadow(0 0 5px #6CAFCC);
 }
 
 .About .Education {

@@ -6,7 +6,7 @@ import Headshot from '../../Images/Truman.webp';
 import Linkedin from '../../Images/linkedin.webp';
 import Github from '../../Images/github.webp';
 import Youtube from '../../Images/youtube.webp';
-import Gmail from '../../Images/gmail.webp';
+import Gmail from '../../Images/email.webp';
 
 function About() {
 
@@ -47,10 +47,10 @@ function About() {
                         <div className='second'>
                             <p>I am a University of California, Merced graduate with a bachelor's degree in Computer Science and Engineering. I am interested in frontend web development!</p>
                             <div className='social-container'>
-                                <a href='https://www.linkedin.com/in/trumanjfchan/' target='_blank' rel='noreferrer'><img className='social' src={Linkedin} alt='Linkedin' /></a>
-                                <a href='https://github.com/trumanjchan' target='_blank' rel='noreferrer'><img className='social' src={Github} alt='Github' /></a>
-                                <a href='https://www.youtube.com/channel/UCZb5w-4IBBowCrCCsKAtbuQ/featured' target='_blank' rel='noreferrer'><img className='social' src={Youtube} alt='Youtube' /></a>
-                                <a href="mailto:trumanjfchan@gmail.com" target='_blank' rel='noreferrer'><img className='social' src={Gmail} alt='Gmail' /></a>
+                                <a href='https://www.linkedin.com/in/trumanjfchan' target='_blank' rel='noreferrer'><img className='social' src={Linkedin} alt='Linkedin icon by mohammed mahdi on flaticon.com' /></a>
+                                <a href='https://github.com/trumanjchan' target='_blank' rel='noreferrer'><img className='social' src={Github} alt='Github icon by riajulislam on flaticon.com' /></a>
+                                <a href='https://www.youtube.com/channel/UCZb5w-4IBBowCrCCsKAtbuQ/featured' target='_blank' rel='noreferrer'><img className='social' src={Youtube} alt='Youtube icon by Md Tanvirul Haque on flaticon.com' /></a>
+                                <a href='mailto:trumanjfchan@gmail.com' target='_blank' rel='noreferrer'><img className='social' src={Gmail} alt='Gmail icon by rukanicon on flaticon.com' /></a>
                             </div>
                         </div>
                     </div>
