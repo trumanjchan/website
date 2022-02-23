@@ -1,0 +1,63 @@
+.Contact {
+    height: calc(100vh);
+    background-image: url("../../Images/Golden_Gate_Bridge_side.webp");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.Contact .form-container {
+    background-color: var(--main-bg-color-alpha);
+    pointer-events: none;
+    height: fit-content;
+    width: calc(50vw);
+    min-width: fit-content;
+    border-radius: 20px;
+    border: 1px solid black;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--invert-color);
+}
+.Contact .form-container form {
+    padding: 0 30px;
+}
+.Contact .form-container form div:first-child {
+    width: fit-content;
+    margin: 5% auto;
+    font-weight: bold;
+    font-size: 30px;
+}
+.Contact .form-container .typing-area {
+    display: grid;
+    grid-template-columns: auto auto;
+    row-gap: 10px;
+    column-gap: calc(3vw);
+    font-size: 25px;
+}
+.Contact .form-container .typing-area input {
+    pointer-events: all;
+}
+.Contact .form-container .typing-area textarea {
+    resize: none;
+    height: 50px;
+    pointer-events: all;
+}
+.Contact .form-container form button {
+    display: block;
+    margin: 5% auto;
+    width: fit-content;
+    font-size: 20px;
+    padding: 2% 10%;
+    border-radius: 10px;
+    pointer-events: all;
+}
+.Contact .form-container form button:active {
+    filter: invert(100%);
+}

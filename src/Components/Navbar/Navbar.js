@@ -85,9 +85,9 @@ function Navbar() {
             <div className='mobileview' onClick={toggleMobileView}><img id='dropdown' src={DropdownIcon} alt='https://www.flaticon.com/premium-icon/navigation_2811759?term=horizontal%20bars&related_id=2811759' /></div>
             <ul id='contents' className='grid-container'>
                 <li><Link to="/">About</Link></li>
-                <li><Link to="/home">Home</Link></li>
                 <li><Link to="/guides">Guides</Link></li>
                 <li><Link to="/tasks">Tasks</Link></li>
+                <li><Link to="/contact">Contact</Link></li>
                 <li>
                     <label className="switch">
                         <input id='input' type="checkbox" onClick={toggleMode} />
