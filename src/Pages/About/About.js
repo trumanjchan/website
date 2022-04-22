@@ -41,7 +41,7 @@ function About() {
                         <div className='first'>
                             <img className='headshot' src={Headshot} alt='Truman C.' />
                             <h1>Truman Chan</h1>
-                            <h2>Frontend Engineer</h2>
+                            <h2>Frontend Developer</h2>
                             <h3>San Francisco, CA, United States</h3>
                         </div>
                         <div className='second'>
@@ -84,29 +84,50 @@ function About() {
                     </div>
 
                     <div id="Projects" className="tabcontent">
-                        <ol className='orderedlist'>
-                            <li><a href='https://github.com/trumanjchan/my-website' target='_blank' rel='noreferrer'>This website!</a></li>
-                            <li>School Projects
-                                <ol>
-                                    <li><a href='https://scribing.herokuapp.com/' target='_blank' rel='noreferrer'>Scribing - Typing Test</a></li>
-                                    <li><a href='https://github.com/illumimarty/CSE111-Fall2021-Project' target='_blank' rel='noreferrer'>My Task Board</a></li>
-                                    <li><a href='https://github.com/trumanjchan/CSE165_Labs' target='_blank' rel='noreferrer'>OOP mini game Final Project (solo)</a></li>
-                                </ol>
-                            </li>
-                            <li>Devpost (hackathons)
-                                <ol>
-                                    <li><a href='https://devpost.com/software/insight-ar-glasses' target='_blank' rel='noreferrer'>inSight AR Glasses</a></li>
-                                    <li><a href='https://devpost.com/software/mini-arena' target='_blank' rel='noreferrer'>mini-arena</a></li>
-                                </ol>
-                            </li>
-                            <li><a href='https://trumanjchan.github.io/' target='_blank' rel='noreferrer'>My first website using Bootstrap!</a></li>
-                        </ol>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Project Name</th>
+                                    <th>Dates</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Socketchat <i className='float-right'><a href='https://github.com/trumanjchan/Socketchat' target='_blank' rel='noreferrer'>Source</a> <a href='https://sockchats.herokuapp.com/' target='_blank' rel='noreferrer'>Live</a></i></td>
+                                    <td>Mar. 2022 - <i>Present</i></td>
+                                </tr>
+                                <tr>
+                                    <td><b>This Website!</b> <i className='float-right'><a href='https://github.com/trumanjchan/my-website' target='_blank' rel='noreferrer'>Source</a></i></td>
+                                    <td>Dec. 2021 - Feb. 2022</td>
+                                </tr>
+                                <tr>
+                                    <td>Scribing <i className='float-right'><a href='https://github.com/shiv248/TypeRacer' target='_blank' rel='noreferrer'>Source</a> <a href='https://scribing.herokuapp.com/' target='_blank' rel='noreferrer'>Live</a></i></td>
+                                    <td>Nov. 2021 - Dec. 2021</td>
+                                </tr>
+                                <tr>
+                                    <td>My Task Board <i className='float-right'><a href='https://github.com/illumimarty/CSE111-Fall2021-Project' target='_blank' rel='noreferrer'>Source</a></i></td>
+                                    <td>Nov. 2021 - Dec. 2021</td>
+                                </tr>
+                                <tr>
+                                    <td>OOP Mini Game <i className='float-right'><a href='https://github.com/trumanjchan/CSE165_Labs' target='_blank' rel='noreferrer'>Source</a></i></td>
+                                    <td>Nov. 2020 - Dec. 2020</td>
+                                </tr>
+                                <tr>
+                                    <td>inSight Prototype <i className='float-right'><a href='https://devpost.com/software/insight-ar-glasses' target='_blank' rel='noreferrer'>Devpost</a> <a href='https://xd.adobe.com/view/fbc45307-37f5-4384-8550-0e9fd84fc124-ae97/?fullscreen' target='_blank' rel='noreferrer'>Demo</a></i></td>
+                                    <td>Nov. 2020</td>
+                                </tr>
+                                <tr>
+                                    <td>Bootstrap Website <i className='float-right'><a href='https://github.com/trumanjchan/trumanjchan.github.io' target='_blank' rel='noreferrer'>Source</a> <a href='https://trumanjchan.github.io/' target='_blank' rel='noreferrer'>Live</a></i></td>
+                                    <td>Sept. 2018 - Nov. 2020</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
 
                     <div id="Skills" className="tabcontent">
                         <div className='info'>
                             <div className='title'>Programming</div>
-                            <div className='text'>Java, C++, Python, R, HTML, CSS, JavaScript, REST API, SQL</div>
+                            <div className='text'>C++, Python, HTML, CSS, Javascript, REST APIs, SQL</div>
                             <div className='title'>Frameworks</div>
                             <div className='text'>Bootstrap, React, Flask, Express</div>
                             <div className='title'>Tools</div>
@@ -118,27 +139,53 @@ function About() {
                 </div>
             </div>
 
+            <div className='Awards'>
+                <div className='container'>
+                    <div className='title'>Awards</div>
+                    <div className='designmerced'>
+                        <div className='award'>
+                            <div className='for'><a href='https://devpost.com/software/insight-ar-glasses' target='_blank' rel='noreferrer'>DesignMerced Winner</a></div>
+                            <div className='issued'>Issued by DesignMerced I • Nov 2020</div>
+                        </div>
+                        <div className='awarddesc'>
+                            <div>• Competed in a remote 24-hour design hackathon and won third place.</div>
+                            <div>• Designed Adobe XD prototype of a pair of AR glasses that can connect to the internet and help users network with people on-the-go.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div className='Experience'>
                 <div className='container'>
                     <div className='title'>Experience</div>
                     <div className='hackmerced'>
                         <div className='total'>
-                            <div className='companyname'><a href='https://hackmerced.com/' target='_blank' rel='noreferrer'>HackMerced</a></div>
+                            <div className='companyname'><a href='https://github.com/HackMerced/HackMerced/commits?author=trumanjchan' target='_blank' rel='noreferrer'>HackMerced</a></div>
                             <div className='date'>2 yrs 4 mos</div>
                             <div>University of California, Merced</div>
                         </div>
-                        <div className='lead'>
-                            <div className='position'>Frontend Lead</div>
-                            <div className='date'>Apr 2021 - Dec 2021 • 9 mos</div>
-                            <div className='text'>• Assigned tasks to frontend team members.</div>
-                            <div className='text'>• Taught team members how to work with our codebase by explaining how to use gitkraken for tasks and github for pull requests.</div>
-                        </div>
-                        <div className='member'>
-                            <div className='position'>Frontend Member</div>
-                            <div className='date'>Sep 2019 - Apr 2021 • 1 yr 8 mos</div>
-                            <div className='text'>• Learned and worked with HTML, CSS, JavaScript, Node.js, JSX, React, Git, Github, and Gitkraken.</div>
-                            <div className='text'>• Created responsive web page components and web pages for in-person and virtual events, and for the HackMerced website.</div>
-                            <div className='text'>• Organized two MLH Local Build/Hack Day events, two 36-hour hackathons, and a designathon with teammates.</div>
+                        <div className='jobdesc'>
+                            <div className='lead'>
+                                <div className='pos'>
+                                    <div className='position'>Frontend Lead</div>
+                                    <div className='date'>Apr 2021 - Dec 2021 • 9 mos</div>
+                                </div>
+                                <div className='text'>
+                                    <div>• Assigned tasks to frontend team members.</div>
+                                    <div>• Taught team members how to work with the codebase by explaining how to use Gitkraken for tasks and Github for pull requests.</div>
+                                </div>
+                            </div>
+                            <div className='member'>
+                                <div className='pos'>
+                                    <div className='position'>Frontend Member</div>
+                                    <div className='date'>Sep 2019 - Apr 2021 • 1 yr 8 mos</div>
+                                </div>
+                                <div className='text'>
+                                    <div>• Learned and worked with HTML, CSS, Javascript, Node.js, React.js, Github, and Gitkraken.</div>
+                                    <div>• Coded responsive and reusable web page components and web pages for in-person and virtual events, and for the HackMerced website.</div>
+                                    <div>• Organized two MLH Local Build/Hack Day events, two 36-hour hackathons, and a design hackathon with teammates.</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
