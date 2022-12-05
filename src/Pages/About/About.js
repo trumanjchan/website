@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import './About.css';
 import Navbar from '../../Components/Navbar/Navbar';
-import Cover from '../../Images/UCM_Admin_Building.webp';
-import Headshot from '../../Images/Truman.webp';
+import Cover from '../../Images/CHX_NewYork.webp';
+import Headshot from '../../Images/Truman_NY.webp';
 import Linkedin from '../../Images/linkedin.webp';
 import Github from '../../Images/github.webp';
 import Youtube from '../../Images/youtube.webp';
@@ -41,7 +41,10 @@ function About() {
                         <div className='first'>
                             <img className='headshot' src={Headshot} alt='Truman C.' />
                             <h1>Truman Chan</h1>
-                            <h2>Frontend Developer</h2>
+                            <h2>Junior Developer</h2>
+                            <div className='at'>@&nbsp;
+                                <span className='currentlywork'>Concentric&nbsp;Health&nbsp;Experience</span>
+                            </div>
                             <h3>San Francisco, CA, United States</h3>
                         </div>
                         <div className='second'>
@@ -64,13 +67,17 @@ function About() {
                         <div className='schoolname'>University of California, Merced</div>
                         <div className='degree'>Bachelor of Science - Computer Science and Engineering</div>
                         <div className='year'>2018 - 2021</div>
-                        <div className='activities'>Activities:<br/>HackMerced club, Martial Arts club</div>
+                        <div className='activitiestitle'>Activities and societies:
+                            <div className='activities'><a href='https://github.com/HackMerced/HackMerced/commits?author=trumanjchan' target='_blank' rel='noreferrer'>HackMerced</a>, Martial Arts Club</div>
+                        </div>
                     </div>
                     <div className='school'>
                         <div className='schoolname'>George Washington High School</div>
                         <div className='degree'>High School Diploma</div>
                         <div className='year'>2013 - 2017</div>
-                        <div className='activities'>Activities:<br/>Track and Field, Cross Country, Volunteer of Heart in Motion, Bike club</div>
+                        <div className='activitiestitle'>Activities and societies:
+                            <div className='activities'>Track and Field, Cross Country, Volunteer of Heart in Motion, YMCA Bike Club</div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -93,15 +100,15 @@ function About() {
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>Socketchat <i className='float-right'><a href='https://github.com/trumanjchan/Socketchat' target='_blank' rel='noreferrer'>Source</a> <a href='https://sockchats.herokuapp.com/' target='_blank' rel='noreferrer'>Live</a></i></td>
-                                    <td>Mar. 2022 - <i>Present</i></td>
+                                    <td>Socketchat <i className='float-right'><a href='https://github.com/trumanjchan/Socketchat' target='_blank' rel='noreferrer'>Source</a> <a href='https://wschat.onrender.com/' target='_blank' rel='noreferrer'>Live</a></i></td>
+                                    <td>Mar. 2022 - Apr. 2022</td>
                                 </tr>
                                 <tr>
                                     <td><b>This Website!</b> <i className='float-right'><a href='https://github.com/trumanjchan/my-website' target='_blank' rel='noreferrer'>Source</a></i></td>
                                     <td>Dec. 2021 - Feb. 2022</td>
                                 </tr>
                                 <tr>
-                                    <td>Scribing <i className='float-right'><a href='https://github.com/shiv248/TypeRacer' target='_blank' rel='noreferrer'>Source</a> <a href='https://scribing.herokuapp.com/' target='_blank' rel='noreferrer'>Live</a></i></td>
+                                    <td>Scribing <i className='float-right'><a href='https://github.com/shiv248/TypeRacer' target='_blank' rel='noreferrer'>Source</a></i></td>
                                     <td>Nov. 2021 - Dec. 2021</td>
                                 </tr>
                                 <tr>
@@ -127,9 +134,9 @@ function About() {
                     <div id="Skills" className="tabcontent">
                         <div className='info'>
                             <div className='title'>Programming</div>
-                            <div className='text'>C++, Python, HTML, CSS, Javascript, REST APIs, SQL</div>
+                            <div className='text'>C++, Python, HTML, CSS, Javascript, Node.js, REST APIs, SQL</div>
                             <div className='title'>Frameworks</div>
-                            <div className='text'>Bootstrap, React, Flask, Express</div>
+                            <div className='text'>Bootstrap, React, Flask, Express.js</div>
                             <div className='title'>Tools</div>
                             <div className='text'>Visual Studio Code, Git, Github, Gitkraken, Sony Vegas Pro, Adobe CS5, Adobe XD, Google Workspace</div>
                             <div className='title'>Languages</div>
@@ -144,7 +151,7 @@ function About() {
                     <div className='title'>Awards</div>
                     <div className='designmerced'>
                         <div className='award'>
-                            <div className='for'><a href='https://devpost.com/software/insight-ar-glasses' target='_blank' rel='noreferrer'>DesignMerced Winner</a></div>
+                            <div className='for'><a href='https://devpost.com/software/insight-ar-glasses' target='_blank' rel='noreferrer'>DesignMerced I Winner</a></div>
                             <div className='issued'>Issued by DesignMerced I • Nov 2020</div>
                         </div>
                         <div className='awarddesc'>
@@ -158,32 +165,67 @@ function About() {
             <div className='Experience'>
                 <div className='container'>
                     <div className='title'>Experience</div>
-                    <div className='hackmerced'>
-                        <div className='total'>
-                            <div className='companyname'><a href='https://github.com/HackMerced/HackMerced/commits?author=trumanjchan' target='_blank' rel='noreferrer'>HackMerced</a></div>
-                            <div className='date'>2 yrs 4 mos</div>
-                            <div>University of California, Merced</div>
-                        </div>
-                        <div className='jobdesc'>
-                            <div className='lead'>
-                                <div className='pos'>
-                                    <div className='position'>Frontend Lead</div>
-                                    <div className='date'>Apr 2021 - Dec 2021 • 9 mos</div>
+                    <div className='experiencelist'>
+                        <div className='workedat'>
+                            <div className='total'>
+                                <div className='companyname'><a href='https://concentrichx.com/' target='_blank' rel='noreferrer'>Concentric Health Experience</a></div>
+                                <div className='date'>Full-time</div>
+                                <div>New York, NY</div>
+                            </div>
+                            <div className='jobdesc'>
+                                <div className='lead'>
+                                    <div className='pos'>
+                                        <div className='position'>Junior Developer</div>
+                                        <div className='date'>Aug 2022 - <i>Present</i></div>
+                                    </div>
+                                    <div className='text'>
+                                        <div>• Created an object oriented responsive mini game web app using HTML, CSS, Javascript, Socket.io, Node.js, and Express.js under R&D.</div>
+                                        <div>• Implement changes requested on Ziflow routes for emails, banners, and websites through code to pass back to IP (Integrated Production) for further markups or to QA for additional testing.</div>
+                                    </div>
                                 </div>
-                                <div className='text'>
-                                    <div>• Assigned tasks to frontend team members.</div>
-                                    <div>• Taught team members how to work with the codebase by explaining how to use Gitkraken for tasks and Github for pull requests.</div>
+                                <div className='member'>
+                                    <div className='pos'>
+                                        <div className='position'>Developer Apprentice</div>
+                                        <div className='date'>Jun 2022 - Aug 2022 • 3 mos</div>
+                                    </div>
+                                    <div className='text'>
+                                        <div>• Collaborated in a brand team in CHX's 9-week internship to create a pitch presentation and present to a CHX client.</div>
+                                        <div>• Learned how a healthcare advertising agency operates by attending informative CHX-led presentations.</div>
+                                        <div>• Acquired knowledge of MJML, GSAP, Veeva Systems, Wordpress, Bitbucket, and Jira through LinkedIn Learning courses and reading documentation during onboarding with the development team.</div>
+                                    </div>
                                 </div>
                             </div>
-                            <div className='member'>
-                                <div className='pos'>
-                                    <div className='position'>Frontend Member</div>
-                                    <div className='date'>Sep 2019 - Apr 2021 • 1 yr 8 mos</div>
+                        </div>
+
+                        <div className='divider'></div>
+
+                        <div className='workedat'>
+                            <div className='total'>
+                                <div className='companyname'><a href='https://hackmerced.com/' target='_blank' rel='noreferrer'>HackMerced</a></div>
+                                <div className='date'>2 yrs 4 mos</div>
+                                <div>University of California, Merced</div>
+                            </div>
+                            <div className='jobdesc'>
+                                <div className='lead'>
+                                    <div className='pos'>
+                                        <div className='position'>Frontend Lead</div>
+                                        <div className='date'>Apr 2021 - Dec 2021 • 9 mos</div>
+                                    </div>
+                                    <div className='text'>
+                                        <div>• Assigned tasks to frontend team members.</div>
+                                        <div>• Taught team members how to work with the codebase by explaining how to use Gitkraken for tasks and Github for pull requests.</div>
+                                    </div>
                                 </div>
-                                <div className='text'>
-                                    <div>• Learned and worked with HTML, CSS, Javascript, Node.js, React.js, Github, and Gitkraken.</div>
-                                    <div>• Coded responsive and reusable web page components and web pages for in-person and virtual events, and for the HackMerced website.</div>
-                                    <div>• Organized two MLH Local Build/Hack Day events, two 36-hour hackathons, and a design hackathon with teammates.</div>
+                                <div className='member'>
+                                    <div className='pos'>
+                                        <div className='position'>Frontend Member</div>
+                                        <div className='date'>Sep 2019 - Apr 2021 • 1 yr 8 mos</div>
+                                    </div>
+                                    <div className='text'>
+                                        <div>• Learned and worked with HTML, CSS, Javascript, Node.js, React.js, Github, and Gitkraken.</div>
+                                        <div>• Coded responsive and reusable web page components and web pages for in-person and virtual events, and for the HackMerced website.</div>
+                                        <div>• Organized two MLH Local Build/Hack Day events, two 36-hour hackathons, and a design hackathon with teammates.</div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

@@ -6,12 +6,10 @@ body {
 }
 
 .About .Profile {
-    display: grid;
-    grid-template-columns: auto;
-    grid-template-rows: 45% 55%;
+    display: flex;
+    flex-direction: column;
     background-color: black;
     width: 80%;
-    height: 500px;
     margin: 5% auto 2% auto;
     border-radius: 12px;
     border: 1px solid lightgrey;
@@ -19,11 +17,14 @@ body {
 }
 .About .Profile .cover {
     object-fit: cover;
-    width: 850px;
-    height: 100%;
-    margin: 0 auto;
+    object-position: 0% 40%;
+    width: 100%;
+    height: 210px;
 }
 .About .Profile .info-container {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 5%;
     background-color: var(--container-bg-color);
     border-bottom-left-radius: 12px;
     border-bottom-right-radius: 12px;
@@ -34,14 +35,13 @@ body {
     height: 100%;
 }
 .About .Profile .info-container .column-grid .first {
-    margin: auto auto;
-    transform: translateY(-35%);
+    margin: auto 0 auto 20%;
 }
 .About .Profile .info-container .column-grid .first .headshot {
     width: 200px;
+    margin-top: -25%;
     border-radius: 50%;
     border: 5px solid white;
-    position: static;
     box-shadow: 0px 2px 3px 1px rgba(0, 0, 0, 0.2);
 }
 .About .Profile .info-container .column-grid .first h1 {
@@ -56,16 +56,30 @@ body {
     padding-bottom: 2%;
     margin: 0;
 }
+.About .Profile .info-container .column-grid .first .at {
+    font-size: 20px;
+    font-weight: 400;
+    margin-bottom: 3%;
+}
+.About .Profile .info-container .column-grid .first .at .currentlywork {
+    font-size: 20px;
+    font-weight: 400;
+    padding: 1% 1.8%;
+    color: var(--invert-color);
+    background-color: var(--main-bg-color);
+    border-radius: 8px;
+}
 .About .Profile .info-container .column-grid .first h3 {
-    font-size: 25px;
+    font-size: 18px;
     font-weight: normal;
     color: rgb(104, 104, 104);
     margin: 0;
 }
 .About .Profile .info-container .column-grid .second {
-    margin: 10% 10% auto 0%;
+    margin: auto 20% 3.5% 0%;
     letter-spacing: 2px;
     font-size: 20px;
+    text-align: center;
 }
 .About .Profile .info-container .column-grid .second p {
     margin: 0% 0% 5% 0%;
@@ -124,8 +138,17 @@ body {
     font-size: 20px;
     color: rgb(104, 104, 104);
 }
+.About .Education .container .activitiestitle {
+    font-size: 20px;
+    margin-top: 0.5%;
+}
 .About .Education .container .activities {
     font-size: 20px;
+    margin-left: 5%;
+}
+.About .Education .container .activities a:link {
+    color: #5D808F;
+    text-decoration: none;
 }
 
 .About .Tabs {
@@ -156,6 +179,16 @@ body {
     font-size: 30px;
     font-weight: 400;
     margin: 2% 4% auto auto;
+    color: rgb(0, 136, 255);
+    background-color: transparent;
+    padding: 0% 1.5%;
+    border: 1px solid rgb(0, 136, 255);
+    border-radius: 20px;
+}
+.About .Tabs .container .tab button:hover {
+    transform: scale(1.05);
+    background-color: rgba(119, 192, 255, 0.332);
+    box-shadow: 0px 2px 3px 1px rgb(0 0 0 / 20%);
 }
 .About .Tabs .container .tab button.active {
     display: none;
@@ -263,72 +296,76 @@ body {
     margin: 2% 0% auto 4%;
     text-decoration: underline var(--section-underline);
 }
-.About .Experience .container .hackmerced {
+.About .Experience .container .experiencelist {
+    display: flex;
+    flex-direction: column;
+}
+.About .Experience .container .experiencelist .workedat {
     margin: 4% 10%;
     font-size: 20px;
 }
-.About .Experience .container .hackmerced .total {
+.About .Experience .container .experiencelist .workedat .total {
     margin-bottom: 3%;
 }
-.About .Experience .container .hackmerced .total .date {
+.About .Experience .container .experiencelist .workedat .total .date {
     color: rgb(104, 104, 104);
 }
-.About .Experience .container .hackmerced .total .companyname {
+.About .Experience .container .experiencelist .workedat .total .companyname {
     font-size: 25px;
 }
-.About .Experience .container .hackmerced .total .companyname a:link {
+.About .Experience .container .experiencelist .workedat .total .companyname a:link {
     text-decoration: none;
     color: #5D808F;
 }
-.About .Experience .container .hackmerced .total .companyname a:hover {
+.About .Experience .container .experiencelist .workedat .total .companyname a:hover {
     color: #6CAFCC;
 }
-.About .Experience .container .hackmerced .jobdesc {
+.About .Experience .container .experiencelist .workedat .jobdesc {
     margin-left: 5%;
 }
-.About .Experience .container .hackmerced .jobdesc .lead {
+.About .Experience .container .experiencelist .workedat .jobdesc .lead {
     margin-bottom: 2.5%;
 }
-.About .Experience .container .hackmerced .jobdesc .pos {
+.About .Experience .container .experiencelist .workedat .jobdesc .pos {
     margin-bottom: 2%;
 }
-.About .Experience .container .hackmerced .jobdesc .position {
+.About .Experience .container .experiencelist .workedat .jobdesc .position {
     font-size: 25px;
     font-weight: bold;
 }
-.About .Experience .container .hackmerced .jobdesc .date {
+.About .Experience .container .experiencelist .workedat .jobdesc .date {
     color: rgb(104, 104, 104);
 }
-.About .Experience .container .hackmerced .jobdesc .text {
+.About .Experience .container .experiencelist .workedat .jobdesc .text {
     line-height: 1.5;
+}
+.About .Experience .container .experiencelist .divider {
+    height: 2px;
+    width: 80%;
+    border-radius: 2px;
+    background-color: rgb(0, 136, 255);
+    margin: 0 auto;
 }
 
 
 /* Profile */
-@media only screen and (max-width: 1110px) {
-    .About .Profile {
-        height: 700px;
-        grid-template-rows: 25% auto;
-    }
-    .About .Profile .cover {
-        width: 80%;
-    }
+@media only screen and (max-width: 1024px) {
     .About .Profile .info-container .column-grid {
         display: flex;
         flex-direction: column;
+        text-align: center;
     }
     .About .Profile .info-container .column-grid .first {
-        height: fit-content;
-        margin: 0% 7%;
+        width: 100%;
+        margin: 0;
     }
-    .About .Profile .info-container .column-grid .first .headshot {
-        width: 180px;
-        position: static;
-        margin: 2% auto 0% 0%;
+    .About .Profile .info-container .column-grid .first h3 {
+        margin-bottom: 5%;
     }
     .About .Profile .info-container .column-grid .second {
-        margin: 0% 10%;
-        margin-bottom: 10%;
-        transform: translateY(-45%);
+        margin: auto auto;
+        width: 80%;
+        letter-spacing: 2px;
+        font-size: 20px;
     }
 }
