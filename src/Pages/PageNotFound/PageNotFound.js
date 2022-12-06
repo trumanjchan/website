@@ -8,7 +8,7 @@ function PageNotFound() {
             <Navbar />
             <div className='container'>
                 <div className='title'>404</div>
-                <div className='description'>Sorry! That page doesn't exist! The only endpoints that exist currently are <i>/</i>, <i>/guides</i>, <i>/tasks</i>, <i>/contact</i>, and <i>/404</i>.</div>
+                <div className='description'>Sorry!<br/>That page doesn't exist!<br/>The only endpoints that exist currently are:<br/><i>/</i>, <i>/guides</i>, <i>/tasks</i>, <i>/contact</i>, and <i>/404</i>.</div>
             </div>
         </main>
     );

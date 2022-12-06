@@ -4,17 +4,22 @@
     min-height: calc(100vh);
     height: fit-content;
 }
-.Guides .container .tab {
-    border-right: 1px solid var(--invert-color);
+.Guides .container .tabscolumn {
+    border-right: 1px solid var(--container-bg-color);
     background-color: var(--container-bg-color);
-    display: inline-block;
+    display: flex;
+    flex-direction: column;
     height: calc(100vh);
     width: calc(25vw);
     position: -webkit-sticky;
     position: sticky;
     top: 0;
 }
-.Guides .container .tab button {
+.Guides .container .tabscolumn .tabs {
+    position: sticky;
+    top: 60px;
+}
+.Guides .container .tabscolumn .tabs button {
     display: block;
     width: 100%;
     font-size: 20px;
@@ -25,10 +30,10 @@
     padding: 14px 16px;
     background-color: var(--container-bg-color);
 }
-.Guides .container .tab button:hover {
+.Guides .container .tabscolumn .tabs button:hover {
     background-color: #ddd;
 }
-.Guides .container .tab button.active {
+.Guides .container .tabscolumn .tabs button.active {
     background-color: var(--main-bg-color);
     color: var(--invert-color);
 }
@@ -43,11 +48,11 @@
 }
 
 
-@media only screen and (max-width: 700px) {
+@media only screen and (max-width: 768px) {
     .Guides .container {
         display: block;
     }
-    .Guides .container .tab {
+    .Guides .container .tabscolumn {
         border-right: none;
         border-bottom: 1px solid var(--invert-color);
         height: fit-content;

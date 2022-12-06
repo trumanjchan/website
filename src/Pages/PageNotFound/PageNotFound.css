@@ -4,8 +4,8 @@
 }
 
 .PageNotFound .container {
-    background-image: url("../../Images/Golden_Gate_Bridge_front.webp");
-    background-position: center;
+    background-image: url("../../Images/Stow_Lake.webp");
+    background-position: 0% 80%;
     background-repeat: no-repeat;
     background-size: cover;
     position: absolute;
@@ -16,16 +16,16 @@
 	margin: auto;
     width: calc(70vw);
     height: fit-content;
-    border: 3px solid black;
+    border: 3px solid var(--invert-color);
     border-radius: 20px;
-    box-shadow: 0px 0px 200px 1px var(--container-boxshadow);
+    box-shadow: 0px 0px 20px 10px var(--container-boxshadow);
 }
 .PageNotFound .container .title {
     width: fit-content;
     margin: 2% auto 1% auto;
-    font-size: 55px;
+    font-size: 65px;
     font-weight: bold;
-    text-shadow: 0px 0px 5px white;
+    text-shadow: 0px 0px 10px white;
 }
 .PageNotFound .container .description {
     font-family: 'Optima';
@@ -34,4 +34,5 @@
     font-weight: 600;
     color: white;
     text-shadow: 0px 0px 5px black;
+    text-align: center;
 }

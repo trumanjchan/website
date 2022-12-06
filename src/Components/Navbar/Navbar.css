@@ -1,6 +1,10 @@
 .Navbar {
-    border-bottom: 1px solid var(--invert-color);
-    background-image: linear-gradient(to bottom right, #6CAFCC, #7EADC2);
+    display: block;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    border-bottom: 1px solid var(--main-bg-color);
+    background-color: var(--container-bg-color);
     padding: 0% 10%;
     height: 60px;
 }
@@ -37,7 +41,7 @@
     color: #173542;
 }
 .Navbar .grid-container li a:hover {
-    color: white;
+    color: var(--invert-color);
     transition: 0.3s;
 }
 .Navbar .grid-container button {
@@ -78,15 +82,16 @@
 }
 
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 640px) {
     .change-bg-color {
-        background-color: rgba(108, 175, 203, 0.9);
+        background-color: var(--container-bg-color-alpha) !important;
+        border-bottom: 1px solid var(--invert-color) !important;
     }
     .Navbar {
         height: fit-content;
         width: 100%;
         padding: 0;
-        background-image: none;
+        background-color: transparent;
         border-bottom: none;
         position: fixed;
         top: 0;

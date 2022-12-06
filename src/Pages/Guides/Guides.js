@@ -26,9 +26,11 @@ function Guides() {
         <main className='Guides'>
             <Navbar />
             <div className='container'>
-                <div className='tab'>
-                    <button className='tablinks' onClick={event => openTab(event, 'Overview')} id='defaultOpen'>Overview</button>
-                    <button className='tablinks' onClick={event => openTab(event, 'First')}>Viewing Localhost on Different Devices</button>
+                <div className='tabscolumn'>
+                    <div className='tabs'>
+                        <button className='tablinks' onClick={event => openTab(event, 'Overview')} id='defaultOpen'>Overview</button>
+                        <button className='tablinks' onClick={event => openTab(event, 'First')}>Viewing Localhost on Different Devices</button>
+                    </div>
                 </div>
                 <div className='guidecontent'>
                     <div id='Overview' className='tabcontent'>
