@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/my-website/static/css/main.7ce2dca8.css",
-    "main.js": "/my-website/static/js/main.55b53d4f.js",
+    "main.css": "/my-website/static/css/main.6c04aa3c.css",
+    "main.js": "/my-website/static/js/main.04c8034f.js",
     "static/media/CHX_NewYork.webp": "/my-website/static/media/CHX_NewYork.76b42b1e15f909e62100.webp",
+    "static/media/Stow_Lake.webp": "/my-website/static/media/Stow_Lake.9d803239ff0c61ca8aba.webp",
     "static/media/Golden_Gate_Bridge_side.webp": "/my-website/static/media/Golden_Gate_Bridge_side.13efde78d87ba591b210.webp",
-    "static/media/Golden_Gate_Bridge_front.webp": "/my-website/static/media/Golden_Gate_Bridge_front.b9b79eb20111ad685f3b.webp",
     "static/media/Truman_NY.webp": "/my-website/static/media/Truman_NY.c5e20e9cb56d4c24a85f.webp",
     "static/media/github.webp": "/my-website/static/media/github.555bdbc35723eaf35b93.webp",
     "static/media/email.webp": "/my-website/static/media/email.45e3b2a4db90c8e535b4.webp",
@@ -12,11 +12,11 @@
     "static/media/youtube.webp": "/my-website/static/media/youtube.d2c8926c123c5137127f.webp",
     "static/media/navigation.webp": "/my-website/static/media/navigation.c23ea2cdb01bbec1109d.webp",
     "index.html": "/my-website/index.html",
-    "main.7ce2dca8.css.map": "/my-website/static/css/main.7ce2dca8.css.map",
-    "main.55b53d4f.js.map": "/my-website/static/js/main.55b53d4f.js.map"
+    "main.6c04aa3c.css.map": "/my-website/static/css/main.6c04aa3c.css.map",
+    "main.04c8034f.js.map": "/my-website/static/js/main.04c8034f.js.map"
   },
   "entrypoints": [
-    "static/css/main.7ce2dca8.css",
-    "static/js/main.55b53d4f.js"
+    "static/css/main.6c04aa3c.css",
+    "static/js/main.04c8034f.js"
   ]
 }
