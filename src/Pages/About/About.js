@@ -30,11 +30,49 @@ function About() {
         evt.currentTarget.className += " active";
     }
 
+    let lastKnownScrollPosition = 0;
+    let aboutProfileContainerPosition = 0;
+    let ticking = false;
+
+    function doSomething(scrollPos, sectionPos) {
+        if (scrollPos > sectionPos) {
+            document.getElementById('essentialinfo').classList.remove('sectionfadeout');
+            document.getElementById('essentialinfo').classList.add('sectionfadein');
+
+            document.getElementById('textcontainer').classList.remove('textcontainerfadeout');
+            document.getElementById('textcontainer').classList.add('textcontainerfadein');
+        }
+        else if (document.getElementById('essentialinfo').classList.contains('sectionfadein')) {
+            document.getElementById('essentialinfo').classList.remove('sectionfadein');
+            document.getElementById('essentialinfo').classList.add('sectionfadeout');
+
+            document.getElementById('textcontainer').classList.remove('textcontainerfadein');
+            document.getElementById('textcontainer').classList.add('textcontainerfadeout');
+        }
+    }
+
+    document.addEventListener('scroll', (e) => {
+        // Only check when on About page
+        if (window.location.pathname === '/my-website') {
+            lastKnownScrollPosition = window.scrollY;
+            aboutProfileContainerPosition = document.getElementById('AboutProfile').scrollHeight;
+
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    doSomething(lastKnownScrollPosition, aboutProfileContainerPosition);
+                    ticking = false;
+                });
+
+                ticking = true;
+            }
+        }
+    });
+
     return (
         <main className='About'>
             <Navbar />
 
-            <div className='Profile'>
+            <div id='AboutProfile' className='Profile'>
                 <img className='cover' src={Cover} alt='UC Merced Admin Building' />
                 <div className='info-container'>
                     <div className='column-grid'>
@@ -42,13 +80,11 @@ function About() {
                             <img className='headshot' src={Headshot} alt='Truman C.' />
                             <h1>Truman Chan</h1>
                             <h2>Junior Developer</h2>
-                            <div className='at'>@&nbsp;
-                                <span className='currentlywork'>Concentric&nbsp;Health&nbsp;Experience</span>
-                            </div>
+                            <div className='currentlywork'>Concentric&nbsp;Health&nbsp;Experience</div>
                             <h3>San Francisco, CA, United States</h3>
                         </div>
                         <div className='second'>
-                            <p>I am a University of California, Merced graduate with a bachelor's degree in Computer Science and Engineering. I am interested in frontend web development!</p>
+                            <p>University of California, Merced graduate with a bachelor's degree in Computer Science and Engineering. I am interested in frontend web development!</p>
                             <div className='social-container'>
                                 <a href='https://www.linkedin.com/in/trumanjfchan' target='_blank' rel='noreferrer'><img className='social' src={Linkedin} alt='Linkedin icon by mohammed mahdi on flaticon.com' /></a>
                                 <a href='https://github.com/trumanjchan' target='_blank' rel='noreferrer'><img className='social' src={Github} alt='Github icon by riajulislam on flaticon.com' /></a>
@@ -94,38 +130,74 @@ function About() {
                         <table>
                             <thead>
                                 <tr>
-                                    <th>Project Name</th>
+                                    <th>Projects</th>
                                     <th>Dates</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>Socketchat <i className='float-right'><a href='https://github.com/trumanjchan/Socketchat' target='_blank' rel='noreferrer'>Source</a> <a href='https://wschat.onrender.com/' target='_blank' rel='noreferrer'>Live</a></i></td>
-                                    <td>Mar. 2022 - Apr. 2022</td>
+                                    <td>poc-mini-game<br/><a className='float-right-NDA' href='#poc-mini-game'>NDA</a></td>
+                                    <td>
+                                        <div>Aug.&nbsp;2022</div>
+                                        <div>&nbsp;-&nbsp;</div>
+                                        <div><i>Present</i></div>
+                                    </td>
                                 </tr>
                                 <tr>
-                                    <td><b>This Website!</b> <i className='float-right'><a href='https://github.com/trumanjchan/my-website' target='_blank' rel='noreferrer'>Source</a></i></td>
-                                    <td>Dec. 2021 - Feb. 2022</td>
+                                    <td>Socketchat<br/><i className='float-right'><a href='https://github.com/trumanjchan/Socketchat' target='_blank' rel='noreferrer'>Source</a> <a href='https://wschat.onrender.com/' target='_blank' rel='noreferrer'>Live</a></i></td>
+                                    <td>
+                                        <div>Mar.&nbsp;2022</div>
+                                        <div>&nbsp;-&nbsp;</div>
+                                        <div>Apr.&nbsp;2022</div>
+                                    </td>
                                 </tr>
                                 <tr>
-                                    <td>Scribing <i className='float-right'><a href='https://github.com/shiv248/TypeRacer' target='_blank' rel='noreferrer'>Source</a></i></td>
-                                    <td>Nov. 2021 - Dec. 2021</td>
+                                    <td><b>This Website!</b><br/><i className='float-right'><a href='https://github.com/trumanjchan/my-website' target='_blank' rel='noreferrer'>Source</a></i></td>
+                                    <td>
+                                        <div>Dec.&nbsp;2021</div>
+                                        <div>&nbsp;-&nbsp;</div>
+                                        <div>Feb.&nbsp;2022</div>
+                                    </td>
                                 </tr>
                                 <tr>
-                                    <td>My Task Board <i className='float-right'><a href='https://github.com/illumimarty/CSE111-Fall2021-Project' target='_blank' rel='noreferrer'>Source</a></i></td>
-                                    <td>Nov. 2021 - Dec. 2021</td>
+                                    <td>Scribing<br/><i className='float-right'><a href='https://github.com/shiv248/TypeRacer' target='_blank' rel='noreferrer'>Source</a></i></td>
+                                    <td>
+                                        <div>Nov.&nbsp;2021</div>
+                                        <div>&nbsp;-&nbsp;</div>
+                                        <div>Dec.&nbsp;2021</div>
+                                    </td>
                                 </tr>
                                 <tr>
-                                    <td>OOP Mini Game <i className='float-right'><a href='https://github.com/trumanjchan/CSE165_Labs' target='_blank' rel='noreferrer'>Source</a></i></td>
-                                    <td>Nov. 2020 - Dec. 2020</td>
+                                    <td>My Task Board<br/><i className='float-right'><a href='https://github.com/illumimarty/CSE111-Fall2021-Project' target='_blank' rel='noreferrer'>Source</a></i></td>
+                                    <td>
+                                        <div>Nov.&nbsp;2021</div>
+                                        <div>&nbsp;-&nbsp;</div>
+                                        <div>Dec.&nbsp;2021</div>
+                                    </td>
                                 </tr>
                                 <tr>
-                                    <td>inSight Prototype <i className='float-right'><a href='https://devpost.com/software/insight-ar-glasses' target='_blank' rel='noreferrer'>Devpost</a> <a href='https://xd.adobe.com/view/fbc45307-37f5-4384-8550-0e9fd84fc124-ae97/?fullscreen' target='_blank' rel='noreferrer'>Demo</a></i></td>
-                                    <td>Nov. 2020</td>
+                                    <td>OOP Mini Game<br/><i className='float-right'><a href='https://github.com/trumanjchan/CSE165_Labs' target='_blank' rel='noreferrer'>Source</a></i></td>
+                                    <td>
+                                        <div>Nov.&nbsp;2020</div>
+                                        <div>&nbsp;-&nbsp;</div>
+                                        <div>Dec.&nbsp;2020</div>
+                                    </td>
                                 </tr>
                                 <tr>
-                                    <td>Bootstrap Website <i className='float-right'><a href='https://github.com/trumanjchan/trumanjchan.github.io' target='_blank' rel='noreferrer'>Source</a> <a href='https://trumanjchan.github.io/' target='_blank' rel='noreferrer'>Live</a></i></td>
-                                    <td>Sept. 2018 - Nov. 2020</td>
+                                    <td>inSight Prototype<br/><i className='float-right'><a href='https://devpost.com/software/insight-ar-glasses' target='_blank' rel='noreferrer'>Devpost</a> <a href='https://xd.adobe.com/view/fbc45307-37f5-4384-8550-0e9fd84fc124-ae97/?fullscreen' target='_blank' rel='noreferrer'>Demo</a></i></td>
+                                    <td>
+                                        <div></div>
+                                        <div>Nov.&nbsp;2020</div>
+                                        <div></div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Bootstrap Website<br/><i className='float-right'><a href='https://github.com/trumanjchan/trumanjchan.github.io' target='_blank' rel='noreferrer'>Source</a> <a href='https://trumanjchan.github.io/' target='_blank' rel='noreferrer'>Live</a></i></td>
+                                    <td>
+                                        <div>Sept.&nbsp;2018</div>
+                                        <div>&nbsp;-&nbsp;</div>
+                                        <div>Nov.&nbsp;2020</div>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -152,7 +224,7 @@ function About() {
                     <div className='designmerced'>
                         <div className='award'>
                             <div className='for'><a href='https://devpost.com/software/insight-ar-glasses' target='_blank' rel='noreferrer'>DesignMerced I Winner</a></div>
-                            <div className='issued'>Issued by DesignMerced I • Nov 2020</div>
+                            <div className='issued'>Issued by DesignMerced I • Nov&nbsp;2020</div>
                         </div>
                         <div className='awarddesc'>
                             <div>• Competed in a remote 24-hour design hackathon and won third place.</div>
@@ -168,7 +240,7 @@ function About() {
                     <div className='experiencelist'>
                         <div className='workedat'>
                             <div className='total'>
-                                <div className='companyname'><a href='https://concentrichx.com/' target='_blank' rel='noreferrer'>Concentric Health Experience</a></div>
+                                <div className='companyname'><a id='poc-mini-game' href='https://concentrichx.com/' target='_blank' rel='noreferrer'>Concentric Health Experience</a></div>
                                 <div className='date'>Full-time</div>
                                 <div>New York, NY</div>
                             </div>
@@ -186,7 +258,7 @@ function About() {
                                 <div className='member'>
                                     <div className='pos'>
                                         <div className='position'>Developer Apprentice</div>
-                                        <div className='date'>Jun 2022 - Aug 2022 • 3 mos</div>
+                                        <div className='date'>Jun 2022 - Aug 2022 • 3&nbsp;mos</div>
                                     </div>
                                     <div className='text'>
                                         <div>• Collaborated in a brand team in CHX's 9-week internship to create a pitch presentation and present to a CHX client.</div>
@@ -209,7 +281,7 @@ function About() {
                                 <div className='lead'>
                                     <div className='pos'>
                                         <div className='position'>Frontend Lead</div>
-                                        <div className='date'>Apr 2021 - Dec 2021 • 9 mos</div>
+                                        <div className='date'>Apr 2021 - Dec 2021 • 9&nbsp;mos</div>
                                     </div>
                                     <div className='text'>
                                         <div>• Assigned tasks to frontend team members.</div>
@@ -219,7 +291,7 @@ function About() {
                                 <div className='member'>
                                     <div className='pos'>
                                         <div className='position'>Frontend Member</div>
-                                        <div className='date'>Sep 2019 - Apr 2021 • 1 yr 8 mos</div>
+                                        <div className='date'>Sep 2019 - Apr 2021 • 1&nbsp;yr&nbsp;8&nbsp;mos</div>
                                     </div>
                                     <div className='text'>
                                         <div>• Learned and worked with HTML, CSS, Javascript, Node.js, React.js, Github, and Gitkraken.</div>

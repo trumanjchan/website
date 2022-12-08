@@ -8,7 +8,7 @@ function Tasks() {
     if (stored) {
         stored = stored.split(",");
     } else {
-        stored = [];
+        stored = ["Create a task and refresh the page to see what happens!"];
     }
 
     var today = new Date();
@@ -73,7 +73,7 @@ function Tasks() {
                     <div className='form'>
                         <form id='form' onSubmit={submitEntry}>
                             <input id='inputfield' placeholder='Create New Task' />
-                            <button id='button' type='button' onClick={addToList}>Send</button>
+                            <button id='button' type='button' onClick={addToList}>Create</button>
                         </form>
                     </div>
                 </div>

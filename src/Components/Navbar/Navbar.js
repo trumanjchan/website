@@ -2,15 +2,16 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
 import DropdownIcon from '../../Images/navigation.webp';
+import Headshot from '../../Images/Truman_NY.webp';
 
 function Navbar() {
 
     useEffect(() => {
         // Retrieve the value of locally-stored key 'data-theme', and set the theme
-        const x = localStorage.getItem("data-theme");
-        console.log("Retrieved preference: " + x + " mode");
+        const datatheme = localStorage.getItem("data-theme");
+        console.log("Retrieved preference: " + datatheme + " mode");
         const menu = document.getElementById('dropdown');
-        if (x === "light") {
+        if (datatheme === "light") {
             document.documentElement.setAttribute("data-theme", "light");
             // Set checkbox to be unchecked (button in off state - left)
             document.getElementById('input').checked = false;
@@ -70,6 +71,9 @@ function Navbar() {
         element1.classList.toggle('grid-container');
         element2.classList.toggle('change-bg-color');
     }
+    const navigateToNewPage = () => {
+        window.scrollTo(0, document.windowHeight);
+    }
 
     window.addEventListener('resize', function() {
         if (window.innerWidth > 600) {
@@ -82,12 +86,12 @@ function Navbar() {
 
     return (
         <div id='nav' className='Navbar'>
-            <div className='mobileview' onClick={toggleMobileView}><img id='dropdown' src={DropdownIcon} alt='https://www.flaticon.com/premium-icon/navigation_2811759?term=horizontal%20bars&related_id=2811759' /></div>
+            <div className='mobileview' onClick={toggleMobileView}><img id='dropdown' src={DropdownIcon} alt='Navigation icon by maulaga on flaticon.com' /></div>
             <ul id='contents' className='grid-container'>
-                <li><Link to="/">About</Link></li>
-                <li><Link to="/guides">Guides</Link></li>
-                <li><Link to="/tasks">Tasks</Link></li>
-                <li><Link to="/contact">Contact</Link></li>
+                <li onClick={navigateToNewPage}><Link to="/">About</Link></li>
+                <li onClick={navigateToNewPage}><Link to="/guides">Guides</Link></li>
+                <li onClick={navigateToNewPage}><Link to="/tasks">Tasks</Link></li>
+                <li onClick={navigateToNewPage}><Link to="/contact">Contact</Link></li>
                 <li>
                     <label className="switch">
                         <input id='input' type="checkbox" onClick={toggleMode} />
@@ -95,6 +99,13 @@ function Navbar() {
                     </label>
                 </li>
             </ul>
+            <div id='essentialinfo'>
+                <img id='headshot' className='headshot' src={Headshot} alt='Truman C.' />
+                <div id='textcontainer'>
+                    <div>Truman Chan (He/Him)</div>
+                    <div>Junior Developer at Concentric Health Experience</div>
+                </div>
+            </div>
         </div>
     );
 }

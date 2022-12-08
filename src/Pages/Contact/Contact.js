@@ -7,25 +7,20 @@ function Contact() {
     useEffect(() => {
         const x = localStorage.getItem("data-theme");
         const bgimage = document.getElementById('bgimage');
-        const formcontainer = document.getElementById('formcontainer');
         if (x === "light") {
             bgimage.classList.remove('apply-inset');
-            formcontainer.classList.remove('apply-outset');
         }
         else {
             bgimage.classList.add('apply-inset');
-            formcontainer.classList.add('apply-outset');
         }
 
         const input = document.getElementById('input');
         input.addEventListener('change', function() {
             if (localStorage.getItem("data-theme") === 'dark') {
                 bgimage.classList.add('apply-inset');
-                formcontainer.classList.add('apply-outset');
             }
             else {
                 bgimage.classList.remove('apply-inset');
-                formcontainer.classList.remove('apply-outset');
             }
         });
     },[]);
