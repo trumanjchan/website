@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/my-website/static/css/main.6c04aa3c.css",
-    "main.js": "/my-website/static/js/main.04c8034f.js",
+    "main.css": "/my-website/static/css/main.4270148e.css",
+    "main.js": "/my-website/static/js/main.fda62743.js",
     "static/media/CHX_NewYork.webp": "/my-website/static/media/CHX_NewYork.76b42b1e15f909e62100.webp",
     "static/media/Stow_Lake.webp": "/my-website/static/media/Stow_Lake.9d803239ff0c61ca8aba.webp",
     "static/media/Golden_Gate_Bridge_side.webp": "/my-website/static/media/Golden_Gate_Bridge_side.13efde78d87ba591b210.webp",
@@ -12,11 +12,11 @@
     "static/media/youtube.webp": "/my-website/static/media/youtube.d2c8926c123c5137127f.webp",
     "static/media/navigation.webp": "/my-website/static/media/navigation.c23ea2cdb01bbec1109d.webp",
     "index.html": "/my-website/index.html",
-    "main.6c04aa3c.css.map": "/my-website/static/css/main.6c04aa3c.css.map",
-    "main.04c8034f.js.map": "/my-website/static/js/main.04c8034f.js.map"
+    "main.4270148e.css.map": "/my-website/static/css/main.4270148e.css.map",
+    "main.fda62743.js.map": "/my-website/static/js/main.fda62743.js.map"
   },
   "entrypoints": [
-    "static/css/main.6c04aa3c.css",
-    "static/js/main.04c8034f.js"
+    "static/css/main.4270148e.css",
+    "static/js/main.fda62743.js"
   ]
 }
