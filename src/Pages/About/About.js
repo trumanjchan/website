@@ -53,7 +53,7 @@ function About() {
 
     document.addEventListener('scroll', (e) => {
         // Only check when on About page
-        if (window.location.pathname === '/my-website') {
+        if (window.location.pathname === '/my-website' || '/my-website/') {
             lastKnownScrollPosition = window.scrollY;
             aboutProfileContainerPosition = document.getElementById('AboutProfile').scrollHeight;
 
