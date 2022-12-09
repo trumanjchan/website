@@ -197,6 +197,12 @@ body {
     grid-template-columns: auto auto auto;
     text-align: center;
 }
+.About .Tabs .container #Projects tr td:last-child div:first-child {
+    text-align: right;
+}
+.About .Tabs .container #Projects tr td:last-child div:last-child {
+    text-align: left;
+}
 .About .Tabs .container .tabcontent table {
     font-family: arial, sans-serif;
     font-size: 20px;
@@ -394,5 +400,11 @@ body {
         flex-direction: column-reverse;
         flex-wrap: wrap;
         justify-content: center;
+    }
+    .About .Tabs .container #Projects tr td:last-child div:first-child {
+        text-align: center;
+    }
+    .About .Tabs .container #Projects tr td:last-child div:last-child {
+        text-align: center;
     }
 }

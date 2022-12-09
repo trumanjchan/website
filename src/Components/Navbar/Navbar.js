@@ -49,7 +49,7 @@ function Navbar() {
             // Set the user's preference in local storage
             localStorage.setItem("data-theme", "light");
             // On mobile view, if user touches toggle button then exit out of navbar menu
-            if (window.innerWidth < 600) {
+            if (window.innerWidth < 640) {
                 document.getElementById("dropdown").click();
             }
         }
@@ -59,7 +59,7 @@ function Navbar() {
             console.log("dark mode");
             document.getElementById("div").style.transition = "all 300ms";
             localStorage.setItem("data-theme", "dark");
-            if (window.innerWidth < 600) {
+            if (window.innerWidth < 640) {
                 document.getElementById("dropdown").click();
             }
         }
@@ -70,17 +70,21 @@ function Navbar() {
         var element2 = document.getElementById('nav');
         element1.classList.toggle('grid-container');
         element2.classList.toggle('change-bg-color');
+        
+        document.getElementById('essentialinfo').classList.toggle('togglevisibility');
     }
     const navigateToNewPage = () => {
         window.scrollTo(0, document.windowHeight);
     }
 
     window.addEventListener('resize', function() {
-        if (window.innerWidth > 600) {
+        if (window.innerWidth > 640) {
           var element1 = document.getElementById('contents');
           var element2 = document.getElementById('nav');
           element1.classList.add('grid-container');
           element2.classList.remove('change-bg-color');
+
+          document.getElementById('essentialinfo').classList.remove('togglevisibility');
         }
     });
 
@@ -103,7 +107,7 @@ function Navbar() {
                 <img id='headshot' className='headshot' src={Headshot} alt='Truman C.' />
                 <div id='textcontainer'>
                     <div>Truman Chan (He/Him)</div>
-                    <div>Junior Developer at Concentric Health Experience</div>
+                    <div>Junior Developer at Concentric&nbsp;Health&nbsp;Experience</div>
                 </div>
             </div>
         </div>

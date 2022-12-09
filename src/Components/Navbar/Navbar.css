@@ -103,7 +103,7 @@
 .sectionfadeout {
     border-bottom: 1px solid var(--main-bg-color);
     background-color: var(--container-bg-color);
-    animation: sectionfadeout 0.5s ease-out;
+    animation: sectionfadeout 0.5s ease-in;
 }
 @keyframes sectionfadeout {
     from {height: 40px; visibility: visible;}
@@ -132,7 +132,7 @@
 }
 .textcontainerfadeout {
     transform-origin: top left;
-    animation: transformout 0.5s ease-out;
+    animation: transformout 0.5s ease-in;
 }
 @keyframes transformout {
     from {transform: scale(1); visibility: visible;}
@@ -190,9 +190,41 @@
         color: #173542;
     }
 
-    /* Hides Section Navbar when in mobile view */
+    /* Section Navbar */
+    .Navbar .mobileview {
+        position: relative;
+        z-index: 1;
+    }
     .Navbar #essentialinfo {
-        border-bottom: none;
-        animation: none;
+        position: fixed;
+        top: 0;
+        padding: 0;
+        width: 100%;
+        overflow: hidden;
+    }
+    @keyframes sectionfadein {
+        from {height: 0px;}
+        to {height: 60px;}
+    }
+    @keyframes sectionfadeout {
+        from {height: 60px; visibility: visible;}
+        to {height: 0px; visibility: hidden;}
+    }
+    .Navbar #essentialinfo img {
+        margin-left: 10%;
+    }
+    .togglevisibility {
+        opacity: 0 !important;
+    }
+    .Navbar #essentialinfo #textcontainer {
+        margin-right: 10%;
+        height: fit-content;
+        align-self: center;
+    }
+    .textcontainerfadein {
+        transform-origin: left;
+    }
+    .textcontainerfadeout {
+        transform-origin: left;
     }
 }
