@@ -6,7 +6,7 @@ function Contact() {
 
     useEffect(() => {
         const x = localStorage.getItem("data-theme");
-        const bgimage = document.getElementById('bgimage');
+        const bgimage = document.getElementById('container');
         if (x === "light") {
             bgimage.classList.remove('apply-inset');
         }
@@ -28,7 +28,7 @@ function Contact() {
     return (
         <main className='Contact'>
             <Navbar />
-            <div id='bgimage' className='container'>
+            <div id='container' className='container'>
                 <div id='formcontainer' className='formcontainer'>
                     <form action="https://formspree.io/f/xrgjqdle" method="POST">
                         <div>@TrumanChan</div>

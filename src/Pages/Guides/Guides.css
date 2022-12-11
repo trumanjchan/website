@@ -1,25 +1,31 @@
+.Guides {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    overflow: hidden;
+}
 
 .Guides .container {
     display: flex;
-    min-height: calc(100vh);
-    height: fit-content;
+    height: calc(100% - 61px);
+    width: 100%;
+    position: relative;
+    overflow-y: auto;
+}
+.heightfrommissingnavbar {
+    height: 100% !important;
 }
 .Guides .container .tabscolumn {
     border-right: 1px solid var(--container-bg-color);
     background-color: var(--container-bg-color);
     display: flex;
     flex-direction: column;
-    height: calc(100vh);
     width: calc(25vw);
     position: -webkit-sticky;
     position: sticky;
     top: 0;
 }
-.Guides .container .tabscolumn .tabs {
-    position: sticky;
-    top: 60px;
-}
-.Guides .container .tabscolumn .tabs button {
+.Guides .container .tabscolumn button {
     display: block;
     width: 100%;
     font-size: 20px;
@@ -27,13 +33,13 @@
     border: none;
     outline: none;
     cursor: pointer;
-    padding: 14px 16px;
+    padding: 17px;
     background-color: var(--container-bg-color);
 }
-.Guides .container .tabscolumn .tabs button:hover {
+.Guides .container .tabscolumn button:hover {
     background-color: #ddd;
 }
-.Guides .container .tabscolumn .tabs button.active {
+.Guides .container .tabscolumn button.active {
     background-color: var(--main-bg-color);
     color: var(--invert-color);
 }
@@ -48,9 +54,10 @@
 }
 
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 640px) {
     .Guides .container {
         display: block;
+        height: calc(100% - 61px);
     }
     .Guides .container .tabscolumn {
         border-right: none;
@@ -60,7 +67,6 @@
         position: unset;
     }
     .Guides .container .guidecontent {
-        min-height: calc(100vh);
         width: 100%;
     }
 }

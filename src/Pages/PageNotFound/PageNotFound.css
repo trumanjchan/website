@@ -1,9 +1,18 @@
 .PageNotFound {
-    position: relative;
-    height: calc(100vh);
+    height: 100%;
+    width: 100%;
+    position: fixed;
 }
 
 .PageNotFound .container {
+    height: calc(100% - 61px);
+    width: 100%;
+    position: relative;
+}
+.heightfrommissingnavbar {
+    height: 100% !important;
+}
+.PageNotFound .container .formcontainer {
     background-image: url("../../Images/Stow_Lake.webp");
     background-position: 0% 80%;
     background-repeat: no-repeat;
@@ -21,15 +30,22 @@
     box-shadow: 0px 0px 20px 10px var(--container-boxshadow);
 }
 .PageNotFound .container .title {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: fit-content;
     width: fit-content;
-    margin: 2% auto 1% auto;
-    font-size: 65px;
+    margin: auto auto;
+    font-size: 100px;
     font-weight: bold;
-    text-shadow: 0px 0px 10px white;
+    color: var(--invert-color);
+    text-shadow: 0px 0px 20px white;
 }
 .PageNotFound .container .description {
-    font-family: 'Optima';
-    margin: 0% 5% 3% 5%;
+    position: relative;
+    margin: 3% 5%;
     font-size: 25px;
     font-weight: 600;
     color: white;

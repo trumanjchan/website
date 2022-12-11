@@ -204,10 +204,15 @@ body {
     text-align: left;
 }
 .About .Tabs .container .tabcontent table {
-    font-family: arial, sans-serif;
     font-size: 20px;
     border-collapse: collapse;
     width: 100%;
+}
+.About .Tabs .container .tabcontent table tr {
+    border-bottom: 1px solid var(--main-bg-color);
+}
+.About .Tabs .container .tabcontent table tr:last-child {
+    border-bottom: none;
 }
 .About .Tabs .container .tabcontent table th {
     color: var(--invert-color);
@@ -389,12 +394,6 @@ body {
 
 /* Tabs */
 @media only screen and (max-width: 768px) {
-    .About .Tabs .container .tabcontent table tr {
-        border-bottom: 1px solid var(--main-bg-color);
-    }
-    .About .Tabs .container .tabcontent table tr:last-child {
-        border-bottom: none;
-    }
     .About .Tabs .container #Projects tr td:last-child {
         display: flex;
         flex-direction: column-reverse;

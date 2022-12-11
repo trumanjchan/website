@@ -1,14 +1,20 @@
 .Contact {
-    height: calc(100vh - 61px);
+    height: 100%;
+    width: 100%;
+    position: fixed;
 }
 
 .Contact .container {
-    height: 100%;
+    height: calc(100% - 61px);
     width: 100%;
+    position: relative;
     background-image: url("../../Images/Golden_Gate_Bridge_side.webp");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+}
+.heightfrommissingnavbar {
+    height: 100% !important;
 }
 .Contact .container .formcontainer {
     background-color: var(--main-bg-color-alpha);

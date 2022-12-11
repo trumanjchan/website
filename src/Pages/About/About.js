@@ -31,7 +31,7 @@ function About() {
     }
 
     let lastKnownScrollPosition = 0;
-    let aboutProfileContainerPosition = 0;
+    let sectionNavbarPosition = 0;
     let ticking = false;
 
     function doSomething(scrollPos, sectionPos) {
@@ -55,11 +55,16 @@ function About() {
         // Only check when on About page
         if (window.location.pathname === '/my-website' || window.location.pathname === '/my-website/') {
             lastKnownScrollPosition = window.scrollY;
-            aboutProfileContainerPosition = document.getElementById('AboutProfile').scrollHeight;
+            if (window.innerWidth > 640) {
+                sectionNavbarPosition = (window.pageYOffset + document.getElementById('Profile').getBoundingClientRect().bottom) - (document.getElementById('Profile').getBoundingClientRect().bottom - document.getElementById('info-container').getBoundingClientRect().bottom) - 102;
+            }
+            else {
+                sectionNavbarPosition = (window.pageYOffset + document.getElementById('Profile').getBoundingClientRect().bottom) - (document.getElementById('Profile').getBoundingClientRect().bottom - document.getElementById('info-container').getBoundingClientRect().bottom) - 61;
+            }
 
             if (!ticking) {
                 window.requestAnimationFrame(() => {
-                    doSomething(lastKnownScrollPosition, aboutProfileContainerPosition);
+                    doSomething(lastKnownScrollPosition, sectionNavbarPosition);
                     ticking = false;
                 });
 
@@ -72,15 +77,15 @@ function About() {
         <main className='About'>
             <Navbar />
 
-            <div id='AboutProfile' className='Profile'>
+            <div id='Profile' className='Profile'>
                 <img className='cover' src={Cover} alt='UC Merced Admin Building' />
-                <div className='info-container'>
+                <div id='info-container' className='info-container'>
                     <div className='column-grid'>
                         <div className='first'>
                             <img className='headshot' src={Headshot} alt='Truman C.' />
                             <h1>Truman Chan</h1>
                             <h2>Junior Developer</h2>
-                            <div className='currentlywork'>Concentric&nbsp;Health&nbsp;Experience</div>
+                            <div className='currentlywork'>Concentric Health Experience</div>
                             <h3>San Francisco, CA, United States</h3>
                         </div>
                         <div className='second'>
@@ -144,7 +149,7 @@ function About() {
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>Socketchat<br/><i className='float-right'><a href='https://github.com/trumanjchan/Socketchat' target='_blank' rel='noreferrer'>Source</a> <a href='https://wschat.onrender.com/' target='_blank' rel='noreferrer'>Live</a></i></td>
+                                    <td>Socketchat<br/><i className='float-right'><a href='https://github.com/trumanjchan/Socketchat' target='_blank' rel='noreferrer'>Source</a> <a href='https://sockchats.fly.dev/' target='_blank' rel='noreferrer'>Live</a></i></td>
                                     <td>
                                         <div>Mar.&nbsp;2022</div>
                                         <div>&nbsp;-&nbsp;</div>
@@ -168,7 +173,7 @@ function About() {
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>My Task Board<br/><i className='float-right'><a href='https://github.com/illumimarty/CSE111-Fall2021-Project' target='_blank' rel='noreferrer'>Source</a></i></td>
+                                    <td>My Task Board<br/><i className='float-right'><a href='https://github.com/illumimarty/CSE111-Fall2021-Project' target='_blank' rel='noreferrer'>Source</a> <a href='https://mytaskboard.fly.dev/' target='_blank' rel='noreferrer'>Live</a></i></td>
                                     <td>
                                         <div>Nov.&nbsp;2021</div>
                                         <div>&nbsp;-&nbsp;</div>
