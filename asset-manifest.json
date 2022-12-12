@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/my-website/static/css/main.7b5e78a7.css",
-    "main.js": "/my-website/static/js/main.88241efb.js",
-    "static/media/CHX_NewYork.webp": "/my-website/static/media/CHX_NewYork.76b42b1e15f909e62100.webp",
+    "main.css": "/my-website/static/css/main.a900eb04.css",
+    "main.js": "/my-website/static/js/main.dfd03bb4.js",
+    "static/media/CHX_NewYork.webp": "/my-website/static/media/CHX_NewYork.55645340668a8b9b363e.webp",
     "static/media/Stow_Lake.webp": "/my-website/static/media/Stow_Lake.9d803239ff0c61ca8aba.webp",
     "static/media/Golden_Gate_Bridge_side.webp": "/my-website/static/media/Golden_Gate_Bridge_side.13efde78d87ba591b210.webp",
     "static/media/Mona-Sans.woff2": "/my-website/static/media/Mona-Sans.955a87eb3766a32ac970.woff2",
     "static/media/Truman_NY.webp": "/my-website/static/media/Truman_NY.c5e20e9cb56d4c24a85f.webp",
-    "static/media/github.webp": "/my-website/static/media/github.555bdbc35723eaf35b93.webp",
-    "static/media/email.webp": "/my-website/static/media/email.45e3b2a4db90c8e535b4.webp",
-    "static/media/linkedin.webp": "/my-website/static/media/linkedin.c4fd45a581963f0ef22d.webp",
-    "static/media/youtube.webp": "/my-website/static/media/youtube.d2c8926c123c5137127f.webp",
-    "static/media/navigation.webp": "/my-website/static/media/navigation.c23ea2cdb01bbec1109d.webp",
+    "static/media/icons8-github.svg": "/my-website/static/media/icons8-github.a61b960f2ce17e7b773b7e1013673b9f.svg",
     "index.html": "/my-website/index.html",
-    "main.7b5e78a7.css.map": "/my-website/static/css/main.7b5e78a7.css.map",
-    "main.88241efb.js.map": "/my-website/static/js/main.88241efb.js.map"
+    "static/media/icons8-instagram.svg": "/my-website/static/media/icons8-instagram.b6beacd904f86ba6e0cb57f5b4e24eb8.svg",
+    "static/media/icons8-linkedin.svg": "/my-website/static/media/icons8-linkedin.4554a29e958bf6eb6240ac56645fa27c.svg",
+    "static/media/icons8-gmail-logo.svg": "/my-website/static/media/icons8-gmail-logo.4f520c286581c7e59dfad73517871174.svg",
+    "static/media/icons8-menu.svg": "/my-website/static/media/icons8-menu.b74c5d8dfa35629abd12025ec121b0b8.svg",
+    "main.a900eb04.css.map": "/my-website/static/css/main.a900eb04.css.map",
+    "main.dfd03bb4.js.map": "/my-website/static/js/main.dfd03bb4.js.map"
   },
   "entrypoints": [
-    "static/css/main.7b5e78a7.css",
-    "static/js/main.88241efb.js"
+    "static/css/main.a900eb04.css",
+    "static/js/main.dfd03bb4.js"
   ]
 }
