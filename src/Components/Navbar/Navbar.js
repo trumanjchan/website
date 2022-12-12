@@ -1,12 +1,25 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
-import DropdownIcon from '../../Images/navigation.webp';
+import Menu from '../../Images/icons8-menu.svg';
 import Headshot from '../../Images/Truman_NY.webp';
 
 function Navbar() {
 
     useEffect(() => {
+        if (window.location.pathname === "/my-website" || window.location.pathname === "/my-website/") {
+            document.getElementById('About').classList.toggle('currentpage');
+        }
+        if (window.location.pathname === "/my-website/guides") {
+            document.getElementById('Guides').classList.toggle('currentpage');
+        }
+        if (window.location.pathname === "/my-website/tasks") {
+            document.getElementById('Tasks').classList.toggle('currentpage');
+        }
+        if (window.location.pathname === "/my-website/contact") {
+            document.getElementById('Contact').classList.toggle('currentpage');
+        }
+
         // Retrieve the value of locally-stored key 'data-theme', and set the theme
         const datatheme = localStorage.getItem("data-theme");
         console.log("Retrieved preference: " + datatheme + " mode");
@@ -108,12 +121,12 @@ function Navbar() {
 
     return (
         <div id='nav' className='Navbar'>
-            <div className='mobileview' onClick={toggleMobileView}><img id='dropdown' src={DropdownIcon} alt='Navigation icon by maulaga on flaticon.com' /></div>
+            <div className='mobileview' onClick={toggleMobileView}><img id='dropdown' src={Menu} alt='Menu' /></div>
             <ul id='contents' className='grid-container'>
-                <li onClick={navigateToNewPage}><Link to="/">About</Link></li>
-                <li onClick={navigateToNewPage}><Link to="/guides">Guides</Link></li>
-                <li onClick={navigateToNewPage}><Link to="/tasks">Tasks</Link></li>
-                <li onClick={navigateToNewPage}><Link to="/contact">Contact</Link></li>
+                <li id='About' onClick={navigateToNewPage}><Link to="/">About</Link></li>
+                <li id='Guides' onClick={navigateToNewPage}><Link to="/guides">Guides</Link></li>
+                <li id='Tasks' onClick={navigateToNewPage}><Link to="/tasks">Tasks</Link></li>
+                <li id='Contact' onClick={navigateToNewPage}><Link to="/contact">Contact</Link></li>
                 <li>
                     <label className="switch">
                         <input id='input' type="checkbox" onClick={toggleMode} />

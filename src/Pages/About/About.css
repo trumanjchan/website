@@ -85,17 +85,21 @@ body {
     display: flex;
     justify-content: space-evenly;
 }
+.About .Profile .info-container .column-grid .second .social-container a {
+    height: fit-content;
+    display: flex;
+    align-items: center;
+}
 .About .Profile .info-container .column-grid .second .social-container .social {
     object-fit: cover;
     width: 50px;
     height: 50px;
-    transform: rotate(0turn);
-    transition-duration: 0.8s;
+    transform: scale(1);
+    transition-duration: 0.3s;
 }
 .About .Profile .info-container .column-grid .second .social-container .social:hover {
-    transform: rotate(1turn);
-    transition-duration: 0.8s;
-    filter: drop-shadow(0 0 5px #6CAFCC);
+    transform: scale(1.2);
+    transition-duration: 0.3s;
 }
 
 .About .Education {
@@ -281,7 +285,7 @@ body {
     font-size: 20px;
 }
 .About .Awards .container .designmerced .award {
-    margin-bottom: 2.5%;
+    margin-bottom: 2%;
 }
 .About .Awards .container .designmerced .award .for a:link {
     font-size: 25px;
@@ -291,8 +295,12 @@ body {
 .About .Awards .container .designmerced .award .for a:hover {
     color: #6CAFCC;
 }
+.About .Awards .container .designmerced .award .issued {
+    color: rgb(104, 104, 104);
+}
 .About .Awards .container .designmerced .awarddesc {
     line-height: 1.5;
+    margin-left: 3%;
 }
 
 .About .Experience {
@@ -339,7 +347,19 @@ body {
     color: #6CAFCC;
 }
 .About .Experience .container .experiencelist .workedat .jobdesc {
-    margin-left: 5%;
+    position: relative;
+    padding-left: 5%;
+}
+.About .Experience .container .experiencelist .workedat .jobdesc:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    height: 98.5%;
+    margin: auto 0;
+    border: 1px solid var(--main-bg-color);
+    border-radius: 10px;
 }
 .About .Experience .container .experiencelist .workedat .jobdesc .lead {
     margin-bottom: 2.5%;
@@ -356,6 +376,7 @@ body {
 }
 .About .Experience .container .experiencelist .workedat .jobdesc .text {
     line-height: 1.5;
+    margin-left: 2.5%;
 }
 .About .Experience .container .experiencelist .divider {
     height: 2px;

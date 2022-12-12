@@ -3,10 +3,10 @@ import './About.css';
 import Navbar from '../../Components/Navbar/Navbar';
 import Cover from '../../Images/CHX_NewYork.webp';
 import Headshot from '../../Images/Truman_NY.webp';
-import Linkedin from '../../Images/linkedin.webp';
-import Github from '../../Images/github.webp';
-import Youtube from '../../Images/youtube.webp';
-import Gmail from '../../Images/email.webp';
+import LinkedIn from '../../Images/icons8-linkedin.svg';
+import GitHub from '../../Images/icons8-github.svg';
+import Instagram from '../../Images/icons8-instagram.svg';
+import Gmail from '../../Images/icons8-gmail-logo.svg';
 
 function About() {
 
@@ -91,10 +91,10 @@ function About() {
                         <div className='second'>
                             <p>University of California, Merced graduate with a bachelor's degree in Computer Science and Engineering. I am interested in frontend web development!</p>
                             <div className='social-container'>
-                                <a href='https://www.linkedin.com/in/trumanjfchan' target='_blank' rel='noreferrer'><img className='social' src={Linkedin} alt='Linkedin icon by mohammed mahdi on flaticon.com' /></a>
-                                <a href='https://github.com/trumanjchan' target='_blank' rel='noreferrer'><img className='social' src={Github} alt='Github icon by riajulislam on flaticon.com' /></a>
-                                <a href='https://www.youtube.com/channel/UCZb5w-4IBBowCrCCsKAtbuQ/featured' target='_blank' rel='noreferrer'><img className='social' src={Youtube} alt='Youtube icon by Md Tanvirul Haque on flaticon.com' /></a>
-                                <a href='mailto:trumanjfchan@gmail.com' target='_blank' rel='noreferrer'><img className='social' src={Gmail} alt='Gmail icon by rukanicon on flaticon.com' /></a>
+                                <a href='https://www.linkedin.com/in/trumanjfchan' target='_blank' rel='noreferrer'><img className='social' src={LinkedIn} alt='LinkedIn' /></a>
+                                <a href='https://github.com/trumanjchan' target='_blank' rel='noreferrer'><img className='social' src={GitHub} alt='GitHub' /></a>
+                                <a href='https://www.instagram.com/true.chan' target='_blank' rel='noreferrer'><img className='social' src={Instagram} alt='Instagram' /></a>
+                                <a href='mailto:trumanjfchan@gmail.com' target='_blank' rel='noreferrer'><img className='social' src={Gmail} alt='Gmail' /></a>
                             </div>
                         </div>
                     </div>
@@ -228,8 +228,8 @@ function About() {
                     <div className='title'>Awards</div>
                     <div className='designmerced'>
                         <div className='award'>
-                            <div className='for'><a href='https://devpost.com/software/insight-ar-glasses' target='_blank' rel='noreferrer'>DesignMerced I Winner</a></div>
-                            <div className='issued'>Issued by DesignMerced I • Nov&nbsp;2020</div>
+                            <div className='for'><a href='https://devpost.com/software/insight-ar-glasses' target='_blank' rel='noreferrer'>DesignMerced I</a></div>
+                            <div className='issued'>Issued by DesignMerced I &nbsp;|&nbsp;&nbsp;Nov&nbsp;2020</div>
                         </div>
                         <div className='awarddesc'>
                             <div>• Competed in a remote 24-hour design hackathon and won third place.</div>
@@ -263,7 +263,7 @@ function About() {
                                 <div className='member'>
                                     <div className='pos'>
                                         <div className='position'>Developer Apprentice</div>
-                                        <div className='date'>Jun 2022 - Aug 2022 • 3&nbsp;mos</div>
+                                        <div className='date'>Jun 2022 - Aug 2022 &nbsp;|&nbsp;&nbsp;3&nbsp;mos</div>
                                     </div>
                                     <div className='text'>
                                         <div>• Collaborated in a brand team in CHX's 9-week internship to create a pitch presentation and present to a CHX client.</div>
@@ -286,7 +286,7 @@ function About() {
                                 <div className='lead'>
                                     <div className='pos'>
                                         <div className='position'>Frontend Lead</div>
-                                        <div className='date'>Apr 2021 - Dec 2021 • 9&nbsp;mos</div>
+                                        <div className='date'>Apr 2021 - Dec 2021 &nbsp;|&nbsp;&nbsp;9&nbsp;mos</div>
                                     </div>
                                     <div className='text'>
                                         <div>• Assigned tasks to frontend team members.</div>
@@ -296,7 +296,7 @@ function About() {
                                 <div className='member'>
                                     <div className='pos'>
                                         <div className='position'>Frontend Member</div>
-                                        <div className='date'>Sep 2019 - Apr 2021 • 1&nbsp;yr&nbsp;8&nbsp;mos</div>
+                                        <div className='date'>Sep 2019 - Apr 2021 &nbsp;|&nbsp;&nbsp;1&nbsp;yr&nbsp;8&nbsp;mos</div>
                                     </div>
                                     <div className='text'>
                                         <div>• Learned and worked with HTML, CSS, Javascript, Node.js, React.js, Github, and Gitkraken.</div>
