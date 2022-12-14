@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/my-website/static/css/main.a900eb04.css",
-    "main.js": "/my-website/static/js/main.dfd03bb4.js",
-    "static/media/CHX_NewYork.webp": "/my-website/static/media/CHX_NewYork.55645340668a8b9b363e.webp",
-    "static/media/Stow_Lake.webp": "/my-website/static/media/Stow_Lake.9d803239ff0c61ca8aba.webp",
-    "static/media/Golden_Gate_Bridge_side.webp": "/my-website/static/media/Golden_Gate_Bridge_side.13efde78d87ba591b210.webp",
-    "static/media/Mona-Sans.woff2": "/my-website/static/media/Mona-Sans.955a87eb3766a32ac970.woff2",
-    "static/media/Truman_NY.webp": "/my-website/static/media/Truman_NY.c5e20e9cb56d4c24a85f.webp",
-    "static/media/icons8-github.svg": "/my-website/static/media/icons8-github.a61b960f2ce17e7b773b7e1013673b9f.svg",
-    "index.html": "/my-website/index.html",
-    "static/media/icons8-instagram.svg": "/my-website/static/media/icons8-instagram.b6beacd904f86ba6e0cb57f5b4e24eb8.svg",
-    "static/media/icons8-linkedin.svg": "/my-website/static/media/icons8-linkedin.4554a29e958bf6eb6240ac56645fa27c.svg",
-    "static/media/icons8-gmail-logo.svg": "/my-website/static/media/icons8-gmail-logo.4f520c286581c7e59dfad73517871174.svg",
-    "static/media/icons8-menu.svg": "/my-website/static/media/icons8-menu.b74c5d8dfa35629abd12025ec121b0b8.svg",
-    "main.a900eb04.css.map": "/my-website/static/css/main.a900eb04.css.map",
-    "main.dfd03bb4.js.map": "/my-website/static/js/main.dfd03bb4.js.map"
+    "main.css": "/website/static/css/main.e86dee6c.css",
+    "main.js": "/website/static/js/main.5b98c197.js",
+    "static/media/CHX_NewYork.webp": "/website/static/media/CHX_NewYork.55645340668a8b9b363e.webp",
+    "static/media/Stow_Lake.webp": "/website/static/media/Stow_Lake.9d803239ff0c61ca8aba.webp",
+    "static/media/Golden_Gate_Bridge_side.webp": "/website/static/media/Golden_Gate_Bridge_side.13efde78d87ba591b210.webp",
+    "static/media/Mona-Sans.woff2": "/website/static/media/Mona-Sans.955a87eb3766a32ac970.woff2",
+    "static/media/Truman_NY.webp": "/website/static/media/Truman_NY.c5e20e9cb56d4c24a85f.webp",
+    "static/media/icons8-github.svg": "/website/static/media/icons8-github.a61b960f2ce17e7b773b7e1013673b9f.svg",
+    "index.html": "/website/index.html",
+    "static/media/icons8-instagram.svg": "/website/static/media/icons8-instagram.b6beacd904f86ba6e0cb57f5b4e24eb8.svg",
+    "static/media/icons8-linkedin.svg": "/website/static/media/icons8-linkedin.4554a29e958bf6eb6240ac56645fa27c.svg",
+    "static/media/icons8-gmail-logo.svg": "/website/static/media/icons8-gmail-logo.4f520c286581c7e59dfad73517871174.svg",
+    "static/media/icons8-menu.svg": "/website/static/media/icons8-menu.b74c5d8dfa35629abd12025ec121b0b8.svg",
+    "main.e86dee6c.css.map": "/website/static/css/main.e86dee6c.css.map",
+    "main.5b98c197.js.map": "/website/static/js/main.5b98c197.js.map"
   },
   "entrypoints": [
-    "static/css/main.a900eb04.css",
-    "static/js/main.dfd03bb4.js"
+    "static/css/main.e86dee6c.css",
+    "static/js/main.5b98c197.js"
   ]
 }
