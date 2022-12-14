@@ -29,6 +29,16 @@ function About() {
         document.getElementById(tabName).style.display = "block";
         evt.currentTarget.className += " active";
     }
+    function moveToAnchor(evt, elementname) {
+        let anchorPosition = 0;
+        if (window.innerWidth > 640) {
+            anchorPosition = (window.pageYOffset + document.getElementById(elementname).getBoundingClientRect().top) - 102;
+        }
+        else {
+            anchorPosition = (window.pageYOffset + document.getElementById(elementname).getBoundingClientRect().top) - 61;
+        }
+        window.scrollTo(0, anchorPosition);
+    }
 
     let lastKnownScrollPosition = 0;
     let sectionNavbarPosition = 0;
@@ -53,7 +63,7 @@ function About() {
 
     document.addEventListener('scroll', (e) => {
         // Only check when on About page
-        if (window.location.pathname === '/my-website' || window.location.pathname === '/my-website/') {
+        if (window.location.pathname === '/website' || window.location.pathname === '/website/') {
             lastKnownScrollPosition = window.scrollY;
             if (window.innerWidth > 640) {
                 sectionNavbarPosition = (window.pageYOffset + document.getElementById('Profile').getBoundingClientRect().bottom) - (document.getElementById('Profile').getBoundingClientRect().bottom - document.getElementById('info-container').getBoundingClientRect().bottom) - 102;
@@ -141,7 +151,7 @@ function About() {
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>poc-mini-game<br/><a className='float-right-NDA' href='#poc-mini-game'>NDA</a></td>
+                                    <td>poc-mini-game<br/><button className='float-right-NDA' onClick={event => moveToAnchor(event, 'poc-mini-game')}>NDA</button></td>
                                     <td>
                                         <div>Aug.&nbsp;2022</div>
                                         <div>&nbsp;-&nbsp;</div>
@@ -157,7 +167,7 @@ function About() {
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td><b>This Website!</b><br/><i className='float-right'><a href='https://github.com/trumanjchan/my-website' target='_blank' rel='noreferrer'>Source</a></i></td>
+                                    <td><b>This Website!</b><br/><i className='float-right'><a href='https://github.com/trumanjchan/website' target='_blank' rel='noreferrer'>Source</a></i></td>
                                     <td>
                                         <div>Dec.&nbsp;2021</div>
                                         <div>&nbsp;-&nbsp;</div>
@@ -196,14 +206,6 @@ function About() {
                                         <div></div>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td>Bootstrap Website<br/><i className='float-right'><a href='https://github.com/trumanjchan/trumanjchan.github.io' target='_blank' rel='noreferrer'>Source</a> <a href='https://trumanjchan.github.io/' target='_blank' rel='noreferrer'>Live</a></i></td>
-                                    <td>
-                                        <div>Sept.&nbsp;2018</div>
-                                        <div>&nbsp;-&nbsp;</div>
-                                        <div>Nov.&nbsp;2020</div>
-                                    </td>
-                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -211,11 +213,11 @@ function About() {
                     <div id="Skills" className="tabcontent">
                         <div className='info'>
                             <div className='title'>Programming</div>
-                            <div className='text'>C++, Python, HTML, CSS, Javascript, Node.js, REST APIs, SQL</div>
+                            <div className='text'>HTML, CSS, Javascript, Node.js, C++, Python, REST APIs, SQL</div>
                             <div className='title'>Frameworks</div>
-                            <div className='text'>Bootstrap, React, Flask, Express.js</div>
+                            <div className='text'>React.js, Express.js, Flask, Bootstrap</div>
                             <div className='title'>Tools</div>
-                            <div className='text'>Visual Studio Code, Git, Github, Gitkraken, Sony Vegas Pro, Adobe CS5, Adobe XD, Google Workspace</div>
+                            <div className='text'>Git, Github, Gitkraken, Visual Studio Code, Sony Vegas Pro, Shotcut, Adobe Photoshop, Adobe XD, Google Workspace</div>
                             <div className='title'>Languages</div>
                             <div className='text'>English and conversational Cantonese</div>
                         </div>
@@ -231,10 +233,10 @@ function About() {
                             <div className='for'><a href='https://devpost.com/software/insight-ar-glasses' target='_blank' rel='noreferrer'>DesignMerced I</a></div>
                             <div className='issued'>Issued by DesignMerced I &nbsp;|&nbsp;&nbsp;Nov&nbsp;2020</div>
                         </div>
-                        <div className='awarddesc'>
-                            <div>• Competed in a remote 24-hour design hackathon and won third place.</div>
-                            <div>• Designed Adobe XD prototype of a pair of AR glasses that can connect to the internet and help users network with people on-the-go.</div>
-                        </div>
+                        <ul className='awarddesc'>
+                            <li>Competed in a remote 24-hour design hackathon and won third place.</li>
+                            <li>Designed Adobe XD prototype of a pair of AR glasses that can connect to the internet and help users network with people on-the-go.</li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -255,26 +257,24 @@ function About() {
                                         <div className='position'>Junior Developer</div>
                                         <div className='date'>Aug 2022 - <i>Present</i></div>
                                     </div>
-                                    <div className='text'>
-                                        <div>• Created an object oriented responsive mini game web app using HTML, CSS, Javascript, Socket.io, Node.js, and Express.js under R&D.</div>
-                                        <div>• Implement changes requested on Ziflow routes for emails, banners, and websites through code to pass back to IP (Integrated Production) for further markups or to QA for additional testing.</div>
-                                    </div>
+                                    <ul className='text'>
+                                        <li>Created an object oriented responsive mini game web app using HTML, CSS, Javascript, Socket.io, Node.js, and Express.js under R&D.</li>
+                                        <li>Implement changes requested on Ziflow routes for emails, banners, and websites through code to pass back to IP (Integrated Production) for further markups or to QA (Quality Assurance) for additional testing.</li>
+                                    </ul>
                                 </div>
                                 <div className='member'>
                                     <div className='pos'>
                                         <div className='position'>Developer Apprentice</div>
                                         <div className='date'>Jun 2022 - Aug 2022 &nbsp;|&nbsp;&nbsp;3&nbsp;mos</div>
                                     </div>
-                                    <div className='text'>
-                                        <div>• Collaborated in a brand team in CHX's 9-week internship to create a pitch presentation and present to a CHX client.</div>
-                                        <div>• Learned how a healthcare advertising agency operates by attending informative CHX-led presentations.</div>
-                                        <div>• Acquired knowledge of MJML, GSAP, Veeva Systems, Wordpress, Bitbucket, and Jira through LinkedIn Learning courses and reading documentation during onboarding with the development team.</div>
-                                    </div>
+                                    <ul className='text'>
+                                        <li>Collaborated in a brand team in CHX's 9-week internship to create a pitch presentation and present to a CHX client.</li>
+                                        <li>Learned how a healthcare advertising agency operates by attending informative CHX-led presentations.</li>
+                                        <li>Acquired knowledge of MJML, GSAP, Veeva Systems, Wordpress, Bitbucket, and Jira through LinkedIn Learning courses and reading documentation during onboarding with the development team.</li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
-
-                        <div className='divider'></div>
 
                         <div className='workedat'>
                             <div className='total'>
@@ -288,21 +288,21 @@ function About() {
                                         <div className='position'>Frontend Lead</div>
                                         <div className='date'>Apr 2021 - Dec 2021 &nbsp;|&nbsp;&nbsp;9&nbsp;mos</div>
                                     </div>
-                                    <div className='text'>
-                                        <div>• Assigned tasks to frontend team members.</div>
-                                        <div>• Taught team members how to work with the codebase by explaining how to use Gitkraken for tasks and Github for pull requests.</div>
-                                    </div>
+                                    <ul className='text'>
+                                        <li>Assigned tasks to frontend team members.</li>
+                                        <li>Taught team members how to work with the codebase by explaining how to use Gitkraken for tasks and Github for pull requests.</li>
+                                    </ul>
                                 </div>
                                 <div className='member'>
                                     <div className='pos'>
                                         <div className='position'>Frontend Member</div>
                                         <div className='date'>Sep 2019 - Apr 2021 &nbsp;|&nbsp;&nbsp;1&nbsp;yr&nbsp;8&nbsp;mos</div>
                                     </div>
-                                    <div className='text'>
-                                        <div>• Learned and worked with HTML, CSS, Javascript, Node.js, React.js, Github, and Gitkraken.</div>
-                                        <div>• Coded responsive and reusable web page components and web pages for in-person and virtual events, and for the HackMerced website.</div>
-                                        <div>• Organized two MLH Local Build/Hack Day events, two 36-hour hackathons, and a design hackathon with teammates.</div>
-                                    </div>
+                                    <ul className='text'>
+                                        <li>Learned and worked with HTML, CSS, Javascript, Node.js, React.js, Github, and Gitkraken.</li>
+                                        <li>Coded responsive and reusable web page components and web pages for in-person and virtual events, and for the HackMerced website.</li>
+                                        <li>Organized two MLH Local Build/Hack Day events, two 36-hour hackathons, and a design hackathon with teammates.</li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>

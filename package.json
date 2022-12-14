@@ -1,6 +1,6 @@
 {
-  "homepage": "https://trumanjchan.github.io/my-website",
-  "name": "my-website",
+  "homepage": "https://trumanjchan.github.io/website",
+  "name": "website",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

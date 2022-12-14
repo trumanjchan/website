@@ -7,16 +7,16 @@ import Headshot from '../../Images/Truman_NY.webp';
 function Navbar() {
 
     useEffect(() => {
-        if (window.location.pathname === "/my-website" || window.location.pathname === "/my-website/") {
+        if (window.location.pathname === "/website" || window.location.pathname === "/website/") {
             document.getElementById('About').classList.toggle('currentpage');
         }
-        if (window.location.pathname === "/my-website/guides") {
+        if (window.location.pathname === "/website/guides") {
             document.getElementById('Guides').classList.toggle('currentpage');
         }
-        if (window.location.pathname === "/my-website/tasks") {
+        if (window.location.pathname === "/website/tasks") {
             document.getElementById('Tasks').classList.toggle('currentpage');
         }
-        if (window.location.pathname === "/my-website/contact") {
+        if (window.location.pathname === "/website/contact") {
             document.getElementById('Contact').classList.toggle('currentpage');
         }
 

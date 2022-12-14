@@ -37,7 +37,8 @@
     background-color: var(--container-bg-color);
 }
 .Guides .container .tabscolumn button:hover {
-    background-color: #ddd;
+    background-color: var(--main-bg-color);
+    color: var(--invert-color);
 }
 .Guides .container .tabscolumn button.active {
     background-color: var(--main-bg-color);

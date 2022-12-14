@@ -243,6 +243,12 @@ body {
     float: right;
     text-align: right;
     text-decoration: line-through;
+    font-size: 20px;
+    color: gray;
+    padding: 0;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
 }
 .About .Tabs .container #Skills {
     margin: 4% 10%;
@@ -300,7 +306,7 @@ body {
 }
 .About .Awards .container .designmerced .awarddesc {
     line-height: 1.5;
-    margin-left: 3%;
+    margin-left: -1%;
 }
 
 .About .Experience {
@@ -327,8 +333,14 @@ body {
     flex-direction: column;
 }
 .About .Experience .container .experiencelist .workedat {
-    margin: 4% 10%;
+    margin: 2% 10%;
     font-size: 20px;
+}
+.About .Experience .container .experiencelist .workedat:first-child {
+    margin-top: 4%;
+}
+.About .Experience .container .experiencelist .workedat:last-child {
+    margin-bottom: 4%;
 }
 .About .Experience .container .experiencelist .workedat .total {
     margin-bottom: 3%;
@@ -376,14 +388,7 @@ body {
 }
 .About .Experience .container .experiencelist .workedat .jobdesc .text {
     line-height: 1.5;
-    margin-left: 2.5%;
-}
-.About .Experience .container .experiencelist .divider {
-    height: 2px;
-    width: 80%;
-    border-radius: 2px;
-    background-color: rgb(0, 136, 255);
-    margin: 0 auto;
+    margin-left: -1%;
 }
 
 
