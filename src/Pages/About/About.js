@@ -175,7 +175,7 @@ function About() {
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>Scribing<br/><i className='float-right'><a href='https://github.com/shiv248/TypeRacer' target='_blank' rel='noreferrer'>Source</a></i></td>
+                                    <td>Scribing<br/><i className='float-right'><a href='https://github.com/shiv248/TypeRacer' target='_blank' rel='noreferrer'>Source</a> <a href='https://scribing.fly.dev/' target='_blank' rel='noreferrer'>Live</a></i></td>
                                     <td>
                                         <div>Nov.&nbsp;2021</div>
                                         <div>&nbsp;-&nbsp;</div>

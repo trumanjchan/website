@@ -24,7 +24,7 @@ function Navbar() {
         const datatheme = localStorage.getItem("data-theme");
         console.log("Retrieved preference: " + datatheme + " mode");
         const menu = document.getElementById('dropdown');
-        if (datatheme === "light") {
+        if (datatheme === "light" || datatheme === null) {
             document.documentElement.setAttribute("data-theme", "light");
             // Set checkbox to be unchecked (button in off state - left)
             document.getElementById('input').checked = false;
