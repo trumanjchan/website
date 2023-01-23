@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/website/static/css/main.e86dee6c.css",
-    "main.js": "/website/static/js/main.5b98c197.js",
+    "main.css": "/website/static/css/main.9cfec8cd.css",
+    "main.js": "/website/static/js/main.84e33c3d.js",
     "static/media/CHX_NewYork.webp": "/website/static/media/CHX_NewYork.55645340668a8b9b363e.webp",
     "static/media/Stow_Lake.webp": "/website/static/media/Stow_Lake.9d803239ff0c61ca8aba.webp",
     "static/media/Golden_Gate_Bridge_side.webp": "/website/static/media/Golden_Gate_Bridge_side.13efde78d87ba591b210.webp",
@@ -13,11 +13,11 @@
     "static/media/icons8-linkedin.svg": "/website/static/media/icons8-linkedin.4554a29e958bf6eb6240ac56645fa27c.svg",
     "static/media/icons8-gmail-logo.svg": "/website/static/media/icons8-gmail-logo.4f520c286581c7e59dfad73517871174.svg",
     "static/media/icons8-menu.svg": "/website/static/media/icons8-menu.b74c5d8dfa35629abd12025ec121b0b8.svg",
-    "main.e86dee6c.css.map": "/website/static/css/main.e86dee6c.css.map",
-    "main.5b98c197.js.map": "/website/static/js/main.5b98c197.js.map"
+    "main.9cfec8cd.css.map": "/website/static/css/main.9cfec8cd.css.map",
+    "main.84e33c3d.js.map": "/website/static/js/main.84e33c3d.js.map"
   },
   "entrypoints": [
-    "static/css/main.e86dee6c.css",
-    "static/js/main.5b98c197.js"
+    "static/css/main.9cfec8cd.css",
+    "static/js/main.84e33c3d.js"
   ]
 }
