@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import './Navbar.css';
 import Menu from '../../Images/icons8-menu.svg';
 import Headshot from '../../Images/Truman_NY.webp';
@@ -7,19 +7,6 @@ import Headshot from '../../Images/Truman_NY.webp';
 function Navbar() {
 
     useEffect(() => {
-        if (window.location.pathname === "/website" || window.location.pathname === "/website/") {
-            document.getElementById('About').classList.toggle('currentpage');
-        }
-        if (window.location.pathname === "/website/guides") {
-            document.getElementById('Guides').classList.toggle('currentpage');
-        }
-        if (window.location.pathname === "/website/tasks") {
-            document.getElementById('Tasks').classList.toggle('currentpage');
-        }
-        if (window.location.pathname === "/website/contact") {
-            document.getElementById('Contact').classList.toggle('currentpage');
-        }
-
         // Retrieve the value of locally-stored key 'data-theme', and set the theme
         const datatheme = localStorage.getItem("data-theme");
         console.log("Retrieved preference: " + datatheme + " mode");
@@ -55,6 +42,10 @@ function Navbar() {
             else {
                 document.getElementById('container').classList.add('heightfrommissingnavbar');
             }
+        }
+
+        if (document.querySelector(".Navbar .grid-container li a.active")) {
+            document.querySelector(".Navbar .grid-container li a.active").parentNode.style.opacity = "1";
         }
     },[]);
 
@@ -123,10 +114,10 @@ function Navbar() {
         <div id='nav' className='Navbar'>
             <div className='mobileview' onClick={toggleMobileView}><img id='dropdown' src={Menu} alt='Menu' /></div>
             <ul id='contents' className='grid-container'>
-                <li id='About' onClick={navigateToNewPage}><Link to="/">About</Link></li>
-                <li id='Guides' onClick={navigateToNewPage}><Link to="/guides">Guides</Link></li>
-                <li id='Tasks' onClick={navigateToNewPage}><Link to="/tasks">Tasks</Link></li>
-                <li id='Contact' onClick={navigateToNewPage}><Link to="/contact">Contact</Link></li>
+                <li id='About' onClick={navigateToNewPage}><NavLink to="/">About</NavLink></li>
+                <li id='Guides' onClick={navigateToNewPage}><NavLink to="/guides">Guides</NavLink></li>
+                <li id='Tasks' onClick={navigateToNewPage}><NavLink to="/tasks">Tasks</NavLink></li>
+                <li id='Contact' onClick={navigateToNewPage}><NavLink to="/contact">Contact</NavLink></li>
                 <li>
                     <label className="switch">
                         <input id='input' type="checkbox" onClick={toggleMode} />
