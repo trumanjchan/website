@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/website/static/css/main.9cfec8cd.css",
-    "main.js": "/website/static/js/main.84e33c3d.js",
-    "static/media/CHX_NewYork.webp": "/website/static/media/CHX_NewYork.55645340668a8b9b363e.webp",
-    "static/media/Stow_Lake.webp": "/website/static/media/Stow_Lake.9d803239ff0c61ca8aba.webp",
-    "static/media/Golden_Gate_Bridge_side.webp": "/website/static/media/Golden_Gate_Bridge_side.13efde78d87ba591b210.webp",
-    "static/media/Mona-Sans.woff2": "/website/static/media/Mona-Sans.955a87eb3766a32ac970.woff2",
-    "static/media/Truman_NY.webp": "/website/static/media/Truman_NY.c5e20e9cb56d4c24a85f.webp",
-    "static/media/icons8-github.svg": "/website/static/media/icons8-github.a61b960f2ce17e7b773b7e1013673b9f.svg",
-    "index.html": "/website/index.html",
-    "static/media/icons8-instagram.svg": "/website/static/media/icons8-instagram.b6beacd904f86ba6e0cb57f5b4e24eb8.svg",
-    "static/media/icons8-linkedin.svg": "/website/static/media/icons8-linkedin.4554a29e958bf6eb6240ac56645fa27c.svg",
-    "static/media/icons8-gmail-logo.svg": "/website/static/media/icons8-gmail-logo.4f520c286581c7e59dfad73517871174.svg",
-    "static/media/icons8-menu.svg": "/website/static/media/icons8-menu.b74c5d8dfa35629abd12025ec121b0b8.svg",
-    "main.9cfec8cd.css.map": "/website/static/css/main.9cfec8cd.css.map",
-    "main.84e33c3d.js.map": "/website/static/js/main.84e33c3d.js.map"
+    "main.css": "/static/css/main.171bebe9.css",
+    "main.js": "/static/js/main.27d769e0.js",
+    "static/media/CHX_NewYork.webp": "/static/media/CHX_NewYork.55645340668a8b9b363e.webp",
+    "static/media/Stow_Lake.webp": "/static/media/Stow_Lake.9d803239ff0c61ca8aba.webp",
+    "static/media/Golden_Gate_Bridge_side.webp": "/static/media/Golden_Gate_Bridge_side.13efde78d87ba591b210.webp",
+    "static/media/Mona-Sans.woff2": "/static/media/Mona-Sans.955a87eb3766a32ac970.woff2",
+    "static/media/Truman_NY.webp": "/static/media/Truman_NY.c5e20e9cb56d4c24a85f.webp",
+    "static/media/icons8-github.svg": "/static/media/icons8-github.a61b960f2ce17e7b773b7e1013673b9f.svg",
+    "index.html": "/index.html",
+    "static/media/icons8-instagram.svg": "/static/media/icons8-instagram.b6beacd904f86ba6e0cb57f5b4e24eb8.svg",
+    "static/media/icons8-linkedin.svg": "/static/media/icons8-linkedin.4554a29e958bf6eb6240ac56645fa27c.svg",
+    "static/media/icons8-gmail-logo.svg": "/static/media/icons8-gmail-logo.4f520c286581c7e59dfad73517871174.svg",
+    "static/media/icons8-menu.svg": "/static/media/icons8-menu.b74c5d8dfa35629abd12025ec121b0b8.svg",
+    "main.171bebe9.css.map": "/static/css/main.171bebe9.css.map",
+    "main.27d769e0.js.map": "/static/js/main.27d769e0.js.map"
   },
   "entrypoints": [
-    "static/css/main.9cfec8cd.css",
-    "static/js/main.84e33c3d.js"
+    "static/css/main.171bebe9.css",
+    "static/js/main.27d769e0.js"
   ]
 }
