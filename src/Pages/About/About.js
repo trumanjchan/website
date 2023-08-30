@@ -63,7 +63,7 @@ function About() {
 
     document.addEventListener('scroll', (e) => {
         // Only check when on About page
-        if (window.location.pathname === '/website' || window.location.pathname === '/website/') {
+        if (window.location.pathname === '' || window.location.pathname === '/') {
             lastKnownScrollPosition = window.scrollY;
             if (window.innerWidth > 640) {
                 sectionNavbarPosition = (window.pageYOffset + document.getElementById('Profile').getBoundingClientRect().bottom) - (document.getElementById('Profile').getBoundingClientRect().bottom - document.getElementById('info-container').getBoundingClientRect().bottom) - 102;

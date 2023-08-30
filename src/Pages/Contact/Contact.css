@@ -8,7 +8,6 @@
     height: calc(100% - 61px);
     width: 100%;
     position: relative;
-    background-image: url("../../Images/Golden_Gate_Bridge_side.webp");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -38,7 +37,7 @@
 .Contact .container .formcontainer form {
     padding: 0 30px;
 }
-.Contact .container .formcontainer form div:first-child {
+.Contact .container .formcontainer form .sendto {
     width: fit-content;
     margin: 5% auto;
     font-weight: bold;
@@ -70,10 +69,6 @@
 }
 .Contact .container .formcontainer form button:active {
     filter: invert(100%);
-}
-
-.apply-inset {
-    box-shadow: inset 0px 0px 100px 100px black;
 }
 
 
