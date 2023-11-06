@@ -129,7 +129,7 @@ function Navbar() {
                 <img id='headshot' className='headshot' src={Headshot} alt='Truman C.' />
                 <div id='textcontainer'>
                     <div>Truman Chan (He/Him)</div>
-                    <div>Junior Developer at Concentric&nbsp;Health&nbsp;Experience</div>
+                    <div>Junior Developer at&nbsp;ConcentricLife</div>
                 </div>
             </div>
         </div>

@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { NavLink } from 'react-router-dom';
 import './About.css';
 import Navbar from '../../Components/Navbar/Navbar';
 import Cover from '../../Images/CHX_NewYork.webp';
@@ -88,24 +89,22 @@ function About() {
             <Navbar />
 
             <div id='Profile' className='Profile'>
-                <img className='cover' src={Cover} alt='UC Merced Admin Building' />
+                <img className='cover' src={Cover} alt='NYC Brooklyn Bridge' />
                 <div id='info-container' className='info-container'>
-                    <div className='column-grid'>
-                        <div className='first'>
-                            <img className='headshot' src={Headshot} alt='Truman C.' />
-                            <h1>Truman Chan</h1>
-                            <h2>Junior Developer</h2>
-                            <div className='currentlywork'>Concentric Health Experience</div>
-                            <h3>San Francisco, CA, United States</h3>
-                        </div>
-                        <div className='second'>
-                            <p>University of California, Merced graduate with a bachelor's degree in Computer Science and Engineering. I am interested in frontend web development!</p>
-                            <div className='social-container'>
-                                <a href='https://www.linkedin.com/in/trumanjfchan' target='_blank' rel='noreferrer'><img className='social' src={LinkedIn} alt='LinkedIn' /></a>
-                                <a href='https://github.com/trumanjchan' target='_blank' rel='noreferrer'><img className='social' src={GitHub} alt='GitHub' /></a>
-                                <a href='https://www.instagram.com/true.chan' target='_blank' rel='noreferrer'><img className='social' src={Instagram} alt='Instagram' /></a>
-                                <a href='mailto:trumanjfchan@gmail.com' target='_blank' rel='noreferrer'><img className='social' src={Gmail} alt='Gmail' /></a>
-                            </div>
+                    <div className='first'>
+                        <img className='headshot' src={Headshot} alt='Truman C.' />
+                        <h1>Truman Chan</h1>
+                        <h2>Junior Developer</h2>
+                        <div className='currentlywork'>ConcentricLife</div>
+                        <h3>San Francisco, CA, United States</h3>
+                    </div>
+                    <div className='second'>
+                        <p>University of California, Merced graduate with a bachelor's degree in Computer Science and Engineering. I am interested in frontend web development!</p>
+                        <div className='social-container'>
+                            <a href='https://www.linkedin.com/in/trumanjfchan' target='_blank' rel='noreferrer'><img className='social' src={LinkedIn} alt='LinkedIn' /></a>
+                            <a href='https://github.com/trumanjchan' target='_blank' rel='noreferrer'><img className='social' src={GitHub} alt='GitHub' /></a>
+                            <a href='https://www.instagram.com/true.chan' target='_blank' rel='noreferrer'><img className='social' src={Instagram} alt='Instagram' /></a>
+                            <NavLink to="/contact"><img className='social' src={Gmail} alt='Gmail' /></NavLink>
                         </div>
                     </div>
                 </div>
@@ -151,11 +150,27 @@ function About() {
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>poc-mini-game<br/><button className='float-right-NDA' onClick={event => moveToAnchor(event, 'poc-mini-game')}>NDA</button></td>
+                                    <td>Gallery<br/><i className='float-right'><a href='https://github.com/trumanjchan/gallery' target='_blank' rel='noreferrer'>Source</a></i></td>
+                                    <td>
+                                        <div>Oct.&nbsp;2023</div>
+                                        <div>&nbsp;-&nbsp;</div>
+                                        <div><i>Present</i></div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>poc-mini-game-2<br/><button className='float-right-NDA' onClick={event => moveToAnchor(event, 'poc-mini-game')}>NDA</button></td>
+                                    <td>
+                                        <div>Apr.&nbsp;2023</div>
+                                        <div>&nbsp;-&nbsp;</div>
+                                        <div>May&nbsp;2023</div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>poc-mini-game-1<br/><button className='float-right-NDA' onClick={event => moveToAnchor(event, 'poc-mini-game')}>NDA</button></td>
                                     <td>
                                         <div>Aug.&nbsp;2022</div>
                                         <div>&nbsp;-&nbsp;</div>
-                                        <div><i>Present</i></div>
+                                        <div>Mar.&nbsp;2023</div>
                                     </td>
                                 </tr>
                                 <tr>
@@ -247,9 +262,9 @@ function About() {
                     <div className='experiencelist'>
                         <div className='workedat'>
                             <div className='total'>
-                                <div className='companyname'><a id='poc-mini-game' href='https://concentrichx.com/' target='_blank' rel='noreferrer'>Concentric Health Experience</a></div>
+                                <div className='companyname'><a id='poc-mini-game' href='https://concentric.life/' target='_blank' rel='noreferrer'>ConcentricLife</a></div>
                                 <div className='date'>Full-time</div>
-                                <div>New York, NY</div>
+                                <div>New York City, NY</div>
                             </div>
                             <div className='jobdesc'>
                                 <div className='lead'>
@@ -258,8 +273,8 @@ function About() {
                                         <div className='date'>Aug 2022 - <i>Present</i></div>
                                     </div>
                                     <ul className='text'>
-                                        <li>Created an object oriented responsive mini game web app using HTML, CSS, Javascript, Socket.io, Node.js, and Express.js under R&D.</li>
-                                        <li>Implement changes requested on Ziflow routes for emails, banners, and websites through code to pass back to IP (Integrated Production) for further markups or to QA (Quality Assurance) for additional testing.</li>
+                                        <li>Created two object oriented responsive mini game web applications using HTML, CSS, Javascript, Socket.io, Node.js, and Express.js under R&D.</li>
+                                        <li>Implement changes requested on Ziflow routes for emails (MJML, OFTs, Email on Acid), banners (GSAP, DoubleClick), and websites (Nuxt.js, Vue.js, AEM, AWS) through code to pass back to Integrated Production for further markups or to Quality Assurance for additional testing.</li>
                                     </ul>
                                 </div>
                                 <div className='member'>
@@ -268,9 +283,9 @@ function About() {
                                         <div className='date'>Jun 2022 - Aug 2022 &nbsp;|&nbsp;&nbsp;3&nbsp;mos</div>
                                     </div>
                                     <ul className='text'>
-                                        <li>Collaborated in a brand team in CHX's 9-week internship to create a pitch presentation and present to a CHX client.</li>
+                                        <li>Collaborated in a brand team in Concentric Health Experience's 9-week internship to create a pitch presentation and present to a CHX client.</li>
                                         <li>Learned how a healthcare advertising agency operates by attending informative CHX-led presentations.</li>
-                                        <li>Acquired knowledge of MJML, GSAP, Veeva Systems, Wordpress, Bitbucket, and Jira through LinkedIn Learning courses and reading documentation during onboarding with the development team.</li>
+                                        <li>Acquired knowledge of MJML, GSAP, Veeva Systems, Wordpress, and Vue.js through LinkedIn Learning courses and reading documentation during onboarding with the development team.</li>
                                     </ul>
                                 </div>
                             </div>

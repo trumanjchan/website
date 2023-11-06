@@ -6,6 +6,9 @@
     border-bottom: 1px solid var(--main-bg-color);
     background-image: linear-gradient(rgb(0, 136, 255), var(--container-bg-color));
     height: 60px;
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
 }
 
 .Navbar .mobileview {
@@ -246,7 +249,7 @@
         opacity: 0 !important;
     }
     .Navbar #essentialinfo #textcontainer {
-        margin-right: 10%;
+        margin-right: 15%;
         height: fit-content;
         align-self: center;
     }

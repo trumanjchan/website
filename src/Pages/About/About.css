@@ -22,41 +22,36 @@ body {
     height: 210px;
 }
 .About .Profile .info-container {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 50% 50%;
     background-color: var(--container-bg-color);
     border-bottom-left-radius: 12px;
     border-bottom-right-radius: 12px;
 }
-.About .Profile .info-container .column-grid {
-    display: grid;
-    grid-template-columns: 50% 50%;
-    height: 100%;
-}
-.About .Profile .info-container .column-grid .first {
+.About .Profile .info-container .first {
     margin: auto 0% auto 20%;
     padding-bottom: 10%;
 }
-.About .Profile .info-container .column-grid .first .headshot {
+.About .Profile .info-container .first .headshot {
     width: 200px;
     margin-top: -25%;
     border-radius: 50%;
     border: 5px solid white;
     box-shadow: 0px 2px 3px 1px rgba(0, 0, 0, 0.2);
 }
-.About .Profile .info-container .column-grid .first h1 {
+.About .Profile .info-container .first h1 {
     font-size: 35px;
     padding-top: 3%;
     padding-bottom: 2%;
     margin: 0;
 }
-.About .Profile .info-container .column-grid .first h2 {
+.About .Profile .info-container .first h2 {
     font-size: 30px;
     font-weight: 400;
     padding-bottom: 2%;
     margin: 0;
 }
-.About .Profile .info-container .column-grid .first .currentlywork {
+.About .Profile .info-container .first .currentlywork {
     font-size: 20px;
     font-weight: 400;
     width: fit-content;
@@ -66,38 +61,38 @@ body {
     background-color: var(--main-bg-color);
     border-radius: 8px;
 }
-.About .Profile .info-container .column-grid .first h3 {
+.About .Profile .info-container .first h3 {
     font-size: 18px;
     font-weight: normal;
     color: rgb(104, 104, 104);
     margin: 0;
 }
-.About .Profile .info-container .column-grid .second {
+.About .Profile .info-container .second {
     margin: auto 20% auto 0%;
     letter-spacing: 2px;
     font-size: 20px;
     text-align: center;
 }
-.About .Profile .info-container .column-grid .second p {
+.About .Profile .info-container .second p {
     margin: 0% 0% 5% 0%;
 }
-.About .Profile .info-container .column-grid .second .social-container{
+.About .Profile .info-container .second .social-container{
     display: flex;
     justify-content: space-evenly;
 }
-.About .Profile .info-container .column-grid .second .social-container a {
+.About .Profile .info-container .second .social-container a {
     height: fit-content;
     display: flex;
     align-items: center;
 }
-.About .Profile .info-container .column-grid .second .social-container .social {
+.About .Profile .info-container .second .social-container .social {
     object-fit: cover;
     width: 50px;
     height: 50px;
     transform: scale(1);
     transition-duration: 0.3s;
 }
-.About .Profile .info-container .column-grid .second .social-container .social:hover {
+.About .Profile .info-container .second .social-container .social:hover {
     transform: scale(1.2);
     transition-duration: 0.3s;
 }
@@ -192,6 +187,12 @@ body {
 }
 .About .Tabs .container .tab button.active {
     display: none;
+}
+.About .Tabs .container .tab .tablinks {
+    cursor: pointer;
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
 }
 .About .Tabs .container #Projects {
     margin: 4% 10%;
@@ -394,24 +395,24 @@ body {
 
 /* Profile */
 @media only screen and (max-width: 1024px) {
-    .About .Profile .info-container .column-grid {
+    .About .Profile .info-container {
         display: flex;
         flex-direction: column;
         text-align: center;
     }
-    .About .Profile .info-container .column-grid .first {
+    .About .Profile .info-container .first {
         width: 100%;
         margin: 0;
         padding-bottom: 0;
     }
-    .About .Profile .info-container .column-grid .first .currentlywork {
+    .About .Profile .info-container .first .currentlywork {
         margin-left: auto;
         margin-right: auto;
     }
-    .About .Profile .info-container .column-grid .first h3 {
+    .About .Profile .info-container .first h3 {
         margin-bottom: 5%;
     }
-    .About .Profile .info-container .column-grid .second {
+    .About .Profile .info-container .second {
         margin: auto auto;
         width: 80%;
         letter-spacing: 2px;
@@ -424,7 +425,7 @@ body {
 @media only screen and (max-width: 768px) {
     .About .Tabs .container #Projects tr td:last-child {
         display: flex;
-        flex-direction: column-reverse;
+        flex-direction: column;
         flex-wrap: wrap;
         justify-content: center;
     }
