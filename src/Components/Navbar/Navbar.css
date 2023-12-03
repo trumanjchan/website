@@ -11,6 +11,18 @@
     user-select: none; /* Standard syntax */
 }
 
+#navmodaloverlay {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 30%);
+    pointer-events: auto;
+    visibility: hidden;
+}
 .Navbar .mobileview {
     display: none;
     height: 100%;
@@ -245,7 +257,13 @@
     .Navbar #essentialinfo img {
         margin-left: 10%;
     }
-    .togglevisibility {
+    .t-overflow {
+        overflow: hidden;
+    }
+    .t-visibility {
+        visibility: visible !important;
+    }
+    .t-opacity {
         opacity: 0 !important;
     }
     .Navbar #essentialinfo #textcontainer {

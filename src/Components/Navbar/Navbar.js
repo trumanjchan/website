@@ -47,6 +47,8 @@ function Navbar() {
         if (document.querySelector(".Navbar .grid-container li a.active")) {
             document.querySelector(".Navbar .grid-container li a.active").parentNode.style.opacity = "1";
         }
+
+        document.querySelector('#root .About').appendChild(document.getElementById("navmodaloverlay"));
     },[]);
 
     const toggleMode = (e) => {
@@ -61,10 +63,6 @@ function Navbar() {
             document.getElementById("div").style.transition = "all 300ms";
             // Set the user's preference in local storage
             localStorage.setItem("data-theme", "light");
-            // On mobile view, if user touches toggle button then exit out of navbar menu
-            if (window.innerWidth < 640) {
-                document.getElementById("dropdown").click();
-            }
         }
         else {
             document.body.style.transition = "all 300ms";
@@ -72,10 +70,10 @@ function Navbar() {
             console.log("dark mode");
             document.getElementById("div").style.transition = "all 300ms";
             localStorage.setItem("data-theme", "dark");
-            if (window.innerWidth < 640) {
-                document.getElementById("dropdown").click();
-            }
         }
+
+        // On mobile view, if user touches toggle button then exit out of navbar menu
+        closeMobileNav();
     }
 
     const toggleMobileView = () => {
@@ -83,10 +81,28 @@ function Navbar() {
         var element2 = document.getElementById('nav');
         element1.classList.toggle('grid-container');
         element2.classList.toggle('change-bg-color');
-        
-        document.getElementById('essentialinfo').classList.toggle('togglevisibility');
+
+        let bodyTag = document.getElementsByTagName('body')[0];
+        bodyTag.classList.toggle('t-overflow');
+        if (bodyTag.style.touchAction === 'none') {
+            bodyTag.style.touchAction = null;
+        } else {
+            bodyTag.style.touchAction = 'none';
+        }
+        document.getElementById('navmodaloverlay').classList.toggle('t-visibility');
+        document.getElementById('essentialinfo').classList.toggle('t-opacity');
     }
+    
+    const closeMobileNav = () => {
+        if (window.innerWidth < 640) {
+            document.getElementById("dropdown").click();
+        }
+    }
+
     const navigateToNewPage = () => {
+        // If user clicks on the page they're currently on, in the mobile nav
+        closeMobileNav();
+
         window.scrollTo(0, document.windowHeight);
     }
 
@@ -97,7 +113,10 @@ function Navbar() {
             element1.classList.add('grid-container');
             element2.classList.remove('change-bg-color');
 
-            document.getElementById('essentialinfo').classList.remove('togglevisibility');
+            document.getElementsByTagName('body')[0].classList.remove('t-overflow');
+            document.getElementsByTagName('body')[0].style.touchAction = null;
+            document.getElementById('navmodaloverlay').classList.remove('t-visibility');
+            document.getElementById('essentialinfo').classList.remove('t-opacity');
 
             if (document.getElementById('container')) {
                 document.getElementById('container').classList.remove('heightfrommissingnavbar');
@@ -113,6 +132,8 @@ function Navbar() {
     return (
         <div id='nav' className='Navbar'>
             <div className='mobileview' onClick={toggleMobileView}><img id='dropdown' src={Menu} alt='Menu' /></div>
+            <div id='navmodaloverlay' onClick={closeMobileNav}></div>
+
             <ul id='contents' className='grid-container'>
                 <li id='About' onClick={navigateToNewPage}><NavLink to="/">About</NavLink></li>
                 <li id='Guides' onClick={navigateToNewPage}><NavLink to="/guides">Guides</NavLink></li>
