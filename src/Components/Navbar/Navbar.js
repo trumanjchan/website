@@ -48,7 +48,8 @@ function Navbar() {
             document.querySelector(".Navbar .grid-container li a.active").parentNode.style.opacity = "1";
         }
 
-        document.querySelector('#root .About').appendChild(document.getElementById("navmodaloverlay"));
+        let navmodaloverlay = document.getElementById("navmodaloverlay");
+        navmodaloverlay.parentNode.parentNode.appendChild(navmodaloverlay);
     },[]);
 
     const toggleMode = (e) => {
