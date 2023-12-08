@@ -178,6 +178,21 @@
         background-image: linear-gradient(rgb(0, 136, 255), var(--container-bg-color-alpha)) !important;
         border-bottom: 1px solid var(--main-bg-color) !important;
     }
+    .slide-right {
+        animation: slide-right 0.5s linear;
+    }
+    @keyframes slide-right {
+        0%   {opacity: 0; translate: -10px 0px;}
+        100% {opacity: 1; translate: 0px 0px;}
+    }
+    .slide-left {
+        animation: slide-left 0.5s linear;
+    }
+    @keyframes slide-left {
+        0%   {opacity: 0; translate: 10px 0px;}
+        100% {opacity: 1; translate: 0px 0px;}
+    }
+    
     .Navbar {
         height: fit-content;
         width: 100%;

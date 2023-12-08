@@ -78,10 +78,22 @@ function Navbar() {
     }
 
     const toggleMobileView = () => {
-        var element1 = document.getElementById('contents');
-        var element2 = document.getElementById('nav');
-        element1.classList.toggle('grid-container');
-        element2.classList.toggle('change-bg-color');
+        let nav = document.getElementById('nav');
+        let navMenu = document.getElementById('contents');
+        let navElements = navMenu.childNodes;
+
+        nav.classList.toggle('change-bg-color');
+        navMenu.classList.toggle('grid-container');
+
+        for (let i = 0; i < navElements.length; i++) {
+            if (i === (navElements.length - 1)) {
+                break;
+            } else if (i % 2 === 0) {
+                navElements[i].classList.toggle('slide-right');
+            } else {
+                navElements[i].classList.toggle('slide-left');
+            }
+        }
 
         let bodyTag = document.getElementsByTagName('body')[0];
         bodyTag.classList.toggle('t-overflow');
