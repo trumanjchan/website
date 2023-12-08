@@ -35,20 +35,23 @@
     padding: 0% 10%;
     height: 100%;
 }
-.Navbar .grid-container li {
+.Navbar #contents li {
     font-size: 30px;
     height: fit-content;
     margin: auto auto;
     opacity: 0.7;
     transition: 0.3s;
 }
-.Navbar .grid-container li a {
+.Navbar #contents li:last-child {
+    opacity: 1;
+}
+.Navbar #contents li a {
     text-decoration: none;
 }
-.Navbar .grid-container li a.active {
+.Navbar #contents li a.active {
     position: relative;
 }
-.Navbar .grid-container li a.active::after {
+.Navbar #contents li a.active::after {
     content: '';
     position: absolute;
     left: 0;
@@ -59,22 +62,22 @@
     border: 1px solid black;
     border-radius: 10px;
 }
-.Navbar .grid-container li a:link {
+.Navbar #contents li a:link {
     color: #086086;
 }
-.Navbar .grid-container li a:visited {
+.Navbar #contents li a:visited {
     color: #173542;
 }
-.Navbar .grid-container li a:hover {
+.Navbar #contents li a:hover {
     opacity: 1;
     transition: 0.3s;
 }
-.Navbar .grid-container button {
+.Navbar #contents button {
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.Navbar .grid-container li:hover {
+.Navbar #contents li:hover {
     opacity: 1;
     transform: scale(1.1, 1.1);
     transition: 0.3s;
@@ -179,18 +182,18 @@
         border-bottom: 1px solid var(--main-bg-color) !important;
     }
     .slide-right {
-        animation: slide-right 0.5s linear;
+        animation: slide-right 0.5s ease-out;
     }
     @keyframes slide-right {
         0%   {opacity: 0; translate: -10px 0px;}
-        100% {opacity: 1; translate: 0px 0px;}
+        100% {opacity: 0.7; translate: 0px 0px;}
     }
     .slide-left {
-        animation: slide-left 0.5s linear;
+        animation: slide-left 0.5s ease-out;
     }
     @keyframes slide-left {
         0%   {opacity: 0; translate: 10px 0px;}
-        100% {opacity: 1; translate: 0px 0px;}
+        100% {opacity: 0.7; translate: 0px 0px;}
     }
     
     .Navbar {

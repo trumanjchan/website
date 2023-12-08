@@ -44,8 +44,9 @@ function Navbar() {
             }
         }
 
-        if (document.querySelector(".Navbar .grid-container li a.active")) {
-            document.querySelector(".Navbar .grid-container li a.active").parentNode.style.opacity = "1";
+        let currentPage = document.querySelector(".Navbar #contents li a.active");
+        if (currentPage) {
+            currentPage.parentNode.style = "opacity: 1 !important";
         }
 
         let navmodaloverlay = document.getElementById("navmodaloverlay");
@@ -88,10 +89,12 @@ function Navbar() {
         for (let i = 0; i < navElements.length; i++) {
             if (i === (navElements.length - 1)) {
                 break;
+            } else if (navElements[i].style.opacity) {
+                continue;
             } else if (i % 2 === 0) {
-                navElements[i].classList.toggle('slide-right');
+                navElements[i].classList.add('slide-right');
             } else {
-                navElements[i].classList.toggle('slide-left');
+                navElements[i].classList.add('slide-left');
             }
         }
 
@@ -102,6 +105,7 @@ function Navbar() {
         } else {
             bodyTag.style.touchAction = 'none';
         }
+
         document.getElementById('navmodaloverlay').classList.toggle('t-visibility');
         document.getElementById('essentialinfo').classList.toggle('t-opacity');
     }
@@ -121,10 +125,20 @@ function Navbar() {
 
     window.addEventListener('resize', function() {
         if (window.innerWidth > 640) {
-            var element1 = document.getElementById('contents');
-            var element2 = document.getElementById('nav');
-            element1.classList.add('grid-container');
-            element2.classList.remove('change-bg-color');
+            let nav = document.getElementById('nav');
+            let navMenu = document.getElementById('contents');
+            let navElements = navMenu.childNodes;
+
+            navMenu.classList.add('grid-container');
+            nav.classList.remove('change-bg-color');
+
+            for (let i = 0; i < navElements.length; i++) {
+                if (i % 2 === 0) {
+                    navElements[i].classList.remove('slide-right');
+                } else {
+                    navElements[i].classList.remove('slide-left');
+                }
+            }
 
             document.getElementsByTagName('body')[0].classList.remove('t-overflow');
             document.getElementsByTagName('body')[0].style.touchAction = null;
