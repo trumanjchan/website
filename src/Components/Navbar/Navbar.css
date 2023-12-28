@@ -27,6 +27,29 @@
     display: none;
     height: 100%;
 }
+.Navbar .mobileview #dropdown {
+    width: 48px;
+    height: 48px;
+    display: grid;
+    grid-template-rows: auto auto auto;
+    justify-items: center;
+    align-items: center;
+}
+.Navbar .mobileview #dropdown div {
+    background-color: black;
+    width: 80%;
+    height: 4px;
+    border-radius: 10px;
+    opacity: 1;
+    transform: translateY(0px) rotate(0deg);
+    transition: all 0.5s;
+}
+.Navbar .mobileview #dropdown #menu-firstline {
+    margin-top: 8%;
+}
+.Navbar .mobileview #dropdown #menu-lastline {
+    margin-bottom: 8%;
+}
 .Navbar .grid-container {
     display: grid;
     grid-template-columns: 20% 20% 20% 20% 20%;
@@ -283,6 +306,15 @@
     }
     .t-opacity {
         opacity: 0 !important;
+    }
+    .t-fadeopacity {
+        opacity: 0 !important;
+    }
+    .t-ftransform {
+        transform: translateY(12px) rotate(-45deg) !important;
+    }
+    .t-ltransform {
+        transform: translateY(-15px) rotate(45deg) !important;
     }
     .Navbar #essentialinfo #textcontainer {
         margin-right: 15%;

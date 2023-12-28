@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import './Navbar.css';
-import Menu from '../../Images/icons8-menu.svg';
 import Headshot from '../../Images/Truman_NY.webp';
 
 function Navbar() {
@@ -108,6 +107,9 @@ function Navbar() {
 
         document.getElementById('navmodaloverlay').classList.toggle('t-visibility');
         document.getElementById('essentialinfo').classList.toggle('t-opacity');
+        document.getElementById('menu-centerline').classList.toggle('t-fadeopacity');
+        document.getElementById('menu-firstline').classList.toggle('t-ftransform');
+        document.getElementById('menu-lastline').classList.toggle('t-ltransform');
     }
     
     const closeMobileNav = () => {
@@ -144,6 +146,9 @@ function Navbar() {
             document.getElementsByTagName('body')[0].style.touchAction = null;
             document.getElementById('navmodaloverlay').classList.remove('t-visibility');
             document.getElementById('essentialinfo').classList.remove('t-opacity');
+            document.getElementById('menu-centerline').classList.remove('t-fadeopacity');
+            document.getElementById('menu-firstline').classList.remove('t-ftransform');
+            document.getElementById('menu-lastline').classList.remove('t-ltransform');
 
             if (document.getElementById('container')) {
                 document.getElementById('container').classList.remove('heightfrommissingnavbar');
@@ -158,7 +163,13 @@ function Navbar() {
 
     return (
         <div id='nav' className='Navbar'>
-            <div className='mobileview' onClick={toggleMobileView}><img id='dropdown' src={Menu} alt='Menu' /></div>
+            <div className='mobileview' onClick={toggleMobileView}>
+                <div id='dropdown'>
+                    <div id='menu-firstline'></div>
+                    <div id='menu-centerline'></div>
+                    <div id='menu-lastline'></div>
+                </div>
+            </div>
             <div id='navmodaloverlay' onClick={closeMobileNav}></div>
 
             <ul id='contents' className='grid-container'>
