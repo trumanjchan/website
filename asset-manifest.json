@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/static/css/main.116d14a2.css",
+    "main.css": "/static/css/main.361edbac.css",
     "main.js": "/static/js/main.353e8991.js",
     "static/media/CHX_NewYork.webp": "/static/media/CHX_NewYork.55645340668a8b9b363e.webp",
     "static/media/Stow_Lake.webp": "/static/media/Stow_Lake.9d803239ff0c61ca8aba.webp",
@@ -13,11 +13,11 @@
     "static/media/icons8-instagram.svg": "/static/media/icons8-instagram.b6beacd904f86ba6e0cb57f5b4e24eb8.svg",
     "static/media/icons8-linkedin.svg": "/static/media/icons8-linkedin.4554a29e958bf6eb6240ac56645fa27c.svg",
     "static/media/icons8-gmail-logo.svg": "/static/media/icons8-gmail-logo.4f520c286581c7e59dfad73517871174.svg",
-    "main.116d14a2.css.map": "/static/css/main.116d14a2.css.map",
+    "main.361edbac.css.map": "/static/css/main.361edbac.css.map",
     "main.353e8991.js.map": "/static/js/main.353e8991.js.map"
   },
   "entrypoints": [
-    "static/css/main.116d14a2.css",
+    "static/css/main.361edbac.css",
     "static/js/main.353e8991.js"
   ]
 }
