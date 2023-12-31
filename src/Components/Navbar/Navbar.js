@@ -163,12 +163,10 @@ function Navbar() {
 
     return (
         <div id='nav' className='Navbar'>
-            <div className='mobileview' onClick={toggleMobileView}>
-                <div id='dropdown'>
-                    <div id='menu-firstline'></div>
-                    <div id='menu-centerline'></div>
-                    <div id='menu-lastline'></div>
-                </div>
+            <div id='dropdown' onClick={toggleMobileView}>
+                <div id='menu-firstline'></div>
+                <div id='menu-centerline'></div>
+                <div id='menu-lastline'></div>
             </div>
             <div id='navmodaloverlay' onClick={closeMobileNav}></div>
 

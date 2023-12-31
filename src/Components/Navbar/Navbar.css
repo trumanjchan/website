@@ -23,19 +23,12 @@
     pointer-events: auto;
     visibility: hidden;
 }
-.Navbar .mobileview {
+.Navbar #dropdown {
     display: none;
     height: 100%;
+    -webkit-tap-highlight-color: transparent;
 }
-.Navbar .mobileview #dropdown {
-    width: 48px;
-    height: 48px;
-    display: grid;
-    grid-template-rows: auto auto auto;
-    justify-items: center;
-    align-items: center;
-}
-.Navbar .mobileview #dropdown div {
+.Navbar #dropdown div {
     background-color: black;
     width: 80%;
     height: 4px;
@@ -43,12 +36,6 @@
     opacity: 1;
     transform: translateY(0px) rotate(0deg);
     transition: all 0.5s;
-}
-.Navbar .mobileview #dropdown #menu-firstline {
-    margin-top: 8%;
-}
-.Navbar .mobileview #dropdown #menu-lastline {
-    margin-bottom: 8%;
 }
 .Navbar .grid-container {
     display: grid;
@@ -230,9 +217,13 @@
         z-index: 1;
         pointer-events: none;
     }
-    .Navbar .mobileview {
-        display: block;
-        width: fit-content;
+    .Navbar #dropdown {
+        width: 48px;
+        height: 48px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
         margin: 1% 1% 0 auto;
         pointer-events: auto;
     }
@@ -276,7 +267,7 @@
     }
 
     /* Section Navbar */
-    .Navbar .mobileview {
+    .Navbar #dropdown {
         position: relative;
         z-index: 1;
     }
@@ -311,7 +302,7 @@
         opacity: 0 !important;
     }
     .t-ftransform {
-        transform: translateY(12px) rotate(-45deg) !important;
+        transform: translateY(11px) rotate(-45deg) !important;
     }
     .t-ltransform {
         transform: translateY(-15px) rotate(45deg) !important;
