@@ -40,15 +40,16 @@ function Contact() {
     },[]);
 
     window.addEventListener('resize', function() {
-        let contact = document.getElementsByClassName("Contact")[0];
-        let navHeight = document.getElementById("nav").offsetHeight;
-        let formcontainerHeight = document.getElementById("formcontainer").offsetHeight;
+        if (window.location.pathname === "/contact") {
+            let contact = document.getElementsByClassName("Contact")[0];
+            let navHeight = document.getElementById("nav").offsetHeight;
+            let formcontainerHeight = document.getElementById("formcontainer").offsetHeight;
 
-        if (window.innerWidth < 768) {
-            contact.style.minHeight = formcontainerHeight + "px";
-        }
-        else {
-            contact.style.minHeight = navHeight + formcontainerHeight + "px";
+            if (window.innerWidth < 768) {
+                contact.style.minHeight = formcontainerHeight + "px";
+            } else {
+                contact.style.minHeight = navHeight + formcontainerHeight + "px";
+            }
         }
     });
     

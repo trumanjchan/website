@@ -58,7 +58,7 @@ function About() {
         <main className='About'>
             <Navbar />
 
-            <div id='Profile' className='Profile'>
+            <div id='Profile' className='Profile card'>
                 <img className='cover' src={Cover} alt='NYC Brooklyn Bridge' />
                 <div id='info-container' className='info-container'>
                     <div className='first'>
@@ -80,7 +80,7 @@ function About() {
                 </div>
             </div>
 
-            <div className='Education'>
+            <div className='Education card'>
                 <div className='container'>
                     <div className='title'>Education</div>
                     <div className='school'>
@@ -102,7 +102,7 @@ function About() {
                 </div>
             </div>
 
-            <div className='Skills'>
+            <div className='Skills card'>
                 <div className='container'>
                     <div className='title'>Skills</div>
                     <div className='info'>
@@ -120,7 +120,7 @@ function About() {
                 </div>
             </div>
 
-            <div className='Awards'>
+            <div className='Awards card'>
                 <div className='container'>
                     <div className='title'>Awards</div>
                     <div className='designmerced'>
@@ -136,7 +136,7 @@ function About() {
                 </div>
             </div>
 
-            <div className='Experience'>
+            <div className='Experience card'>
                 <div className='container'>
                     <div className='title'>Experience</div>
                     <div className='experiencelist'>

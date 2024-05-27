@@ -1,11 +1,17 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import './Navbar.css';
 import Headshot from '../../Images/Truman_NY.webp';
 
 function Navbar() {
+    const [initialDesktopNavContentsHeight, setDesktopNavContentsHeight] = useState();
+    const [initialMobileNavContentsHeight, setMobileNavContentsHeight] = useState();
+    const [mobileNavBool, setMobileNavBool] = useState(0);
 
     useEffect(() => {
+        setDesktopNavContentsHeight(60);
+
+
         // Retrieve the value of locally-stored key 'data-theme', and set the theme
         const datatheme = localStorage.getItem("data-theme");
         console.log("Retrieved preference: " + datatheme + " mode");
@@ -103,6 +109,23 @@ function Navbar() {
             bodyTag.style.touchAction = null;
         } else {
             bodyTag.style.touchAction = 'none';
+
+
+            if (mobileNavBool === 0) {
+                let mobileNavContentElement = document.getElementById("contents");
+                setMobileNavContentsHeight(mobileNavContentElement.getBoundingClientRect().height);
+                setMobileNavBool(1);
+
+                if (window.innerWidth < 768) {
+                    if (window.innerHeight < (mobileNavContentElement.getBoundingClientRect().height + document.getElementById("dropdown").offsetHeight + 70)) {
+                        mobileNavContentElement.style.height = window.innerHeight - document.getElementById("dropdown").offsetHeight + "px";
+                        mobileNavContentElement.style.overflowY = "scroll";
+                    } else {
+                        mobileNavContentElement.style.height = "fit-content";
+                        mobileNavContentElement.style.overflowY = "hidden";
+                    }
+                }
+            }
         }
 
         document.getElementById('navmodaloverlay').classList.toggle('t-visibility');
@@ -126,6 +149,20 @@ function Navbar() {
     }
 
     window.addEventListener('resize', function() {
+        let mobileNavContentElement = document.getElementById("contents");
+        if (window.innerWidth < 768) {
+            if (window.innerHeight < (initialMobileNavContentsHeight + document.getElementById("dropdown").offsetHeight + 70)) {
+                mobileNavContentElement.style.height = window.innerHeight - document.getElementById("dropdown").offsetHeight + "px";
+                mobileNavContentElement.style.overflowY = "scroll";
+            } else {
+                mobileNavContentElement.style.height = "fit-content";
+                mobileNavContentElement.style.overflowY = "hidden";
+            }
+        } else {
+            mobileNavContentElement.style.height = initialDesktopNavContentsHeight + "px";
+        }
+
+
         if (window.innerWidth > 768) {
             let nav = document.getElementById('nav');
             let navMenu = document.getElementById('contents');

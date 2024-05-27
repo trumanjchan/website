@@ -233,7 +233,7 @@
     #contents {
         list-style-type: none;
         margin: 0;
-        padding: 5% 0%;
+        padding: 0px;
     }
     #contents li {
         font-size: 30px;
@@ -241,6 +241,12 @@
         width: fit-content;
         margin: 0 auto;
         pointer-events: auto;
+    }
+    #contents li:first-child {
+        margin-top: 35px;
+    }
+    #contents li:last-child {
+        margin-bottom: 35px;
     }
     #contents li a {
         text-decoration: none;
