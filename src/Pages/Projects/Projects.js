@@ -1,10 +1,10 @@
 import React from 'react';
-import './Sent.css';
-import Navbar from '../../../Components/Navbar/Navbar';
+import './Projects.css';
+import Navbar from '../../Components/Navbar/Navbar';
 
-function Sent() {
+function Projects() {
     return (
-        <main className='Sent'>
+        <main className='Projects'>
             <Navbar />
             <div id='container' className='container'>
                 
@@ -13,4 +13,4 @@ function Sent() {
     );
 }
 
-export default Sent;
+export default Projects;

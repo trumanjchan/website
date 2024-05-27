@@ -66,7 +66,7 @@
     position: absolute;
     left: 0;
     right: 0;
-    bottom: -5px;
+    bottom: -7px;
     height: 3px;
     margin: 0 auto;
     border: 1px solid black;
@@ -186,7 +186,7 @@
 }
 
 
-@media only screen and (max-width: 640px) {
+@media only screen and (max-width: 768px) {
     .change-bg-color {
         background-image: linear-gradient(rgb(0, 136, 255), var(--container-bg-color-alpha)) !important;
         border-bottom: 1px solid var(--main-bg-color) !important;

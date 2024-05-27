@@ -25,13 +25,38 @@ function Contact() {
                 bgimage.style.backgroundImage = `url(${darkbg})`;
             }
         });
+
+        
+        let contact = document.getElementsByClassName("Contact")[0];
+        let navHeight = document.getElementById("nav").offsetHeight;
+        let formcontainerHeight = document.getElementById("formcontainer").offsetHeight;
+
+        if (window.innerWidth < 768) {
+            contact.style.minHeight = formcontainerHeight + "px";
+        }
+        else {
+            contact.style.minHeight = navHeight + formcontainerHeight + "px";
+        }
     },[]);
+
+    window.addEventListener('resize', function() {
+        let contact = document.getElementsByClassName("Contact")[0];
+        let navHeight = document.getElementById("nav").offsetHeight;
+        let formcontainerHeight = document.getElementById("formcontainer").offsetHeight;
+
+        if (window.innerWidth < 768) {
+            contact.style.minHeight = formcontainerHeight + "px";
+        }
+        else {
+            contact.style.minHeight = navHeight + formcontainerHeight + "px";
+        }
+    });
     
     return (
         <main className='Contact'>
             <Navbar />
-            <div id='container' className='container'>
-                <div id='formcontainer' className='formcontainer'>
+            <div id='container'>
+                <div id='formcontainer'>
                     <form action="https://api.web3forms.com/submit" method="POST">
                         <input type="hidden" name="apikey" value="53912a08-e25a-4ba5-a3fe-686dca14461e" />
 

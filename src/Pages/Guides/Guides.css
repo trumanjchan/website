@@ -55,7 +55,7 @@
 }
 
 
-@media only screen and (max-width: 640px) {
+@media only screen and (max-width: 768px) {
     .Guides .container {
         display: block;
         height: calc(100% - 61px);

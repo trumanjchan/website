@@ -35,7 +35,7 @@ function Navbar() {
         });
 
         if (document.getElementById('container')) {
-            if (window.innerWidth > 640) {
+            if (window.innerWidth > 768) {
                 document.getElementById('container').classList.remove('heightfrommissingnavbar');
             }
             else {
@@ -113,7 +113,7 @@ function Navbar() {
     }
     
     const closeMobileNav = () => {
-        if (window.innerWidth < 640) {
+        if (window.innerWidth < 768) {
             document.getElementById("dropdown").click();
         }
     }
@@ -126,7 +126,7 @@ function Navbar() {
     }
 
     window.addEventListener('resize', function() {
-        if (window.innerWidth > 640) {
+        if (window.innerWidth > 768) {
             let nav = document.getElementById('nav');
             let navMenu = document.getElementById('contents');
             let navElements = navMenu.childNodes;
@@ -172,8 +172,8 @@ function Navbar() {
 
             <ul id='contents' className='grid-container'>
                 <li id='About' onClick={navigateToNewPage}><NavLink to="/">About</NavLink></li>
+                <li id='Projects' onClick={navigateToNewPage}><NavLink to="/projects">Projects</NavLink></li>
                 <li id='Guides' onClick={navigateToNewPage}><NavLink to="/guides">Guides</NavLink></li>
-                <li id='Tasks' onClick={navigateToNewPage}><NavLink to="/tasks">Tasks</NavLink></li>
                 <li id='Contact' onClick={navigateToNewPage}><NavLink to="/contact">Contact</NavLink></li>
                 <li>
                     <label className="switch">

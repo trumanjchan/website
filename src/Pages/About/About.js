@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { NavLink } from 'react-router-dom';
 import './About.css';
 import Navbar from '../../Components/Navbar/Navbar';
@@ -11,41 +11,11 @@ import Gmail from '../../Images/icons8-gmail-logo.svg';
 
 function About() {
 
-    useEffect(() => {
-        document.getElementById("defaultOpen").click();
-    },[]);
-
-    function openTab(evt, tabName) {
-        document.getElementById("title").innerHTML = tabName;
-
-        var i, tabcontent, tablinks;
-        tabcontent = document.getElementsByClassName("tabcontent");
-        for (i = 0; i < tabcontent.length; i++) {
-          tabcontent[i].style.display = "none";
-        }
-        tablinks = document.getElementsByClassName("tablinks");
-        for (i = 0; i < tablinks.length; i++) {
-          tablinks[i].className = tablinks[i].className.replace(" active", "");
-        }
-        document.getElementById(tabName).style.display = "block";
-        evt.currentTarget.className += " active";
-    }
-    function moveToAnchor(evt, elementname) {
-        let anchorPosition = 0;
-        if (window.innerWidth > 640) {
-            anchorPosition = (window.pageYOffset + document.getElementById(elementname).getBoundingClientRect().top) - 102;
-        }
-        else {
-            anchorPosition = (window.pageYOffset + document.getElementById(elementname).getBoundingClientRect().top) - 61;
-        }
-        window.scrollTo(0, anchorPosition);
-    }
-
     let lastKnownScrollPosition = 0;
     let sectionNavbarPosition = 0;
     let ticking = false;
 
-    function doSomething(scrollPos, sectionPos) {
+    function animateEssentialInfo(scrollPos, sectionPos) {
         if (scrollPos > sectionPos) {
             document.getElementById('essentialinfo').classList.remove('sectionfadeout');
             document.getElementById('essentialinfo').classList.add('sectionfadein');
@@ -66,7 +36,7 @@ function About() {
         // Only check when on About page
         if (window.location.pathname === '' || window.location.pathname === '/') {
             lastKnownScrollPosition = window.scrollY;
-            if (window.innerWidth > 640) {
+            if (window.innerWidth > 768) {
                 sectionNavbarPosition = (window.pageYOffset + document.getElementById('Profile').getBoundingClientRect().bottom) - (document.getElementById('Profile').getBoundingClientRect().bottom - document.getElementById('info-container').getBoundingClientRect().bottom) - 102;
             }
             else {
@@ -75,7 +45,7 @@ function About() {
 
             if (!ticking) {
                 window.requestAnimationFrame(() => {
-                    doSomething(lastKnownScrollPosition, sectionNavbarPosition);
+                    animateEssentialInfo(lastKnownScrollPosition, sectionNavbarPosition);
                     ticking = false;
                 });
 
@@ -99,7 +69,7 @@ function About() {
                         <h3>San Francisco, CA, United States</h3>
                     </div>
                     <div className='second'>
-                        <p>University of California, Merced graduate with a bachelor's degree in Computer Science and Engineering. I am interested in frontend web development!</p>
+                        <p>University of California, Merced graduate with a bachelor's degree in Computer Science and Engineering. I specialize in frontend web development!</p>
                         <div className='social-container'>
                             <a href='https://www.linkedin.com/in/trumanjfchan' target='_blank' rel='noreferrer'><img className='social' src={LinkedIn} alt='LinkedIn' /></a>
                             <a href='https://github.com/trumanjchan' target='_blank' rel='noreferrer'><img className='social' src={GitHub} alt='GitHub' /></a>
@@ -132,110 +102,20 @@ function About() {
                 </div>
             </div>
 
-            <div className='Tabs'>
+            <div className='Skills'>
                 <div className='container'>
-                    <div className="tab">
-                        <div id='title'></div>
-                        <button className="tablinks" onClick={event => openTab(event, 'Skills')} id='defaultOpen'>Skills</button>
-                        <button className="tablinks" onClick={event => openTab(event, 'Projects')}>Projects</button>
-                    </div>
-
-                    <div id="Projects" className="tabcontent">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Projects</th>
-                                    <th>Dates</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Gallery<br/><i className='float-right'><a href='https://github.com/trumanjchan/gallery' target='_blank' rel='noreferrer'>Source</a></i></td>
-                                    <td>
-                                        <div>Oct.&nbsp;2023</div>
-                                        <div>&nbsp;-&nbsp;</div>
-                                        <div><i>Present</i></div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>poc-mini-game-2<br/><button className='float-right-NDA' onClick={event => moveToAnchor(event, 'poc-mini-game')}>NDA</button></td>
-                                    <td>
-                                        <div>Apr.&nbsp;2023</div>
-                                        <div>&nbsp;-&nbsp;</div>
-                                        <div>May&nbsp;2023</div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>poc-mini-game-1<br/><button className='float-right-NDA' onClick={event => moveToAnchor(event, 'poc-mini-game')}>NDA</button></td>
-                                    <td>
-                                        <div>Aug.&nbsp;2022</div>
-                                        <div>&nbsp;-&nbsp;</div>
-                                        <div>Mar.&nbsp;2023</div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Socketchat<br/><i className='float-right'><a href='https://github.com/trumanjchan/Socketchat' target='_blank' rel='noreferrer'>Source</a> <a href='https://sockchats.fly.dev/' target='_blank' rel='noreferrer'>Live</a></i></td>
-                                    <td>
-                                        <div>Mar.&nbsp;2022</div>
-                                        <div>&nbsp;-&nbsp;</div>
-                                        <div>Apr.&nbsp;2022</div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><b>This Website!</b><br/><i className='float-right'><a href='https://github.com/trumanjchan/website' target='_blank' rel='noreferrer'>Source</a></i></td>
-                                    <td>
-                                        <div>Dec.&nbsp;2021</div>
-                                        <div>&nbsp;-&nbsp;</div>
-                                        <div>Feb.&nbsp;2022</div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Scribing<br/><i className='float-right'><a href='https://github.com/shiv248/TypeRacer' target='_blank' rel='noreferrer'>Source</a> <a href='https://scribing.fly.dev/' target='_blank' rel='noreferrer'>Live</a></i></td>
-                                    <td>
-                                        <div>Nov.&nbsp;2021</div>
-                                        <div>&nbsp;-&nbsp;</div>
-                                        <div>Dec.&nbsp;2021</div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>My Task Board<br/><i className='float-right'><a href='https://github.com/illumimarty/CSE111-Fall2021-Project' target='_blank' rel='noreferrer'>Source</a> <a href='https://mytaskboard.fly.dev/' target='_blank' rel='noreferrer'>Live</a></i></td>
-                                    <td>
-                                        <div>Nov.&nbsp;2021</div>
-                                        <div>&nbsp;-&nbsp;</div>
-                                        <div>Dec.&nbsp;2021</div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>OOP Mini Game<br/><i className='float-right'><a href='https://github.com/trumanjchan/CSE165_Labs' target='_blank' rel='noreferrer'>Source</a></i></td>
-                                    <td>
-                                        <div>Nov.&nbsp;2020</div>
-                                        <div>&nbsp;-&nbsp;</div>
-                                        <div>Dec.&nbsp;2020</div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>inSight Prototype<br/><i className='float-right'><a href='https://devpost.com/software/insight-ar-glasses' target='_blank' rel='noreferrer'>Devpost</a> <a href='https://xd.adobe.com/view/fbc45307-37f5-4384-8550-0e9fd84fc124-ae97/?fullscreen' target='_blank' rel='noreferrer'>Demo</a></i></td>
-                                    <td>
-                                        <div></div>
-                                        <div>Nov.&nbsp;2020</div>
-                                        <div></div>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-
-                    <div id="Skills" className="tabcontent">
-                        <div className='info'>
-                            <div className='title'>Programming</div>
-                            <div className='text'>HTML, CSS, Javascript, Node.js, C++, Python, REST APIs, SQL</div>
-                            <div className='title'>Frameworks</div>
-                            <div className='text'>React.js, Express.js, Flask, Bootstrap</div>
-                            <div className='title'>Tools</div>
-                            <div className='text'>Git, Github, Gitkraken, Visual Studio Code, Sony Vegas Pro, Shotcut, Adobe Photoshop, Adobe XD, Google Workspace</div>
-                            <div className='title'>Languages</div>
-                            <div className='text'>English and conversational Cantonese</div>
-                        </div>
+                    <div className='title'>Skills</div>
+                    <div className='info'>
+                        <div className='section-title'>Programming</div>
+                        <div className='section-text'>HTML, CSS, JavaScript, React, AEM, Nuxt, Socket.io, C++, Python, SQL, REST APIs</div>
+                        <div className='section-title'>Frameworks</div>
+                        <div className='section-text'>React, Nuxt, Express, Flask</div>
+                        <div className='section-title'>Tools</div>
+                        <div className='section-text'>Git, VS Code, Sony Vegas Pro, Shotcut, Adobe Photoshop, Adobe XD, Google Workspace</div>
+                        <div className='section-title'>Soft</div>
+                        <div className='section-text'>Communication, Teamwork, Problem-solving, Motivated</div>
+                        <div className='section-title'>Languages</div>
+                        <div className='section-text'>English and conversational Cantonese</div>
                     </div>
                 </div>
             </div>
@@ -273,8 +153,9 @@ function About() {
                                         <div className='date'>Aug 2022 - <i>Present</i></div>
                                     </div>
                                     <ul className='text'>
-                                        <li>Created two object oriented responsive mini game web applications using HTML, CSS, Javascript, Socket.io, Node.js, and Express.js under R&D.</li>
-                                        <li>Implement changes requested on Ziflow routes for emails (MJML, OFTs, Email on Acid), banners (GSAP, DoubleClick), and websites (Nuxt.js, Vue.js, AEM, AWS) through code to pass back to Integrated Production for further markups or to Quality Assurance for additional testing.</li>
+                                        <li>Cooperate regularly and closely with other members of the Development, QA, Design, Integrated Production, Editorial, and Copy teams on timed deliverables.</li>
+                                        <li>Implement changes requested on Ziflow/Workfront routes for emails (MJML, OFTs, Email on Acid), banners (GSAP, DoubleClick), and websites (Nuxt.js, Vue.js, AEM, AWS) through code.</li>
+                                        <li>Created two object oriented responsive mini game web apps using HTML, CSS, JavaScript, Socket.io, and Express.js under R&D.</li>
                                     </ul>
                                 </div>
                                 <div className='member'>
@@ -283,7 +164,7 @@ function About() {
                                         <div className='date'>Jun 2022 - Aug 2022 &nbsp;|&nbsp;&nbsp;3&nbsp;mos</div>
                                     </div>
                                     <ul className='text'>
-                                        <li>Collaborated in a brand team in Concentric Health Experience's 9-week internship to create a pitch presentation and present to a CHX client.</li>
+                                        <li>Collaborated in a brand team in Concentric Health Experience's 9-week internship to create a pitch presentation and present to a CHX client while onboarding with the development team.</li>
                                         <li>Learned how a healthcare advertising agency operates by attending informative CHX-led presentations.</li>
                                         <li>Acquired knowledge of MJML, GSAP, Veeva Systems, Wordpress, and Vue.js through LinkedIn Learning courses and reading documentation during onboarding with the development team.</li>
                                     </ul>
@@ -314,7 +195,7 @@ function About() {
                                         <div className='date'>Sep 2019 - Apr 2021 &nbsp;|&nbsp;&nbsp;1&nbsp;yr&nbsp;8&nbsp;mos</div>
                                     </div>
                                     <ul className='text'>
-                                        <li>Learned and worked with HTML, CSS, Javascript, Node.js, React.js, Github, and Gitkraken.</li>
+                                        <li>Learned and worked with HTML, CSS, JavaScript, Node.js, React.js, Github, and Gitkraken.</li>
                                         <li>Coded responsive and reusable web page components and web pages for in-person and virtual events, and for the HackMerced website.</li>
                                         <li>Organized two MLH Local Build/Hack Day events, two 36-hour hackathons, and a design hackathon with teammates.</li>
                                     </ul>

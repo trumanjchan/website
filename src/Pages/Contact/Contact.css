@@ -1,10 +1,9 @@
 .Contact {
-    height: 100%;
+    height: 100vh;
     width: 100%;
-    position: fixed;
 }
 
-.Contact .container {
+.Contact #container {
     height: calc(100% - 61px);
     width: 100%;
     position: relative;
@@ -15,7 +14,7 @@
 .heightfrommissingnavbar {
     height: 100% !important;
 }
-.Contact .container .formcontainer {
+.Contact #container #formcontainer {
     background-color: var(--main-bg-color-alpha);
     pointer-events: none;
     height: fit-content;
@@ -34,31 +33,31 @@
     justify-content: center;
     color: var(--invert-color);
 }
-.Contact .container .formcontainer form {
+.Contact #container #formcontainer form {
     padding: 0 30px;
 }
-.Contact .container .formcontainer form .sendto {
+.Contact #container #formcontainer form .sendto {
     width: fit-content;
     margin: 5% auto;
     font-weight: bold;
     font-size: 30px;
 }
-.Contact .container .formcontainer .typing-area {
+.Contact #container #formcontainer .typing-area {
     display: grid;
     grid-template-columns: auto auto;
     row-gap: 10px;
     column-gap: calc(3vw);
     font-size: 25px;
 }
-.Contact .container .formcontainer .typing-area input {
+.Contact #container #formcontainer .typing-area input {
     pointer-events: all;
 }
-.Contact .container .formcontainer .typing-area textarea {
+.Contact #container #formcontainer .typing-area textarea {
     resize: none;
     height: 50px;
     pointer-events: all;
 }
-.Contact .container .formcontainer form button {
+.Contact #container #formcontainer form button {
     display: block;
     margin: 5% auto;
     width: fit-content;
@@ -66,14 +65,8 @@
     padding: 2% 10%;
     border-radius: 10px;
     pointer-events: all;
+    cursor: pointer;
 }
-.Contact .container .formcontainer form button:active {
+.Contact #container #formcontainer form button:hover {
     filter: invert(100%);
-}
-
-
-@media only screen and (max-width: 640px) {
-    .Contact {
-        height: calc(100vh);
-    }
 }
