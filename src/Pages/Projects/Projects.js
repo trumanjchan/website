@@ -9,8 +9,10 @@ const query = `
             title,
             date,
             desc,
+            stack: stack,
+            link,
             image {
-                fileName,
+                fileName: title,
                 url
             }
         }
@@ -42,8 +44,20 @@ function Projects() {
                 // rerender the entire component with new data
                 setPage(data.projectsPageCollection);
                 console.log(data.projectsPageCollection.items);
+
+                let slides =  document.getElementsByClassName("carousel-slide")
+                for (let i = 0; i < slides.length; i++) {
+                    document.getElementsByClassName("carousel-slide")[i].style.width = ((window.innerWidth - 60) / 2) + "px";
+                }
             });
     }, []);
+
+    window.addEventListener('resize', function() {
+        let slides =  document.getElementsByClassName("carousel-slide")
+        for (let i = 0; i < slides.length; i++) {
+            document.getElementsByClassName("carousel-slide")[i].style.width = ((window.innerWidth - 60) / 2) + "px";
+        }
+    });
 
     if (!page) {
         return (
@@ -58,15 +72,28 @@ function Projects() {
         return (
             <main className='Projects'>
                 <Navbar />
-                <div id='container' className='container'>
-                    {page.items.map((item, index) => (
-                        <div key={index}>
-                            <h1>{item.title}</h1>
-                            <h3>{item.date}</h3>
-                            <h2>{item.desc}</h2>
-                            <img src={item.image.url} className="screenshot" alt={item.image.fileName} width="853.33px" height="480px" />
+                <div className='container'>
+                    <div className='carousel'>
+                        <div className='control-buttons'>
+                            <div id='dec'>﹤</div>
+                            <div id='inc'>﹥</div>
                         </div>
-                    ))}
+                        {page.items.map((item, index) => (
+                            <a key={index} className='carousel-slide' href={item.link} target='_blank' rel='noreferrer'>
+                                <div className='slide'>
+                                    <div className='info'>
+                                        <h4>{item.date}</h4>
+                                        <h1>{item.title}</h1>
+                                        <h2>{item.desc}</h2>
+                                        <h3>{item.stack}</h3>
+                                    </div>
+                                    <div className='image'>
+                                        <img src={item.image.url} className="screenshot" alt={item.image.fileName} width="853.33px" height="480px" />
+                                    </div>
+                                </div>
+                            </a>
+                        ))}
+                    </div>
                 </div>
             </main>
         );
