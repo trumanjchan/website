@@ -11,9 +11,6 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
-.heightfrommissingnavbar {
-    height: 100% !important;
-}
 .Contact #container #formcontainer {
     background-color: var(--main-bg-color-alpha);
     pointer-events: none;
@@ -69,4 +66,11 @@
 }
 .Contact #container #formcontainer form button:hover {
     filter: invert(100%);
+}
+
+
+@media only screen and (max-width: 768px) {
+    .Contact #container {
+        height: 100%;
+    }
 }

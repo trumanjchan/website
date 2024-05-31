@@ -12,9 +12,6 @@
     position: relative;
     overflow-y: auto;
 }
-.heightfrommissingnavbar {
-    height: 100% !important;
-}
 .Guides .container .tabscolumn {
     border-right: 1px solid var(--container-bg-color);
     background-color: var(--container-bg-color);
@@ -58,7 +55,7 @@
 @media only screen and (max-width: 768px) {
     .Guides .container {
         display: block;
-        height: calc(100% - 61px);
+        height: 100%;
     }
     .Guides .container .tabscolumn {
         border-right: none;

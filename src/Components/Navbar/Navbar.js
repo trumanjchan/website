@@ -40,15 +40,6 @@ function Navbar() {
             }
         });
 
-        if (document.getElementById('container')) {
-            if (window.innerWidth > 768) {
-                document.getElementById('container').classList.remove('heightfrommissingnavbar');
-            }
-            else {
-                document.getElementById('container').classList.add('heightfrommissingnavbar');
-            }
-        }
-
         let currentPage = document.querySelector(".Navbar #contents li a.active");
         if (currentPage) {
             currentPage.parentNode.style = "opacity: 1 !important";
@@ -186,15 +177,6 @@ function Navbar() {
             document.getElementById('menu-centerline').classList.remove('t-fadeopacity');
             document.getElementById('menu-firstline').classList.remove('t-ftransform');
             document.getElementById('menu-lastline').classList.remove('t-ltransform');
-
-            if (document.getElementById('container')) {
-                document.getElementById('container').classList.remove('heightfrommissingnavbar');
-            }
-        }
-        else {
-            if (document.getElementById('container')) {
-                document.getElementById('container').classList.add('heightfrommissingnavbar');
-            }
         }
     });
 
