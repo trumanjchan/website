@@ -13,12 +13,7 @@
     display: flex;
     flex-direction: row;
     position: relative;
-    column-gap: 20px;
     overflow: hidden;
-}
-.Projects .container .carousel-area::before,
-.Projects .container .carousel-area::after {
-    content: "";
 }
 .Projects .container .carousel-area .control-buttons {
     width: 100%;
@@ -54,6 +49,10 @@
     display: flex;
     flex-direction: row;
     column-gap: 20px;
+}
+.Projects .container .carousel-area #carousel::before,
+.Projects .container .carousel-area #carousel::after {
+    content: "";
 }
 .Projects .container .carousel-area #carousel .carousel-slide {
     height: 100%;
