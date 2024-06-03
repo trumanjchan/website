@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import './Projects.css';
+import './Projects.scss';
 import Navbar from '../../Components/Navbar/Navbar';
 
 const query = `

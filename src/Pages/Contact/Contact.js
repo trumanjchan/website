@@ -59,7 +59,7 @@ function Contact() {
             <div id='container'>
                 <div id='formcontainer'>
                     <form action="https://api.web3forms.com/submit" method="POST">
-                        <input type="hidden" name="apikey" value="53912a08-e25a-4ba5-a3fe-686dca14461e" />
+                        <input type="hidden" name="apikey" value={process.env.REACT_APP_WEB3FORMS_KEY} />
 
                         <div className="sendto">@TrumanChan</div>
                         <div className='typing-area'>
