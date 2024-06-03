@@ -109,32 +109,28 @@ function Projects() {
 
         let facadeSlide = false;
         if (window.innerWidth > 768) {
-            if (page.items.length % 2 !== 0) {
-                countDuplicateDOMElements();
-                console.log((-(((window.innerWidth / 2) - 10)) * (page.items.length - 2)));
+            countDuplicateDOMElements();
+            console.log((-(((window.innerWidth / 2) - 10)) * (page.items.length - 2)));
 
-                if (carouselTranslatedTotal === ((window.innerWidth / 2) - 10)) {
-                    let lastCarouselSlideNode = slides[page.items.length - 1];
-                    let tempNode = lastCarouselSlideNode.cloneNode(true);
-                    carouselEle.insertBefore(tempNode, carouselEle.firstChild);
-                    facadeSlide = true;
-                } else if (carouselTranslatedTotal > ((window.innerWidth / 2) - 10)) {
-                    carouselTranslatedTotal = -(((window.innerWidth / 2) - 10) * (page.items.length - 1)) + ((window.innerWidth / 2) - 10);
-                    carouselEle.removeChild(carouselEle.firstChild);
-                } else if (carouselTranslatedTotal === 0 && duplicateDomElements === 2) {  //if facade slide exists at the beginning of the DOM Node List and we increment the carousel, delete it
-                    carouselEle.removeChild(carouselEle.firstChild);
-                } else if (carouselTranslatedTotal === -(((window.innerWidth / 2) - 10)) * (page.items.length - 1)) {
-                    let firstCarouselSlideNode = slides[0];
-                    let tempNode = firstCarouselSlideNode.cloneNode(true);
-                    carouselEle.appendChild(tempNode, carouselEle.firstChild);
-                } else if (carouselTranslatedTotal < -(((window.innerWidth / 2) - 10)) * (page.items.length - 1)) {
-                    carouselEle.removeChild(carouselEle.lastChild);
-                    carouselTranslatedTotal = 0;
-                } else if ((carouselTranslatedTotal === -(((window.innerWidth / 2) - 10)) * (page.items.length - 2)) && duplicateDomElements === 2) {  //if facade slide exists at the end of the DOM Node List and we decrement the carousel, delete it
-                    carouselEle.removeChild(carouselEle.lastChild);
-                }
-            } else {
-                //
+            if (carouselTranslatedTotal === ((window.innerWidth / 2) - 10)) {
+                let lastCarouselSlideNode = slides[page.items.length - 1];
+                let tempNode = lastCarouselSlideNode.cloneNode(true);
+                carouselEle.insertBefore(tempNode, carouselEle.firstChild);
+                facadeSlide = true;
+            } else if (carouselTranslatedTotal > ((window.innerWidth / 2) - 10)) {
+                carouselTranslatedTotal = -(((window.innerWidth / 2) - 10) * (page.items.length - 1)) + ((window.innerWidth / 2) - 10);
+                carouselEle.removeChild(carouselEle.firstChild);
+            } else if (carouselTranslatedTotal === 0 && duplicateDomElements === 2) {  //if facade slide exists at the beginning of the DOM Node List and we increment the carousel, delete it
+                carouselEle.removeChild(carouselEle.firstChild);
+            } else if (carouselTranslatedTotal === -(((window.innerWidth / 2) - 10)) * (page.items.length - 1)) {
+                let firstCarouselSlideNode = slides[0];
+                let tempNode = firstCarouselSlideNode.cloneNode(true);
+                carouselEle.appendChild(tempNode, carouselEle.firstChild);
+            } else if (carouselTranslatedTotal < -(((window.innerWidth / 2) - 10)) * (page.items.length - 1)) {
+                carouselEle.removeChild(carouselEle.lastChild);
+                carouselTranslatedTotal = 0;
+            } else if ((carouselTranslatedTotal === -(((window.innerWidth / 2) - 10)) * (page.items.length - 2)) && duplicateDomElements === 2) {  //if facade slide exists at the end of the DOM Node List and we decrement the carousel, delete it
+                carouselEle.removeChild(carouselEle.lastChild);
             }
         } else {
             if (carouselTranslatedTotal > 0) {
