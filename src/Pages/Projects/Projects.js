@@ -27,7 +27,7 @@ function Projects() {
     var duplicateDomElements;
 
     function countDuplicateDOMElements() {
-        let slides =  document.getElementsByClassName("carousel-slide")
+        let slides =  document.getElementsByClassName("carousel-slide");
         duplicateDomElements = 0;
 
         for (let i = 0; i < slides.length ; i++) {
@@ -71,10 +71,37 @@ function Projects() {
                     }
                 }
             });
+            
+        var touchPos1;
+        var touchPos2;
+        /* Desktop */
+        document.getElementsByClassName("container")[0].addEventListener('mousedown', (e) => {
+            touchPos1 = e.screenX;
+        });
+        document.getElementsByClassName("container")[0].addEventListener('mouseup', (e) => {
+            touchPos2 = e.screenX;
+            if (touchPos1 < touchPos2) {
+                document.getElementById("dec").click();
+            } else if (touchPos1 > touchPos2) {
+                document.getElementById("inc").click();
+            }
+        });
+        /* Mobile */
+        document.getElementsByClassName("container")[0].addEventListener('touchstart', (e) => {
+            touchPos1 = e.changedTouches[0].screenX;
+        });
+        document.getElementsByClassName("container")[0].addEventListener('touchend', (e) => {
+            touchPos2 = e.changedTouches[0].screenX;
+            if (touchPos1 < touchPos2) {
+                document.getElementById("dec").click();
+            } else if (touchPos1 > touchPos2) {
+                document.getElementById("inc").click();
+            }
+        });
     }, []);
 
     window.addEventListener('resize', function() {
-        let slides =  document.getElementsByClassName("carousel-slide")
+        let slides =  document.getElementsByClassName("carousel-slide");
         for (let i = 0; i < slides.length; i++) {
             if (window.innerWidth > 768) {
                 slides[i].style.width = ((window.innerWidth - 60) / 2) + "px";
@@ -88,7 +115,7 @@ function Projects() {
         let translateXValue;
         let slideWidth = window.innerWidth - 20;
         let carouselEle = document.getElementById("carousel");
-        let slides =  document.getElementsByClassName("carousel-slide")
+        let slides =  document.getElementsByClassName("carousel-slide");
 
         if (window.innerWidth > 768) {
             if (e.target.id === "inc") {
@@ -141,6 +168,7 @@ function Projects() {
         }
 
         if (!facadeSlide) {
+            //carouselEle.style.transition = "all 0.20s";
             carouselEle.style.transform = `translateX(${carouselTranslatedTotal + "px"}`;
         }
     }
