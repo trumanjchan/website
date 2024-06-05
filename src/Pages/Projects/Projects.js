@@ -194,19 +194,23 @@ function Projects() {
                         </div>
                         <div id='carousel'>
                             {page.items.map((item, index) => (
-                                <a key={index} className='carousel-slide' href={item.link} target='_blank' rel='noreferrer'>
+                                <div key={index} className='carousel-slide'>
                                     <div className='slide'>
                                         <div className='info'>
                                             <h4>{item.date}</h4>
-                                            <h1>{item.title}</h1>
-                                            <h2>{item.desc}</h2>
-                                            <h3>{item.stack}</h3>
+                                            <a href={item.link} target='_blank' rel='noreferrer'>
+                                                <h1>{item.title}</h1>
+                                            </a>
+                                            <div className='flex-container'>
+                                                <h2>{item.desc}</h2>
+                                                <h3>{JSON.stringify(item.stack).replaceAll(/\[|\]|"/gi, "").replaceAll(",", " ")}</h3>
+                                            </div>
                                         </div>
                                         <div className='image'>
-                                            <img src={item.image.url} className="screenshot" alt={item.image.fileName} width="853.33px" height="480px" />
+                                            <img src={item.image.url} className="screenshot" alt={item.image.fileName} width="853.33px" height="480px" draggable="false" />
                                         </div>
                                     </div>
-                                </a>
+                                </div>
                             ))}
                         </div>
                     </div>

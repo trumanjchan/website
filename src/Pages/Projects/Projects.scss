@@ -32,7 +32,7 @@
                     text-align: center;
                     align-content: center;
                     background-color: rgb(0, 136, 255);
-                    width: 30px;
+                    width: 38px;
                     height: 40px;
                     pointer-events: all;
                     z-index: 1;
@@ -63,7 +63,6 @@
 
                 .carousel-slide {
                     height: 100%;
-                    cursor: pointer;
                     text-decoration: none;
                     box-sizing: border-box;
                     border: 1px solid var(--border-color);
@@ -85,13 +84,68 @@
 
                         .info {
                             width: 70%;
+                            color: black;
+                            padding: 0 40px 0 25px;
+                            user-select: none;
+                            overflow-y: auto;
+                            display: flex;
+                            z-index: 1;
+                            flex-direction: column;
+
+                            @media only screen and (max-width: 1024px) {
+                                width: 75%;
+                            }
+
+                            h4 {
+                                font-size: 16px;
+                                color: rgb(104, 104, 104);
+                                font-weight: normal;
+                                margin: 30px 0 5px 0;
+                            }
+                            
+                            a {
+                                width: fit-content;
+                                h1 {
+                                    font-size: 25px;
+                                    font-weight: bold;
+                                    width: fit-content;
+                                    margin: 0;
+                                }
+                            }
+
+                            .flex-container {
+                                height: 100%;
+                                display: flex;
+                                flex-direction: column;
+                                justify-content: space-between;
+
+                                h2 {
+                                    font-size: 18px;
+                                    font-weight: normal;
+                                    line-height: 1.4;
+                                    margin: 30px 0 0 0;
+                                }
+    
+                                h3 {
+                                    font-size: 16px;
+                                    color: rgb(104, 104, 104);
+                                    font-weight: normal;
+                                    word-spacing: 20px;
+                                    margin-bottom: 30px;
+                                }
+                            }
                         }
 
                         .image {
                             width: 30%;
+                            user-select: none;
                             transform: rotate(12deg);
                             scale: 1.25;
                             transition: all 0.20s;
+                            
+                            @media only screen and (max-width: 1024px) {
+                                width: 25%;
+                            }
 
                             img {
                                 width: auto;
