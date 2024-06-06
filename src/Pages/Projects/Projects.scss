@@ -25,6 +25,7 @@
                 display: flex;
                 align-items: center;
                 pointer-events: none;
+                z-index: 2;
 
                 div {
                     color: white;
@@ -55,7 +56,7 @@
             #carousel {
                 display: flex;
                 flex-direction: row;
-                column-gap: 20px;
+                //column-gap: 20px;
 
                 &::before, &::after {
                     content: "";
@@ -67,8 +68,12 @@
                     box-sizing: border-box;
                     border: 1px solid var(--border-color);
                     border-radius: 12px;
+                    margin-left: 20px;
                     overflow: hidden;
 
+                    &:last-child {
+                        margin-right: 20px;
+                    }
                     &:hover {
                         .slide .image {
                             transform: rotate(0deg);

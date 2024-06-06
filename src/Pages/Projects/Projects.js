@@ -23,16 +23,67 @@ const query = `
 
 function Projects() {
     const [page, setPage] = useState(null);
-    var carouselTranslatedTotal = 0;
-    var duplicateDomElements;
+    let slides = document.getElementsByClassName("carousel-slide");
+    var firstIndex = 0;
+    var secondIndex = 1;
+    var swappedNodePos = false;
 
-    function countDuplicateDOMElements() {
-        let slides =  document.getElementsByClassName("carousel-slide");
-        duplicateDomElements = 0;
+    const IteratePageArray = (e) => {
+        let carouselEle = document.getElementById("carousel");
 
-        for (let i = 0; i < slides.length ; i++) {
-            if (slides[0].href === slides[i].href) {
-                duplicateDomElements++;
+        if (e === "inc") {
+            firstIndex++;
+            secondIndex++;
+
+            if (slides[firstIndex] == null) {
+                firstIndex = 0;
+            }
+            if (slides[secondIndex] == null) {
+                secondIndex = 0;
+            }
+        } else {
+            firstIndex--;
+            secondIndex--;
+
+            if (slides[firstIndex] == null) {
+                firstIndex = page.items.length - 1;
+            }
+            if (slides[secondIndex] == null) {
+                secondIndex = page.items.length - 1;
+            }
+        }
+
+        if (window.innerWidth > 768) {
+            if (swappedNodePos) {
+                let lastNode = slides[page.items.length - 1];
+                carouselEle.insertBefore(lastNode, carouselEle.firstChild);
+                swappedNodePos = false;
+                console.log("swap back");
+            }
+
+            for (let i = 0; i < page.items.length; i++) {
+                if (slides[firstIndex].firstChild.firstChild.querySelector("a").firstChild.innerHTML === page.items[i].title || slides[secondIndex].firstChild.firstChild.querySelector("a").firstChild.innerHTML === page.items[i].title) {
+                    slides[i].style.display = "block";
+                } else {
+                    slides[i].style.display = "none";
+                }
+            }
+
+            console.log(firstIndex + " " + secondIndex);
+            
+            if (!swappedNodePos && firstIndex === (page.items.length - 1) && secondIndex === 0) {
+                let firstNode = slides[0];
+                carouselEle.appendChild(firstNode);
+                swappedNodePos = true;
+                console.log("swap front");
+            }
+        } else {
+            for (let i = 0; i < page.items.length; i++) {
+                if (slides[firstIndex].firstChild.firstChild.querySelector("a").firstChild.innerHTML === page.items[i].title) {
+                    slides[i].style.display = "block";
+                } else {
+                    slides[i].style.display = "none";
+                }
             }
         }
     }
@@ -62,12 +113,16 @@ function Projects() {
                 // rerender the entire component with new data
                 setPage(data.projectsPageCollection);
 
-                let slides =  document.getElementsByClassName("carousel-slide")
+                let slides = document.getElementsByClassName("carousel-slide");
                 for (let i = 0; i < slides.length; i++) {
                     if (window.innerWidth > 768) {
                         slides[i].style.width = ((window.innerWidth - 60) / 2) + "px";
                     } else {
                         slides[i].style.width = (window.innerWidth - 40) + "px";
+                    }
+
+                    if (i > 1) {
+                        slides[i].style.display = "none";
                     }
                 }
             });
@@ -101,7 +156,6 @@ function Projects() {
     }, []);
 
     window.addEventListener('resize', function() {
-        let slides =  document.getElementsByClassName("carousel-slide");
         for (let i = 0; i < slides.length; i++) {
             if (window.innerWidth > 768) {
                 slides[i].style.width = ((window.innerWidth - 60) / 2) + "px";
@@ -112,65 +166,7 @@ function Projects() {
     });
 
     const moveCarousel = (e) => {
-        let translateXValue;
-        let slideWidth = window.innerWidth - 20;
-        let carouselEle = document.getElementById("carousel");
-        let slides =  document.getElementsByClassName("carousel-slide");
-
-        if (window.innerWidth > 768) {
-            if (e.target.id === "inc") {
-                translateXValue = -(slideWidth / 2);
-            } else {
-                translateXValue = (slideWidth / 2);
-            }
-        } else {
-            if (e.target.id === "inc") {
-                translateXValue = -(slideWidth);
-            } else {
-                translateXValue = (slideWidth);
-            }
-        }
-
-        carouselTranslatedTotal+= parseFloat(translateXValue);
-        console.log(carouselTranslatedTotal);
-
-        let facadeSlide = false;
-        if (window.innerWidth > 768) {
-            countDuplicateDOMElements();
-            console.log((-(((window.innerWidth / 2) - 10)) * (page.items.length - 2)));
-
-            if (carouselTranslatedTotal === ((window.innerWidth / 2) - 10)) {
-                let lastCarouselSlideNode = slides[page.items.length - 1];
-                let tempNode = lastCarouselSlideNode.cloneNode(true);
-                carouselEle.insertBefore(tempNode, carouselEle.firstChild);
-                facadeSlide = true;
-            } else if (carouselTranslatedTotal > ((window.innerWidth / 2) - 10)) {
-                carouselTranslatedTotal = -(((window.innerWidth / 2) - 10) * (page.items.length - 1)) + ((window.innerWidth / 2) - 10);
-                carouselEle.removeChild(carouselEle.firstChild);
-            } else if (carouselTranslatedTotal === 0 && duplicateDomElements === 2) {  //if facade slide exists at the beginning of the DOM Node List and we increment the carousel, delete it
-                carouselEle.removeChild(carouselEle.firstChild);
-            } else if (carouselTranslatedTotal === -(((window.innerWidth / 2) - 10)) * (page.items.length - 1)) {
-                let firstCarouselSlideNode = slides[0];
-                let tempNode = firstCarouselSlideNode.cloneNode(true);
-                carouselEle.appendChild(tempNode, carouselEle.firstChild);
-            } else if (carouselTranslatedTotal < -(((window.innerWidth / 2) - 10)) * (page.items.length - 1)) {
-                carouselEle.removeChild(carouselEle.lastChild);
-                carouselTranslatedTotal = 0;
-            } else if ((carouselTranslatedTotal === -(((window.innerWidth / 2) - 10)) * (page.items.length - 2)) && duplicateDomElements === 2) {  //if facade slide exists at the end of the DOM Node List and we decrement the carousel, delete it
-                carouselEle.removeChild(carouselEle.lastChild);
-            }
-        } else {
-            if (carouselTranslatedTotal > 0) {
-                carouselTranslatedTotal = -(((slideWidth) * page.items.length) - slideWidth);
-            } else if (carouselTranslatedTotal ===  -((slideWidth) * page.items.length)) {
-                carouselTranslatedTotal = 0;
-            }
-        }
-
-        if (!facadeSlide) {
-            //carouselEle.style.transition = "all 0.20s";
-            carouselEle.style.transform = `translateX(${carouselTranslatedTotal + "px"}`;
-        }
+        IteratePageArray(e.target.id);
     }
 
     if (!page) {
