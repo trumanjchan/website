@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import gsap from "gsap";
 import './Projects.scss';
 import Navbar from '../../Components/Navbar/Navbar';
 
@@ -24,58 +25,99 @@ const query = `
 function Projects() {
     const [page, setPage] = useState(null);
     let slides = document.getElementsByClassName("carousel-slide");
-    var firstIndex = 0;
-    var secondIndex = 1;
+    let currentWindowWidth = -((window.innerWidth - 20) / 2);
+    var zeroIndex = 5;
+    var firstIndex = 6;
+    var secondIndex = 0;
+    var thirdIndex = 1;
     var swappedNodePos = false;
 
     const IteratePageArray = (e) => {
         let carouselEle = document.getElementById("carousel");
 
         if (e === "inc") {
+            zeroIndex++;
             firstIndex++;
             secondIndex++;
+            thirdIndex++;
 
+            if (slides[zeroIndex] == null) {
+                zeroIndex = 0;
+            }
             if (slides[firstIndex] == null) {
                 firstIndex = 0;
             }
             if (slides[secondIndex] == null) {
                 secondIndex = 0;
             }
+            if (slides[thirdIndex] == null) {
+                thirdIndex = 0;
+            }
         } else {
+            zeroIndex--;
             firstIndex--;
             secondIndex--;
+            thirdIndex--;
 
+            if (slides[zeroIndex] == null) {
+                zeroIndex = page.items.length - 1;
+            }
             if (slides[firstIndex] == null) {
                 firstIndex = page.items.length - 1;
             }
             if (slides[secondIndex] == null) {
                 secondIndex = page.items.length - 1;
             }
+            if (slides[thirdIndex] == null) {
+                thirdIndex = page.items.length - 1;
+            }
         }
 
         if (window.innerWidth > 768) {
-            if (swappedNodePos) {
-                let lastNode = slides[page.items.length - 1];
-                carouselEle.insertBefore(lastNode, carouselEle.firstChild);
-                swappedNodePos = false;
-                console.log("swap back");
-            }
-
-            for (let i = 0; i < page.items.length; i++) {
-                if (slides[firstIndex].firstChild.firstChild.querySelector("a").firstChild.innerHTML === page.items[i].title || slides[secondIndex].firstChild.firstChild.querySelector("a").firstChild.innerHTML === page.items[i].title) {
-                    slides[i].style.display = "block";
-                } else {
-                    slides[i].style.display = "none";
+            if (e === "inc") {
+                for (let i = 0; i < page.items.length; i++) {
+                    if (i !== zeroIndex || i !== firstIndex || i !== secondIndex || i !== thirdIndex) {
+                        gsap.set(slides[i], { x: 0, opacity: 1, display: "none" });
+                    }
                 }
-            }
+    
+                if (!swappedNodePos) {
+                    gsap.to(slides[firstIndex], { x: currentWindowWidth, opacity: 0, display: "block" });
+                    gsap.to(slides[secondIndex], { x: currentWindowWidth, opacity: 1, display: "block" });
+                }
+                gsap.to(slides[thirdIndex], { x: currentWindowWidth, opacity: 1, display: "block" });
+                
+                if (swappedNodePos) {
+                    let lastNode = slides[page.items.length - 1];
+                    carouselEle.insertBefore(lastNode, carouselEle.firstChild);
+                    lastNode = slides[page.items.length - 1];
+                    carouselEle.insertBefore(lastNode, carouselEle.firstChild);
+    
+                    gsap.set([slides[0], slides[1], slides[2]], { x: 0, opacity: 1, display: "block" });
+                    gsap.to([slides[0], slides[1], slides[2]], { x: currentWindowWidth, opacity: 1, display: "block" });
+                    gsap.to(slides[0], { opacity: 0, display: "block" });
+                    swappedNodePos = false;
+                    console.log("swap back");
+                }
+    
+                console.log(zeroIndex + " " + firstIndex + " " + secondIndex + " " + thirdIndex);
+                
+                if (!swappedNodePos && firstIndex === (page.items.length - 2) && secondIndex === (page.items.length - 1)) {
+                    let firstNode = slides[0];
+                    carouselEle.appendChild(firstNode);
+                    swappedNodePos = true;
+                    console.log("swap front 1");
+                }
+                if (!swappedNodePos && firstIndex === 0 && slides[0].firstChild.firstChild.querySelector("a").firstChild.innerHTML === page.items[page.items.length - 1].title) {
+                    let firstNode = slides[0];
+                    carouselEle.appendChild(firstNode);
+                    gsap.to(slides[0], { opacity: 0, display: "block" });
+                    gsap.set([slides[1], slides[2]], { x: 0, display: "block" });
+                    gsap.to([slides[1], slides[2]], { x: currentWindowWidth, display: "block" });
+                    console.log("swap front 2");
+                }
+            } else {
 
-            console.log(firstIndex + " " + secondIndex);
-            
-            if (!swappedNodePos && firstIndex === (page.items.length - 1) && secondIndex === 0) {
-                let firstNode = slides[0];
-                carouselEle.appendChild(firstNode);
-                swappedNodePos = true;
-                console.log("swap front");
             }
         } else {
             for (let i = 0; i < page.items.length; i++) {
@@ -119,10 +161,6 @@ function Projects() {
                         slides[i].style.width = ((window.innerWidth - 60) / 2) + "px";
                     } else {
                         slides[i].style.width = (window.innerWidth - 40) + "px";
-                    }
-
-                    if (i > 1) {
-                        slides[i].style.display = "none";
                     }
                 }
             });
