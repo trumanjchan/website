@@ -1,7 +1,10 @@
 import React, {useState, useEffect} from 'react';
 import gsap from "gsap";
+import { Timeline } from 'gsap/gsap-core';
 import './Projects.scss';
 import Navbar from '../../Components/Navbar/Navbar';
+
+gsap.registerPlugin();
 
 const query = `
 {
@@ -31,8 +34,14 @@ function Projects() {
     var secondIndex = 0;
     var thirdIndex = 1;
     var swappedNodePos = false;
+    var tl = new Timeline().add('start');
 
     const IteratePageArray = (e) => {
+        // Exit if animation is active
+        if (tl.isActive()) { return; }
+        // Clear the timeline
+        tl.clear();
+
         let carouselEle = document.getElementById("carousel");
 
         if (e === "inc") {
@@ -76,16 +85,16 @@ function Projects() {
         if (window.innerWidth > 768) {
             if (e === "inc") {
                 for (let i = 0; i < page.items.length; i++) {
-                    if (i !== zeroIndex || i !== firstIndex || i !== secondIndex || i !== thirdIndex) {
-                        gsap.set(slides[i], { x: 0, opacity: 1, display: "none" });
+                    if (i !== firstIndex || i !== secondIndex || i !== thirdIndex) {
+                        tl.set(slides[i], { x: 0, opacity: 1, display: "none" }, 'start');
                     }
                 }
     
                 if (!swappedNodePos) {
-                    gsap.to(slides[firstIndex], { x: currentWindowWidth, opacity: 0, display: "block" });
-                    gsap.to(slides[secondIndex], { x: currentWindowWidth, opacity: 1, display: "block" });
+                    tl.to(slides[firstIndex], { x: currentWindowWidth, opacity: 0, display: "block" }, 'start')
+                        .to(slides[secondIndex], { x: currentWindowWidth, opacity: 1, display: "block" }, 'start');
                 }
-                gsap.to(slides[thirdIndex], { x: currentWindowWidth, opacity: 1, display: "block" });
+                tl.to(slides[thirdIndex], { x: currentWindowWidth, opacity: 1, display: "block" }, 'start');
                 
                 if (swappedNodePos) {
                     let lastNode = slides[page.items.length - 1];
@@ -93,9 +102,9 @@ function Projects() {
                     lastNode = slides[page.items.length - 1];
                     carouselEle.insertBefore(lastNode, carouselEle.firstChild);
     
-                    gsap.set([slides[0], slides[1], slides[2]], { x: 0, opacity: 1, display: "block" });
-                    gsap.to([slides[0], slides[1], slides[2]], { x: currentWindowWidth, opacity: 1, display: "block" });
-                    gsap.to(slides[0], { opacity: 0, display: "block" });
+                    tl.set([slides[0], slides[1], slides[2]], { x: 0, opacity: 1, display: "block" }, 'start')
+                        .to([slides[0], slides[1], slides[2]], { x: currentWindowWidth, opacity: 1, display: "block" }, 'start')
+                        .to(slides[0], { opacity: 0, display: "block" }, 'start');
                     swappedNodePos = false;
                     console.log("swap back");
                 }
@@ -111,9 +120,9 @@ function Projects() {
                 if (!swappedNodePos && firstIndex === 0 && slides[0].firstChild.firstChild.querySelector("a").firstChild.innerHTML === page.items[page.items.length - 1].title) {
                     let firstNode = slides[0];
                     carouselEle.appendChild(firstNode);
-                    gsap.to(slides[0], { opacity: 0, display: "block" });
-                    gsap.set([slides[1], slides[2]], { x: 0, display: "block" });
-                    gsap.to([slides[1], slides[2]], { x: currentWindowWidth, display: "block" });
+                    tl.to(slides[0], { opacity: 0, display: "block" }, 'start')
+                        .set([slides[1], slides[2]], { x: 0, display: "block" }, 'start')
+                        .to([slides[1], slides[2]], { x: currentWindowWidth, display: "block" }, 'start');
                     console.log("swap front 2");
                 }
             } else {
