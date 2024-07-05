@@ -27,12 +27,13 @@ const query = `
 
 function Projects() {
     const [page, setPage] = useState(null);
+    let carouselEle = document.getElementById("carousel");
     let slides = document.getElementsByClassName("carousel-slide");
-    let currentWindowWidth = -((window.innerWidth - 20) / 2);
-    var zeroIndex = 5;
-    var firstIndex = 6;
-    var secondIndex = 0;
-    var thirdIndex = 1;
+    let slideWidth = ((window.innerWidth - 60) / 2);
+    var [offscreenLeftIndex, setoffscreenLeftIndex] = useState(null);
+    var firstIndex = 0;
+    var secondIndex = 1;
+    var offscreenRightIndex = 2;
     var swappedNodePos = false;
     var tl = new Timeline().add('start');
 
@@ -42,16 +43,24 @@ function Projects() {
         // Clear the timeline
         tl.clear();
 
-        let carouselEle = document.getElementById("carousel");
 
         if (e === "inc") {
-            zeroIndex++;
+            if (window.innerWidth > 768) {
+                if (!swappedNodePos) {
+                    tl.to(slides[firstIndex], { width: 0, borderWidth: 0, margin: 0, opacity: 0 }, 'start');
+                } else {
+                    tl.to(slides[offscreenLeftIndex], { width: 0, borderWidth: 0, margin: 0, opacity: 0 }, 'start');
+                    tl.set(slides[secondIndex], { width: slideWidth, borderWidth: 1, marginLeft: 20, opacity: 1, display: "block" }, 'start');
+                }
+            }
+
+            offscreenLeftIndex++;
             firstIndex++;
             secondIndex++;
-            thirdIndex++;
+            offscreenRightIndex++;
 
-            if (slides[zeroIndex] == null) {
-                zeroIndex = 0;
+            if (slides[offscreenLeftIndex] == null) {
+                offscreenLeftIndex = 0;
             }
             if (slides[firstIndex] == null) {
                 firstIndex = 0;
@@ -59,17 +68,17 @@ function Projects() {
             if (slides[secondIndex] == null) {
                 secondIndex = 0;
             }
-            if (slides[thirdIndex] == null) {
-                thirdIndex = 0;
+            if (slides[offscreenRightIndex] == null) {
+                offscreenRightIndex = 0;
             }
         } else {
-            zeroIndex--;
+            offscreenLeftIndex--;
             firstIndex--;
             secondIndex--;
-            thirdIndex--;
+            offscreenRightIndex--;
 
-            if (slides[zeroIndex] == null) {
-                zeroIndex = page.items.length - 1;
+            if (slides[offscreenLeftIndex] == null) {
+                offscreenLeftIndex = page.items.length - 1;
             }
             if (slides[firstIndex] == null) {
                 firstIndex = page.items.length - 1;
@@ -77,56 +86,38 @@ function Projects() {
             if (slides[secondIndex] == null) {
                 secondIndex = page.items.length - 1;
             }
-            if (slides[thirdIndex] == null) {
-                thirdIndex = page.items.length - 1;
+            if (slides[offscreenRightIndex] == null) {
+                offscreenRightIndex = page.items.length - 1;
             }
         }
 
         if (window.innerWidth > 768) {
-            if (e === "inc") {
-                for (let i = 0; i < page.items.length; i++) {
-                    if (i !== firstIndex || i !== secondIndex || i !== thirdIndex) {
-                        tl.set(slides[i], { x: 0, opacity: 1, display: "none" }, 'start');
-                    }
-                }
-    
-                if (!swappedNodePos) {
-                    tl.to(slides[firstIndex], { x: currentWindowWidth, opacity: 0, display: "block" }, 'start')
-                        .to(slides[secondIndex], { x: currentWindowWidth, opacity: 1, display: "block" }, 'start');
-                }
-                tl.to(slides[thirdIndex], { x: currentWindowWidth, opacity: 1, display: "block" }, 'start');
-                
-                if (swappedNodePos) {
-                    let lastNode = slides[page.items.length - 1];
-                    carouselEle.insertBefore(lastNode, carouselEle.firstChild);
-                    lastNode = slides[page.items.length - 1];
-                    carouselEle.insertBefore(lastNode, carouselEle.firstChild);
-    
-                    tl.set([slides[0], slides[1], slides[2]], { x: 0, opacity: 1, display: "block" }, 'start')
-                        .to([slides[0], slides[1], slides[2]], { x: currentWindowWidth, opacity: 1, display: "block" }, 'start')
-                        .to(slides[0], { opacity: 0, display: "block" }, 'start');
-                    swappedNodePos = false;
-                    console.log("swap back");
-                }
-    
-                console.log(zeroIndex + " " + firstIndex + " " + secondIndex + " " + thirdIndex);
-                
-                if (!swappedNodePos && firstIndex === (page.items.length - 2) && secondIndex === (page.items.length - 1)) {
-                    let firstNode = slides[0];
-                    carouselEle.appendChild(firstNode);
-                    swappedNodePos = true;
-                    console.log("swap front 1");
-                }
-                if (!swappedNodePos && firstIndex === 0 && slides[0].firstChild.firstChild.querySelector("a").firstChild.innerHTML === page.items[page.items.length - 1].title) {
-                    let firstNode = slides[0];
-                    carouselEle.appendChild(firstNode);
-                    tl.to(slides[0], { opacity: 0, display: "block" }, 'start')
-                        .set([slides[1], slides[2]], { x: 0, display: "block" }, 'start')
-                        .to([slides[1], slides[2]], { x: currentWindowWidth, display: "block" }, 'start');
-                    console.log("swap front 2");
-                }
-            } else {
+            if (swappedNodePos) {
+                let lastNode1 = slides[page.items.length - 1];
+                carouselEle.insertBefore(lastNode1, carouselEle.firstChild);
+                let lastNode2 = slides[page.items.length - 1];
+                carouselEle.insertBefore(lastNode2, carouselEle.firstChild);
+                swappedNodePos = false;
+                console.log("swap back");
+            }
 
+            tl.set(slides[secondIndex], { width: slideWidth, borderWidth: 1, marginLeft: 20, opacity: 1, display: "block" }, 'start');
+
+            console.log(offscreenLeftIndex + " " + firstIndex + " " + secondIndex + " " + offscreenRightIndex);
+            
+            if (!swappedNodePos && firstIndex === (page.items.length - 1) && secondIndex === 0) {
+                let firstNode1 = slides[0];
+                carouselEle.appendChild(firstNode1);
+                swappedNodePos = true;
+                console.log("swap front1");
+            }
+
+            if (!swappedNodePos && firstIndex === 1 && secondIndex === 2 && (slides[0].firstChild.firstChild.querySelector("a").firstChild.innerHTML === page.items[page.items.length - 1].title)) {
+                let firstNode2 = slides[0];
+                carouselEle.appendChild(firstNode2);
+                tl.to(slides[offscreenLeftIndex], { width: 0, borderWidth: 0, margin: 0, opacity: 0 }, 'start');
+                tl.set(slides[secondIndex], { width: slideWidth, borderWidth: 1, marginLeft: 20, opacity: 1, display: "block" }, 'start');
+                console.log("swap front2");
             }
         } else {
             for (let i = 0; i < page.items.length; i++) {
@@ -172,6 +163,8 @@ function Projects() {
                         slides[i].style.width = (window.innerWidth - 40) + "px";
                     }
                 }
+
+                setoffscreenLeftIndex(slides.length - 1);
             });
             
         var touchPos1;
