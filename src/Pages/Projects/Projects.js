@@ -1,11 +1,10 @@
 import React, {useState, useEffect} from 'react';
+import './Projects.scss';
 import gsap from "gsap";
 import { Timeline } from 'gsap/gsap-core';
-import './Projects.scss';
 import Navbar from '../../Components/Navbar/Navbar';
 
 gsap.registerPlugin();
-
 const query = `
 {
     projectsPageCollection {
@@ -29,7 +28,7 @@ function Projects() {
     const [page, setPage] = useState(null);
     let carouselEle = document.getElementById("carousel");
     let slides = document.getElementsByClassName("carousel-slide");
-    let slideWidth = ((window.innerWidth - 60) / 2);
+    let slideWidth = ((window.innerWidth - 20) / 2);
     var [offscreenLeftIndex, setoffscreenLeftIndex] = useState(null);
     var firstIndex = 0;
     var secondIndex = 1;
@@ -43,15 +42,10 @@ function Projects() {
         // Clear the timeline
         tl.clear();
 
-
         if (e === "inc") {
             if (window.innerWidth > 768) {
-                if (!swappedNodePos) {
-                    tl.to(slides[firstIndex], { width: 0, borderWidth: 0, margin: 0, opacity: 0 }, 'start');
-                } else {
-                    tl.to(slides[offscreenLeftIndex], { width: 0, borderWidth: 0, margin: 0, opacity: 0 }, 'start');
-                    tl.set(slides[secondIndex], { width: slideWidth, borderWidth: 1, marginLeft: 20, opacity: 1, display: "block" }, 'start');
-                }
+                tl.set(slides[offscreenLeftIndex], { display: "none" }, 'start')
+                    .set(slides[offscreenRightIndex], { display: "block", opacity: 1 }, 'start');
             }
 
             offscreenLeftIndex++;
@@ -72,6 +66,10 @@ function Projects() {
                 offscreenRightIndex = 0;
             }
         } else {
+            if (window.innerWidth > 768) {
+                //Desktop decrement
+            }
+
             offscreenLeftIndex--;
             firstIndex--;
             secondIndex--;
@@ -92,36 +90,58 @@ function Projects() {
         }
 
         if (window.innerWidth > 768) {
-            if (swappedNodePos) {
-                let lastNode1 = slides[page.items.length - 1];
-                carouselEle.insertBefore(lastNode1, carouselEle.firstChild);
-                let lastNode2 = slides[page.items.length - 1];
-                carouselEle.insertBefore(lastNode2, carouselEle.firstChild);
-                swappedNodePos = false;
-                console.log("swap back");
-            }
-
-            tl.set(slides[secondIndex], { width: slideWidth, borderWidth: 1, marginLeft: 20, opacity: 1, display: "block" }, 'start');
-
-            console.log(offscreenLeftIndex + " " + firstIndex + " " + secondIndex + " " + offscreenRightIndex);
-            
-            if (!swappedNodePos && firstIndex === (page.items.length - 1) && secondIndex === 0) {
-                let firstNode1 = slides[0];
-                carouselEle.appendChild(firstNode1);
-                swappedNodePos = true;
-                console.log("swap front1");
-            }
-
-            if (!swappedNodePos && firstIndex === 1 && secondIndex === 2 && (slides[0].firstChild.firstChild.querySelector("a").firstChild.innerHTML === page.items[page.items.length - 1].title)) {
-                let firstNode2 = slides[0];
-                carouselEle.appendChild(firstNode2);
-                tl.to(slides[offscreenLeftIndex], { width: 0, borderWidth: 0, margin: 0, opacity: 0 }, 'start');
-                tl.set(slides[secondIndex], { width: slideWidth, borderWidth: 1, marginLeft: 20, opacity: 1, display: "block" }, 'start');
-                console.log("swap front2");
+            if (e === "inc") {
+                if (swappedNodePos && firstIndex === 1 && secondIndex === 2) {
+                    let lastNode = slides[0];
+                    carouselEle.appendChild(lastNode);
+                    swappedNodePos = false;
+                    console.log("move lastNode back to the end (4)");
+                }
+    
+                if (swappedNodePos) {
+                    let firstNode = slides[page.items.length - 1];
+                    carouselEle.insertBefore(firstNode, carouselEle.firstChild);
+                    let lastNode = slides[page.items.length - 1];
+                    carouselEle.insertBefore(lastNode, carouselEle.firstChild);
+    
+                    tl.set(slides[offscreenLeftIndex], { x: 0 }, 'start')
+                        .set(slides[firstIndex], { x: 0, display: "block" }, 'start')
+                        .set(slides[secondIndex], { x: 0 }, 'start')
+                        .set(slides[offscreenRightIndex], { x: 0, display: "block", opacity: 1 }, 'start')
+    
+                        .to(slides[offscreenLeftIndex], { x: -slideWidth, duration: 0.5, ease: "sine.in" }, 'start')
+                        .to(slides[firstIndex], { x: -slideWidth, opacity: 0, duration: 0.5, ease: "sine.in" }, 'start')
+                        .to(slides[secondIndex], { x: -slideWidth, duration: 0.5, ease: "sine.in" }, 'start')
+                        .to(slides[offscreenRightIndex], { x: -slideWidth, duration: 0.5, ease: "sine.in" }, 'start');
+    
+                    console.log("move firstNode back to the front (2)\nmove lastNode to the front (3)");
+                } else {
+                    tl.set(slides[offscreenLeftIndex], { x: 0 }, 'start')
+                        .set(slides[firstIndex], { x: 0 }, 'start')
+                        .set(slides[secondIndex], { x: 0 }, 'start')
+                        .set(slides[offscreenRightIndex], { x: 0 }, 'start')
+    
+                        .to(slides[offscreenLeftIndex], { x: -slideWidth, opacity: 0, duration: 0.5, ease: "sine.in" }, 'start')
+                        .to(slides[firstIndex], { x: -slideWidth, duration: 0.5, ease: "sine.in" }, 'start')
+                        .to(slides[secondIndex], { x: -slideWidth, duration: 0.5, ease: "sine.in" }, 'start')
+                        .to(slides[offscreenRightIndex], { x: -slideWidth, duration: 0.5, ease: "sine.in" }, 'start');
+                }
+    
+                console.log(firstIndex + " " + secondIndex);
+                
+                if (!swappedNodePos && firstIndex === (page.items.length - 1) && secondIndex === 0) {
+                    let firstNode = slides[0];
+                    carouselEle.appendChild(firstNode);
+                    swappedNodePos = true;
+                    console.log("move firstNode to the end (1)");
+                }
+            } else {
+                //Desktop decrement
             }
         } else {
+            console.log(firstIndex)
             for (let i = 0; i < page.items.length; i++) {
-                if (slides[firstIndex].firstChild.firstChild.querySelector("a").firstChild.innerHTML === page.items[i].title) {
+                if (i === firstIndex) {
                     slides[i].style.display = "block";
                 } else {
                     slides[i].style.display = "none";
