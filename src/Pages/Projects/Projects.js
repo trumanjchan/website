@@ -26,10 +26,7 @@ const query = `
 
 function Projects() {
     const [page, setPage] = useState(null);
-    let carouselEle = document.getElementById("carousel");
-    let slides = document.getElementsByClassName("carousel-slide");
-    let slideWidth = ((window.innerWidth - 20) / 2);
-    var [offscreenLeftIndex, setoffscreenLeftIndex] = useState(null);
+    var slides = document.getElementsByClassName("carousel-slide");
     var firstIndex = 0;
     var secondIndex = 1;
     var offscreenRightIndex = 2;
@@ -37,10 +34,11 @@ function Projects() {
     var tl = new Timeline().add('start');
 
     const IteratePageArray = (e) => {
-        // Exit if animation is active
-        if (tl.isActive()) { return; }
-        // Clear the timeline
-        tl.clear();
+        let carouselEle = document.getElementById("carousel");
+        let slideNum = document.getElementById("slide-num");
+
+        slideNum.children[firstIndex].style.backgroundColor = "darkgray";
+        slideNum.children[secondIndex].style.backgroundColor = "darkgray";
 
         if (e === "inc") {
             if (window.innerWidth > 768) {
@@ -89,65 +87,44 @@ function Projects() {
             }
         }
 
-        if (window.innerWidth > 768) {
-            if (e === "inc") {
-                if (swappedNodePos && firstIndex === 1 && secondIndex === 2) {
-                    let lastNode = slides[0];
-                    carouselEle.appendChild(lastNode);
-                    swappedNodePos = false;
-                    console.log("move lastNode back to the end (4)");
-                }
-    
-                if (swappedNodePos) {
-                    let firstNode = slides[page.items.length - 1];
-                    carouselEle.insertBefore(firstNode, carouselEle.firstChild);
-                    let lastNode = slides[page.items.length - 1];
-                    carouselEle.insertBefore(lastNode, carouselEle.firstChild);
-    
-                    tl.set(slides[offscreenLeftIndex], { x: 0 }, 'start')
-                        .set(slides[firstIndex], { x: 0, display: "block" }, 'start')
-                        .set(slides[secondIndex], { x: 0 }, 'start')
-                        .set(slides[offscreenRightIndex], { x: 0, display: "block", opacity: 1 }, 'start')
-    
-                        .to(slides[offscreenLeftIndex], { x: -slideWidth, duration: 0.5, ease: "sine.in" }, 'start')
-                        .to(slides[firstIndex], { x: -slideWidth, opacity: 0, duration: 0.5, ease: "sine.in" }, 'start')
-                        .to(slides[secondIndex], { x: -slideWidth, duration: 0.5, ease: "sine.in" }, 'start')
-                        .to(slides[offscreenRightIndex], { x: -slideWidth, duration: 0.5, ease: "sine.in" }, 'start');
-    
-                    console.log("move firstNode back to the front (2)\nmove lastNode to the front (3)");
-                } else {
-                    tl.set(slides[offscreenLeftIndex], { x: 0 }, 'start')
-                        .set(slides[firstIndex], { x: 0 }, 'start')
-                        .set(slides[secondIndex], { x: 0 }, 'start')
-                        .set(slides[offscreenRightIndex], { x: 0 }, 'start')
-    
-                        .to(slides[offscreenLeftIndex], { x: -slideWidth, opacity: 0, duration: 0.5, ease: "sine.in" }, 'start')
-                        .to(slides[firstIndex], { x: -slideWidth, duration: 0.5, ease: "sine.in" }, 'start')
-                        .to(slides[secondIndex], { x: -slideWidth, duration: 0.5, ease: "sine.in" }, 'start')
-                        .to(slides[offscreenRightIndex], { x: -slideWidth, duration: 0.5, ease: "sine.in" }, 'start');
-                }
-    
-                console.log(firstIndex + " " + secondIndex);
-                
-                if (!swappedNodePos && firstIndex === (page.items.length - 1) && secondIndex === 0) {
-                    let firstNode = slides[0];
-                    carouselEle.appendChild(firstNode);
-                    swappedNodePos = true;
-                    console.log("move firstNode to the end (1)");
-                }
+        if (swappedNodePos) {
+            let lastNode = slides[page.items.length - 1];
+            carouselEle.insertBefore(lastNode, carouselEle.firstChild);
+            swappedNodePos = false;
+            console.log("swap back");
+        }
+
+        for (let i = 0; i < page.items.length; i++) {
+            if (slides[i] === slides[firstIndex] || slides[i] === slides[secondIndex]) {
+                slides[i].style.display = "block";
             } else {
-                //Desktop decrement
-            }
-        } else {
-            console.log(firstIndex)
-            for (let i = 0; i < page.items.length; i++) {
-                if (i === firstIndex) {
-                    slides[i].style.display = "block";
-                } else {
-                    slides[i].style.display = "none";
-                }
+                slides[i].style.display = "none";
             }
         }
+
+        console.log(firstIndex + " " + secondIndex);
+        
+        if (!swappedNodePos && firstIndex === (page.items.length - 1) && secondIndex === 0) {
+            let firstNode = slides[0];
+            carouselEle.appendChild(firstNode);
+            swappedNodePos = true;
+            console.log("swap front");
+        }
+
+        
+        if (window.innerWidth > 768) {
+            slideNum.children[firstIndex].style.backgroundColor = "var(--invert-color)";
+            slideNum.children[secondIndex].style.backgroundColor = "var(--invert-color)";
+        } else {
+            slideNum.children[firstIndex].style.backgroundColor = "var(--invert-color)";
+        }
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 768) {
+                document.getElementById("slide-num").children[secondIndex].style.backgroundColor = "var(--invert-color)";
+            } else {
+                document.getElementById("slide-num").children[secondIndex].style.backgroundColor = "darkgray";
+            }
+        });
     }
 
     useEffect(() => {
@@ -174,7 +151,7 @@ function Projects() {
 
                 // rerender the entire component with new data
                 setPage(data.projectsPageCollection);
-
+                
                 let slides = document.getElementsByClassName("carousel-slide");
                 for (let i = 0; i < slides.length; i++) {
                     if (window.innerWidth > 768) {
@@ -184,35 +161,32 @@ function Projects() {
                     }
                 }
 
-                setoffscreenLeftIndex(slides.length - 1);
+                /* Slide-Num */
+                let slideNum = document.getElementById("slide-num");
+                for (let i = 0; i < slides.length; i++) {
+                    slideNum.innerHTML += "<div class='gray-circle'></div>"
+                }
+
+                /* Swipe (desktop only) */
+                var touchPos1;
+                var touchPos2;
+                let carouselArea = document.querySelector(".carousel-area");
+                carouselArea.addEventListener('mousedown', (e) => {
+                    touchPos1 = e.screenX;
+                });
+                carouselArea.addEventListener('mouseup', (e) => {
+                    touchPos2 = e.screenX;
+                    if (touchPos1 < touchPos2) {
+                        document.getElementById("dec").click();
+                    } else if (touchPos1 > touchPos2) {
+                        document.getElementById("inc").click();
+                    }
+                });
+
+                /* on page initialization */
+                document.getElementById("inc").click();
+                document.getElementById("dec").click();
             });
-            
-        var touchPos1;
-        var touchPos2;
-        /* Desktop */
-        document.getElementsByClassName("container")[0].addEventListener('mousedown', (e) => {
-            touchPos1 = e.screenX;
-        });
-        document.getElementsByClassName("container")[0].addEventListener('mouseup', (e) => {
-            touchPos2 = e.screenX;
-            if (touchPos1 < touchPos2) {
-                document.getElementById("dec").click();
-            } else if (touchPos1 > touchPos2) {
-                document.getElementById("inc").click();
-            }
-        });
-        /* Mobile */
-        document.getElementsByClassName("container")[0].addEventListener('touchstart', (e) => {
-            touchPos1 = e.changedTouches[0].screenX;
-        });
-        document.getElementsByClassName("container")[0].addEventListener('touchend', (e) => {
-            touchPos2 = e.changedTouches[0].screenX;
-            if (touchPos1 < touchPos2) {
-                document.getElementById("dec").click();
-            } else if (touchPos1 > touchPos2) {
-                document.getElementById("inc").click();
-            }
-        });
     }, []);
 
     window.addEventListener('resize', function() {
@@ -270,6 +244,7 @@ function Projects() {
                             ))}
                         </div>
                     </div>
+                    <div id='slide-num'></div>
                 </div>
             </main>
         );
