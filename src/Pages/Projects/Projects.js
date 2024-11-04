@@ -23,13 +23,17 @@ const query = `
 
 function Projects() {
     const [page, setPage] = useState(null);
-    let slides = document.getElementsByClassName("carousel-slide");
+    var slides = document.getElementsByClassName("carousel-slide");
     var firstIndex = 0;
     var secondIndex = 1;
     var swappedNodePos = false;
 
     const IteratePageArray = (e) => {
         let carouselEle = document.getElementById("carousel");
+        let slideNum = document.getElementById("slide-num");
+
+        slideNum.children[firstIndex].style.backgroundColor = "darkgray";
+        slideNum.children[secondIndex].style.backgroundColor = "darkgray";
 
         if (e === "inc") {
             firstIndex++;
@@ -53,39 +57,44 @@ function Projects() {
             }
         }
 
-        if (window.innerWidth > 768) {
-            if (swappedNodePos) {
-                let lastNode = slides[page.items.length - 1];
-                carouselEle.insertBefore(lastNode, carouselEle.firstChild);
-                swappedNodePos = false;
-                console.log("swap back");
-            }
+        if (swappedNodePos) {
+            let lastNode = slides[page.items.length - 1];
+            carouselEle.insertBefore(lastNode, carouselEle.firstChild);
+            swappedNodePos = false;
+            console.log("swap back");
+        }
 
-            for (let i = 0; i < page.items.length; i++) {
-                if (slides[firstIndex].firstChild.firstChild.querySelector("a").firstChild.innerHTML === page.items[i].title || slides[secondIndex].firstChild.firstChild.querySelector("a").firstChild.innerHTML === page.items[i].title) {
-                    slides[i].style.display = "block";
-                } else {
-                    slides[i].style.display = "none";
-                }
-            }
-
-            console.log(firstIndex + " " + secondIndex);
-            
-            if (!swappedNodePos && firstIndex === (page.items.length - 1) && secondIndex === 0) {
-                let firstNode = slides[0];
-                carouselEle.appendChild(firstNode);
-                swappedNodePos = true;
-                console.log("swap front");
-            }
-        } else {
-            for (let i = 0; i < page.items.length; i++) {
-                if (slides[firstIndex].firstChild.firstChild.querySelector("a").firstChild.innerHTML === page.items[i].title) {
-                    slides[i].style.display = "block";
-                } else {
-                    slides[i].style.display = "none";
-                }
+        for (let i = 0; i < page.items.length; i++) {
+            if (slides[i] === slides[firstIndex] || slides[i] === slides[secondIndex]) {
+                slides[i].style.display = "block";
+            } else {
+                slides[i].style.display = "none";
             }
         }
+
+        console.log(firstIndex + " " + secondIndex);
+        
+        if (!swappedNodePos && firstIndex === (page.items.length - 1) && secondIndex === 0) {
+            let firstNode = slides[0];
+            carouselEle.appendChild(firstNode);
+            swappedNodePos = true;
+            console.log("swap front");
+        }
+
+        
+        if (window.innerWidth > 768) {
+            slideNum.children[firstIndex].style.backgroundColor = "var(--invert-color)";
+            slideNum.children[secondIndex].style.backgroundColor = "var(--invert-color)";
+        } else {
+            slideNum.children[firstIndex].style.backgroundColor = "var(--invert-color)";
+        }
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 768) {
+                document.getElementById("slide-num").children[secondIndex].style.backgroundColor = "var(--invert-color)";
+            } else {
+                document.getElementById("slide-num").children[secondIndex].style.backgroundColor = "darkgray";
+            }
+        });
     }
 
     useEffect(() => {
@@ -112,7 +121,7 @@ function Projects() {
 
                 // rerender the entire component with new data
                 setPage(data.projectsPageCollection);
-
+                
                 let slides = document.getElementsByClassName("carousel-slide");
                 for (let i = 0; i < slides.length; i++) {
                     if (window.innerWidth > 768) {
@@ -125,34 +134,33 @@ function Projects() {
                         slides[i].style.display = "none";
                     }
                 }
+
+                /* Slide-Num */
+                let slideNum = document.getElementById("slide-num");
+                for (let i = 0; i < slides.length; i++) {
+                    slideNum.innerHTML += "<div class='gray-circle'></div>"
+                }
+
+                /* Swipe (desktop only) */
+                var touchPos1;
+                var touchPos2;
+                let carouselArea = document.querySelector(".carousel-area");
+                carouselArea.addEventListener('mousedown', (e) => {
+                    touchPos1 = e.screenX;
+                });
+                carouselArea.addEventListener('mouseup', (e) => {
+                    touchPos2 = e.screenX;
+                    if (touchPos1 < touchPos2) {
+                        document.getElementById("dec").click();
+                    } else if (touchPos1 > touchPos2) {
+                        document.getElementById("inc").click();
+                    }
+                });
+
+                /* on page initialization */
+                document.getElementById("inc").click();
+                document.getElementById("dec").click();
             });
-            
-        var touchPos1;
-        var touchPos2;
-        /* Desktop */
-        document.getElementsByClassName("container")[0].addEventListener('mousedown', (e) => {
-            touchPos1 = e.screenX;
-        });
-        document.getElementsByClassName("container")[0].addEventListener('mouseup', (e) => {
-            touchPos2 = e.screenX;
-            if (touchPos1 < touchPos2) {
-                document.getElementById("dec").click();
-            } else if (touchPos1 > touchPos2) {
-                document.getElementById("inc").click();
-            }
-        });
-        /* Mobile */
-        document.getElementsByClassName("container")[0].addEventListener('touchstart', (e) => {
-            touchPos1 = e.changedTouches[0].screenX;
-        });
-        document.getElementsByClassName("container")[0].addEventListener('touchend', (e) => {
-            touchPos2 = e.changedTouches[0].screenX;
-            if (touchPos1 < touchPos2) {
-                document.getElementById("dec").click();
-            } else if (touchPos1 > touchPos2) {
-                document.getElementById("inc").click();
-            }
-        });
     }, []);
 
     window.addEventListener('resize', function() {
@@ -210,6 +218,7 @@ function Projects() {
                             ))}
                         </div>
                     </div>
+                    <div id='slide-num'></div>
                 </div>
             </main>
         );
