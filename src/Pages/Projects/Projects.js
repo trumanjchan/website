@@ -12,10 +12,7 @@ const query = `
             desc,
             stack: stack,
             link,
-            image {
-                fileName: title,
-                url
-            }
+            image
         }
     }
 }
@@ -211,7 +208,7 @@ function Projects() {
                                             </div>
                                         </div>
                                         <div className='image'>
-                                            <img src={item.image.url} className="screenshot" alt={item.image.fileName} width="853.33px" height="480px" draggable="false" />
+                                            <img src={item.image[0].url} className="screenshot" alt={item.image[0].public_id.slice(0, (item.image[0].public_id).indexOf("_"))} width="853.33px" height="480px" draggable="false" />
                                         </div>
                                     </div>
                                 </div>
