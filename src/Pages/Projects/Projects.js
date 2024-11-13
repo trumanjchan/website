@@ -93,82 +93,86 @@ function Projects() {
             }
         });
     }
-
+    
     useEffect(() => {
-        window
-            .fetch(`https://graphql.contentful.com/content/v1/spaces/` + process.env.REACT_APP_SPACE_ID + `/`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    // Authenticate the request
-                    Authorization: "Bearer " + process.env.REACT_APP_ACCESS_TOKEN,
-                },
-                // send the GraphQL query
-                body: JSON.stringify({ query }),
-            })
-            .then((response) => response.json())
-            .then(({ data, errors }) => {
-                if (errors) {
-                    console.error(errors);
-                }
+        var slides = document.getElementsByClassName("carousel-slide");
 
-                console.log(data.projectsPageCollection.items.sort((a, b) => {
-                    return  b.number - a.number
-                }));
-
-                // rerender the entire component with new data
-                setPage(data.projectsPageCollection);
-                
-                let slides = document.getElementsByClassName("carousel-slide");
-                for (let i = 0; i < slides.length; i++) {
-                    if (window.innerWidth > 768) {
-                        slides[i].style.width = ((window.innerWidth - 60) / 2) + "px";
-                    } else {
-                        slides[i].style.width = (window.innerWidth - 40) + "px";
-                    }
-
-                    if (i > 1) {
-                        slides[i].style.display = "none";
-                    }
-                }
-
-                /* Slide-Num */
-                let slideNum = document.getElementById("slide-num");
-                for (let i = 0; i < slides.length; i++) {
-                    slideNum.innerHTML += "<div class='gray-circle'></div>"
-                }
-
-                /* Swipe (desktop only) */
-                var touchPos1;
-                var touchPos2;
-                let carouselArea = document.querySelector(".carousel-area");
-                carouselArea.addEventListener('mousedown', (e) => {
-                    touchPos1 = e.screenX;
-                });
-                carouselArea.addEventListener('mouseup', (e) => {
-                    touchPos2 = e.screenX;
-                    if (touchPos1 < touchPos2) {
-                        document.getElementById("dec").click();
-                    } else if (touchPos1 > touchPos2) {
-                        document.getElementById("inc").click();
-                    }
-                });
-
-                /* on page initialization */
-                document.getElementById("inc").click();
-                document.getElementById("dec").click();
-            });
-    }, []);
-
-    window.addEventListener('resize', function() {
-        for (let i = 0; i < slides.length; i++) {
-            if (window.innerWidth > 768) {
-                slides[i].style.width = ((window.innerWidth - 60) / 2) + "px";
-            } else {
-                slides[i].style.width = (window.innerWidth - 40) + "px";
+        window.fetch(`https://graphql.contentful.com/content/v1/spaces/` + process.env.REACT_APP_SPACE_ID + `/`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                // Authenticate the request
+                Authorization: "Bearer " + process.env.REACT_APP_ACCESS_TOKEN,
+            },
+            // send the GraphQL query
+            body: JSON.stringify({ query }),
+        })
+        .then((response) => response.json())
+        .then(({ data, errors }) => {
+            if (errors) {
+                console.error(errors);
             }
-        }
-    });
+
+            console.log(data.projectsPageCollection.items.sort((a, b) => {
+                return  b.number - a.number
+            }));
+
+            // rerender the entire component with new data
+            setPage(data.projectsPageCollection);
+                
+            for (let i = 0; i < slides.length; i++) {
+                if (window.innerWidth > 768) {
+                    slides[i].style.width = ((window.innerWidth - 60) / 2) + "px";
+                } else {
+                    slides[i].style.width = (window.innerWidth - 40) + "px";
+                }
+
+                if (i > 1) {
+                    slides[i].style.display = "none";
+                }
+            }
+
+            /* Slide-Num */
+            let slideNum = document.getElementById("slide-num");
+            for (let i = 0; i < slides.length; i++) {
+                slideNum.innerHTML += "<div class='gray-circle'></div>"
+            }
+
+            /* Swipe (desktop only) */
+            var touchPos1;
+            var touchPos2;
+            let carouselArea = document.querySelector(".carousel-area");
+            carouselArea.addEventListener('mousedown', (e) => {
+                touchPos1 = e.screenX;
+            });
+            carouselArea.addEventListener('mouseup', (e) => {
+                touchPos2 = e.screenX;
+                if (touchPos1 < touchPos2) {
+                    document.getElementById("dec").click();
+                } else if (touchPos1 > touchPos2) {
+                    document.getElementById("inc").click();
+                }
+            });
+
+            /* on page initialization */
+            document.getElementById("inc").click();
+            document.getElementById("dec").click();
+        });
+
+        const handleSlideWidth = () => {
+            for (let i = 0; i < slides.length; i++) {
+                if (window.innerWidth > 768) {
+                    slides[i].style.width = ((window.innerWidth - 60) / 2) + "px";
+                } else {
+                    slides[i].style.width = (window.innerWidth - 40) + "px";
+                }
+            }
+        };
+        window.addEventListener('resize', handleSlideWidth);
+        return () => {
+            window.removeEventListener('resize', handleSlideWidth);
+        };
+    }, []);
 
     const moveCarousel = (e) => {
         IteratePageArray(e.target.id);
@@ -178,9 +182,6 @@ function Projects() {
         return (
             <main className='Projects'>
                 <Navbar />
-                <div id='container' className='container'>
-                    <div>Loading...</div>
-                </div>
             </main>
         )
     } else {
@@ -208,7 +209,7 @@ function Projects() {
                                             </div>
                                         </div>
                                         <div className='image'>
-                                            <img src={item.image[0].url} className="screenshot" alt={item.image[0].public_id.slice(0, (item.image[0].public_id).indexOf("_"))} width="853.33px" height="480px" draggable="false" />
+                                            <img src={item.image[0].secure_url} className="screenshot" alt={item.image[0].public_id.slice(0, (item.image[0].public_id).indexOf("_"))} width="853.33px" height="480px" draggable="false" />
                                         </div>
                                     </div>
                                 </div>

@@ -24,6 +24,17 @@ button, input {
     sans-serif;
 }
 
+a {
+  text-decoration: none;
+  transition: 0.3s;
+}
+a:link {
+  color: #5D808F;
+}
+a:hover, a:active {
+  color: #6CAFCC;
+}
+
 :root {
   --main-bg-color: #e9e9e9;
   --main-bg-color-alpha: rgba(233, 233, 233, 0.65);

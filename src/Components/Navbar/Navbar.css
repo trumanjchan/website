@@ -251,9 +251,6 @@
     #contents li a {
         text-decoration: none;
     }
-    #contents li a:link {
-        color: #086086;
-    }
     #contents li a:visited {
         color: #173542;
     }

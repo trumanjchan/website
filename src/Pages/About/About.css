@@ -142,10 +142,6 @@ body {
     font-size: 20px;
     margin-left: 5%;
 }
-.About .Education .container .activities a:link {
-    color: #5D808F;
-    text-decoration: none;
-}
 
 .About .Skills {
     background-color: var(--container-bg-color);
@@ -207,14 +203,6 @@ body {
 .About .Awards .container .designmerced .award {
     margin-bottom: 2%;
 }
-.About .Awards .container .designmerced .award .for a:link {
-    font-size: 25px;
-    text-decoration: none;
-    color: #5D808F;
-}
-.About .Awards .container .designmerced .award .for a:hover {
-    color: #6CAFCC;
-}
 .About .Awards .container .designmerced .award .issued {
     color: rgb(104, 104, 104);
 }
@@ -264,13 +252,6 @@ body {
 }
 .About .Experience .container .experiencelist .workedat .total .companyname {
     font-size: 25px;
-}
-.About .Experience .container .experiencelist .workedat .total .companyname a:link {
-    text-decoration: none;
-    color: #5D808F;
-}
-.About .Experience .container .experiencelist .workedat .total .companyname a:hover {
-    color: #6CAFCC;
 }
 .About .Experience .container .experiencelist .workedat .jobdesc {
     position: relative;

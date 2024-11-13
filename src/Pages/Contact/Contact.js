@@ -7,7 +7,7 @@ import darkbg from "../../Images/Track_Field_after_Rain.webp";
 function Contact() {
 
     useEffect(() => {
-        const x = localStorage.getItem("data-theme");
+        const x = sessionStorage.getItem("data-theme");
         const bgimage = document.getElementById('container');
         if (x === "light" || x === null) {
             bgimage.style.backgroundImage = `url(${lightbg})`;
@@ -18,7 +18,7 @@ function Contact() {
 
         const input = document.getElementById('input');
         input.addEventListener('click', function() {
-            if (localStorage.getItem("data-theme") === 'dark') {
+            if (sessionStorage.getItem("data-theme") === 'dark') {
                 bgimage.style.backgroundImage = `url(${lightbg})`;
             }
             else {

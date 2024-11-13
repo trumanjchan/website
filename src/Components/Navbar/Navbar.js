@@ -12,8 +12,8 @@ function Navbar() {
         setDesktopNavContentsHeight(60);
 
 
-        // Retrieve the value of locally-stored key 'data-theme', and set the theme
-        const datatheme = localStorage.getItem("data-theme");
+        // Retrieve the value of session-stored key 'data-theme', and set the theme
+        const datatheme = sessionStorage.getItem("data-theme");
         console.log("Retrieved preference: " + datatheme + " mode");
         const menu = document.getElementById('dropdown');
         if (datatheme === "light" || datatheme === null) {
@@ -32,7 +32,7 @@ function Navbar() {
         // On change, apply filter to image to contrast mode
         const input = document.getElementById('input');
         input.addEventListener('change', function() {
-            if (localStorage.getItem("data-theme") === 'dark') {
+            if (sessionStorage.getItem("data-theme") === 'dark') {
                 menu.classList.add('apply-filter');
             }
             else {
@@ -59,15 +59,15 @@ function Navbar() {
             console.log("light mode");
             // Set transition speed of button position change
             document.getElementById("div").style.transition = "all 300ms";
-            // Set the user's preference in local storage
-            localStorage.setItem("data-theme", "light");
+            // Set the user's preference in session storage
+            sessionStorage.setItem("data-theme", "light");
         }
         else {
             document.body.style.transition = "all 300ms";
             document.documentElement.setAttribute("data-theme", "dark");
             console.log("dark mode");
             document.getElementById("div").style.transition = "all 300ms";
-            localStorage.setItem("data-theme", "dark");
+            sessionStorage.setItem("data-theme", "dark");
         }
 
         // On mobile view, if user touches toggle button then exit out of navbar menu
