@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import './Navbar.css';
-import Headshot from '../../Images/Truman_NY.webp';
 
 function Navbar() {
     const [initialDesktopNavContentsHeight, setDesktopNavContentsHeight] = useState();
@@ -120,7 +119,6 @@ function Navbar() {
         }
 
         document.getElementById('navmodaloverlay').classList.toggle('t-visibility');
-        document.getElementById('essentialinfo').classList.toggle('t-opacity');
         document.getElementById('menu-centerline').classList.toggle('t-fadeopacity');
         document.getElementById('menu-firstline').classList.toggle('t-ftransform');
         document.getElementById('menu-lastline').classList.toggle('t-ltransform');
@@ -173,7 +171,6 @@ function Navbar() {
             document.getElementsByTagName('body')[0].classList.remove('t-overflow');
             document.getElementsByTagName('body')[0].style.touchAction = null;
             document.getElementById('navmodaloverlay').classList.remove('t-visibility');
-            document.getElementById('essentialinfo').classList.remove('t-opacity');
             document.getElementById('menu-centerline').classList.remove('t-fadeopacity');
             document.getElementById('menu-firstline').classList.remove('t-ftransform');
             document.getElementById('menu-lastline').classList.remove('t-ltransform');
@@ -201,13 +198,6 @@ function Navbar() {
                     </label>
                 </li>
             </ul>
-            <div id='essentialinfo'>
-                <img id='headshot' className='headshot' src={Headshot} alt='Truman C.' />
-                <div id='textcontainer'>
-                    <div>Truman Chan (He/Him)</div>
-                    <div>Junior Developer at&nbsp;ConcentricLife</div>
-                </div>
-            </div>
         </div>
     );
 }

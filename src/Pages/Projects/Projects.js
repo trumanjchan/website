@@ -85,13 +85,6 @@ function Projects() {
         } else {
             slideNum.children[firstIndex].style.backgroundColor = "var(--invert-color)";
         }
-        window.addEventListener('resize', function() {
-            if (window.innerWidth > 768) {
-                document.getElementById("slide-num").children[secondIndex].style.backgroundColor = "var(--invert-color)";
-            } else {
-                document.getElementById("slide-num").children[secondIndex].style.backgroundColor = "darkgray";
-            }
-        });
     }
     
     useEffect(() => {

@@ -127,7 +127,7 @@
 }
 
 /* Section Navbar */
-.Navbar #essentialinfo {
+.Navbar #mini-info {
     visibility: hidden;
     overflow: hidden;
     height: 0px;
@@ -156,16 +156,23 @@
     to {height: 0px; visibility: hidden;}
 }
 
-.Navbar #essentialinfo .headshot {
+.Navbar #mini-info .headshot {
     border-radius: 50%;
     width: auto;
     height: 80%;
     align-self: center;
+    margin-left: 4%;
 }
-.Navbar #essentialinfo #textcontainer {
+.Navbar #mini-info #textcontainer {
     visibility: hidden;
     height: 100%;
     margin-left: 1%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+.Navbar #mini-info #textcontainer div:first-child {
+    font-weight: bold;
 }
 .textcontainerfadein {
     visibility: visible !important;
@@ -274,7 +281,7 @@
         position: relative;
         z-index: 1;
     }
-    .Navbar #essentialinfo {
+    .Navbar #mini-info {
         position: fixed;
         top: 0;
         padding: 0;
@@ -289,7 +296,7 @@
         from {height: 60px; visibility: visible;}
         to {height: 0px; visibility: hidden;}
     }
-    .Navbar #essentialinfo img {
+    .Navbar #mini-info img {
         margin-left: 10%;
     }
     .t-overflow {
@@ -310,7 +317,7 @@
     .t-ltransform {
         transform: translateY(-15px) rotate(45deg) !important;
     }
-    .Navbar #essentialinfo #textcontainer {
+    .Navbar #mini-info #textcontainer {
         margin-right: 15%;
         height: fit-content;
         align-self: center;
