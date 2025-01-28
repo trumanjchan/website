@@ -20,22 +20,30 @@ function Navbar() {
             // Set checkbox to be unchecked (button in off state - left)
             document.getElementById('input').checked = false;
             // Don't apply the filter on dropdown icon (default color is black)
-            menu.classList.remove('apply-filter');
+            menu.childNodes.forEach((item) => {
+                item.classList.remove('apply-filter');
+            });
         }
         else {
             document.documentElement.setAttribute("data-theme", "dark");
             document.getElementById('input').checked = true;
-            menu.classList.add('apply-filter');
+            menu.childNodes.forEach((item) => {
+                item.classList.add('apply-filter');
+            });
         }
 
         // On change, apply filter to image to contrast mode
         const input = document.getElementById('input');
         input.addEventListener('change', function() {
             if (sessionStorage.getItem("data-theme") === 'dark') {
-                menu.classList.add('apply-filter');
+                menu.childNodes.forEach((item) => {
+                    item.classList.add('apply-filter');
+                });
             }
             else {
-                menu.classList.remove('apply-filter');
+                menu.childNodes.forEach((item) => {
+                    item.classList.remove('apply-filter');
+                });
             }
         });
 
