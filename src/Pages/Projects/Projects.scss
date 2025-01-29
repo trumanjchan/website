@@ -7,10 +7,6 @@
         align-content: center;
         overflow: hidden;
 
-        @media only screen and (max-width: 768px) {
-            height: 100vh;
-        }
-
         .carousel-area {
             height: 350px;
             display: flex;
@@ -106,6 +102,7 @@
                             
                             a {
                                 width: fit-content;
+                                
                                 h1 {
                                     font-size: 25px;
                                     font-weight: bold;
@@ -172,5 +169,12 @@
                 background-color: darkgray;
             }
         }
+    }
+}
+
+
+@media only screen and (max-width: 768px) {
+    .Projects .container {
+        height: 100vh;
     }
 }

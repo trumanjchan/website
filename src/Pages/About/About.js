@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import { NavLink } from 'react-router-dom';
-import './About.css';
+import './About.scss';
 import Navbar from '../../Components/Navbar/Navbar';
 import LinkedIn from '../../Images/icons8-linkedin.svg';
 import GitHub from '../../Images/icons8-github.svg';

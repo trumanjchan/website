@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import './Navbar.css';
+import './Navbar.scss';
 
 function Navbar() {
     const [initialDesktopNavContentsHeight, setDesktopNavContentsHeight] = useState();
@@ -197,7 +197,7 @@ function Navbar() {
             <ul id='contents' className='grid-container'>
                 <li id='About' onClick={navigateToNewPage}><NavLink to="/">About</NavLink></li>
                 <li id='Projects' onClick={navigateToNewPage}><NavLink to="/projects">Projects</NavLink></li>
-                <li id='Guides' onClick={navigateToNewPage}><NavLink to="/guides">Guides</NavLink></li>
+                <li id='Blog' onClick={navigateToNewPage}><NavLink to="/blog">Blog</NavLink></li>
                 <li id='Contact' onClick={navigateToNewPage}><NavLink to="/contact">Contact</NavLink></li>
                 <li>
                     <label className="switch">

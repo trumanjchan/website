@@ -1,5 +1,5 @@
 import React from 'react';
-import './Sent.css';
+import './Sent.scss';
 import Navbar from '../../../Components/Navbar/Navbar';
 
 function Sent() {

@@ -1,0 +1,376 @@
+.About {
+    height: fit-content;
+
+    .Profile {
+        display: flex;
+        flex-direction: column;
+        width: 80%;
+        margin: 5% auto 2% auto;
+        border-radius: 12px;
+        border: 1px solid lightgrey;
+        overflow: hidden;
+
+        .cover {
+            object-fit: cover;
+            object-position: 0% 40%;
+            width: 100%;
+        }
+
+        #info-container {
+            display: grid;
+            grid-template-columns: 50% 50%;
+            background-color: var(--container-bg-color);
+
+            .first {
+                margin: auto 0% auto 20%;
+                padding-bottom: 10%;
+
+                .headshot {
+                    width: 200px;
+                    margin-top: -25%;
+                    border-radius: 50%;
+                    border: 5px solid white;
+                    box-shadow: 0px 2px 3px 1px rgba(0, 0, 0, 0.2);
+                }
+
+                h1 {
+                    font-size: 35px;
+                    padding-top: 3%;
+                    padding-bottom: 2%;
+                    margin: 0;
+                }
+
+                h2 {
+                    font-size: 25px;
+                    font-weight: 400;
+                    padding-bottom: 2%;
+                    margin: 0;
+                }
+
+                h3 {
+                    font-size: 18px;
+                    font-weight: normal;
+                    color: rgb(104, 104, 104);
+                    margin: 0;
+                }
+
+                .company {
+                    font-size: 20px;
+                    font-weight: 400;
+                    width: fit-content;
+                    margin-bottom: 3%;
+                    padding: 1% 1.8%;
+                    color: var(--invert-color);
+                    background-color: var(--main-bg-color);
+                    border-radius: 8px;
+
+                    .parentcompany {
+                        font-size: 16px;
+                    }
+                }
+            }
+
+            .second {
+                margin: auto 20% auto 0%;
+                letter-spacing: 2px;
+                font-size: 20px;
+                text-align: center;
+
+                p {
+                    margin: 0% 0% 5% 0%;
+                }
+
+                .social-container {
+                    display: flex;
+                    justify-content: space-evenly;
+
+                    a {
+                        height: fit-content;
+                        display: flex;
+                        align-items: center;
+                    }
+
+                    .social {
+                        object-fit: cover;
+                        width: 50px;
+                        height: 50px;
+                        transform: scale(1);
+                        transition-duration: 0.3s;
+
+                        &:hover {
+                            transform: scale(1.2);
+                            transition-duration: 0.3s;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .Education {
+        background-color: var(--container-bg-color);
+        width: 80%;
+        height: fit-content;
+        margin: 0% auto 2% auto;
+        border-radius: 12px;
+        border: 1px solid lightgrey;
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+
+            .title {
+                font-size: 30px;
+                font-weight: 400;
+                margin-top: 2%;
+                margin-left: 4%;
+                text-decoration: underline var(--section-underline);
+            }
+
+            .school {
+                margin: 4% 10% 0% 10%;
+
+                &:last-child {
+                    margin-bottom: 5%;
+                }
+            }
+
+            .schoolname {
+                font-size: 30px;
+                font-weight: bold;
+            }
+
+            .degree {
+                font-size: 22px;
+            }
+
+            .year {
+                font-size: 20px;
+                color: rgb(104, 104, 104);
+            }
+
+            .activitiestitle {
+                font-size: 20px;
+                margin-top: 0.5%;
+            }
+
+            .activities {
+                font-size: 20px;
+                margin-left: 5%;
+            }
+        }
+    }
+
+    .Skills {
+        background-color: var(--container-bg-color);
+        width: 80%;
+        height: fit-content;
+        margin: 0% auto 2% auto;
+        border-radius: 12px;
+        border: 1px solid lightgrey;
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+
+            .title {
+                font-size: 30px;
+                font-weight: 400;
+                margin-top: 2%;
+                margin-left: 4%;
+                text-decoration: underline var(--section-underline);
+            }
+
+            .info {
+                margin: 4% 10%;
+                font-size: 20px;
+                text-align: center;
+
+                .section-title {
+                    font-size: 25px;
+                    font-weight: bold;
+                }
+
+                .section-text {
+                    margin-bottom: 2%;
+                }
+            }
+        }
+    }
+
+    .Awards {
+        background-color: var(--container-bg-color);
+        width: 80%;
+        height: fit-content;
+        margin: 0% auto 2% auto;
+        border-radius: 12px;
+        border: 1px solid lightgrey;
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+
+            .title {
+                font-size: 30px;
+                font-weight: 400;
+                margin-top: 2%;
+                margin-left: 4%;
+                text-decoration: underline var(--section-underline);
+            }
+
+            .designmerced {
+                margin: 4% 10%;
+                font-size: 20px;
+
+                .award {
+                    margin-bottom: 2%;
+
+                    .for a {
+                        font-size: 25px;
+                    }
+
+                    .issued {
+                        color: rgb(104, 104, 104);
+                    }
+
+                    .awarddesc {
+                        line-height: 1.5;
+                        margin-left: -1%;
+                    }
+                }
+            }
+        }
+    }
+
+    .Experience {
+        background-color: var(--container-bg-color);
+        width: 80%;
+        height: fit-content;
+        margin: 0% auto 5% auto;
+        border-radius: 12px;
+        border: 1px solid lightgrey;
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+
+            .title {
+                font-size: 30px;
+                font-weight: 400;
+                margin: 2% 0% auto 4%;
+                text-decoration: underline var(--section-underline);
+            }
+
+            .experiencelist {
+                display: flex;
+                flex-direction: column;
+
+                .workedat {
+                    margin: 2% 10%;
+                    font-size: 20px;
+
+                    &:first-child {
+                        margin-top: 4%;
+                    }
+                    &:last-child {
+                        margin-bottom: 4%;
+                    }
+
+                    .total {
+                        margin-bottom: 3%;
+
+                        .date {
+                            color: rgb(104, 104, 104);
+                        }
+
+                        .companyname {
+                            font-size: 25px;
+                        }
+                    }
+
+                    .jobdesc {
+                        position: relative;
+                        padding-left: 5%;
+
+                        &:after {
+                            content: '';
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            bottom: 0;
+                            height: 98.5%;
+                            margin: auto 0;
+                            border: 1px solid var(--main-bg-color);
+                            border-radius: 10px;
+                        }
+
+                        .lead {
+                            margin-bottom: 2.5%;
+                        }
+
+                        .pos {
+                            margin-bottom: 2%;
+                        }
+
+                        .position {
+                            font-size: 25px;
+                            font-weight: bold;
+                        }
+
+                        .date {
+                            color: rgb(104, 104, 104);
+                        }
+
+                        .text {
+                            line-height: 1.5;
+                            margin-left: -1%;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+@media only screen and (max-width: 1024px) {
+    /* Profile card */
+    .About .Profile #info-container {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+
+        .first {
+            width: 100%;
+            margin: 0;
+            padding-bottom: 0;
+
+            .company {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            h3 {
+                margin-bottom: 5%;
+            }
+        }
+
+        .second {
+            margin: auto auto;
+            width: 80%;
+            letter-spacing: 2px;
+            font-size: 20px;
+            padding-bottom: 5%;
+        }
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .About .card {
+        width: 90%;
+    }
+}

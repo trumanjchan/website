@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
-import './Guides.css';
+import './Blog.scss';
 import Navbar from '../../Components/Navbar/Navbar';
 
-function Guides() {
+function Blog() {
     
     useEffect(() => {
         document.getElementById("defaultOpen").click();
@@ -23,14 +23,14 @@ function Guides() {
     }
 
     return (
-        <main className='Guides'>
+        <main className='Blog'>
             <Navbar />
             <div id='container' className='container'>
                 <div className='tabscolumn'>
                     <button className='tablinks' onClick={event => openTab(event, 'Overview')} id='defaultOpen'>Overview</button>
                     <button className='tablinks' onClick={event => openTab(event, 'First')}>Viewing Localhost on Different Devices</button>
                 </div>
-                <div className='guidecontent'>
+                <div className='blogcontent'>
                     <div id='Overview' className='tabcontent'>
                         <h1>Overview</h1>
                         <p>Welcome to my Guides Page!</p>
@@ -64,4 +64,4 @@ function Guides() {
     );
 }
 
-export default Guides;
+export default Blog;

@@ -1,0 +1,84 @@
+.Contact {
+    height: 100vh;
+    width: 100%;
+
+    #container {
+        height: calc(100% - 61px);
+        width: 100%;
+        position: relative;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+
+        #formcontainer {
+            background-color: var(--main-bg-color-alpha);
+            pointer-events: none;
+            height: fit-content;
+            width: calc(50vw);
+            min-width: fit-content;
+            border-radius: 20px;
+            border: 1px solid var(--invert-color);
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--invert-color);
+
+            form {
+                padding: 0 30px;
+
+                .sendto {
+                    width: fit-content;
+                    margin: 5% auto;
+                    font-weight: bold;
+                    font-size: 30px;
+                }
+
+                button {
+                    display: block;
+                    margin: 5% auto;
+                    width: fit-content;
+                    font-size: 20px;
+                    padding: 2% 10%;
+                    border-radius: 10px;
+                    pointer-events: all;
+                    cursor: pointer;
+
+                    &:hover {
+                        filter: invert(100%);
+                    }
+                }
+            }
+
+            .typing-area {
+                display: grid;
+                grid-template-columns: auto auto;
+                row-gap: 10px;
+                column-gap: calc(3vw);
+                font-size: 25px;
+
+                input {
+                    pointer-events: all;
+                }
+
+                textarea {
+                    resize: none;
+                    height: 50px;
+                    pointer-events: all;
+                }
+            }
+        }
+    }
+}
+
+
+@media only screen and (max-width: 768px) {
+    .Contact #container {
+        height: 100%;
+    }
+}

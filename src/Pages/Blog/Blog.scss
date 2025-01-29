@@ -1,0 +1,77 @@
+.Blog {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    overflow: hidden;
+
+    .container {
+        display: flex;
+        height: calc(100% - 61px);
+        width: 100%;
+        position: relative;
+        overflow-y: auto;
+
+        .tabscolumn {
+            border-right: 1px solid var(--container-bg-color);
+            background-color: var(--container-bg-color);
+            display: flex;
+            flex-direction: column;
+            width: calc(25vw);
+            position: -webkit-sticky;
+            position: sticky;
+            top: 0;
+
+            button {
+                display: block;
+                width: 100%;
+                font-size: 20px;
+                text-align: left;
+                border: none;
+                outline: none;
+                cursor: pointer;
+                padding: 17px;
+                background-color: var(--container-bg-color);
+
+                &:hover {
+                    background-color: var(--main-bg-color);
+                    color: var(--invert-color);
+                }
+                &.active {
+                    background-color: var(--main-bg-color);
+                    color: var(--invert-color);
+                }
+            }
+        }
+
+        .blogcontent {
+            background-color: var(--main-bg-color);
+            color: var(--invert-color);
+            width: calc(75vw);
+
+            .tabcontent {
+                padding: 6px 12px;
+                font-size: 18px;
+            }
+        }
+    }
+}
+
+
+@media only screen and (max-width: 768px) {
+    .Blog .container {
+        display: block;
+        height: 100%;
+
+        .tabscolumn {
+            border-right: none;
+            border-bottom: 1px solid var(--invert-color);
+            height: fit-content;
+            width: 100%;
+            position: unset;
+        }
+
+        .blogcontent {
+            width: 100%;
+        }
+    }
+}
