@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.80c707c1.css",
-    "main.js": "/static/js/main.c82df429.js",
+    "main.css": "/static/css/main.103b4bb6.css",
+    "main.js": "/static/js/main.79d775c9.js",
     "static/media/Stow_Lake.webp": "/static/media/Stow_Lake.9d803239ff0c61ca8aba.webp",
     "static/media/Golden_Gate_Bridge_side.webp": "/static/media/Golden_Gate_Bridge_side.13efde78d87ba591b210.webp",
     "static/media/Track_Field_after_Rain.webp": "/static/media/Track_Field_after_Rain.08df67adb6061beca1ce.webp",
@@ -11,11 +11,11 @@
     "static/media/icons8-instagram.svg": "/static/media/icons8-instagram.b6beacd904f86ba6e0cb57f5b4e24eb8.svg",
     "static/media/icons8-linkedin.svg": "/static/media/icons8-linkedin.4554a29e958bf6eb6240ac56645fa27c.svg",
     "static/media/icons8-gmail-logo.svg": "/static/media/icons8-gmail-logo.4f520c286581c7e59dfad73517871174.svg",
-    "main.80c707c1.css.map": "/static/css/main.80c707c1.css.map",
-    "main.c82df429.js.map": "/static/js/main.c82df429.js.map"
+    "main.103b4bb6.css.map": "/static/css/main.103b4bb6.css.map",
+    "main.79d775c9.js.map": "/static/js/main.79d775c9.js.map"
   },
   "entrypoints": [
-    "static/css/main.80c707c1.css",
-    "static/js/main.c82df429.js"
+    "static/css/main.103b4bb6.css",
+    "static/js/main.79d775c9.js"
   ]
 }
