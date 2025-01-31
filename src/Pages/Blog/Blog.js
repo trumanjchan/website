@@ -30,11 +30,13 @@ function Blog() {
     function changePost(blogpost) {
         document.getElementById("photos").innerHTML = null;
         for (let i = 0; i < page.items.length; i++) {
-            document.querySelectorAll(".tabscolumn .blog-post-button")[i].style.backgroundColor = null;
-            document.querySelectorAll(".tabscolumn .blog-post-button")[i].style.color = null;
+            document.querySelectorAll(".blog-post-button")[i].style.backgroundColor = null;
+            document.querySelectorAll(".blog-post-button")[i].style.color = null;
+            document.querySelectorAll(".blog-post-button")[i].style.transition = null;
         }
         blogpost.style.backgroundColor = 'var(--main-bg-color)';
         blogpost.style.color = 'var(--invert-color)';
+        blogpost.style.transition  = "all 300ms";
 
         const foundObject = page.items.find(obj => obj.title === blogpost.innerText);
         //console.log(foundObject)
@@ -46,8 +48,20 @@ function Blog() {
             let imgEle = document.createElement('img');
             imgEle.src = foundObject.photosCollection.items[i].url;
             imgEle.style.width = "100%";
+            imgEle.alt = "";
             let targetEle = document.getElementById('photos');
             targetEle.appendChild(imgEle);
+        }
+    }
+
+    function mobileBlogPostNavbar(e) {
+        if (window.innerWidth < 768) {
+            document.getElementById("tabs").insertBefore(e.target, document.getElementById("tabs").firstChild);
+            if ((e.target.innerText === document.getElementById("title").innerText) && (document.getElementById("tabscolumn").style.height !== "fit-content")) {
+                document.getElementById("tabscolumn").style.height = "fit-content";
+            } else {
+                document.getElementById("tabscolumn").style.height = document.getElementById("dropdown").getBoundingClientRect().height + "px";
+            }
         }
     }
 
@@ -72,7 +86,34 @@ function Blog() {
             console.log(data.blogPageCollection);
 
             document.getElementsByClassName("blog-post-button")[0].click();
+            resizeBlogPage();
+            for (let i = 0; i < document.querySelector("#tabs").children.length; i++) {
+                document.querySelectorAll(".blog-post-button")[i].addEventListener("click", mobileBlogPostNavbar);
+            }
         });
+
+        const resizeBlogPage = () => {
+            if (window.innerWidth < 768) {
+                document.getElementById("tabscolumn").style.transition = "all 0ms";
+                document.getElementById("tabscolumn").style.height = document.getElementById("dropdown").getBoundingClientRect().height + "px";
+                for (let i = 0; i < document.querySelector("#tabs").children.length; i++) {
+                    document.querySelectorAll(".blog-post-button")[i].style.height = document.getElementById("dropdown").getBoundingClientRect().height + "px";
+                }
+            } else {
+                document.getElementById("tabscolumn").style.transition = "all 300ms";
+                document.getElementById("tabscolumn").style.height = "100%";
+                for (let i = 0; i < document.querySelector("#tabs").children.length; i++) {
+                    document.querySelectorAll(".blog-post-button")[i].style.height = "fit-content";
+                }
+            }
+        }
+        window.addEventListener("resize", resizeBlogPage);
+        return () => {
+            window.removeEventListener("resize", resizeBlogPage);
+            for (let i = 0; i < document.querySelector("#tabs").children.length; i++) {
+                document.querySelectorAll(".blog-post-button")[i].removeEventListener("click", mobileBlogPostNavbar);
+            }
+        };
     },[]);
 
     if (!page) {
@@ -86,8 +127,8 @@ function Blog() {
             <main className='Blog'>
                 <Navbar />
                 <div id='container' className='container'>
-                    <div className='tabscolumn'>
-                        <div className="tabs">
+                    <div id='tabscolumn'>
+                        <div id="tabs">
                             {page.items.map((item, index) => (
                                 <div key={index} className='blog-post-button' onClick={e => changePost(e.target)}>{item.title}</div>
                             ))}
