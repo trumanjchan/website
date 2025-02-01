@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import './Blog.scss';
 import Navbar from '../../Components/Navbar/Navbar';
+import { formatDate } from '../../utils';
 
 const query = `
 {
-    blogPageCollection {
+    blogPageCollection(order: [date_DESC]) {
         items {
             title,
             date,
@@ -42,7 +43,7 @@ function Blog() {
         //console.log(foundObject)
 
         document.getElementById("title").innerText = foundObject.title;
-        document.getElementById("date").innerText = foundObject.date;
+        document.getElementById("date").innerText = formatDate(foundObject.date, true);
         document.getElementById("body").innerText = foundObject.body.replaceAll("</br>", "\n\n");
         for (let i = 0; i < foundObject.photosCollection.items.length; i++) {
             let imgEle = document.createElement('img');
@@ -110,9 +111,9 @@ function Blog() {
         window.addEventListener("resize", resizeBlogPage);
         return () => {
             window.removeEventListener("resize", resizeBlogPage);
-            for (let i = 0; i < document.querySelector("#tabs").children.length; i++) {
-                document.querySelectorAll(".blog-post-button")[i].removeEventListener("click", mobileBlogPostNavbar);
-            }
+            document.querySelectorAll(".blog-post-button").forEach((div) => {
+                div.removeEventListener('click', mobileBlogPostNavbar);
+            });
         };
     },[]);
 

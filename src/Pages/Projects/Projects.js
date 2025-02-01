@@ -1,14 +1,15 @@
 import React, {useState, useEffect} from 'react';
 import './Projects.scss';
 import Navbar from '../../Components/Navbar/Navbar';
+import { formatDate } from '../../utils';
 
 const query = `
 {
-    projectsPageCollection {
+    projectsPageCollection(order: [endDate_DESC]) {
         items {
-            number,
             title,
-            date,
+            startDate,
+            endDate,
             desc,
             stack: stack,
             link,
@@ -106,12 +107,9 @@ function Projects() {
                 console.error(errors);
             }
 
-            console.log(data.projectsPageCollection.items.sort((a, b) => {
-                return  b.number - a.number
-            }));
-
             // rerender the entire component with new data
             setPage(data.projectsPageCollection);
+            console.log(data.projectsPageCollection);
                 
             for (let i = 0; i < slides.length; i++) {
                 if (window.innerWidth > 768) {
@@ -192,7 +190,11 @@ function Projects() {
                                 <div key={index} className='carousel-slide'>
                                     <div className='slide'>
                                         <div className='info'>
-                                            <h4>{item.date}</h4>
+                                            {item.startDate !== item.endDate ? (
+                                                <h4>{formatDate(item.startDate, false)} - {formatDate(item.endDate, false)}</h4>
+                                            ) : (
+                                                <h4>{formatDate(item.endDate, false)}</h4>
+                                            )}
                                             <a href={item.link} target='_blank' rel='noreferrer'>
                                                 <h1>{item.title}</h1>
                                             </a>
