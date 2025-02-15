@@ -59,8 +59,6 @@ function Navbar() {
     const toggleMode = (e) => {
         // Switch to other mode if the user clicks toggle button
         if (e.currentTarget.checked === false) {
-            // Set transition speed of body background color change
-            document.body.style.transition = "all 300ms";
             // Create attribute and set value if doesn't exist, otherwise replace old value with new
             document.documentElement.setAttribute("data-theme", "light");
             console.log("light mode");
@@ -70,7 +68,6 @@ function Navbar() {
             sessionStorage.setItem("data-theme", "light");
         }
         else {
-            document.body.style.transition = "all 300ms";
             document.documentElement.setAttribute("data-theme", "dark");
             console.log("dark mode");
             document.getElementById("div").style.transition = "all 300ms";

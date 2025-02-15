@@ -87,10 +87,19 @@ function Projects() {
             slideNum.children[firstIndex].style.backgroundColor = "var(--invert-color)";
         }
     }
+
+    const handleSlideWidth = () => {
+        let slides = document.getElementsByClassName("carousel-slide");
+        for (let i = 0; i < slides.length; i++) {
+            if (window.innerWidth > 768) {
+                slides[i].style.width = ((window.innerWidth - 60) / 2) + "px";
+            } else {
+                slides[i].style.width = (window.innerWidth - 40) + "px";
+            }
+        }
+    };
     
     useEffect(() => {
-        var slides = document.getElementsByClassName("carousel-slide");
-
         window.fetch(`https://graphql.contentful.com/content/v1/spaces/` + process.env.REACT_APP_SPACE_ID + `/`, {
             method: "POST",
             headers: {
@@ -110,7 +119,8 @@ function Projects() {
             // rerender the entire component with new data
             setPage(data.projectsPageCollection);
             console.log(data.projectsPageCollection);
-                
+
+            let slides = document.getElementsByClassName("carousel-slide");
             for (let i = 0; i < slides.length; i++) {
                 if (window.innerWidth > 768) {
                     slides[i].style.width = ((window.innerWidth - 60) / 2) + "px";
@@ -129,36 +139,11 @@ function Projects() {
                 slideNum.innerHTML += "<div class='gray-circle'></div>"
             }
 
-            /* Swipe (desktop only) */
-            var touchPos1;
-            var touchPos2;
-            let carouselArea = document.querySelector(".carousel-area");
-            carouselArea.addEventListener('mousedown', (e) => {
-                touchPos1 = e.screenX;
-            });
-            carouselArea.addEventListener('mouseup', (e) => {
-                touchPos2 = e.screenX;
-                if (touchPos1 < touchPos2) {
-                    document.getElementById("dec").click();
-                } else if (touchPos1 > touchPos2) {
-                    document.getElementById("inc").click();
-                }
-            });
-
             /* on page initialization */
             document.getElementById("inc").click();
             document.getElementById("dec").click();
         });
 
-        const handleSlideWidth = () => {
-            for (let i = 0; i < slides.length; i++) {
-                if (window.innerWidth > 768) {
-                    slides[i].style.width = ((window.innerWidth - 60) / 2) + "px";
-                } else {
-                    slides[i].style.width = (window.innerWidth - 40) + "px";
-                }
-            }
-        };
         window.addEventListener('resize', handleSlideWidth);
         return () => {
             window.removeEventListener('resize', handleSlideWidth);

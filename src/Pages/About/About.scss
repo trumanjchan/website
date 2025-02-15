@@ -1,13 +1,49 @@
 .About {
     height: fit-content;
 
+    .card {
+        width: 80%;
+        margin: 2% auto;
+        border-radius: 12px;
+        border: 1px solid lightgrey;
+        background-color: var(--container-bg-color);
+
+        &:first-child {
+            margin-top: 5%;
+        }
+        &:last-child {
+            margin-bottom: 5%;
+        }
+
+        .container {
+            margin: 2% 4%;
+
+            .title {
+                text-align: center;
+                position: relative;
+                
+                &::after {
+                    content: '';
+                    position: absolute;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    height: 1px;
+                    width: 50%;
+                    margin: 0 auto;
+                    border-radius: 10px;
+                    background-color: var(--main-bg-color);;
+                }
+            }
+            .content {
+                margin-top: 2%;
+            }
+        }
+    }
+
     .Profile {
         display: flex;
         flex-direction: column;
-        width: 80%;
-        margin: 5% auto 2% auto;
-        border-radius: 12px;
-        border: 1px solid lightgrey;
         overflow: hidden;
 
         .cover {
@@ -16,18 +52,17 @@
             width: 100%;
         }
 
-        #info-container {
+        .content {
             display: grid;
             grid-template-columns: 50% 50%;
-            background-color: var(--container-bg-color);
+            margin: auto 10%;
 
             .first {
-                margin: auto 0% auto 20%;
-                padding-bottom: 10%;
+                margin-bottom: 10%;
 
                 .headshot {
                     width: 200px;
-                    margin-top: -25%;
+                    margin-top: -30%;
                     border-radius: 50%;
                     border: 5px solid white;
                     box-shadow: 0px 2px 3px 1px rgba(0, 0, 0, 0.2);
@@ -71,7 +106,7 @@
             }
 
             .second {
-                margin: auto 20% auto 0%;
+                margin: auto 0;
                 letter-spacing: 2px;
                 font-size: 20px;
                 text-align: center;
@@ -83,6 +118,7 @@
                 .social-container {
                     display: flex;
                     justify-content: space-evenly;
+                    align-items: center;
 
                     a {
                         height: fit-content;
@@ -91,9 +127,7 @@
                     }
 
                     .social {
-                        object-fit: cover;
-                        width: 50px;
-                        height: 50px;
+                        width: 44px;
                         transform: scale(1);
                         transition-duration: 0.3s;
 
@@ -108,13 +142,6 @@
     }
 
     .Education {
-        background-color: var(--container-bg-color);
-        width: 80%;
-        height: fit-content;
-        margin: 0% auto 2% auto;
-        border-radius: 12px;
-        border: 1px solid lightgrey;
-
         .container {
             display: flex;
             flex-direction: column;
@@ -123,53 +150,41 @@
             .title {
                 font-size: 30px;
                 font-weight: 400;
-                margin-top: 2%;
-                margin-left: 4%;
-                text-decoration: underline var(--section-underline);
             }
 
-            .school {
-                margin: 4% 10% 0% 10%;
-
-                &:last-child {
-                    margin-bottom: 5%;
+            .content {
+                .school {
+                    margin: 0 6%;
                 }
-            }
-
-            .schoolname {
-                font-size: 30px;
-                font-weight: bold;
-            }
-
-            .degree {
-                font-size: 22px;
-            }
-
-            .year {
-                font-size: 20px;
-                color: rgb(104, 104, 104);
-            }
-
-            .activitiestitle {
-                font-size: 20px;
-                margin-top: 0.5%;
-            }
-
-            .activities {
-                font-size: 20px;
-                margin-left: 5%;
+    
+                .schoolname {
+                    font-size: 30px;
+                    font-weight: bold;
+                }
+    
+                .degree {
+                    font-size: 22px;
+                }
+    
+                .year {
+                    font-size: 20px;
+                    color: rgb(104, 104, 104);
+                }
+    
+                .activitiestitle {
+                    font-size: 20px;
+                    margin-top: 0.5%;
+                }
+    
+                .activities {
+                    font-size: 20px;
+                    margin-left: 5%;
+                }
             }
         }
     }
 
     .Skills {
-        background-color: var(--container-bg-color);
-        width: 80%;
-        height: fit-content;
-        margin: 0% auto 2% auto;
-        border-radius: 12px;
-        border: 1px solid lightgrey;
-
         .container {
             display: flex;
             flex-direction: column;
@@ -178,36 +193,32 @@
             .title {
                 font-size: 30px;
                 font-weight: 400;
-                margin-top: 2%;
-                margin-left: 4%;
-                text-decoration: underline var(--section-underline);
             }
 
-            .info {
-                margin: 4% 10%;
-                font-size: 20px;
-                text-align: center;
-
-                .section-title {
-                    font-size: 25px;
-                    font-weight: bold;
-                }
-
-                .section-text {
-                    margin-bottom: 2%;
+            .content {
+                .info {
+                    margin: 0 10% 0 10%;
+                    font-size: 20px;
+                    text-align: center;
+    
+                    .section-title {
+                        font-size: 25px;
+                        font-weight: bold;
+                    }
+    
+                    .section-text {
+                        margin-bottom: 2%;
+    
+                        &:last-child {
+                            margin-bottom: 0;
+                        }
+                    }
                 }
             }
         }
     }
 
     .Awards {
-        background-color: var(--container-bg-color);
-        width: 80%;
-        height: fit-content;
-        margin: 0% auto 2% auto;
-        border-radius: 12px;
-        border: 1px solid lightgrey;
-
         .container {
             display: flex;
             flex-direction: column;
@@ -216,29 +227,29 @@
             .title {
                 font-size: 30px;
                 font-weight: 400;
-                margin-top: 2%;
-                margin-left: 4%;
-                text-decoration: underline var(--section-underline);
             }
 
-            .designmerced {
-                margin: 4% 10%;
-                font-size: 20px;
-
+            .content {
                 .award {
-                    margin-bottom: 2%;
-
-                    .for a {
-                        font-size: 25px;
+                    margin: 0 6%;
+                    font-size: 20px;
+    
+                    .award-info {
+                        margin-bottom: 2%;
+    
+                        .name a {
+                            font-size: 25px;
+                        }
+    
+                        .issued {
+                            color: rgb(104, 104, 104);
+                        }
                     }
 
-                    .issued {
-                        color: rgb(104, 104, 104);
-                    }
-
-                    .awarddesc {
+                    .award-desc {
                         line-height: 1.5;
                         margin-left: -1%;
+                        margin-bottom: 0;
                     }
                 }
             }
@@ -246,13 +257,6 @@
     }
 
     .Experience {
-        background-color: var(--container-bg-color);
-        width: 80%;
-        height: fit-content;
-        margin: 0% auto 5% auto;
-        border-radius: 12px;
-        border: 1px solid lightgrey;
-
         .container {
             display: flex;
             flex-direction: column;
@@ -261,24 +265,15 @@
             .title {
                 font-size: 30px;
                 font-weight: 400;
-                margin: 2% 0% auto 4%;
-                text-decoration: underline var(--section-underline);
             }
 
-            .experiencelist {
+            .content {
                 display: flex;
                 flex-direction: column;
 
                 .workedat {
-                    margin: 2% 10%;
+                    margin: 2% 6%;
                     font-size: 20px;
-
-                    &:first-child {
-                        margin-top: 4%;
-                    }
-                    &:last-child {
-                        margin-bottom: 4%;
-                    }
 
                     .total {
                         margin-bottom: 3%;
@@ -328,6 +323,7 @@
                         .text {
                             line-height: 1.5;
                             margin-left: -1%;
+                            margin-bottom: 0;
                         }
                     }
                 }
@@ -339,15 +335,13 @@
 
 @media only screen and (max-width: 1024px) {
     /* Profile card */
-    .About .Profile #info-container {
+    .About .Profile .content {
         display: flex;
         flex-direction: column;
         text-align: center;
 
         .first {
-            width: 100%;
             margin: 0;
-            padding-bottom: 0;
 
             .company {
                 margin-left: auto;
@@ -360,17 +354,23 @@
         }
 
         .second {
-            margin: auto auto;
+            margin: auto;
             width: 80%;
+            margin-bottom: 10%;
             letter-spacing: 2px;
             font-size: 20px;
-            padding-bottom: 5%;
         }
     }
 }
 
-@media only screen and (max-width: 480px) {
-    .About .card {
-        width: 90%;
+@media only screen and (max-width: 768px) {
+    .About {
+        .card {
+            width: 90%;
+            margin: 5% auto;
+        }
+        .Profile .content {
+            margin: auto 5%;
+        }
     }
 }

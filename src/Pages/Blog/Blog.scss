@@ -25,6 +25,9 @@
                     cursor: pointer;
                     padding: 15px 20px;
                     border-radius: 15px;
+                    -webkit-user-select: none; /* Safari */
+                    -ms-user-select: none; /* IE 10 and IE 11 */
+                    user-select: none; /* Standard syntax */
     
                     &:hover {
                         background-color: var(--main-bg-color);
@@ -40,7 +43,6 @@
             width: 100%;
             margin: 50px 0;
             overflow-y: auto;
-            transition: 300ms;
 
             .inner-blog-container {
                 width: 90%;
@@ -69,7 +71,6 @@
         .photos-container {
             overflow-y: auto;
             background-color: var(--container-bg-color);
-            transition: 300ms;
 
             #photos {
                 display: flex;

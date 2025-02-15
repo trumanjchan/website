@@ -31,13 +31,13 @@ function Blog() {
     function changePost(blogpost) {
         document.getElementById("photos").innerHTML = null;
         for (let i = 0; i < page.items.length; i++) {
-            document.querySelectorAll(".blog-post-button")[i].style.backgroundColor = null;
-            document.querySelectorAll(".blog-post-button")[i].style.color = null;
-            document.querySelectorAll(".blog-post-button")[i].style.transition = null;
+            if (blogpost !== document.querySelectorAll(".blog-post-button")[i]) {
+                document.querySelectorAll(".blog-post-button")[i].style.backgroundColor = null;
+                document.querySelectorAll(".blog-post-button")[i].style.color = null;
+            }
         }
         blogpost.style.backgroundColor = 'var(--main-bg-color)';
         blogpost.style.color = 'var(--invert-color)';
-        blogpost.style.transition  = "all 300ms";
 
         const foundObject = page.items.find(obj => obj.title === blogpost.innerText);
         //console.log(foundObject)
@@ -66,6 +66,20 @@ function Blog() {
         }
     }
 
+    const resizeBlogPage = () => {
+        if (window.innerWidth < 768) {
+            document.getElementById("tabscolumn").style.height = document.getElementById("dropdown").getBoundingClientRect().height + "px";
+            for (let i = 0; i < document.querySelector("#tabs").children.length; i++) {
+                document.querySelectorAll(".blog-post-button")[i].style.height = document.getElementById("dropdown").getBoundingClientRect().height + "px";
+            }
+        } else {
+            document.getElementById("tabscolumn").style.height = "100%";
+            for (let i = 0; i < document.querySelector("#tabs").children.length; i++) {
+                document.querySelectorAll(".blog-post-button")[i].style.height = "fit-content";
+            }
+        }
+    }
+
     useEffect(() => {
         window.fetch(`https://graphql.contentful.com/content/v1/spaces/` + process.env.REACT_APP_SPACE_ID + `/`, {
             method: "POST",
@@ -88,34 +102,18 @@ function Blog() {
 
             document.getElementsByClassName("blog-post-button")[0].click();
             resizeBlogPage();
-            for (let i = 0; i < document.querySelector("#tabs").children.length; i++) {
-                document.querySelectorAll(".blog-post-button")[i].addEventListener("click", mobileBlogPostNavbar);
-            }
         });
 
-        const resizeBlogPage = () => {
-            if (window.innerWidth < 768) {
-                document.getElementById("tabscolumn").style.transition = "all 0ms";
-                document.getElementById("tabscolumn").style.height = document.getElementById("dropdown").getBoundingClientRect().height + "px";
-                for (let i = 0; i < document.querySelector("#tabs").children.length; i++) {
-                    document.querySelectorAll(".blog-post-button")[i].style.height = document.getElementById("dropdown").getBoundingClientRect().height + "px";
-                }
-            } else {
-                document.getElementById("tabscolumn").style.transition = "all 300ms";
-                document.getElementById("tabscolumn").style.height = "100%";
-                for (let i = 0; i < document.querySelector("#tabs").children.length; i++) {
-                    document.querySelectorAll(".blog-post-button")[i].style.height = "fit-content";
-                }
-            }
-        }
         window.addEventListener("resize", resizeBlogPage);
         return () => {
             window.removeEventListener("resize", resizeBlogPage);
-            document.querySelectorAll(".blog-post-button").forEach((div) => {
-                div.removeEventListener('click', mobileBlogPostNavbar);
-            });
         };
-    },[]);
+    }, []);
+
+    const clickPost = (e) => {
+        changePost(e.target);
+        mobileBlogPostNavbar(e);
+    };
 
     if (!page) {
         return (
@@ -131,7 +129,7 @@ function Blog() {
                     <div id='tabscolumn'>
                         <div id="tabs">
                             {page.items.map((item, index) => (
-                                <div key={index} className='blog-post-button' onClick={e => changePost(e.target)}>{item.title}</div>
+                                <div key={index} className='blog-post-button' onClick={clickPost}>{item.title}</div>
                             ))}
                         </div>
                     </div>
