@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.5ff778c2.css",
-    "main.js": "/static/js/main.ff79f976.js",
+    "main.css": "/static/css/main.dd6a42ce.css",
+    "main.js": "/static/js/main.d4716c4b.js",
     "static/media/Stow_Lake.webp": "/static/media/Stow_Lake.9d803239ff0c61ca8aba.webp",
     "static/media/Golden_Gate_Bridge_side.webp": "/static/media/Golden_Gate_Bridge_side.13efde78d87ba591b210.webp",
     "static/media/Track_Field_after_Rain.webp": "/static/media/Track_Field_after_Rain.08df67adb6061beca1ce.webp",
@@ -11,11 +11,11 @@
     "static/media/github.svg": "/static/media/github.6fa18895f6e6c7772cab7049f7e05f59.svg",
     "index.html": "/index.html",
     "static/media/gmail.svg": "/static/media/gmail.f12319849e28413aaa94f1c11fd35eef.svg",
-    "main.5ff778c2.css.map": "/static/css/main.5ff778c2.css.map",
-    "main.ff79f976.js.map": "/static/js/main.ff79f976.js.map"
+    "main.dd6a42ce.css.map": "/static/css/main.dd6a42ce.css.map",
+    "main.d4716c4b.js.map": "/static/js/main.d4716c4b.js.map"
   },
   "entrypoints": [
-    "static/css/main.5ff778c2.css",
-    "static/js/main.ff79f976.js"
+    "static/css/main.dd6a42ce.css",
+    "static/js/main.d4716c4b.js"
   ]
 }
