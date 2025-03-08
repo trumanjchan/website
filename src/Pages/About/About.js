@@ -27,7 +27,7 @@ function About() {
     const [page, setPage] = useState(null);
 
     function toggleOpacity() {
-        document.getElementById('mini-info').classList.toggle('t-opacity');
+        document.getElementById('mini-info-container').classList.toggle('t-opacity');
     }
 
     function scroll() {
@@ -35,18 +35,12 @@ function About() {
             entries.forEach((entry) => {
                 observer.disconnect();
                 if (!entry.isIntersecting) {
-                    document.getElementById('mini-info').classList.remove('sectionfadeout');
-                    document.getElementById('mini-info').classList.add('sectionfadein');
-
-                    document.getElementById('textcontainer').classList.remove('textcontainerfadeout');
-                    document.getElementById('textcontainer').classList.add('textcontainerfadein');
+                    document.getElementById('mini-info-container').classList.remove('sectionfadeout');
+                    document.getElementById('mini-info-container').classList.add('sectionfadein');
                 }
-                if (entry.isIntersecting && document.getElementById('mini-info').classList.contains('sectionfadein')) {
-                    document.getElementById('mini-info').classList.remove('sectionfadein');
-                    document.getElementById('mini-info').classList.add('sectionfadeout');
-
-                    document.getElementById('textcontainer').classList.remove('textcontainerfadein');
-                    document.getElementById('textcontainer').classList.add('textcontainerfadeout');
+                if (entry.isIntersecting && document.getElementById('mini-info-container').classList.contains('sectionfadein')) {
+                    document.getElementById('mini-info-container').classList.remove('sectionfadein');
+                    document.getElementById('mini-info-container').classList.add('sectionfadeout');
                 }
             });
         }, {'rootMargin': '-102px 0px 0px 0px'});
@@ -74,11 +68,10 @@ function About() {
 
             setPage(data.aboutPageCollection);
 
-            let element = document.getElementById("mini-info");
+            let element = document.getElementById("mini-info-container");
             let newParent = document.getElementById("nav");
             newParent.appendChild(element);
             document.getElementById("dropdown").addEventListener("click", toggleOpacity);
-
         });
 
         document.addEventListener("scroll", scroll);
@@ -100,11 +93,13 @@ function About() {
                 <Navbar />
                 {page.items.map((item, index) => (
                     <div key={index}>
-                        <div id='mini-info'>
-                            <img className='headshot' src={item.profileCardHeadshot[0].secure_url} alt={item.profileCardHeadshot[0].public_id.slice(0, (item.profileCardHeadshot[0].public_id).indexOf("_"))} width='34px' height='32px' />
-                            <div id='textcontainer'>
-                                <div>{item.profileCardName}</div>
-                                <div>{item.profileCardTitle} at&nbsp;{item.profileCardCompany.company}</div>
+                        <div id='mini-info-container'>
+                            <div className='mini-info'>
+                                <img className='headshot' src={item.profileCardHeadshot[0].secure_url} alt={item.profileCardHeadshot[0].public_id.slice(0, (item.profileCardHeadshot[0].public_id).indexOf("_"))} width='34px' height='32px' />
+                                <div id='textcontainer'>
+                                    <div>{item.profileCardName}</div>
+                                    <div>{item.profileCardTitle} at&nbsp;{item.profileCardCompany.company}</div>
+                                </div>
                             </div>
                         </div>
 

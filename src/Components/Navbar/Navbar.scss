@@ -2,6 +2,8 @@
     display: block;
     position: sticky;
     top: 0;
+    left: 0;
+    right: 0;
     z-index: 1;
     border-bottom: 1px solid var(--main-bg-color);
     background-image: linear-gradient(rgb(0, 136, 255), var(--container-bg-color));
@@ -14,9 +16,10 @@
         display: grid;
         grid-template-columns: 20% 20% 20% 20% 20%;
         list-style-type: none;
-        margin: 0;
-        padding: 0% 10%;
         height: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0;
     }
 
     #dropdown {
@@ -139,40 +142,44 @@
 }
 
 /* Mini Info */
-.Navbar #mini-info {
+.Navbar #mini-info-container {
     visibility: hidden;
     overflow: hidden;
     height: 0px;
-    display: flex;
-    flex-direction: row;
-    padding: 0% 10%;
-    margin: 0 auto;
+    border-bottom: 1px solid var(--main-bg-color);
+    background-color: var(--container-bg-color);
 
-    .headshot {
-        border-radius: 50%;
-        width: auto;
-        height: 80%;
-        align-self: center;
-        margin-left: 4%;
-    }
-
-    #textcontainer {
-        visibility: hidden;
+    .mini-info {
+        width: 80%;
+        max-width: 1200px;
         height: 100%;
-        margin-left: 1%;
+        margin: 0 auto;
         display: flex;
-        flex-direction: column;
-        justify-content: space-evenly;
+        flex-direction: row;
 
-        div:first-child {
-            font-weight: bold;
+        .headshot {
+            height: 37px;
+            width: auto;
+            border-radius: 50%;
+            align-self: center;
+            margin-left: 4%;
+        }
+    
+        #textcontainer {
+            margin-left: 15px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            align-self: center;
+    
+            div:first-child {
+                font-weight: bold;
+            }
         }
     }
 }
 .sectionfadein {
     visibility: visible !important;
-    border-bottom: 1px solid var(--main-bg-color);
-    background-color: var(--container-bg-color);
     animation: sectionfadein 0.5s ease-out forwards;
 }
 @keyframes sectionfadein {
@@ -180,30 +187,11 @@
     to {height: 40px;}
 }
 .sectionfadeout {
-    border-bottom: 1px solid var(--main-bg-color);
-    background-color: var(--container-bg-color);
     animation: sectionfadeout 0.5s ease-in;
 }
 @keyframes sectionfadeout {
     from {height: 40px; visibility: visible;}
     to {height: 0px; visibility: hidden;}
-}
-.textcontainerfadein {
-    visibility: visible !important;
-    transform-origin: top left;
-    animation: transformin 0.5s ease-out;
-}
-@keyframes transformin {
-    from {transform: scale(0);}
-    to {transform: scale(1);}
-}
-.textcontainerfadeout {
-    transform-origin: top left;
-    animation: transformout 0.5s ease-in;
-}
-@keyframes transformout {
-    from {transform: scale(1); visibility: visible;}
-    to {transform: scale(0); visibility: hidden;}
 }
 
 
@@ -310,22 +298,24 @@
             z-index: 1;
         }
         
-        #mini-info {
+        #mini-info-container {
             position: fixed;
             top: 0;
-            padding: 0 4%;
             width: 100%;
             overflow: hidden;
 
-            img {
-                margin-left: 10%;
-            }
-
-            #textcontainer {
-                padding-right: 20%;
-                height: fit-content;
-                align-self: center;
-                margin-left: 2%;
+            .mini-info {
+                width: 90%;
+                
+                .headshot {
+                    height: 50px;
+                }
+    
+                #textcontainer {
+                    padding-right: 30px;
+                    height: fit-content;
+                    align-self: center;
+                }
             }
         }
     }
@@ -355,24 +345,13 @@
     .t-ltransform {
         transform: translateY(-15px) rotate(45deg) !important;
     }
-    .textcontainerfadein {
-        transform-origin: left;
-    }
-    .textcontainerfadeout {
-        transform-origin: left;
-    }
 }
 
 @media only screen and (max-width: 480px) {
-    .Navbar #mini-info {
-        padding: 0% 5%;
-
-        #textcontainer {
-            max-width: 180px;
-
-            div:last-child {
-                line-height: 1;
-                font-size: 14px;
+    .Navbar {
+        #mini-info-container {
+            .mini-info {
+                //justify-content: center;
             }
         }
     }

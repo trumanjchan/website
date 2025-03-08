@@ -44,7 +44,7 @@ function Blog() {
 
         document.getElementById("title").innerText = foundObject.title;
         document.getElementById("date").innerText = formatDate(foundObject.date, true);
-        document.getElementById("body").innerText = foundObject.body.replaceAll("</br>", "\n\n");
+        document.getElementById("body").innerText = foundObject.body.replaceAll("</br>", "\n");
         for (let i = 0; i < foundObject.photosCollection.items.length; i++) {
             let imgEle = document.createElement('img');
             imgEle.src = foundObject.photosCollection.items[i].url;
