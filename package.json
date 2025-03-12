@@ -1,6 +1,5 @@
 {
-  "homepage": "portfolio.trumanjfchan.workers.dev",
-  "name": "react-spa-website_cloudflare-pages",
+  "name": "portfolio",
   "author": "Truman Chan <trumanjfchan@gmail.com>",
   "version": "0.1.0",
   "private": true,
@@ -9,8 +8,7 @@
     "react-dom": "^17.0.2",
     "react-router-dom": "^6.2.1",
     "react-scripts": "5.0.0",
-    "sass": "^1.77.4",
-    "serve": "^14.2.4"
+    "sass": "^1.77.4"
   },
   "scripts": {
     "predeploy": "npm run build",
