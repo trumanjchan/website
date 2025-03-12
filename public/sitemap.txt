@@ -1,4 +1,4 @@
-https://www.trumanchan.dev/
-https://www.trumanchan.dev/?/projects
-https://www.trumanchan.dev/?/blog
-https://www.trumanchan.dev/?/contact
+https://www.portfolio.trumanjfchan.workers.dev/
+https://www.portfolio.trumanjfchan.workers.dev/?/projects
+https://www.portfolio.trumanjfchan.workers.dev/?/blog
+https://www.portfolio.trumanjfchan.workers.dev/?/contact
