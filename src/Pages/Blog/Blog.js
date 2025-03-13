@@ -151,8 +151,8 @@ function Blog() {
                     <div className='outer-blog-container'>
                         <div className='inner-blog-container'>
                             <p id='title'>{page.items[0].title}</p>
-                            <p id='date'>{page.items[0].date}</p>
-                            <p id='body'>{page.items[0].body}</p>
+                            <p id='date'>{formatDate(page.items[0].date, true)}</p>
+                            <p id='body'>{page.items[0].body.replaceAll("</br>", "\n")}</p>
                         </div>
                     </div>
                     <div className='photos-container'>
