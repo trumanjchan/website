@@ -25,9 +25,11 @@ button, input {
     sans-serif;
 }
 
+li a {
+  transition: 0.3s;
+}
 a {
   text-decoration: none;
-  transition: 0.3s;
 }
 a:link {
   color: #5D808F;

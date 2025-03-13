@@ -66,6 +66,21 @@ function Blog() {
         }
     }
 
+    const checkHash = (page) => {
+        const hash = window.location.hash;
+        const blogPostButton = document.getElementsByClassName("blog-post-button");
+        
+        const foundObject = page.items.find(obj => ("#" + obj.title.replaceAll(' ', '-')) === hash);
+
+        if (foundObject) {
+            const buttonIndex = page.items.indexOf(foundObject);
+            blogPostButton[buttonIndex].click();
+        } else {
+            blogPostButton[0].style.backgroundColor = 'var(--main-bg-color)';
+            blogPostButton[0].style.color = 'var(--invert-color)';
+        }
+    }
+
     const resizeBlogPage = () => {
         if (window.innerWidth < 768) {
             document.getElementById("tabscolumn").style.height = document.getElementById("dropdown").getBoundingClientRect().height + "px";
@@ -100,7 +115,7 @@ function Blog() {
             setPage(data.blogPageCollection);
             console.log(data.blogPageCollection);
 
-            document.getElementsByClassName("blog-post-button")[0].click();
+            checkHash(data.blogPageCollection);
             resizeBlogPage();
         });
 
@@ -129,19 +144,23 @@ function Blog() {
                     <div id='tabscolumn'>
                         <div id="tabs">
                             {page.items.map((item, index) => (
-                                <div key={index} className='blog-post-button' onClick={clickPost}>{item.title}</div>
+                                <a key={index} className='blog-post-button' onClick={clickPost} href={`#${item.title.replaceAll(' ', '-')}`}>{item.title}</a>
                             ))}
                         </div>
                     </div>
                     <div className='outer-blog-container'>
                         <div className='inner-blog-container'>
-                            <p id='title'></p>
-                            <p id='date'></p>
-                            <p id='body'></p>
+                            <p id='title'>{page.items[0].title}</p>
+                            <p id='date'>{page.items[0].date}</p>
+                            <p id='body'>{page.items[0].body}</p>
                         </div>
                     </div>
                     <div className='photos-container'>
-                        <div id='photos'></div>
+                        <div id='photos'>
+                            {page.items[0].photosCollection.items.map((item, index) => (
+                                <img key={index} src={item.url} alt="" />
+                            ))}
+                        </div>
                     </div>
                 </div>
             </main>
