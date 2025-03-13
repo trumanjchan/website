@@ -1,4 +1,4 @@
 # https://www.robotstxt.org/robotstxt.html
 User-agent: *
 Disallow:
-Sitemap: https://www.portfolio.trumanjfchan.workers.dev/sitemap.txt
+Sitemap: https://trumanchan.dev/sitemap.xml
