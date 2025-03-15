@@ -21,84 +21,7 @@ const query = `
 
 function Projects() {
     const [page, setPage] = useState(null);
-    var slides = document.getElementsByClassName("carousel-slide");
-    var firstIndex = 0;
-    var secondIndex = 1;
-    var swappedNodePos = false;
 
-    const IteratePageArray = (e) => {
-        let carouselEle = document.getElementById("carousel");
-        let slideNum = document.getElementById("slide-num");
-
-        slideNum.children[firstIndex].style.backgroundColor = "darkgray";
-        slideNum.children[secondIndex].style.backgroundColor = "darkgray";
-
-        if (e === "inc") {
-            firstIndex++;
-            secondIndex++;
-
-            if (slides[firstIndex] == null) {
-                firstIndex = 0;
-            }
-            if (slides[secondIndex] == null) {
-                secondIndex = 0;
-            }
-        } else {
-            firstIndex--;
-            secondIndex--;
-
-            if (slides[firstIndex] == null) {
-                firstIndex = page.items.length - 1;
-            }
-            if (slides[secondIndex] == null) {
-                secondIndex = page.items.length - 1;
-            }
-        }
-
-        if (swappedNodePos) {
-            let lastNode = slides[page.items.length - 1];
-            carouselEle.insertBefore(lastNode, carouselEle.firstChild);
-            swappedNodePos = false;
-            console.log("swap back");
-        }
-
-        for (let i = 0; i < page.items.length; i++) {
-            if (slides[i] === slides[firstIndex] || slides[i] === slides[secondIndex]) {
-                slides[i].style.display = "block";
-            } else {
-                slides[i].style.display = "none";
-            }
-        }
-
-        console.log(firstIndex + " " + secondIndex);
-        
-        if (!swappedNodePos && firstIndex === (page.items.length - 1) && secondIndex === 0) {
-            let firstNode = slides[0];
-            carouselEle.appendChild(firstNode);
-            swappedNodePos = true;
-            console.log("swap front");
-        }
-
-        
-        if (window.innerWidth > 768) {
-            slideNum.children[firstIndex].style.backgroundColor = "var(--invert-color)";
-            slideNum.children[secondIndex].style.backgroundColor = "var(--invert-color)";
-        } else {
-            slideNum.children[firstIndex].style.backgroundColor = "var(--invert-color)";
-        }
-    }
-
-    const handleSlideWidth = () => {
-        let slides = document.getElementsByClassName("carousel-slide");
-        for (let i = 0; i < slides.length; i++) {
-            if (window.innerWidth > 768) {
-                slides[i].style.width = ((window.innerWidth - 60) / 2) + "px";
-            } else {
-                slides[i].style.width = (window.innerWidth - 40) + "px";
-            }
-        }
-    };
-    
     useEffect(() => {
         window.fetch(`https://graphql.contentful.com/content/v1/spaces/` + process.env.REACT_APP_SPACE_ID + `/`, {
             method: "POST",
@@ -120,39 +43,29 @@ function Projects() {
             setPage(data.projectsPageCollection);
             console.log(data.projectsPageCollection);
 
-            let slides = document.getElementsByClassName("carousel-slide");
+            const slides = document.getElementsByClassName("carousel-slide");
+            const slideNum = document.getElementsByClassName("gray-circle");
             for (let i = 0; i < slides.length; i++) {
-                if (window.innerWidth > 768) {
-                    slides[i].style.width = ((window.innerWidth - 60) / 2) + "px";
-                } else {
-                    slides[i].style.width = (window.innerWidth - 40) + "px";
-                }
+                const target = document.getElementsByClassName('carousel-slide')[i];
 
-                if (i > 1) {
-                    slides[i].style.display = "none";
-                }
+                const observer = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            slideNum[i].classList.add("visible");
+                        } else {
+                            slideNum[i].classList.remove("visible");
+                        }
+                    });
+                }, {
+                    root: null, // viewport
+                    rootMargin: '0px', // no margin around the root
+                    threshold: 0.5 // 50% of the element must be visible
+                });
+                console.log(target)
+                observer.observe(target);
             }
-
-            /* Slide-Num */
-            let slideNum = document.getElementById("slide-num");
-            for (let i = 0; i < slides.length; i++) {
-                slideNum.innerHTML += "<div class='gray-circle'></div>"
-            }
-
-            /* on page initialization */
-            document.getElementById("inc").click();
-            document.getElementById("dec").click();
         });
-
-        window.addEventListener('resize', handleSlideWidth);
-        return () => {
-            window.removeEventListener('resize', handleSlideWidth);
-        };
     }, []);
-
-    const moveCarousel = (e) => {
-        IteratePageArray(e.target.id);
-    }
 
     if (!page) {
         return (
@@ -166,10 +79,6 @@ function Projects() {
                 <Navbar />
                 <div className='container'>
                     <div className='carousel-area'>
-                        <div className='control-buttons'>
-                            <div id='dec' onClick={moveCarousel}>﹤</div>
-                            <div id='inc' onClick={moveCarousel}>﹥</div>
-                        </div>
                         <div id='carousel'>
                             {page.items.map((item, index) => (
                                 <div key={index} className='carousel-slide'>
@@ -196,7 +105,11 @@ function Projects() {
                             ))}
                         </div>
                     </div>
-                    <div id='slide-num'></div>
+                    <div className='slides'>
+                        {page.items.map((item, index) => (
+                            <div key={index} className='gray-circle'></div>
+                        ))}
+                    </div>
                 </div>
             </main>
         );
