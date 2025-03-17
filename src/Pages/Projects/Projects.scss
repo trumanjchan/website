@@ -13,7 +13,8 @@
             margin: 0 auto;
             display: flex;
             flex-direction: row;
-            overflow-x: auto;
+            overflow-x: hidden;
+            cursor: grab;
 
             #carousel {
                 display: flex;

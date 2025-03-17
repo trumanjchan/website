@@ -41,13 +41,124 @@ function Projects() {
 
             // rerender the entire component with new data
             setPage(data.projectsPageCollection);
-            console.log(data.projectsPageCollection);
 
+
+            const carouselArea = document.querySelector(".carousel-area");
             const slides = document.getElementsByClassName("carousel-slide");
+            var backIndex;
+            var index1;
+            var index2;
+            var frontIndex;
+
+            if (window.innerWidth > 768) {
+                /* Desktop - click and drag */
+                backIndex = 0;
+                index1 = 0;
+                index2 = 1;
+                frontIndex = 1;
+                let startX = 0;
+
+                const mouseDown = (e) => {
+                    startX = e.clientX;
+                }
+                const mouseUp = (e) => {
+                    const currentX = e.clientX;
+                    if (currentX !== startX) {
+                        if (currentX < startX) {
+                            if (index1 === data.projectsPageCollection.items.length - 2) {
+                                return;
+                            }
+                            if (index2 === data.projectsPageCollection.items.length - 1) {
+                                return;
+                            }
+    
+                            backIndex++;
+                            index1++;
+                            index2++;
+                            frontIndex++;
+    
+                            slides[frontIndex].scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'center',
+                                inline: 'end'
+                            })
+                        } else if (currentX > startX) {
+                            if (index1 === 0) {
+                                return;
+                            }
+                            if (index2 === 1) {
+                                return;
+                            }
+    
+                            backIndex--;
+                            index1--;
+                            index2--;
+                            frontIndex--;
+    
+                            slides[backIndex].scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'center',
+                                inline: 'start'
+                            })
+                        }
+                    }
+                }
+                carouselArea.addEventListener("mousedown", mouseDown);
+                carouselArea.addEventListener("mouseup", mouseUp);
+            } else {
+                /* Mobile - swipe */
+                backIndex = 0;
+                index1 = 0;
+                frontIndex = 0;
+                let touchStartX = 0;
+                let touchEndX = 0;
+
+                const touchStart = (e) => {
+                    touchStartX = e.changedTouches[0].screenX;
+                }
+                const touchEnd = (e) => {
+                    touchEndX = e.changedTouches[0].screenX;
+                    const swipeDistance = touchEndX - touchStartX;
+
+                    if (swipeDistance < 0) {
+                        if (index1 === data.projectsPageCollection.items.length - 1) {
+                            return;
+                        }
+
+                        backIndex++;
+                        index1++;
+                        frontIndex++;
+
+                        slides[frontIndex].scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'center',
+                            inline: 'end'
+                        })
+                    } else if (swipeDistance > 0) {
+                        if (index1 === 0) {
+                            return;
+                        }
+
+                        backIndex--;
+                        index1--;
+                        frontIndex--;
+
+                        slides[backIndex].scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'center',
+                            inline: 'start'
+                        })
+                    } else {
+                        return;
+                    }
+                }
+                carouselArea.addEventListener("touchstart", touchStart);
+                carouselArea.addEventListener("touchend", touchEnd);
+            }
+
+            /* Desktop and Mobile */
             const slideNum = document.getElementsByClassName("gray-circle");
             for (let i = 0; i < slides.length; i++) {
-                const target = document.getElementsByClassName('carousel-slide')[i];
-
                 const observer = new IntersectionObserver((entries, observer) => {
                     entries.forEach(entry => {
                         if (entry.isIntersecting) {
@@ -59,10 +170,9 @@ function Projects() {
                 }, {
                     root: null, // viewport
                     rootMargin: '0px', // no margin around the root
-                    threshold: 0.5 // 50% of the element must be visible
+                    threshold: 0
                 });
-                console.log(target)
-                observer.observe(target);
+                observer.observe(slides[i]);
             }
         });
     }, []);
