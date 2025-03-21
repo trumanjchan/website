@@ -19,6 +19,7 @@
             #carousel {
                 display: flex;
                 flex-direction: row;
+                position: relative;
                 gap: 30px;
 
                 .carousel-slide {
@@ -116,14 +117,15 @@
             gap: 30px;
             margin-top: 20px;
 
-            .gray-circle {
+            .slide-circle {
                 width: 10px;
                 height: 10px;
                 border-radius: 100%;
-                background-color: darkgray;
+                background-color: var(--container-bg-color);
+                box-shadow: 0px 0px 0px 0.25px var(--container-boxshadow);
 
                 &.visible {
-                    background-color: var(--invert-color);
+                    background-color: rgb(0, 136, 255);
                 }
             }
         }

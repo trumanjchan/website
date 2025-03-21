@@ -57,53 +57,61 @@ function Projects() {
                 index2 = 1;
                 frontIndex = 1;
                 let startX = 0;
+                let isMouseDown = false;
+                let offsetX, offsetTotal = 0;
 
                 const mouseDown = (e) => {
                     startX = e.clientX;
+                    isMouseDown = true;
+                }
+                const mouseMove = (e) => {
+                    if (isMouseDown) {
+                        offsetX = (e.clientX - startX);
+                        document.getElementById("carousel").style.left = `${offsetX + offsetTotal}px`;
+                    }
                 }
                 const mouseUp = (e) => {
+                    isMouseDown = false;
+                    document.getElementById("carousel").style.left = offsetX;
+                    offsetTotal += offsetX;
+
                     const currentX = e.clientX;
                     if (currentX !== startX) {
                         if (currentX < startX) {
-                            if (index1 === data.projectsPageCollection.items.length - 2) {
+                            if (index1 === data.projectsPageCollection.items.length - 2 && index2 === data.projectsPageCollection.items.length - 1) {
                                 return;
+                            } else {
+                                backIndex++;
+                                index1++;
+                                index2++;
+                                frontIndex++;
+        
+                                slides[frontIndex].scrollIntoView({
+                                    behavior: 'smooth',
+                                    block: 'center',
+                                    inline: 'end'
+                                })
                             }
-                            if (index2 === data.projectsPageCollection.items.length - 1) {
-                                return;
-                            }
-    
-                            backIndex++;
-                            index1++;
-                            index2++;
-                            frontIndex++;
-    
-                            slides[frontIndex].scrollIntoView({
-                                behavior: 'smooth',
-                                block: 'center',
-                                inline: 'end'
-                            })
                         } else if (currentX > startX) {
-                            if (index1 === 0) {
+                            if (index1 === 0 && index2 === 1) {
                                 return;
+                            } else {
+                                backIndex--;
+                                index1--;
+                                index2--;
+                                frontIndex--;
+        
+                                slides[backIndex].scrollIntoView({
+                                    behavior: 'smooth',
+                                    block: 'center',
+                                    inline: 'start'
+                                })
                             }
-                            if (index2 === 1) {
-                                return;
-                            }
-    
-                            backIndex--;
-                            index1--;
-                            index2--;
-                            frontIndex--;
-    
-                            slides[backIndex].scrollIntoView({
-                                behavior: 'smooth',
-                                block: 'center',
-                                inline: 'start'
-                            })
                         }
                     }
                 }
                 carouselArea.addEventListener("mousedown", mouseDown);
+                carouselArea.addEventListener("mousemove", mouseMove);
                 carouselArea.addEventListener("mouseup", mouseUp);
             } else {
                 /* Mobile - swipe */
@@ -157,7 +165,7 @@ function Projects() {
             }
 
             /* Desktop and Mobile */
-            const slideNum = document.getElementsByClassName("gray-circle");
+            const slideNum = document.getElementsByClassName("slide-circle");
             for (let i = 0; i < slides.length; i++) {
                 const observer = new IntersectionObserver((entries, observer) => {
                     entries.forEach(entry => {
@@ -217,7 +225,7 @@ function Projects() {
                     </div>
                     <div className='slides'>
                         {page.items.map((item, index) => (
-                            <div key={index} className='gray-circle'></div>
+                            <div key={index} className='slide-circle'></div>
                         ))}
                     </div>
                 </div>
