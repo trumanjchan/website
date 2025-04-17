@@ -26,7 +26,7 @@
                     width: calc(50vw - 45px);
                     text-decoration: none;
                     box-sizing: border-box;
-                    border: 1px solid var(--border-color);
+                    border: inset 1px solid var(--border-color);
                     border-radius: 12px;
                     overflow: hidden;
 
@@ -39,7 +39,7 @@
                         .info {
                             width: 70%;
                             color: black;
-                            padding: 0 40px 0 25px;
+                            padding: 20px 25px 0 25px;
                             user-select: none;
                             overflow-y: auto;
                             display: flex;
@@ -54,7 +54,7 @@
                                 font-size: 16px;
                                 color: rgb(104, 104, 104);
                                 font-weight: normal;
-                                margin: 30px 0 5px 0;
+                                margin: 0;
                             }
                             
                             a {
@@ -64,7 +64,7 @@
                                     font-size: 25px;
                                     font-weight: bold;
                                     width: fit-content;
-                                    margin: 0;
+                                    margin: 10px 0 20px 0;
                                 }
                             }
 
@@ -78,7 +78,7 @@
                                     font-size: 18px;
                                     font-weight: normal;
                                     line-height: 1.4;
-                                    margin: 30px 0 0 0;
+                                    margin: 0 0 20px 0;
                                 }
     
                                 h3 {
@@ -86,7 +86,8 @@
                                     color: rgb(104, 104, 104);
                                     font-weight: normal;
                                     word-spacing: 20px;
-                                    margin-bottom: 30px;
+                                    margin: 0;
+                                    padding-bottom: 20px;
                                 }
                             }
                         }
@@ -139,9 +140,11 @@
             height: 100vh;
 
             .carousel-area {
+                width: 100%;
+                
                 #carousel {
                     .carousel-slide {
-                        width: calc(100vw - 60px);
+                        width: calc(100vw);
                     }
                 }
             }

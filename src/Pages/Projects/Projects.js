@@ -136,7 +136,7 @@ function Projects() {
                     touchEndX = e.changedTouches[0].screenX;
                     const swipeDistance = touchEndX - touchStartX;
 
-                    if (swipeDistance < 0) {
+                    if (swipeDistance < -40) {
                         if (index1 === data.projectsPageCollection.items.length - 1) {
                             return;
                         }
@@ -150,7 +150,7 @@ function Projects() {
                             block: 'center',
                             inline: 'end'
                         })
-                    } else if (swipeDistance > 0) {
+                    } else if (swipeDistance > 40) {
                         if (index1 === 0) {
                             return;
                         }
