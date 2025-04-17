@@ -79,7 +79,11 @@ function Projects() {
                     if (currentX !== startX) {
                         if (currentX < startX) {
                             if (index1 === data.projectsPageCollection.items.length - 2 && index2 === data.projectsPageCollection.items.length - 1) {
-                                return;
+                                slides[data.projectsPageCollection.items.length - 2].scrollIntoView({
+                                    behavior: 'smooth',
+                                    block: 'center',
+                                    inline: 'start'
+                                })
                             } else {
                                 backIndex++;
                                 index1++;
@@ -94,7 +98,11 @@ function Projects() {
                             }
                         } else if (currentX > startX) {
                             if (index1 === 0 && index2 === 1) {
-                                return;
+                                slides[0].scrollIntoView({
+                                    behavior: 'smooth',
+                                    block: 'center',
+                                    inline: 'start'
+                                })
                             } else {
                                 backIndex--;
                                 index1--;
