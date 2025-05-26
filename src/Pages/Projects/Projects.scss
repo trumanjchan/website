@@ -5,7 +5,6 @@
     .container {
         height: calc(100vh - 61px);
         align-content: center;
-        overflow: hidden;
 
         .carousel-area {
             height: 350px;
@@ -25,69 +24,94 @@
                 .carousel-slide {
                     width: calc(50vw - 45px);
                     text-decoration: none;
-                    box-sizing: border-box;
-                    border: inset 1px solid var(--border-color);
-                    border-radius: 12px;
-                    overflow: hidden;
 
                     .slide {
                         height: 100%;
                         display: flex;
+                        box-sizing: border-box;
+                        border: 1px solid lightgray;
+                        border-radius: 12px;
+                        overflow: hidden;
                         background-color: var(--container-bg-color);
                         text-decoration: none;
 
-                        .info {
+                        .info-container {
                             width: 70%;
                             color: black;
-                            padding: 20px 25px 0 25px;
                             user-select: none;
-                            overflow-y: auto;
-                            display: flex;
                             z-index: 1;
-                            flex-direction: column;
+                            position: relative;
 
                             @media only screen and (max-width: 1024px) {
                                 width: 75%;
                             }
 
-                            h4 {
-                                font-size: 16px;
-                                color: rgb(104, 104, 104);
-                                font-weight: normal;
-                                margin: 0;
-                            }
-                            
-                            a {
-                                width: fit-content;
-                                
-                                h1 {
-                                    font-size: 25px;
-                                    font-weight: bold;
-                                    width: fit-content;
-                                    margin: 10px 0 20px 0;
+                            .fade {
+                                position: absolute;
+                                left: 0;
+                                right: 0;
+                                height: 30px;
+
+                                &.top {
+                                    top: -1px;
+                                    background: linear-gradient(var(--container-bg-color), transparent);
+                                }
+                                &.bot {
+                                    bottom: -1px;
+                                    background: linear-gradient(transparent, var(--container-bg-color));
                                 }
                             }
 
-                            .flex-container {
-                                height: 100%;
+                            .info {
+                                padding: 0 25px;
                                 display: flex;
                                 flex-direction: column;
-                                justify-content: space-between;
+                                overflow-y: auto;
+                                height: 100%;
 
-                                h2 {
-                                    font-size: 18px;
-                                    font-weight: normal;
-                                    line-height: 1.4;
-                                    margin: 0 0 20px 0;
-                                }
-    
-                                h3 {
+                                h4 {
                                     font-size: 16px;
                                     color: rgb(104, 104, 104);
                                     font-weight: normal;
-                                    word-spacing: 20px;
                                     margin: 0;
-                                    padding-bottom: 20px;
+                                    padding-top: 20px;
+                                }
+                                
+                                a {
+                                    width: fit-content;
+                                    
+                                    h1 {
+                                        font-size: 25px;
+                                        font-weight: bold;
+                                        width: fit-content;
+                                        margin: 10px 0 20px 0;
+                                    }
+                                }
+
+                                .flex-container {
+                                    height: 100%;
+                                    display: flex;
+                                    flex-direction: column;
+                                    justify-content: space-between;
+
+                                    h2 {
+                                        font-size: 18px;
+                                        font-weight: normal;
+                                        line-height: 1.4;
+                                        margin: 0 0 20px 0;
+                                    }
+        
+                                    h3 {
+                                        font-size: 16px;
+                                        color: rgb(104, 104, 104);
+                                        font-weight: normal;
+                                        line-height: 1.5;
+                                        margin: 0;
+                                        padding-bottom: 20px;
+                                        display: flex;
+                                        flex-wrap: wrap;
+                                        column-gap: 25px;
+                                    }
                                 }
                             }
                         }
@@ -144,7 +168,7 @@
                 
                 #carousel {
                     .carousel-slide {
-                        width: calc(100vw);
+                        width: 100vw;
                     }
                 }
             }

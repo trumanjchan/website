@@ -6,7 +6,7 @@
         max-width: 1200px;
         margin: 30px auto;
         border-radius: 12px;
-        border: 1px solid lightgrey;
+        border: 1px solid lightgray;
         background-color: var(--container-bg-color);
 
         &:first-child {
@@ -17,10 +17,13 @@
         }
 
         .container {
-            margin: 2% 4%;
+            margin: 0 4%;
+            padding: 26px 0;
 
             .title {
                 text-align: center;
+                width: fit-content;
+                margin: 0 auto;
                 position: relative;
                 
                 &::after {
@@ -30,12 +33,11 @@
                     right: 0;
                     bottom: 0;
                     height: 1px;
-                    width: 50%;
-                    margin: 0 auto;
                     border-radius: 10px;
-                    background-color: var(--main-bg-color);;
+                    background-color: var(--main-bg-color);
                 }
             }
+            
             .content {
                 margin-top: 2%;
             }
@@ -56,11 +58,10 @@
         .content {
             display: grid;
             grid-template-columns: 50% 50%;
-            margin: auto 10%;
+            margin: 0 10%;
+            padding-bottom: 30px;
 
             .first {
-                margin-bottom: 10%;
-
                 .headshot {
                     width: 200px;
                     margin-top: -30%;
@@ -111,10 +112,6 @@
                 letter-spacing: 2px;
                 font-size: 20px;
                 text-align: center;
-
-                p {
-                    margin: 0% 0% 5% 0%;
-                }
 
                 .social-container {
                     display: flex;
@@ -300,7 +297,7 @@
                             bottom: 0;
                             height: 98.5%;
                             margin: auto 0;
-                            border: 1px solid var(--main-bg-color);
+                            border: 0.5px solid var(--main-bg-color);
                             border-radius: 10px;
                         }
 
@@ -342,8 +339,6 @@
         text-align: center;
 
         .first {
-            margin: 0;
-
             .company {
                 margin-left: auto;
                 margin-right: auto;
@@ -355,11 +350,12 @@
         }
 
         .second {
-            margin: auto;
-            width: 80%;
-            margin-bottom: 10%;
             letter-spacing: 2px;
             font-size: 20px;
+
+            p {
+                margin: 0% 0% 5% 0%;
+            }
         }
     }
 }

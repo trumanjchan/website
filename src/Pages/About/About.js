@@ -164,24 +164,6 @@ function About() {
                             </div>
                         </div>
 
-                        <div className='Awards card'>
-                            <div className='container'>
-                                <div className='title'>Awards</div>
-                                <div className='content'>
-                                    <div className='award'>
-                                        <div className='award-info'>
-                                            <div className='name'><a href='https://devpost.com/software/insight-ar-glasses' target='_blank' rel='noreferrer'>DesignMerced I</a></div>
-                                            <div className='issued'>Issued by DesignMerced I &nbsp;|&nbsp;&nbsp;Nov&nbsp;2020</div>
-                                        </div>
-                                        <ul className='award-desc'>
-                                            <li>Competed in a remote 24-hour design hackathon and won third place.</li>
-                                            <li>Designed Adobe XD prototype of a pair of AR glasses that can connect to the internet and help users network with people on-the-go.</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
                         <div className='Experience card'>
                             <div className='container'>
                                 <div className='title'>Experience</div>

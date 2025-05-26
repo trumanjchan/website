@@ -209,19 +209,25 @@ function Projects() {
                             {page.items.map((item, index) => (
                                 <div key={index} className='carousel-slide'>
                                     <div className='slide'>
-                                        <div className='info'>
-                                            {item.startDate !== item.endDate ? (
-                                                <h4>{formatDate(item.startDate, false)} - {formatDate(item.endDate, false)}</h4>
-                                            ) : (
-                                                <h4>{formatDate(item.endDate, false)}</h4>
-                                            )}
-                                            <a href={item.link} target='_blank' rel='noreferrer'>
-                                                <h1>{item.title}</h1>
-                                            </a>
-                                            <div className='flex-container'>
-                                                <h2>{item.desc}</h2>
-                                                <h3>{JSON.stringify(item.stack).replaceAll(/\[|\]|"/gi, "").replaceAll(",", " ")}</h3>
+                                        <div className='info-container'>
+                                            <div className="fade top"></div>
+                                            <div className='info'>
+                                                {item.startDate !== item.endDate ? (
+                                                    <h4>{formatDate(item.startDate, false)} - {formatDate(item.endDate, false)}</h4>
+                                                ) : (
+                                                    <h4>{formatDate(item.endDate, false)}</h4>
+                                                )}
+                                                <a href={item.link} target='_blank' rel='noreferrer'>
+                                                    <h1>{item.title}</h1>
+                                                </a>
+                                                <div className='flex-container'>
+                                                    <h2>{item.desc}</h2>
+                                                    <h3>{item.stack.map((tech, index) => (
+                                                        <div key={index}>{tech}</div>
+                                                    ))}</h3>
+                                                </div>
                                             </div>
+                                            <div className="fade bot"></div>
                                         </div>
                                         <div className='image'>
                                             <img src={item.image[0].secure_url} className="screenshot" alt={item.image[0].public_id.slice(0, (item.image[0].public_id).indexOf("_"))} width="853.33px" height="480px" draggable="false" />
