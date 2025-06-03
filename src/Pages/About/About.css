@@ -216,44 +216,6 @@
         }
     }
 
-    .Awards {
-        .container {
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-
-            .title {
-                font-size: 30px;
-                font-weight: 400;
-            }
-
-            .content {
-                .award {
-                    margin: 0 6%;
-                    font-size: 20px;
-    
-                    .award-info {
-                        margin-bottom: 2%;
-    
-                        .name a {
-                            font-size: 25px;
-                        }
-    
-                        .issued {
-                            color: rgb(104, 104, 104);
-                        }
-                    }
-
-                    .award-desc {
-                        line-height: 1.5;
-                        margin-left: -1%;
-                        margin-bottom: 0;
-                    }
-                }
-            }
-        }
-    }
-
     .Experience {
         .container {
             display: flex;

@@ -1,5 +1,5 @@
-import React, {useState, useEffect} from 'react';
-import './Projects.scss';
+import {useState, useEffect, useCallback, useRef} from 'react';
+import './Projects.css';
 import Navbar from '../../Components/Navbar/Navbar';
 import { formatDate } from '../../utils';
 
@@ -21,6 +21,189 @@ const query = `
 
 function Projects() {
     const [page, setPage] = useState(null);
+    const slides = document.getElementsByClassName("carousel-slide");
+    var [backIndex, setBackIndex] = useState(null);
+    var [index1, setIndex1] = useState(null);
+    var [index2, setIndex2] = useState(null);
+    var [frontIndex, setFrontIndex] = useState(null);
+    const supportsTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+
+    let startX = useRef(0);
+    let isMouseDown = useRef(false);
+    let offsetX = useRef(0);
+    let offsetTotal = useRef(0);
+    const mouseDown = useCallback((e) => {
+        startX.current = e.clientX;
+        isMouseDown.current = true;
+    }, [])
+    const mouseMove = useCallback((e) => {
+        if (isMouseDown.current) {
+            offsetX.current = (e.clientX - startX.current);
+            document.getElementById("carousel").style.left = `${offsetX.current + offsetTotal.current}px`;
+        }
+    }, [])
+    const mouseUp = useCallback((e) => {
+        isMouseDown.current = false;
+
+        const currentX = e.clientX;
+        if (currentX !== startX.current) {
+            document.getElementById("carousel").style.left = offsetX.current;
+            offsetTotal.current += offsetX.current;
+
+            if (currentX < startX.current) {
+                if (frontIndex === page.items.length - 1) {
+                    console.log("DESKTOP-RIGHT-END");
+                    slides[page.items.length - 1].scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'center',
+                        inline: 'end'
+                    })
+                    return;
+                } else {
+                    backIndex++;
+                    index1++;
+                    index2++;
+                    frontIndex++;
+
+                    slides[frontIndex].scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'center',
+                        inline: 'end'
+                    })
+                }
+            } else {
+                if (backIndex === 0) {
+                    console.log("DESKTOP-LEFT-END");
+                    slides[0].scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'center',
+                        inline: 'start'
+                    })
+                    return;
+                } else {
+                    backIndex--;
+                    index1--;
+                    index2--;
+                    frontIndex--;
+
+                    slides[backIndex].scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'center',
+                        inline: 'start'
+                    })
+                }
+            }
+        }
+    }, [page, slides, backIndex, index1, index2, frontIndex])
+
+    let touchStartX = useRef(0);
+    let touchEndX = useRef(0);
+    const touchStart = useCallback((e) => {
+        touchStartX.current = e.changedTouches[0].screenX;
+    }, [])
+    const touchEnd = useCallback((e) => {
+        touchEndX.current = e.changedTouches[0].screenX;
+        const swipeDistance = touchEndX.current - touchStartX.current;
+
+        if (swipeDistance < -40) {
+            if (frontIndex === page.items.length - 1) {
+                console.log("MOBILE-RIGHT-END")
+                return;
+            } else {
+                backIndex++;
+                index1++;
+                frontIndex++;
+
+                slides[frontIndex].scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'center',
+                    inline: 'end'
+                })
+            }
+        } else if (swipeDistance > 40) {
+            if (index1 === 0) {
+                console.log("MOBILE-LEFT-END")
+                return;
+            } else {
+                backIndex--;
+                index1--;
+                frontIndex--;
+
+                slides[backIndex].scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'center',
+                    inline: 'start'
+                })
+            }
+        } else {
+            return;
+        }
+    }, [page, slides, backIndex, index1, frontIndex])
+    
+    useEffect(() => {
+        if (page == null) return;
+
+        const carouselArea = document.querySelector(".carousel-area");
+
+        // TO DO: resize eventlistener for the scrollIntoView's to subtract 1 from index value if window.innerWidth < 768
+
+        /* Initial index settings. Not responsive to window resize */
+        setBackIndex(0);
+        setIndex1(0);
+        if (window.innerWidth > 768) {
+            setIndex2(1);
+            setFrontIndex(1);
+        } else {
+            setIndex2(null);
+            setFrontIndex(0);
+        }
+
+        if (!supportsTouch) {
+            /* Desktop - click and drag */
+            carouselArea.addEventListener("mousedown", mouseDown);
+            carouselArea.addEventListener("mousemove", mouseMove);
+            carouselArea.addEventListener("mouseup", mouseUp);
+        } else {
+            /* Mobile - swipe */
+            carouselArea.addEventListener("touchstart", touchStart);
+            carouselArea.addEventListener("touchend", touchEnd);
+        }
+
+        /* Desktop and Mobile */
+        const observers = [];
+        const slideNum = document.getElementsByClassName("slide-circle");
+        for (let i = 0; i < slides.length; i++) {
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        slideNum[i].classList.add("visible");
+                    } else {
+                        slideNum[i].classList.remove("visible");
+                    }
+                });
+            }, {
+                root: null, // viewport
+                rootMargin: '0px', // no margin around the root
+                threshold: 0
+            });
+            observer.observe(slides[i]);
+            observers.push(observer);
+        }
+
+        return () => {
+            if (!supportsTouch) {
+                carouselArea.removeEventListener("mousedown", mouseDown);
+                carouselArea.removeEventListener("mousemove", mouseMove);
+                carouselArea.removeEventListener("mouseup", mouseUp);
+            } else {
+                carouselArea.removeEventListener("touchstart", touchStart);
+                carouselArea.removeEventListener("touchend", touchEnd);
+            }
+
+            observers.forEach(observer => observer.disconnect());
+            observers.length = 0;
+        }
+    }, [page, slides, index1, supportsTouch, mouseDown, mouseMove, mouseUp, touchStart, touchEnd]);
 
     useEffect(() => {
         window.fetch(`https://graphql.contentful.com/content/v1/spaces/` + process.env.REACT_APP_SPACE_ID + `/`, {
@@ -41,155 +224,6 @@ function Projects() {
 
             // rerender the entire component with new data
             setPage(data.projectsPageCollection);
-
-
-            const carouselArea = document.querySelector(".carousel-area");
-            const slides = document.getElementsByClassName("carousel-slide");
-            var backIndex;
-            var index1;
-            var index2;
-            var frontIndex;
-
-            if (window.innerWidth > 768) {
-                /* Desktop - click and drag */
-                backIndex = 0;
-                index1 = 0;
-                index2 = 1;
-                frontIndex = 1;
-                let startX = 0;
-                let isMouseDown = false;
-                let offsetX, offsetTotal = 0;
-
-                const mouseDown = (e) => {
-                    startX = e.clientX;
-                    isMouseDown = true;
-                }
-                const mouseMove = (e) => {
-                    if (isMouseDown) {
-                        offsetX = (e.clientX - startX);
-                        document.getElementById("carousel").style.left = `${offsetX + offsetTotal}px`;
-                    }
-                }
-                const mouseUp = (e) => {
-                    isMouseDown = false;
-                    document.getElementById("carousel").style.left = offsetX;
-                    offsetTotal += offsetX;
-
-                    const currentX = e.clientX;
-                    if (currentX !== startX) {
-                        if (currentX < startX) {
-                            if (index1 === data.projectsPageCollection.items.length - 2 && index2 === data.projectsPageCollection.items.length - 1) {
-                                slides[data.projectsPageCollection.items.length - 2].scrollIntoView({
-                                    behavior: 'smooth',
-                                    block: 'center',
-                                    inline: 'start'
-                                })
-                            } else {
-                                backIndex++;
-                                index1++;
-                                index2++;
-                                frontIndex++;
-        
-                                slides[frontIndex].scrollIntoView({
-                                    behavior: 'smooth',
-                                    block: 'center',
-                                    inline: 'end'
-                                })
-                            }
-                        } else if (currentX > startX) {
-                            if (index1 === 0 && index2 === 1) {
-                                slides[0].scrollIntoView({
-                                    behavior: 'smooth',
-                                    block: 'center',
-                                    inline: 'start'
-                                })
-                            } else {
-                                backIndex--;
-                                index1--;
-                                index2--;
-                                frontIndex--;
-        
-                                slides[backIndex].scrollIntoView({
-                                    behavior: 'smooth',
-                                    block: 'center',
-                                    inline: 'start'
-                                })
-                            }
-                        }
-                    }
-                }
-                carouselArea.addEventListener("mousedown", mouseDown);
-                carouselArea.addEventListener("mousemove", mouseMove);
-                carouselArea.addEventListener("mouseup", mouseUp);
-            } else {
-                /* Mobile - swipe */
-                backIndex = 0;
-                index1 = 0;
-                frontIndex = 0;
-                let touchStartX = 0;
-                let touchEndX = 0;
-
-                const touchStart = (e) => {
-                    touchStartX = e.changedTouches[0].screenX;
-                }
-                const touchEnd = (e) => {
-                    touchEndX = e.changedTouches[0].screenX;
-                    const swipeDistance = touchEndX - touchStartX;
-
-                    if (swipeDistance < -40) {
-                        if (index1 === data.projectsPageCollection.items.length - 1) {
-                            return;
-                        }
-
-                        backIndex++;
-                        index1++;
-                        frontIndex++;
-
-                        slides[frontIndex].scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'center',
-                            inline: 'end'
-                        })
-                    } else if (swipeDistance > 40) {
-                        if (index1 === 0) {
-                            return;
-                        }
-
-                        backIndex--;
-                        index1--;
-                        frontIndex--;
-
-                        slides[backIndex].scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'center',
-                            inline: 'start'
-                        })
-                    } else {
-                        return;
-                    }
-                }
-                carouselArea.addEventListener("touchstart", touchStart);
-                carouselArea.addEventListener("touchend", touchEnd);
-            }
-
-            /* Desktop and Mobile */
-            const slideNum = document.getElementsByClassName("slide-circle");
-            for (let i = 0; i < slides.length; i++) {
-                const observer = new IntersectionObserver((entries, observer) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            slideNum[i].classList.add("visible");
-                        } else {
-                            slideNum[i].classList.remove("visible");
-                        }
-                    });
-                }, {
-                    root: null, // viewport
-                    rootMargin: '0px', // no margin around the root
-                    threshold: 0
-                });
-                observer.observe(slides[i]);
-            }
         });
     }, []);
 

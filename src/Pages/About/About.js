@@ -1,6 +1,6 @@
-import React, {useState, useEffect} from 'react';
+import {useState, useEffect} from 'react';
 import { NavLink } from 'react-router-dom';
-import './About.scss';
+import './About.css';
 import Navbar from '../../Components/Navbar/Navbar';
 import LinkedIn from '../../Images/linkedin.png';
 import GitHub from '../../Images/github.svg';

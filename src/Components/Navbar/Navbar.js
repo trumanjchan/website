@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import './Navbar.scss';
+import './Navbar.css';
 
 function Navbar() {
     const [initialDesktopNavContentsHeight, setDesktopNavContentsHeight] = useState();

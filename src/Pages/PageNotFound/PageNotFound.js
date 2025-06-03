@@ -1,5 +1,4 @@
-import React from 'react';
-import './PageNotFound.scss';
+import './PageNotFound.css';
 import Navbar from '../../Components/Navbar/Navbar';
 
 function PageNotFound() {

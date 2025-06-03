@@ -1,15 +1,16 @@
-import React from 'react';
-import './Sent.scss';
+import './Sent.css';
 import Navbar from '../../../Components/Navbar/Navbar';
 
 function Sent() {
     return (
-        <main className='Sent'>
+        <>
             <Navbar />
-            <div id='container' className='container'>
-                
-            </div>
-        </main>
+            <main className='Sent'>
+                <div id='container' className='container'>
+                    <div className='thank-you'>Message sent to Truman!</div>
+                </div>
+            </main>
+        </>
     );
 }
 

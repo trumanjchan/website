@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import './Blog.scss';
+import { useState, useEffect } from 'react';
+import './Blog.css';
 import Navbar from '../../Components/Navbar/Navbar';
 import { formatDate } from '../../utils';
 
@@ -113,7 +113,7 @@ function Blog() {
             }
 
             setPage(data.blogPageCollection);
-            console.log(data.blogPageCollection);
+            //console.log(data.blogPageCollection);
 
             checkHash(data.blogPageCollection);
             resizeBlogPage();
