@@ -3,14 +3,14 @@ import Navbar from '../../../Components/Navbar/Navbar';
 
 function Sent() {
     return (
-        <>
+        <main id='Sent'>
             <Navbar />
-            <main className='Sent'>
+            <div className='content'>
                 <div id='container' className='container'>
                     <div className='thank-you'>Message sent to Truman!</div>
                 </div>
-            </main>
-        </>
+            </div>
+        </main>
     );
 }
 
