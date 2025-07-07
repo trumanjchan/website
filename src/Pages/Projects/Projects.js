@@ -21,189 +21,95 @@ const query = `
 
 function Projects() {
     const [page, setPage] = useState(null);
-    const slides = document.getElementsByClassName("carousel-slide");
-    var [backIndex, setBackIndex] = useState(null);
-    var [index1, setIndex1] = useState(null);
-    var [index2, setIndex2] = useState(null);
-    var [frontIndex, setFrontIndex] = useState(null);
-    const supportsTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    const carouselRef = useRef(null);
+    const slideRefs = useRef([]);
+    
+    const currentArray = useRef([]);
+    var scrollStart = useRef(0);
+    var startX = useRef(0);
+    const isPointerDown = useRef(false);
+    var offsetX = useRef(0);
+    var offsetTotal = useRef(0);
 
-    let startX = useRef(0);
-    let isMouseDown = useRef(false);
-    let offsetX = useRef(0);
-    let offsetTotal = useRef(0);
-    const mouseDown = useCallback((e) => {
+    const pointerDown = useCallback((e) => {
         startX.current = e.clientX;
-        isMouseDown.current = true;
-    }, [])
-    const mouseMove = useCallback((e) => {
-        if (isMouseDown.current) {
+        scrollStart.current = carouselRef.current.scrollLeft;
+
+        isPointerDown.current = true;
+    }, []);
+
+    const pointerMove = useCallback((e) => {
+        if (isPointerDown.current) {
             offsetX.current = (e.clientX - startX.current);
-            document.getElementById("carousel").style.left = `${offsetX.current + offsetTotal.current}px`;
+            carouselRef.current.scrollLeft = scrollStart.current - offsetX.current;
         }
-    }, [])
-    const mouseUp = useCallback((e) => {
-        isMouseDown.current = false;
+    }, []);
+    
+    const pointerUp = useCallback((e) => {
+        isPointerDown.current = false;
 
         const currentX = e.clientX;
         if (currentX !== startX.current) {
-            document.getElementById("carousel").style.left = offsetX.current;
             offsetTotal.current += offsetX.current;
+            console.log(currentArray.current)
+
+            //If more than 30, else snap to previous index. If less than -30, else snap to previous index.
 
             if (currentX < startX.current) {
-                if (frontIndex === page.items.length - 1) {
-                    console.log("DESKTOP-RIGHT-END");
-                    slides[page.items.length - 1].scrollIntoView({
+                if (slideRefs.current[Math.max(...currentArray.current)]) {
+                    slideRefs.current[Math.max(...currentArray.current)].scrollIntoView({
                         behavior: 'smooth',
                         block: 'center',
                         inline: 'end'
-                    })
-                    return;
-                } else {
-                    backIndex++;
-                    index1++;
-                    index2++;
-                    frontIndex++;
-
-                    slides[frontIndex].scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'center',
-                        inline: 'end'
-                    })
+                    });
                 }
             } else {
-                if (backIndex === 0) {
-                    console.log("DESKTOP-LEFT-END");
-                    slides[0].scrollIntoView({
+                if (slideRefs.current[Math.min(...currentArray.current)]) {
+                    slideRefs.current[Math.min(...currentArray.current)].scrollIntoView({
                         behavior: 'smooth',
                         block: 'center',
                         inline: 'start'
-                    })
-                    return;
-                } else {
-                    backIndex--;
-                    index1--;
-                    index2--;
-                    frontIndex--;
-
-                    slides[backIndex].scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'center',
-                        inline: 'start'
-                    })
+                    });
                 }
             }
         }
-    }, [page, slides, backIndex, index1, index2, frontIndex])
-
-    let touchStartX = useRef(0);
-    let touchEndX = useRef(0);
-    const touchStart = useCallback((e) => {
-        touchStartX.current = e.changedTouches[0].screenX;
-    }, [])
-    const touchEnd = useCallback((e) => {
-        touchEndX.current = e.changedTouches[0].screenX;
-        const swipeDistance = touchEndX.current - touchStartX.current;
-
-        if (swipeDistance < -40) {
-            if (frontIndex === page.items.length - 1) {
-                console.log("MOBILE-RIGHT-END")
-                return;
-            } else {
-                backIndex++;
-                index1++;
-                frontIndex++;
-
-                slides[frontIndex].scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'center',
-                    inline: 'end'
-                })
-            }
-        } else if (swipeDistance > 40) {
-            if (index1 === 0) {
-                console.log("MOBILE-LEFT-END")
-                return;
-            } else {
-                backIndex--;
-                index1--;
-                frontIndex--;
-
-                slides[backIndex].scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'center',
-                    inline: 'start'
-                })
-            }
-        } else {
-            return;
-        }
-    }, [page, slides, backIndex, index1, frontIndex])
+    }, []);
     
     useEffect(() => {
         if (page == null) return;
 
-        const carouselArea = document.querySelector(".carousel-area");
+        const carouselArea = carouselRef.current;
+        const slides = slideRefs.current;
+        const currentIndexes = currentArray.current;
 
-        // TO DO: resize eventlistener for the scrollIntoView's to subtract 1 from index value if window.innerWidth < 768
+        carouselArea.addEventListener("pointerdown", pointerDown);
+        carouselArea.addEventListener("pointermove", pointerMove);
+        carouselArea.addEventListener("pointerup", pointerUp);
 
-        /* Initial index settings. Not responsive to window resize */
-        setBackIndex(0);
-        setIndex1(0);
-        if (window.innerWidth > 768) {
-            setIndex2(1);
-            setFrontIndex(1);
-        } else {
-            setIndex2(null);
-            setFrontIndex(0);
-        }
+        const observer = new IntersectionObserver(entries => {
+            currentIndexes.length = 0;
 
-        if (!supportsTouch) {
-            /* Desktop - click and drag */
-            carouselArea.addEventListener("mousedown", mouseDown);
-            carouselArea.addEventListener("mousemove", mouseMove);
-            carouselArea.addEventListener("mouseup", mouseUp);
-        } else {
-            /* Mobile - swipe */
-            carouselArea.addEventListener("touchstart", touchStart);
-            carouselArea.addEventListener("touchend", touchEnd);
-        }
-
-        /* Desktop and Mobile */
-        const observers = [];
-        const slideNum = document.getElementsByClassName("slide-circle");
-        for (let i = 0; i < slides.length; i++) {
-            const observer = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        slideNum[i].classList.add("visible");
-                    } else {
-                        slideNum[i].classList.remove("visible");
-                    }
-                });
-            }, {
-                root: null, // viewport
-                rootMargin: '0px', // no margin around the root
-                threshold: 0
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    currentIndexes.push(slides.indexOf(entry.target));
+                }
             });
-            observer.observe(slides[i]);
-            observers.push(observer);
-        }
+        });
+
+        slides.forEach(slide => {
+            observer.observe(slide);
+        });
 
         return () => {
-            if (!supportsTouch) {
-                carouselArea.removeEventListener("mousedown", mouseDown);
-                carouselArea.removeEventListener("mousemove", mouseMove);
-                carouselArea.removeEventListener("mouseup", mouseUp);
-            } else {
-                carouselArea.removeEventListener("touchstart", touchStart);
-                carouselArea.removeEventListener("touchend", touchEnd);
-            }
+            carouselArea.removeEventListener("pointerdown", pointerDown);
+            carouselArea.removeEventListener("pointermove", pointerMove);
+            carouselArea.removeEventListener("pointerup", pointerUp);
 
-            observers.forEach(observer => observer.disconnect());
-            observers.length = 0;
+            slides.forEach(slide => {
+                observer.unobserve(slide);
+            });
         }
-    }, [page, slides, index1, supportsTouch, mouseDown, mouseMove, mouseUp, touchStart, touchEnd]);
+    }, [page, pointerDown, pointerMove, pointerUp]);
 
     useEffect(() => {
         window.fetch(`https://graphql.contentful.com/content/v1/spaces/` + process.env.REACT_APP_SPACE_ID + `/`, {
@@ -222,7 +128,6 @@ function Projects() {
                 console.error(errors);
             }
 
-            // rerender the entire component with new data
             setPage(data.projectsPageCollection);
         });
     }, []);
@@ -238,10 +143,10 @@ function Projects() {
             <main className='Projects'>
                 <Navbar />
                 <div className='container'>
-                    <div className='carousel-area'>
+                    <div className='carousel-area' ref={carouselRef}>
                         <div id='carousel'>
                             {page.items.map((item, index) => (
-                                <div key={index} className='carousel-slide'>
+                                <div key={index} className='carousel-slide' ref={el => slideRefs.current[index] = el}>
                                     <div className='slide'>
                                         <div className='info-container'>
                                             <div className="fade top"></div>
@@ -270,11 +175,6 @@ function Projects() {
                                 </div>
                             ))}
                         </div>
-                    </div>
-                    <div className='slides'>
-                        {page.items.map((item, index) => (
-                            <div key={index} className='slide-circle'></div>
-                        ))}
                     </div>
                 </div>
             </main>
