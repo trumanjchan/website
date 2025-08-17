@@ -51,7 +51,6 @@ function Projects() {
         const currentX = e.clientX;
         if (currentX !== startX.current) {
             offsetTotal.current += offsetX.current;
-            console.log(currentArray.current)
 
             //If more than 30, else snap to previous index. If less than -30, else snap to previous index.
 
@@ -145,7 +144,11 @@ function Projects() {
                 <div className='container'>
                     <div className='carousel-area' ref={carouselRef}>
                         <div id='carousel'>
-                            {page.items.map((item, index) => (
+                            {page.items.sort((a, b) => {
+                                const endDiff = new Date(b.endDate) - new Date(a.endDate);
+                                if (endDiff !== 0) return endDiff;
+                                return new Date(b.startDate) - new Date(a.startDate);
+                            }).map((item, index) => (
                                 <div key={index} className='carousel-slide' ref={el => slideRefs.current[index] = el}>
                                     <div className='slide'>
                                         <div className='info-container'>
