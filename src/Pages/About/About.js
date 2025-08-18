@@ -118,11 +118,12 @@ function About() {
                                     <h3>{item.profileCardLocation}</h3>
                                 </div>
                                 <div className='second'>
-                                    <p>University of California, Merced graduate with a bachelor's degree in Computer Science and Engineering. I specialize in frontend web development!</p>
+                                    <p>{item.profileCardDesc}</p>
                                     <div className='social-container'>
                                         <a href='https://www.linkedin.com/in/trumanjfchan' target='_blank' rel='noreferrer'><img className='social' src={LinkedIn} alt='LinkedIn' /></a>
                                         <a href='https://github.com/trumanjchan' target='_blank' rel='noreferrer'><img className='social' src={GitHub} alt='GitHub' /></a>
-                                        <a href='https://www.instagram.com/true.chan' target='_blank' rel='noreferrer'><img className='social' src={Instagram} alt='Instagram' /></a>                                            <NavLink to="/contact"><img className='social' src={Gmail} alt='Gmail' /></NavLink>
+                                        <a href='https://www.instagram.com/true.chan' target='_blank' rel='noreferrer'><img className='social' src={Instagram} alt='Instagram' /></a>
+                                        <NavLink to="/contact"><img className='social' src={Gmail} alt='Gmail' /></NavLink>
                                     </div>
                                 </div>
                             </div>
