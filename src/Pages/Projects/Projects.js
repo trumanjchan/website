@@ -22,14 +22,29 @@ const query = `
 function Projects() {
     const [page, setPage] = useState(null);
     const carouselRef = useRef(null);
-    const slideRefs = useRef([]);
-    
-    const currentArray = useRef([]);
+    const slides = document.getElementsByClassName("carousel-slide");
+
+    const currentIndex = useRef(0);
     var scrollStart = useRef(0);
     var startX = useRef(0);
     const isPointerDown = useRef(false);
     var offsetX = useRef(0);
     var offsetTotal = useRef(0);
+    const [progress, setProgress] = useState(0);
+
+    const progressBarUpdate = useCallback(() => {
+        const container = carouselRef.current;
+        const slide = slides[0];
+        const slideWidth = slide.offsetWidth;
+
+        const visibleSlides = Math.floor(container.clientWidth / slideWidth);
+        const maxIndex = slides.length - visibleSlides;
+
+        currentIndex.current = Math.max(0, Math.min(currentIndex.current, maxIndex));
+
+        const progressValue = Math.min((currentIndex.current + visibleSlides) / slides.length, 1);
+        setProgress(progressValue);
+    }, [slides]);
 
     const pointerDown = useCallback((e) => {
         startX.current = e.clientX;
@@ -52,63 +67,42 @@ function Projects() {
         if (currentX !== startX.current) {
             offsetTotal.current += offsetX.current;
 
-            //If more than 30, else snap to previous index. If less than -30, else snap to previous index.
+            const container = carouselRef.current;
+            const slide = slides[0];
+            const slideWidth = slide.offsetWidth;
 
-            if (currentX < startX.current) {
-                if (slideRefs.current[Math.max(...currentArray.current)]) {
-                    slideRefs.current[Math.max(...currentArray.current)].scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'center',
-                        inline: 'end'
-                    });
-                }
-            } else {
-                if (slideRefs.current[Math.min(...currentArray.current)]) {
-                    slideRefs.current[Math.min(...currentArray.current)].scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'center',
-                        inline: 'start'
-                    });
-                }
-            }
+            const visibleSlides = Math.floor(container.clientWidth / slideWidth);
+            const maxIndex = slides.length - visibleSlides;
+
+            (currentX < startX.current) ? currentIndex.current++ : currentIndex.current--;
+            currentIndex.current = Math.max(0, Math.min(currentIndex.current, maxIndex));
+
+            container.scrollTo({
+                left: slides[currentIndex.current].offsetLeft,
+                behavior: 'smooth'
+            });
+
+            progressBarUpdate();
         }
-    }, []);
+    }, [slides, progressBarUpdate]);
     
     useEffect(() => {
         if (page == null) return;
 
         const carouselArea = carouselRef.current;
-        const slides = slideRefs.current;
-        const currentIndexes = currentArray.current;
 
         carouselArea.addEventListener("pointerdown", pointerDown);
         carouselArea.addEventListener("pointermove", pointerMove);
         carouselArea.addEventListener("pointerup", pointerUp);
 
-        const observer = new IntersectionObserver(entries => {
-            currentIndexes.length = 0;
-
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    currentIndexes.push(slides.indexOf(entry.target));
-                }
-            });
-        });
-
-        slides.forEach(slide => {
-            observer.observe(slide);
-        });
+        progressBarUpdate();
 
         return () => {
             carouselArea.removeEventListener("pointerdown", pointerDown);
             carouselArea.removeEventListener("pointermove", pointerMove);
             carouselArea.removeEventListener("pointerup", pointerUp);
-
-            slides.forEach(slide => {
-                observer.unobserve(slide);
-            });
         }
-    }, [page, pointerDown, pointerMove, pointerUp]);
+    }, [page, progressBarUpdate, pointerDown, pointerMove, pointerUp]);
 
     useEffect(() => {
         window.fetch(`https://graphql.contentful.com/content/v1/spaces/` + process.env.REACT_APP_SPACE_ID + `/`, {
@@ -149,7 +143,7 @@ function Projects() {
                                 if (endDiff !== 0) return endDiff;
                                 return new Date(b.startDate) - new Date(a.startDate);
                             }).map((item, index) => (
-                                <div key={index} className='carousel-slide' ref={el => slideRefs.current[index] = el}>
+                                <div className='carousel-slide' key={index}>
                                     <div className='slide'>
                                         <div className='info-container'>
                                             <div className="fade top"></div>
@@ -178,6 +172,9 @@ function Projects() {
                                 </div>
                             ))}
                         </div>
+                    </div>
+                    <div className="progress-bar">
+                        <div className="progress" style={{ width: `${progress * 100}%`}} />
                     </div>
                 </div>
             </main>
