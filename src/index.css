@@ -29,13 +29,13 @@ li a {
   transition: 0.3s;
 }
 a {
-  text-decoration: none;
+  text-decoration-thickness: 1.5px;
 }
 a:link {
-  color: #5D808F;
+  color: rgb(0, 136, 255);
 }
 a:hover, a:active {
-  color: #6CAFCC;
+  color: rgb(128, 196, 255);
 }
 
 :root {

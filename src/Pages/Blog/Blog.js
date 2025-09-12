@@ -128,6 +128,8 @@ function Blog() {
     const clickPost = (e) => {
         changePost(e.target);
         mobileBlogPostNavbar(e);
+
+        document.getElementById("blog").scrollTo(0, 0);
     };
 
     if (!page) {
@@ -148,12 +150,14 @@ function Blog() {
                             ))}
                         </div>
                     </div>
-                    <div className='outer-blog-container'>
-                        <div className='inner-blog-container'>
+                    <div className='blog-container'>
+                        <div className="fade top"></div>
+                        <div id='blog'>
                             <p id='title'>{page.items[0].title}</p>
                             <p id='date'>{formatDate(page.items[0].date, true)}</p>
                             <p id='body'>{page.items[0].body.replaceAll("</br>", "\n")}</p>
                         </div>
+                        <div className="fade bot"></div>
                     </div>
                     <div className='photos-container'>
                         <div id='photos'>

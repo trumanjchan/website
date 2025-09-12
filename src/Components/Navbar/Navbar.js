@@ -98,27 +98,19 @@ function Navbar() {
             }
         }
 
-        let bodyTag = document.getElementsByTagName('body')[0];
-        bodyTag.classList.toggle('t-overflow');
-        if (bodyTag.style.touchAction === 'none') {
-            bodyTag.style.touchAction = null;
-        } else {
-            bodyTag.style.touchAction = 'none';
 
+        if (mobileNavBool === 0) {
+            let mobileNavContentElement = document.getElementById("contents");
+            setMobileNavContentsHeight(mobileNavContentElement.getBoundingClientRect().height);
+            setMobileNavBool(1);
 
-            if (mobileNavBool === 0) {
-                let mobileNavContentElement = document.getElementById("contents");
-                setMobileNavContentsHeight(mobileNavContentElement.getBoundingClientRect().height);
-                setMobileNavBool(1);
-
-                if (window.innerWidth < 768) {
-                    if (window.innerHeight < (mobileNavContentElement.getBoundingClientRect().height + document.getElementById("dropdown").offsetHeight + 70)) {
-                        mobileNavContentElement.style.height = window.innerHeight - document.getElementById("dropdown").offsetHeight + "px";
-                        mobileNavContentElement.style.overflowY = "scroll";
-                    } else {
-                        mobileNavContentElement.style.height = "fit-content";
-                        mobileNavContentElement.style.overflowY = "hidden";
-                    }
+            if (window.innerWidth < 768) {
+                if (window.innerHeight < (mobileNavContentElement.getBoundingClientRect().height + document.getElementById("dropdown").offsetHeight + 70)) {
+                    mobileNavContentElement.style.height = window.innerHeight - document.getElementById("dropdown").offsetHeight + "px";
+                    mobileNavContentElement.style.overflowY = "scroll";
+                } else {
+                    mobileNavContentElement.style.height = "fit-content";
+                    mobileNavContentElement.style.overflowY = "hidden";
                 }
             }
         }
@@ -173,8 +165,6 @@ function Navbar() {
                 }
             }
 
-            document.getElementsByTagName('body')[0].classList.remove('t-overflow');
-            document.getElementsByTagName('body')[0].style.touchAction = null;
             document.getElementById('navmodaloverlay').classList.remove('t-visibility');
             document.getElementById('menu-centerline').classList.remove('t-fadeopacity');
             document.getElementById('menu-firstline').classList.remove('t-ftransform');

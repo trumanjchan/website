@@ -103,7 +103,6 @@
     bottom: 0;
     left: 0;
     background-color: rgba(0, 0, 0, 30%);
-    pointer-events: auto;
     visibility: hidden;
     z-index: 2;
 }
@@ -326,9 +325,6 @@
     @keyframes sectionfadeout {
         from {height: 60px; visibility: visible;}
         to {height: 0px; visibility: hidden;}
-    }
-    .t-overflow {
-        overflow: hidden;
     }
     .t-visibility {
         visibility: visible !important;
