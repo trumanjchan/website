@@ -1,6 +1,6 @@
 {
-  "name": "portfolio",
-  "author": "Truman Chan <trumanjfchan@gmail.com>",
+  "name": "trumanjchan-portfolio",
+  "author": "Truman J. Chan <trumanjfchan@gmail.com>",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

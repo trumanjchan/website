@@ -11,13 +11,14 @@ const query = `
 {
     aboutPageCollection {
         items {
-            profileCardCover,
-            profileCardHeadshot,
-            profileCardName,
-            profileCardTitle,
-            profileCardCompany,
-            profileCardLocation,
-            profileCardDesc
+            profileCover,
+            profileHeadshot,
+            profileName,
+            profileTitle,
+            profileCompany,
+            profileLocation,
+            profileDesc,
+            skills
         }
     }
 }
@@ -95,34 +96,35 @@ function About() {
                     <div key={index}>
                         <div id='mini-info-container'>
                             <div className='mini-info'>
-                                <img className='headshot' src={item.profileCardHeadshot[0].secure_url} alt={item.profileCardHeadshot[0].public_id.slice(0, (item.profileCardHeadshot[0].public_id).indexOf("_"))} width='34px' height='32px' />
+                                <img className='headshot' src={item.profileHeadshot[0].secure_url} alt={item.profileHeadshot[0].public_id.slice(0, (item.profileHeadshot[0].public_id).indexOf("_"))} width='34px' height='32px' />
                                 <div id='textcontainer'>
-                                    <div>{item.profileCardName}</div>
-                                    <div>{item.profileCardTitle} at&nbsp;{item.profileCardCompany.company}</div>
+                                    <div>{item.profileName}</div>
+                                    <div>{item.profileTitle} at&nbsp;{item.profileCompany.company}</div>
                                 </div>
                             </div>
                         </div>
 
                         <div id='Profile' className='Profile card'>
-                            <img className='cover' src={item.profileCardCover[0].secure_url} alt={item.profileCardCover[0].public_id.slice(0, (item.profileCardCover[0].public_id).indexOf("_"))} width='1000px' height='200px' />
+                            <img className='cover' src={item.profileCover[0].secure_url} alt={item.profileCover[0].public_id.slice(0, (item.profileCover[0].public_id).indexOf("_"))} width='1000px' height='200px' />
                             <div className='content'>
                                 <div className='first'>
-                                    <img className='headshot' src={item.profileCardHeadshot[0].secure_url} alt={item.profileCardHeadshot[0].public_id.slice(0, (item.profileCardHeadshot[0].public_id).indexOf("_"))} width='200px' height='187px' />
-                                    <h1>{item.profileCardName}</h1>
-                                    <h2>{item.profileCardTitle}</h2>
+                                    <img className='headshot' src={item.profileHeadshot[0].secure_url} alt={item.profileHeadshot[0].public_id.slice(0, (item.profileHeadshot[0].public_id).indexOf("_"))} width='200px' height='187px' />
+                                    <h1>{item.profileName}</h1>
+                                    <h2>{item.profileTitle}</h2>
                                     <div className='company'>
-                                        {item.profileCardCompany.company}
+                                        {item.profileCompany.company}
                                         <br/>
-                                        <span className='parentcompany'>{item.profileCardCompany.parentcompany}</span>
+                                        <span className='parentcompany'>{item.profileCompany.parentcompany}</span>
                                     </div>
-                                    <h3>{item.profileCardLocation}</h3>
+                                    <h3>{item.profileLocation}</h3>
                                 </div>
                                 <div className='second'>
-                                    <p>University of California, Merced graduate with a bachelor's degree in Computer Science and Engineering. I specialize in frontend web development!</p>
+                                    <p>{item.profileDesc}</p>
                                     <div className='social-container'>
                                         <a href='https://www.linkedin.com/in/trumanjfchan' target='_blank' rel='noreferrer'><img className='social' src={LinkedIn} alt='LinkedIn' /></a>
                                         <a href='https://github.com/trumanjchan' target='_blank' rel='noreferrer'><img className='social' src={GitHub} alt='GitHub' /></a>
-                                        <a href='https://www.instagram.com/true.chan' target='_blank' rel='noreferrer'><img className='social' src={Instagram} alt='Instagram' /></a>                                            <NavLink to="/contact"><img className='social' src={Gmail} alt='Gmail' /></NavLink>
+                                        <a href='https://www.instagram.com/true.chan' target='_blank' rel='noreferrer'><img className='social' src={Instagram} alt='Instagram' /></a>
+                                        <NavLink to="/contact"><img className='social' src={Gmail} alt='Gmail' /></NavLink>
                                     </div>
                                 </div>
                             </div>
@@ -148,18 +150,16 @@ function About() {
                             <div className='container'>
                                 <div className='title'>Skills</div>
                                 <div className='content'>
-                                    <div className='info'>
-                                        <div className='section-title'>Programming</div>
-                                        <div className='section-text'>HTML, CSS, JavaScript, React, AEM, Nuxt, Socket.io, C++, Python, SQL, REST APIs</div>
-                                        <div className='section-title'>Frameworks</div>
-                                        <div className='section-text'>React, Nuxt, Express, Flask</div>
-                                        <div className='section-title'>Tools</div>
-                                        <div className='section-text'>Git, VS Code, Sony Vegas Pro, Shotcut, Adobe Photoshop, Adobe XD, Google Workspace</div>
-                                        <div className='section-title'>Soft</div>
-                                        <div className='section-text'>Communication, Teamwork, Problem-solving, Motivated</div>
-                                        <div className='section-title'>Languages</div>
-                                        <div className='section-text'>English and conversational Cantonese</div>
-                                    </div>
+                                    {Object.keys(item.skills).map((key, index) => (
+                                        <div key={index} className="section">
+                                            <div className='section-title'>{key}</div>
+                                            <div className='section-text'>
+                                                {item.skills[key].map((ele, index) => (
+                                                    <div key={index} className='pill'>{ele}</div>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    ))}
                                 </div>
                             </div>
                         </div>
