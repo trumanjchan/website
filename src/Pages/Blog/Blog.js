@@ -1,138 +1,108 @@
 import { useState, useEffect } from 'react';
+import { useParams, NavLink } from 'react-router-dom';
 import './Blog.css';
 import Navbar from '../../Components/Navbar/Navbar';
 import { formatDate } from '../../utils';
 
-const query = `
-{
-    blogPageCollection(order: [date_DESC]) {
-        items {
-            title,
-            date,
-            body,
-            photosCollection {
-                items {
-                    title,
-                    description,
-                    url,
-                    fileName,
-                    width,
-                    height
-                }
-            }
-        }
-    }
-}
-`
-
 function Blog() {
-    const [page, setPage] = useState(null);
-
-    function changePost(blogpost) {
-        document.getElementById("photos").innerHTML = null;
-        for (let i = 0; i < page.items.length; i++) {
-            if (blogpost !== document.querySelectorAll(".blog-post-button")[i]) {
-                document.querySelectorAll(".blog-post-button")[i].style.backgroundColor = null;
-                document.querySelectorAll(".blog-post-button")[i].style.color = null;
-            }
-        }
-        blogpost.style.backgroundColor = 'var(--main-bg-color)';
-        blogpost.style.color = 'var(--invert-color)';
-
-        const foundObject = page.items.find(obj => obj.title === blogpost.innerText);
-        //console.log(foundObject)
-
-        document.getElementById("title").innerText = foundObject.title;
-        document.getElementById("date").innerText = formatDate(foundObject.date, true);
-        document.getElementById("body").innerText = foundObject.body.replaceAll("</br>", "\n");
-        for (let i = 0; i < foundObject.photosCollection.items.length; i++) {
-            let imgEle = document.createElement('img');
-            imgEle.src = foundObject.photosCollection.items[i].url;
-            imgEle.style.width = "100%";
-            imgEle.alt = "";
-            let targetEle = document.getElementById('photos');
-            targetEle.appendChild(imgEle);
-        }
-    }
-
-    function mobileBlogPostNavbar(e) {
-        if (window.innerWidth < 768) {
-            document.getElementById("tabs").insertBefore(e.target, document.getElementById("tabs").firstChild);
-            if ((e.target.innerText === document.getElementById("title").innerText) && (document.getElementById("tabscolumn").style.height !== "fit-content")) {
-                document.getElementById("tabscolumn").style.height = "fit-content";
-            } else {
-                document.getElementById("tabscolumn").style.height = document.getElementById("dropdown").getBoundingClientRect().height + "px";
-            }
-        }
-    }
-
-    const checkHash = (page) => {
-        const hash = window.location.hash;
-        const blogPostButton = document.getElementsByClassName("blog-post-button");
-        
-        const foundObject = page.items.find(obj => ("#" + obj.title.replaceAll(' ', '-')) === hash);
-
-        if (foundObject) {
-            const buttonIndex = page.items.indexOf(foundObject);
-            blogPostButton[buttonIndex].click();
-        } else {
-            blogPostButton[0].style.backgroundColor = 'var(--main-bg-color)';
-            blogPostButton[0].style.color = 'var(--invert-color)';
-        }
-    }
-
-    const resizeBlogPage = () => {
-        if (window.innerWidth < 768) {
-            document.getElementById("tabscolumn").style.height = document.getElementById("dropdown").getBoundingClientRect().height + "px";
-            for (let i = 0; i < document.querySelector("#tabs").children.length; i++) {
-                document.querySelectorAll(".blog-post-button")[i].style.height = document.getElementById("dropdown").getBoundingClientRect().height + "px";
-            }
-        } else {
-            document.getElementById("tabscolumn").style.height = "100%";
-            for (let i = 0; i < document.querySelector("#tabs").children.length; i++) {
-                document.querySelectorAll(".blog-post-button")[i].style.height = "fit-content";
-            }
-        }
-    }
+    const { slug } = useParams();
+    const [post, setPost] = useState(null);
+    const [postTitles, setPostTitles] = useState([]);
 
     useEffect(() => {
-        window.fetch(`https://graphql.contentful.com/content/v1/spaces/` + process.env.REACT_APP_SPACE_ID + `/`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                // Authenticate the request
-                Authorization: "Bearer " + process.env.REACT_APP_ACCESS_TOKEN,
-            },
-            // send the GraphQL query
-            body: JSON.stringify({ query }),
-        })
-        .then((response) => response.json())
-        .then(({ data, errors }) => {
-            if (errors) {
-                console.error(errors);
+        if (sessionStorage.getItem(`postTitles`)) {
+            setPostTitles(JSON.parse(sessionStorage.getItem(`postTitles`)));
+        } else {
+            const postTitlesQuery = `
+            {
+                blogPageCollection(order: date_DESC) {
+                    items {
+                        title,
+                        date
+                    }
+                }
             }
+            `;
+            window.fetch(`https://graphql.contentful.com/content/v1/spaces/` + process.env.REACT_APP_SPACE_ID + `/`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    // Authenticate the request
+                    Authorization: "Bearer " + process.env.REACT_APP_ACCESS_TOKEN,
+                },
+                // send the GraphQL query
+                body: JSON.stringify({ query: postTitlesQuery }),
+            })
+            .then((response) => response.json())
+            .then(({ data, errors }) => {
+                if (errors) {
+                    console.error(errors);
+                }
+                
+                const fetchedPostTitles = data.blogPageCollection.items;
+                setPostTitles(fetchedPostTitles);
+                sessionStorage.setItem(`postTitles`, JSON.stringify(fetchedPostTitles));
+            });
+        }
+    }, [slug]);
 
-            setPage(data.blogPageCollection);
-            //console.log(data.blogPageCollection);
+    useEffect(() => {
+        document.getElementById("blog")?.scrollIntoView({ behavior: "instant", block: "start" });  //for iOS
 
-            checkHash(data.blogPageCollection);
-            resizeBlogPage();
-        });
+        const decodedSlug = decodeURIComponent(slug);
 
-        window.addEventListener("resize", resizeBlogPage);
-        return () => {
-            window.removeEventListener("resize", resizeBlogPage);
-        };
-    }, []);
+        if (sessionStorage.getItem(`post-${decodedSlug}`)) {
+            setPost(JSON.parse(sessionStorage.getItem(`post-${decodedSlug}`)));
+        } else {
+            const currentPostQuery = `
+            {
+                blogPageCollection(where: { title: "${decodedSlug}" }, limit: 1) {
+                    items {
+                        title,
+                        date,
+                        body,
+                        photosCollection {
+                            items {
+                                title,
+                                description,
+                                url,
+                                fileName,
+                                width,
+                                height
+                            }
+                        }
+                    }
+                }
+            }
+            `;
+            window.fetch(`https://graphql.contentful.com/content/v1/spaces/` + process.env.REACT_APP_SPACE_ID + `/`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    // Authenticate the request
+                    Authorization: "Bearer " + process.env.REACT_APP_ACCESS_TOKEN,
+                },
+                // send the GraphQL query
+                body: JSON.stringify({ query: currentPostQuery }),
+            })
+            .then((response) => response.json())
+            .then(({ data, errors }) => {
+                if (errors) {
+                    console.error(errors);
+                }
+                
+                const fetchedPost = data.blogPageCollection.items[0];
+                setPost(fetchedPost);
+                sessionStorage.setItem(`post-${decodedSlug}`, JSON.stringify(fetchedPost));
+            });
+        }
+    }, [slug]);
 
-    const clickPost = (e) => {
-        changePost(e.target);
-        mobileBlogPostNavbar(e);
+    const clickPost = () => {
+        document.getElementById("blog").scrollTo(0, 0);  //for desktop
+    }
 
-        document.getElementById("blog").scrollTo(0, 0);
-    };
-
-    if (!page) {
+    if (!post) {
         return (
             <main className='Blog'>
                 <Navbar />
@@ -145,26 +115,24 @@ function Blog() {
                 <div id='container' className='container'>
                     <div id='tabscolumn'>
                         <div id="tabs">
-                            {page.items.map((item, index) => (
-                                <a key={index} className='blog-post-button' onClick={clickPost} href={`#${item.title.replaceAll(' ', '-')}`}>{item.title}</a>
+                            {postTitles.map((item, index) => (
+                                <NavLink key={index} className="blog-post-button" to={`/blog/${encodeURIComponent(item.title)}`} onClick={clickPost}>{item.title}</NavLink>
                             ))}
                         </div>
                     </div>
                     <div className='blog-container'>
                         <div className="fade top"></div>
                         <div id='blog'>
-                            <p id='title'>{page.items[0].title}</p>
-                            <p id='date'>{formatDate(page.items[0].date, true)}</p>
-                            <p id='body'>{page.items[0].body.replaceAll("</br>", "\n")}</p>
+                            <p id='title'>{post.title}</p>
+                            <p id='date'>{formatDate(post.date, true)}</p>
+                            <pre id='body'>{post.body}</pre>
                         </div>
                         <div className="fade bot"></div>
                     </div>
                     <div className='photos-container'>
-                        <div id='photos'>
-                            {page.items[0].photosCollection.items.map((item, index) => (
-                                <img key={index} src={item.url} alt="" />
-                            ))}
-                        </div>
+                        <div id='photos'>{post.photosCollection.items.map((item, index) => {
+                            return <img key={index} src={item.url} alt="" />
+                        })}</div>
                     </div>
                 </div>
             </main>

@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 
 import About from '../src/Pages/About/About';
 import Projects from './Pages/Projects/Projects';
+import BlogList from '../src/Pages/BlogList/BlogList';
 import Blog from '../src/Pages/Blog/Blog';
 import Contact from './Pages/Contact/Contact';
 import Sent from './Pages/Contact/Sent/Sent';
@@ -13,7 +14,8 @@ function App() {
       <Routes>
         <Route path='/' element={<About/>} />
         <Route path='/projects' element={<Projects/>} />
-        <Route path='/blog' element={<Blog/>} />
+        <Route path='/blog' element={<BlogList/>} />
+        <Route path='/blog/:slug' element={<Blog/>} />
         <Route path='/contact' element={<Contact/>} />
         <Route path='/sent' element={<Sent/>} />
         <Route path='/404' element={<PageNotFound/>} />
