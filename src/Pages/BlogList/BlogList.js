@@ -4,42 +4,47 @@ import './BlogList.css';
 import Navbar from '../../Components/Navbar/Navbar';
 import { formatDate } from '../../utils';
 
-const query = `
-{
-    blogPageCollection(order: [date_DESC]) {
-        items {
-            title,
-            date
-        }
-    }
-}
-`
-
 function BlogList() {
-    const [page, setPage] = useState(null);
+    const [postTitles, setPostTitles] = useState([]);
 
     useEffect(() => {
-        window.fetch(`https://graphql.contentful.com/content/v1/spaces/` + process.env.REACT_APP_SPACE_ID + `/`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                // Authenticate the request
-                Authorization: "Bearer " + process.env.REACT_APP_ACCESS_TOKEN,
-            },
-            // send the GraphQL query
-            body: JSON.stringify({ query }),
-        })
-        .then((response) => response.json())
-        .then(({ data, errors }) => {
-            if (errors) {
-                console.error(errors);
+        if (sessionStorage.getItem(`postTitles`)) {
+            setPostTitles(JSON.parse(sessionStorage.getItem(`postTitles`)));
+        } else {
+            const postTitlesQuery = `
+            {
+                blogPageCollection(order: [date_DESC]) {
+                    items {
+                        title,
+                        date
+                    }
+                }
             }
+            `;
+            window.fetch(`https://graphql.contentful.com/content/v1/spaces/` + process.env.REACT_APP_SPACE_ID + `/`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    // Authenticate the request
+                    Authorization: "Bearer " + process.env.REACT_APP_ACCESS_TOKEN,
+                },
+                // send the GraphQL query
+                body: JSON.stringify({ query: postTitlesQuery }),
+            })
+            .then((response) => response.json())
+            .then(({ data, errors }) => {
+                if (errors) {
+                    console.error(errors);
+                }
 
-            setPage(data.blogPageCollection);
-        });
+                const fetchedPostTitles = data.blogPageCollection.items;
+                setPostTitles(fetchedPostTitles);
+                sessionStorage.setItem(`postTitles`, JSON.stringify(fetchedPostTitles));
+            });
+        }
     }, []);
 
-    if (!page) {
+    if (!postTitles) {
         return (
             <main className='BlogList'>
                 <Navbar />
@@ -51,7 +56,7 @@ function BlogList() {
                 <Navbar />
                 <div className='content'>
                     <div className='blog-list'>
-                        {page.items.map((item, index) => (
+                        {postTitles.map((item, index) => (
                             <NavLink key={index} className="blog-title" to={`/blog/${encodeURIComponent(item.title)}`}>
                                 <div>{formatDate(item.date)}</div>
                                 <div>{item.title}</div>

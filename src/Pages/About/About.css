@@ -18,7 +18,7 @@
 
         .container {
             margin: 0 4%;
-            padding: 26px 0;
+            padding: 30px 0;
 
             .title {
                 text-align: center;
@@ -39,7 +39,7 @@
             }
             
             .content {
-                margin: 15px 0;
+                margin-top: 15px;
             }
         }
     }
@@ -66,7 +66,7 @@
                     width: 200px;
                     margin-top: -30%;
                     border-radius: 50%;
-                    border: 5px solid white;
+                    border: 5px solid var(--container-bg-color);
                 }
 
                 h1 {
@@ -111,6 +111,10 @@
                 letter-spacing: 2px;
                 font-size: 20px;
                 text-align: center;
+
+                p {
+                    text-align: left;
+                }
 
                 .social-container {
                     display: flex;
@@ -161,6 +165,7 @@
     
                 .degree {
                     font-size: 22px;
+                    margin: 7.5px 0;
                 }
     
                 .year {
@@ -170,12 +175,12 @@
     
                 .activitiestitle {
                     font-size: 20px;
-                    margin-top: 0.5%;
+                    margin-top: 15px;
+                    text-align: center;
                 }
     
                 .activities {
                     font-size: 20px;
-                    margin-left: 5%;
                 }
             }
         }
@@ -294,8 +299,8 @@
 
                         .text {
                             line-height: 1.5;
-                            margin-left: -1%;
-                            margin-bottom: 0;
+                            padding-left: 40px;
+                            margin: 0;
                         }
                     }
                 }
@@ -313,6 +318,10 @@
         text-align: center;
 
         .first {
+            .headshot {
+                margin-top: -25%;
+            }
+
             .company {
                 margin-left: auto;
                 margin-right: auto;
@@ -344,6 +353,28 @@
             }
             &:last-child {
                 margin-bottom: 30px;
+            }
+        }
+
+        .Profile {
+            .first {
+                .headshot {
+                    margin-top: -30% !important;
+                }
+            }
+
+            .second {
+                .social-container {
+                    justify-content: space-between !important;
+                }
+            }
+        }
+
+        .Experience {
+            .jobdesc {
+                .text {
+                    padding-left: 20px !important;
+                }
             }
         }
     }

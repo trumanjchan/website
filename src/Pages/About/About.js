@@ -137,9 +137,9 @@ function About() {
                                     <div className='school'>
                                         <div className='schoolname'>University of California, Merced</div>
                                         <div className='degree'>Bachelor of Science - Computer Science and Engineering</div>
-                                        <div className='year'>2018 - 2021</div>
-                                        <div className='activitiestitle'>Activities and societies:
-                                            <div className='activities'><a href='https://github.com/HackMerced/HackMerced/commits?author=trumanjchan' target='_blank' rel='noreferrer'>HackMerced</a>, Martial Arts Club</div>
+                                        <div className='year'>Jan 2018 - Dec 2021</div>
+                                        <div className='activitiestitle'>Student Organization:
+                                            <div className='activities'><a href='https://github.com/HackMerced/HackMerced/commits?author=trumanjchan' target='_blank' rel='noreferrer'>HackMerced</a></div>
                                         </div>
                                     </div>
                                 </div>
@@ -189,7 +189,7 @@ function About() {
                                             <div className='member'>
                                                 <div className='pos'>
                                                     <div className='position'>Developer Apprentice</div>
-                                                    <div className='date'>Jun 2022 - Aug 2022 &nbsp;|&nbsp;&nbsp;3&nbsp;mos</div>
+                                                    <div className='date'>Jun 2022 - Aug 2022</div>
                                                 </div>
                                                 <ul className='text'>
                                                     <li>Collaborated in a brand team in Concentric Health Experience's 9-week internship to create a pitch presentation and present to a CHX client while onboarding with the development team.</li>
@@ -210,7 +210,7 @@ function About() {
                                             <div className='lead'>
                                                 <div className='pos'>
                                                     <div className='position'>Frontend Lead</div>
-                                                    <div className='date'>Apr 2021 - Dec 2021 &nbsp;|&nbsp;&nbsp;9&nbsp;mos</div>
+                                                    <div className='date'>Apr 2021 - Dec 2021</div>
                                                 </div>
                                                 <ul className='text'>
                                                     <li>Assigned tasks to frontend team members.</li>
@@ -220,7 +220,7 @@ function About() {
                                             <div className='member'>
                                                 <div className='pos'>
                                                     <div className='position'>Frontend Member</div>
-                                                    <div className='date'>Sep 2019 - Apr 2021 &nbsp;|&nbsp;&nbsp;1&nbsp;yr&nbsp;8&nbsp;mos</div>
+                                                    <div className='date'>Sep 2019 - Apr 2021</div>
                                                 </div>
                                                 <ul className='text'>
                                                     <li>Learned and worked with HTML, CSS, JavaScript, Node.js, React.js, Github, and Gitkraken.</li>

@@ -35,12 +35,8 @@
                     user-select: none; /* Standard syntax */
     
                     &.active {
-                        background-color: var(--main-bg-color);
-                    }
-
-                    &:hover {
-                        background-color: var(--main-bg-color);
                         color: var(--invert-color);
+                        background-color: var(--main-bg-color);
                     }
                 }
             }
@@ -93,7 +89,7 @@
             }
         }
 
-        .photos-container {
+        #photos-container {
             overflow-y: auto;
             background-color: var(--container-bg-color);
 
@@ -131,6 +127,10 @@
 
             #blog {
                 padding: 0 25px !important;
+
+                #title {
+                    margin-top: 60px !important;
+                }
             }
         }
     }

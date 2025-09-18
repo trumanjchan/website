@@ -47,7 +47,7 @@ function Blog() {
     }, [slug]);
 
     useEffect(() => {
-        document.getElementById("blog")?.scrollIntoView({ behavior: "instant", block: "start" });  //for iOS
+        document.getElementById("blog")?.scrollIntoView({ behavior: "instant", block: "start" });  //iOS
 
         const decodedSlug = decodeURIComponent(slug);
 
@@ -99,7 +99,9 @@ function Blog() {
     }, [slug]);
 
     const clickPost = () => {
-        document.getElementById("blog").scrollTo(0, 0);  //for desktop
+        /* desktop */
+        document.getElementById("blog").scrollTo(0, 0);
+        document.getElementById("photos-container").scrollTo(0, 0);
     }
 
     if (!post) {
@@ -129,9 +131,9 @@ function Blog() {
                         </div>
                         <div className="fade bot"></div>
                     </div>
-                    <div className='photos-container'>
+                    <div id='photos-container'>
                         <div id='photos'>{post.photosCollection.items.map((item, index) => {
-                            return <img key={index} src={item.url} alt="" />
+                            return <img key={index} src={`${item.url}?w=768`} srcSet={`${item.url}?w=418 418w, ${item.url}?w=768 768w, ${item.url}?w=1200 1200w, ${item.url}?w=1600 1600w`} sizes="(max-width: 768px) 100vw, 25vw" alt="" />
                         })}</div>
                     </div>
                 </div>
