@@ -25,11 +25,11 @@ function Projects() {
     const slides = document.getElementsByClassName("carousel-slide");
 
     const currentIndex = useRef(0);
-    var scrollStart = useRef(0);
-    var startX = useRef(0);
+    const scrollStart = useRef(0);
+    const startX = useRef(0);
+    const startY = useRef(0);
     const isPointerDown = useRef(false);
-    var offsetX = useRef(0);
-    var offsetTotal = useRef(0);
+    const isVerticalScroll = useRef(false);
     const [progress, setProgress] = useState(0);
 
     const progressBarUpdate = useCallback(() => {
@@ -48,25 +48,36 @@ function Projects() {
 
     const pointerDown = useCallback((e) => {
         startX.current = e.clientX;
+        startY.current = e.clientY;
+
         scrollStart.current = carouselRef.current.scrollLeft;
 
         isPointerDown.current = true;
+        isVerticalScroll.current = false;
     }, []);
 
     const pointerMove = useCallback((e) => {
-        if (isPointerDown.current) {
-            offsetX.current = (e.clientX - startX.current);
-            carouselRef.current.scrollLeft = scrollStart.current - offsetX.current;
+        if (!isPointerDown.current) return;
+
+        const dx = e.clientX - startX.current;
+        const dy = e.clientY - startY.current;
+
+        if (!isVerticalScroll.current && Math.abs(dy) > Math.abs(dx)) {
+            isVerticalScroll.current = true;
+            return;
         }
+
+        if (isVerticalScroll.current) return;
+
+        carouselRef.current.scrollLeft = scrollStart.current - dx;
     }, []);
     
     const pointerUp = useCallback((e) => {
         isPointerDown.current = false;
+        isVerticalScroll.current = false;
 
         const currentX = e.clientX;
         if (currentX !== startX.current) {
-            offsetTotal.current += offsetX.current;
-
             const container = carouselRef.current;
             const slide = slides[0];
             const slideWidth = slide.offsetWidth;
