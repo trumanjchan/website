@@ -18,7 +18,8 @@ const query = `
             profileCompany,
             profileLocation,
             profileDesc,
-            skills
+            skills,
+            experience
         }
     }
 }
@@ -168,68 +169,32 @@ function About() {
                             <div className='container'>
                                 <div className='title'>Experience</div>
                                 <div className='content'>
-                                    <div className='workedat'>
-                                        <div className='total'>
-                                            <div className='companyname'><a href='https://concentric.life/' target='_blank' rel='noreferrer'>ConcentricLife</a></div>
-                                            <div className='date'>Full-time</div>
-                                            <div>New York City, NY</div>
-                                        </div>
-                                        <div className='jobdesc'>
-                                            <div className='lead'>
-                                                <div className='pos'>
-                                                    <div className='position'>Junior Developer</div>
-                                                    <div className='date'>Aug 2022 - <i>Present</i></div>
-                                                </div>
-                                                <ul className='text'>
-                                                    <li>Cooperate regularly and closely with other members of the Development, QA, Design, Integrated Production, Editorial, and Copy teams on timed deliverables.</li>
-                                                    <li>Implement changes requested on Ziflow/Workfront routes for emails (MJML, OFTs, Email on Acid), banners (GSAP, DoubleClick), and websites (Nuxt.js, Vue.js, AEM, AWS) through code.</li>
-                                                    <li>Created two object oriented responsive mini game web apps using HTML, CSS, JavaScript, Socket.io, and Express.js under R&D.</li>
-                                                </ul>
+                                    {Object.keys(item.experience).map((company, index) => (
+                                        <div key={index} className='worked-at'>
+                                            <div className='company'>
+                                                <div className='company-name'><a href={item.experience[company].Link} target='_blank' rel='noreferrer'>{company}</a></div>
+                                                <div className='company-date'>{item.experience[company].Status}</div>
+                                                <div>{item.experience[company].Location}</div>
                                             </div>
-                                            <div className='member'>
-                                                <div className='pos'>
-                                                    <div className='position'>Developer Apprentice</div>
-                                                    <div className='date'>Jun 2022 - Aug 2022</div>
+                                            <div className='job'>
+                                                <div className='job-desc'>
+                                                    {Object.keys(item.experience[company].Positions).map((position, index) => (
+                                                        <div key={index}>
+                                                            <div className='position'>
+                                                                <div className='position-title'>{position}</div>
+                                                                <div className='position-date'>{item.experience[company].Positions[position].Status}</div>
+                                                            </div>
+                                                            <ul className='responsibilities'>
+                                                                {item.experience[company].Positions[position].Bulletpoints.map((bullet, index) => (
+                                                                    <li key={index}>{bullet}</li>
+                                                                ))}
+                                                            </ul>
+                                                        </div>
+                                                    ))}
                                                 </div>
-                                                <ul className='text'>
-                                                    <li>Collaborated in a brand team in Concentric Health Experience's 9-week internship to create a pitch presentation and present to a CHX client while onboarding with the development team.</li>
-                                                    <li>Learned how a healthcare advertising agency operates by attending informative CHX-led presentations.</li>
-                                                    <li>Acquired knowledge of MJML, GSAP, Veeva Systems, Wordpress, and Vue.js through LinkedIn Learning courses and reading documentation during onboarding with the development team.</li>
-                                                </ul>
                                             </div>
                                         </div>
-                                    </div>
-
-                                    <div className='workedat'>
-                                        <div className='total'>
-                                            <div className='companyname'><a href='https://hackmerced.com/' target='_blank' rel='noreferrer'>HackMerced</a></div>
-                                            <div className='date'>2 yrs 4 mos</div>
-                                            <div>University of California, Merced</div>
-                                        </div>
-                                        <div className='jobdesc'>
-                                            <div className='lead'>
-                                                <div className='pos'>
-                                                    <div className='position'>Frontend Lead</div>
-                                                    <div className='date'>Apr 2021 - Dec 2021</div>
-                                                </div>
-                                                <ul className='text'>
-                                                    <li>Assigned tasks to frontend team members.</li>
-                                                    <li>Taught team members how to work with the codebase by explaining how to use Gitkraken for tasks and Github for pull requests.</li>
-                                                </ul>
-                                            </div>
-                                            <div className='member'>
-                                                <div className='pos'>
-                                                    <div className='position'>Frontend Member</div>
-                                                    <div className='date'>Sep 2019 - Apr 2021</div>
-                                                </div>
-                                                <ul className='text'>
-                                                    <li>Learned and worked with HTML, CSS, JavaScript, Node.js, React.js, Github, and Gitkraken.</li>
-                                                    <li>Coded responsive and reusable web page components and web pages for in-person and virtual events, and for the HackMerced website.</li>
-                                                    <li>Organized two MLH Local Build/Hack Day events, two 36-hour hackathons, and a design hackathon with teammates.</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    ))}
                                 </div>
                             </div>
                         </div>

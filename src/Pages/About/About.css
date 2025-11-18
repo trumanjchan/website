@@ -247,24 +247,26 @@
             .content {
                 display: flex;
                 flex-direction: column;
+                gap: 50px;
+                margin: 30px 0;
 
-                .workedat {
-                    margin: 2% 6%;
+                .worked-at {
+                    margin: 0 6%;
                     font-size: 20px;
 
-                    .total {
-                        margin-bottom: 3%;
+                    .company {
+                        margin-bottom: 30px;
 
-                        .date {
+                        .company-date {
                             color: rgb(104, 104, 104);
                         }
 
-                        .companyname {
+                        .company-name {
                             font-size: 25px;
                         }
                     }
 
-                    .jobdesc {
+                    .job {
                         position: relative;
                         padding-left: 5%;
 
@@ -280,27 +282,33 @@
                             border-radius: 10px;
                         }
 
-                        .lead {
-                            margin-bottom: 2.5%;
-                        }
-
-                        .pos {
-                            margin-bottom: 2%;
+                        .job-desc {
+                            display: flex;
+                            flex-direction: column;
+                            gap: 25px;
                         }
 
                         .position {
-                            font-size: 25px;
-                            font-weight: bold;
+                            margin-bottom: 20px;
+
+                            .position-title {
+                                font-size: 25px;
+                                font-weight: bold;
+                            }
+
+                            .position-date {
+                                color: rgb(104, 104, 104);
+                            }
                         }
 
-                        .date {
-                            color: rgb(104, 104, 104);
-                        }
-
-                        .text {
+                        .responsibilities {
                             line-height: 1.5;
                             padding-left: 40px;
                             margin: 0;
+
+                            > li {
+                                margin-bottom: 10px;
+                            }
                         }
                     }
                 }
@@ -366,14 +374,6 @@
             .second {
                 .social-container {
                     justify-content: space-between !important;
-                }
-            }
-        }
-
-        .Experience {
-            .jobdesc {
-                .text {
-                    padding-left: 20px !important;
                 }
             }
         }
