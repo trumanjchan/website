@@ -9,7 +9,7 @@ import Gmail from '../../Images/gmail.svg';
 
 const query = `
 {
-    aboutPageCollection {
+    aboutPageCollection(limit: 1) {
         items {
             profileCover,
             profileHeadshot,
@@ -19,7 +19,21 @@ const query = `
             profileLocation,
             profileDesc,
             skills,
-            experience
+
+            experienceCollection {
+                items {
+                    name,
+                    website,
+                    status,
+                    location,
+
+                    positionsCollection {
+                        items {
+                            details
+                        }
+                    }
+                }
+            }
         }
     }
 }
@@ -93,6 +107,7 @@ function About() {
         return (
             <main className='About'>
                 <Navbar />
+
                 {page.items.map((item, index) => (
                     <div key={index}>
                         <div id='mini-info-container'>
@@ -169,23 +184,23 @@ function About() {
                             <div className='container'>
                                 <div className='title'>Experience</div>
                                 <div className='content'>
-                                    {Object.keys(item.experience).map((company, index) => (
+                                    {Object.values(item.experienceCollection.items).reverse().map((company, index) => (
                                         <div key={index} className='worked-at'>
                                             <div className='company'>
-                                                <div className='company-name'><a href={item.experience[company].Link} target='_blank' rel='noreferrer'>{company}</a></div>
-                                                <div className='company-date'>{item.experience[company].Status}</div>
-                                                <div>{item.experience[company].Location}</div>
+                                                <div className='company-name'><a href={company.website} target='_blank' rel='noreferrer'>{company.name}</a></div>
+                                                <div className='company-date'>{company.status}</div>
+                                                <div>{company.location}</div>
                                             </div>
                                             <div className='job'>
                                                 <div className='job-desc'>
-                                                    {Object.keys(item.experience[company].Positions).map((position, index) => (
+                                                    {[...company.positionsCollection.items].reverse().map((position, index) => (
                                                         <div key={index}>
                                                             <div className='position'>
-                                                                <div className='position-title'>{position}</div>
-                                                                <div className='position-date'>{item.experience[company].Positions[position].Status}</div>
+                                                                <div className='position-title'>{position.details.Title}</div>
+                                                                <div className='position-date'>{position.details.Status}</div>
                                                             </div>
                                                             <ul className='responsibilities'>
-                                                                {item.experience[company].Positions[position].Bulletpoints.map((bullet, index) => (
+                                                                {position.details.Responsibilities.map((bullet, index) => (
                                                                     <li key={index}>{bullet}</li>
                                                                 ))}
                                                             </ul>
