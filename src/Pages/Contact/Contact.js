@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import './Contact.css';
 import Navbar from '../../Components/Navbar/Navbar';
-import lightbg from "../../Images/Golden_Gate_Bridge_side.webp";
+import lightbg from "../../Images/Golden_Gate_Bridge.webp";
 import darkbg from "../../Images/Track_Field_after_Rain.webp";
 
 function Contact() {

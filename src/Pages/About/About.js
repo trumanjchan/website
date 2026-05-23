@@ -18,7 +18,13 @@ const query = `
             profileCompany,
             profileLocation,
             profileDesc,
-            skills,
+
+            skillsCollection {
+                items {
+                    category,
+                    skill
+                }
+            },
 
             experienceCollection {
                 items {
@@ -166,12 +172,12 @@ function About() {
                             <div className='container'>
                                 <div className='title'>Skills</div>
                                 <div className='content'>
-                                    {Object.keys(item.skills).map((key, index) => (
+                                    {item.skillsCollection.items.map((skill, index) => (
                                         <div key={index} className="section">
-                                            <div className='section-title'>{key}</div>
+                                            <div className='section-title'>{skill.category}</div>
                                             <div className='section-text'>
-                                                {item.skills[key].map((ele, index) => (
-                                                    <div key={index} className='pill'>{ele}</div>
+                                                {skill.skill.map((skill, index) => (
+                                                    <div key={index} className='pill'>{skill}</div>
                                                 ))}
                                             </div>
                                         </div>
